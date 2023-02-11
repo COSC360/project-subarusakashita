@@ -28,46 +28,52 @@ The following is the detail for each category.
 
 	Minimum Requirements:
 	
-	Users without account Requirements:
-		-User can similar posts at the bottom (other blog posts with same tags)
-		-User can see which tags are trending
-		-Show a popup message in main page to encourage users to login or make an account
+	Users not logged in:
+		-Can read blog posts
+		-Can see comments on blog posts
+		-Can search blogs and users
+		-See similar posts at the bottom of every blog post page (other blog posts with same tags)
+		-Can see which tags are trending
+		-See a popup message in main page to encourage login or make an account
 
-	User Requirements:
-		-Has access to all content that users without account do
-		-User can set email preferences (mute new comment notifications etc)
-		-User can follow other users and receive email notification of new post
-		-Edit their own personal profile information
+	Users logged in:
+		-Has access to all features that unlogged-in users do
+		-Can write blogs
+		-Can comment on blogs
 		-Receive email notification when comment is added to their post
+		-Can set email preferences (mute new comment notifications etc)
+		-Can follow other users and receive email notification of new post
+		-Edit their own personal profile information
 
-	Admin Requirements:
-		-Has access to all content that all users to
+	Admin:
+		-Has access to all features that all users do
 		-Can post ads
 		-Resolve forgotten passwords 
-
+		
 
 	Additional Requirements:
 	
-	Users without account Requirements:
+	Users not logged in:
 		-Users can see other user’s introductory and past articles page
 		-Search users’ introduction pages/ past articles page
 
-	User Requirements:
-		-Has access to all content that users without account do
+	User logged in:
+		-Has access to all features that unlogged-in users do
 		-Private messaging between users
-		-Reaction buttons for blog posts
-		-Choice of remaining anonymous for posts
+		-Press reaction buttons on blog posts (like/dislike/other)
+		-Choice of remaining anonymous for their posts
 		-Can create new tags 
 		-Can save their draft post 
-		-Can include photos in their post and their profile
+		-Can include photos in their post and their introductory page
 		-User choice of allowing/prohibiting other users’ comments on their blog post 
 		-Edit/delete their own posts
+		-Edit their introductory page
 
-	Admin Requirements: 
-		-Has access to all content that all users to
+	Admin: 
+		-Has access to all features that all users do
 		-Edit the ads that users see
 		-Edit/delete any posts
-		-(admin must be able to search/see profile and enable/disable users too)
+		-Enable/disable user accounts
 		-Admin can see information of monthly new users 
 
 
