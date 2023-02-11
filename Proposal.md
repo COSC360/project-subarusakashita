@@ -32,36 +32,36 @@ The following is the detail for each category.
 		-User can see which tags are trending
 		-Show a popup message in main page to encourage users to login or make an account
 
-User Requirements:
-User can set email preferences (mute new comment notifications etc)
-User can follow other users and receive email notification of new post
-Edit their own personal profile information
-Receive email notification when comment is added to their post
+		User Requirements:
+		-User can set email preferences (mute new comment notifications etc)
+		-User can follow other users and receive email notification of new post
+		-Edit their own personal profile information
+		-Receive email notification when comment is added to their post
 
-	Admin Requirements:
-	-Can post ads
-	-Resolve forgotten passwords 
+		Admin Requirements:
+		-Can post ads
+		-Resolve forgotten passwords 
 
 
-Additional Requirements: 
-	Users without account Requirements:
-Users can see other user’s introductory and past articles page
-Search users’ introduction pages/ past articles page
+	Additional Requirements: 
+		-Users without account Requirements:
+		-Users can see other user’s introductory and past articles page
+		-Search users’ introduction pages/ past articles page
 
 	User Requirements:
-Private messaging between users
-Reaction buttons for blog posts
-Choice of remaining anonymous for posts
-Can create new tags 
-Can save their draft post 
-Can include photos in their post and their profile
-User choice of allowing/prohibiting other users’ comments on their blog post 
-Edit/delete their own posts
+		-Private messaging between users
+	-Reaction buttons for blog posts
+	-Choice of remaining anonymous for posts
+	-Can create new tags 
+	-Can save their draft post 
+	-Can include photos in their post and their profile
+	-User choice of allowing/prohibiting other users’ comments on their blog post 
+	-Edit/delete their own posts
 
 	Admin Requirements: 
-Edit the ads that users see
-Edit/delete any posts
-(admin must be able to search/see profile and enable/disable users too)
-Admin can see information of monthly new users 
+	-Edit the ads that users see
+	-Edit/delete any posts
+	-(admin must be able to search/see profile and enable/disable users too)
+	-Admin can see information of monthly new users 
 
 
