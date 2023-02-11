@@ -50,18 +50,18 @@ The following is the detail for each category.
 
 	User Requirements:
 		-Private messaging between users
-	-Reaction buttons for blog posts
-	-Choice of remaining anonymous for posts
-	-Can create new tags 
-	-Can save their draft post 
-	-Can include photos in their post and their profile
-	-User choice of allowing/prohibiting other users’ comments on their blog post 
-	-Edit/delete their own posts
+		-Reaction buttons for blog posts
+		-Choice of remaining anonymous for posts
+		-Can create new tags 
+		-Can save their draft post 
+		-Can include photos in their post and their profile
+		-User choice of allowing/prohibiting other users’ comments on their blog post 
+		-Edit/delete their own posts
 
 	Admin Requirements: 
-	-Edit the ads that users see
-	-Edit/delete any posts
-	-(admin must be able to search/see profile and enable/disable users too)
-	-Admin can see information of monthly new users 
+		-Edit the ads that users see
+		-Edit/delete any posts
+		-(admin must be able to search/see profile and enable/disable users too)
+		-Admin can see information of monthly new users 
 
 
