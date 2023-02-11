@@ -39,8 +39,8 @@ Edit their own personal profile information
 Receive email notification when comment is added to their post
 
 	Admin Requirements:
-Can post ads
-Resolve forgotten passwords 
+	-Can post ads
+	-Resolve forgotten passwords 
 
 
 Additional Requirements: 
