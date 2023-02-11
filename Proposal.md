@@ -19,7 +19,7 @@ The following is the detail for each category.
 |---|---|
 | Academic  | -About specific course<br> -About specific prof <br> -Study methods|   
 | Lifestyle  | -Sharing recipes<br> -Grocery advice<br> -Laundry tips <br> -Cleaning lists and methods<br> -Emergencies (clogged toiled, vomting roommate)<br>  |   
-| Relationship  |   |   
+| Relationship  | -Finding Romance<br> -Finding classmates<br> -Finding friends<br> -Labmates/project group struggles<br>   |   
 
 Academic 
 About specific course
