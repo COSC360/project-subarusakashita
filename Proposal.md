@@ -15,7 +15,11 @@ Post
 Logged in users can also comment, search, browse other users posts and access/edit their own profile page. Users who have not logged in or do not have an account can view and search blog posts but cannot post or comment. Our website will have all the other minimum features required for the project.
 
 The following is the detail for each category. 
-
+| Category  |  Detail(tag) |   
+|---|---|
+| Academic  | -About specific course  |   
+|   |   |   
+|   |   |   
 Category 
 Detail (tag) 
 Academic 
