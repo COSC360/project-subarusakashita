@@ -19,37 +19,11 @@ The following is the detail for each category.
 |---|---|
 | Academic  | -About specific course<br> -About specific prof <br> -Study methods|   
 | Lifestyle  | -Sharing recipes<br> -Grocery advice<br> -Laundry tips <br> -Cleaning lists and methods<br> -Emergencies (clogged toiled, vomting roommate)<br>  |   
-| Relationship  | -Finding Romance<br> -Finding classmates<br> -Finding friends<br> -Labmates/project group struggles<br>   |   
+| Relationship  | -Finding Romance<br> -Finding classmates<br> -Finding friends<br> -Labmates/project group struggles<br>   |  
+| Extracurricular | -Club info (looking for new members, etc<br> -Events<br> | 
+| Hobby| -Gaming<br>  -Traveling<br> -Plants<br> -Art<br> -Pet<br>   |
+|Random chatting platform |-People in the same major<br> -People in the same year<br> -LGBTQ community<br> -People speaking in the same language<br>|
 
-Academic 
-About specific course
-About specific prof
-Study methods
-Lifestyle 
-Sharing recipes
-Grocery advice
-Laundry tips
-Cleaning lists and methods
-Emergencies (clogged toilet, vomiting roommate, )
-Relationship 
-Finding romance
-Finding classmates 
-Finding friends 
-Labmates/project group struggles 
-Extracurricular  
-Club info (looking for new members, etc)
-Events
-Hobby 
-Gaming
-Traveling
-Plants 
-Art
-Pet 
-Random chatting platform
-People in the same major
-People in the same year
-LGBTQ community
-People speaking in the same language
 
 
 Minimum Requirements:
