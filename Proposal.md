@@ -17,11 +17,11 @@ Logged in users can also comment, search, browse other users posts and access/ed
 The following is the detail for each category. 
 | Category  |  Detail(tag) |   
 |---|---|
-| Academic  | -About specific course  |   
+| Academic  | -About specific course|   
+	      -About specific prof
+| Lifestyle  |   |   
 |   |   |   
-|   |   |   
-Category 
-Detail (tag) 
+
 Academic 
 About specific course
 About specific prof
