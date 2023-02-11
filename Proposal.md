@@ -26,11 +26,11 @@ The following is the detail for each category.
 
 
 
-Minimum Requirements:
-	Users without account Requirements:
-User can similar posts at the bottom (other blog posts with same tags)
-User can see which tags are trending
-Show a popup message in main page to encourage users to login or make an account
+	Minimum Requirements:
+		Users without account Requirements:
+		-User can similar posts at the bottom (other blog posts with same tags)
+		-User can see which tags are trending
+		-Show a popup message in main page to encourage users to login or make an account
 
 User Requirements:
 User can set email preferences (mute new comment notifications etc)
