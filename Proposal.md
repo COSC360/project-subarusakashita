@@ -27,28 +27,33 @@ The following is the detail for each category.
 
 
 	Minimum Requirements:
-		Users without account Requirements:
+	
+	Users without account Requirements:
 		-User can similar posts at the bottom (other blog posts with same tags)
 		-User can see which tags are trending
 		-Show a popup message in main page to encourage users to login or make an account
 
-		User Requirements:
+	User Requirements:
+		-Has access to all content that users without account do
 		-User can set email preferences (mute new comment notifications etc)
 		-User can follow other users and receive email notification of new post
 		-Edit their own personal profile information
 		-Receive email notification when comment is added to their post
 
-		Admin Requirements:
+	Admin Requirements:
+		-Has access to all content that all users to
 		-Can post ads
 		-Resolve forgotten passwords 
 
 
-	Additional Requirements: 
-		-Users without account Requirements:
+	Additional Requirements:
+	
+	Users without account Requirements:
 		-Users can see other user’s introductory and past articles page
 		-Search users’ introduction pages/ past articles page
 
 	User Requirements:
+		-Has access to all content that users without account do
 		-Private messaging between users
 		-Reaction buttons for blog posts
 		-Choice of remaining anonymous for posts
@@ -59,6 +64,7 @@ The following is the detail for each category.
 		-Edit/delete their own posts
 
 	Admin Requirements: 
+		-Has access to all content that all users to
 		-Edit the ads that users see
 		-Edit/delete any posts
 		-(admin must be able to search/see profile and enable/disable users too)
