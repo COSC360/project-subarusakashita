@@ -1,0 +1,80 @@
+header {
+    font-size: 4em;
+    background-color: blue;
+    color: gold;
+    padding: 1em 0em 1em 2em;
+}
+
+h2 {
+    font-size: 3em;
+}
+
+div#trail {
+    margin: 0em 0em 0em 5em;
+}
+
+div#top {
+    font-size: 2em;
+    margin: 0em 2.5em 1em 2.5em;
+    padding: 0em 0em 0em 1em;
+    border: 0.23em solid blue;
+}
+
+div#top a {
+    border: 0.2em solid blue;
+    border-radius: 1em;
+    padding: 0.5em;
+    margin: 0em 1em 0em 0em;
+    background-color: blue;
+    color: gold;
+}
+
+div#left {
+    float: left;
+    border: 0.5em solid blue;
+    width: 15em;
+    margin: 0em 0em 0em 5em;
+    padding: 1em;
+    height: 70em;
+}
+
+div#left li {
+    font-size: 2em;
+    margin: 0.5em 0em 0em 0em;
+}
+
+div#right {
+    border: 0.5em solid blue;
+    margin: 0em 5em 0em 25em;
+    padding: 1em;
+    height: 70em;
+}
+
+div#right div#tag a {
+    font-size: 2em;
+    border: 0.2em solid blue;
+    border-radius: 1em;
+    padding: 0.5em;
+    margin: 0em 1em 0em 0em;
+    background-color: blue;
+    color: gold;
+}
+
+div#right img {
+    margin: auto;
+    margin-top: 5em;
+    width: 50%;
+}
+
+div#right div#article a {
+    font-size: 2em;
+    line-height: 2em;
+}
+
+footer {
+    font-size: 1em;
+    background-color: blue;
+    color: gold;
+    padding: 1em;
+    margin-top: 1em;
+}
