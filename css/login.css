@@ -68,27 +68,21 @@ div#right {
     height: 70em;
 }
 
-div#right div#tag a {
-    font-size: 2em;
-    border: 0.2em solid blue;
-    border-radius: 1em;
-    padding: 0.5em;
-    margin: 0em 1em 0em 0em;
-    background-color: blue;
-    color: gold;
-}
-
 div#right img {
     margin: auto;
     margin-top: 5em;
     width: 50%;
 }
-
-div#right div#article a {
+div#login, div#signup{
     font-size: 2em;
-    line-height: 2em;
+    margin: 0em 0em 0em 2em;
 }
-
+div#login fieldset, div#signup fieldset{
+    border: 0em;
+}
+div#login input, div#signup input{
+    font-size: 1em;
+}
 footer {
     font-size: 1em;
     background-color: blue;
