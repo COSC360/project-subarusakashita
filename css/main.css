@@ -61,6 +61,10 @@ div#left li {
     margin: 0.5em 0em 0em 0em;
 }
 
+div#left img{
+    margin: 3em 0em 3em 0em;
+}
+
 div#right {
     border: 0.5em solid blue;
     margin: 0em 5em 0em 25em;

@@ -5,7 +5,7 @@ header {
     padding: 1em 0em 1em 2em;
 }
 
-header a{
+header a {
     text-decoration: none;
     color: gold;
 }
@@ -35,15 +35,15 @@ div#top a {
     float: left;
 }
 
-div#top fieldset{
+div#top fieldset {
     border: 0em;
 }
 
-div#top input{
+div#top input {
     font-size: 1em;
 }
 
-div#top input#search{
+div#top input#search {
     width: 30em;
 }
 
@@ -61,6 +61,10 @@ div#left li {
     margin: 0.5em 0em 0em 0em;
 }
 
+div#left img {
+    margin: 3em 0em 3em 0em;
+}
+
 div#right {
     border: 0.5em solid blue;
     margin: 0em 5em 0em 25em;
@@ -73,16 +77,23 @@ div#right img {
     margin-top: 5em;
     width: 50%;
 }
-div#login, div#signup{
+
+div#login,
+div#signup {
     font-size: 2em;
     margin: 0em 0em 0em 2em;
 }
-div#login fieldset, div#signup fieldset{
+
+div#login fieldset,
+div#signup fieldset {
     border: 0em;
 }
-div#login input, div#signup input{
+
+div#login input,
+div#signup input {
     font-size: 1em;
 }
+
 footer {
     font-size: 1em;
     background-color: blue;
