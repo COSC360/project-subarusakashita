@@ -12,8 +12,9 @@ header a {
 
 h2 {
     font-size: 3em;
+    color: blue;
+    border-bottom: 0.05em solid blue;
 }
-
 div#trail {
     margin: 0em 0em 0em 5em;
 }
@@ -63,6 +64,7 @@ div#left li {
 
 div#left img {
     margin: 3em 0em 3em 0em;
+    box-shadow: 0.1em 0.1em 0.1em 0.1em;
 }
 
 div#right {
@@ -73,9 +75,12 @@ div#right {
 }
 
 div#right img {
-    margin: auto;
-    margin-top: 5em;
-    width: 50%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 2em;
+    width: 70%;
+    box-shadow: 0.1em 0.1em 0.1em 0.1em;
 }
 
 div#login,
@@ -92,6 +97,11 @@ div#signup fieldset {
 div#login input,
 div#signup input {
     font-size: 1em;
+}
+
+div#login a{
+    float:right;
+    margin: -2em 25em 0em 0em;
 }
 
 footer {
