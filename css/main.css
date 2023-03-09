@@ -9,14 +9,29 @@ div#right {
     margin: 0em 2em 4em 0em;
 } */
 
-div#right div#tag a {
-    font-size: 2em;
-    border: 0.2em solid blue;
+div{
+    width:100%;
+}
+#right{
+    width:100%;
+    box-sizing:border-box;
+}
+#tag{
+    width:100%;
+    overflow:auto;
+}
+#content{
     border-radius: 1em;
-    padding: 0.5em;
-    margin: 0em 1em 0em 0em;
-    background-color: blue;
+    font-size: 2em;
+    display: table-cell;
+    vertical-align:middle;
+    text-align:center;
+    width:20%;
     color: gold;
+    height:auto;
+    background-color: blue;
+    border: 0.2em solid blue;
+    margin:1px;
 }
 
 div#right img {
