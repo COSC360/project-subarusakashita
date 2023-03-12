@@ -4,6 +4,9 @@ header {
     color: gold;
     padding: 1em 0em 1em 2em;
 }
+title{
+    width:100%;
+}
 
 header a{
     text-decoration: none;
