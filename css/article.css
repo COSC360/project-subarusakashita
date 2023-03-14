@@ -2,10 +2,7 @@ div#right {
     border: 0.5em solid blue;
     margin: 0em 5em 0em 25em;
     padding: 1em;
-    height: 35em;
-}
-div#left{
-    height: 35em;
+    height: 70em;
 }
 
 div#right img {
@@ -16,16 +13,10 @@ div#right img {
     width: 70%;
     box-shadow: 0.1em 0.1em 0.1em 0.1em;
 }
-
-div#reset {
-    font-size: 2em;
-    margin: 0em 0em 0em 2em;
+h3 {
+    font-size: 1.7em;
+    color: black;
 }
-
-div#reset fieldset{
-    border: 0em;
-}
-
-div#reset input {
-    font-size: 1em;
+p{
+    font-size: 1.5em;
 }
