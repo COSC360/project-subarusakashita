@@ -67,9 +67,9 @@ div#left li {
 }
 
 div#left img{
-    margin: 3em 0em 3em 0em;
+    margin: 3em 0em 0em 0em;
     box-shadow: 0.1em 0.1em 0.1em 0.1em;
-
+    width:100%;
 }
 
 footer {
