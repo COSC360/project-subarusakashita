@@ -17,15 +17,20 @@ div#right img {
     box-shadow: 0.1em 0.1em 0.1em 0.1em;
 }
 
-div#reset {
+div#reset input, div#comment input {
+    font-size: 1em;
+}
+
+div#reset, div#comment{
     font-size: 2em;
     margin: 0em 0em 0em 2em;
 }
 
-div#reset fieldset{
+div#reset fieldset, div#comment fieldset{
     border: 0em;
 }
 
-div#reset input {
+textarea#comment{
     font-size: 1em;
+    width: 90%;
 }
