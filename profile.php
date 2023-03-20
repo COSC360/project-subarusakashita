@@ -9,9 +9,9 @@ if (isset($_GET['username'])) {
 if (isset($_POST['emailNew'])) {
     $email = $_POST['emailNew'];
 }
-if (isset($_POST['phoneNumNew'])) {
-    $phoneNum = $_POST['phoneNumNew'];
-}
+// if (isset($_POST['phoneNumNew'])) {
+//     $phoneNum = $_POST['phoneNumNew'];
+// }
 if (isset($_POST['addressNew'])) {
     $address = $_POST['addressNew'];
 }
