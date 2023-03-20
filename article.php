@@ -1,3 +1,7 @@
+<?php
+// record count every time page loads (to display top viewed articles in main page)
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -35,32 +39,32 @@
     </div>
     <div id="right">
         <?php
-            if(isset($_GET['articleId'])){
-                $articleId = $_GET['articleId'];
+        if (isset($_GET['articleId'])) {
+            $articleId = $_GET['articleId'];
 
-                //connect
-                $sql = "SELECT articleTitle, username, categoryId, tagId, articleBody, commentId FROM Articles WHERE articleId = " . $articleId;
-                $sql2 = "SELECT username, commentBody FROM Comments WHERE articleId = " . $articleId;
-                //run sql
-                
-                while ($row = sqlsrv_fetch_array($sql, SQLSRV_FETCH_ASSOC)) {
-                    echo("<h2>" . $row['articleTitle'] . "</h2><br>");
-                    echo("<h3>" . $row['username'] . "</h3><br>");
-                    echo("<h3>" . $row['categoryId'] . "</h3><br>");                    
-                    echo("<h3>" . $row['tagId'] . "</h3>");
+            //connect
+            $sql = "SELECT articleTitle, username, categoryId, tagId, articleBody, commentId FROM Articles WHERE articleId = " . $articleId;
+            $sql2 = "SELECT username, commentBody FROM Comments WHERE articleId = " . $articleId;
+            //run sql
+        
+            while ($row = sqlsrv_fetch_array($sql, SQLSRV_FETCH_ASSOC)) {
+                echo ("<h2>" . $row['articleTitle'] . "</h2><br>");
+                echo ("<h3>" . $row['username'] . "</h3><br>");
+                echo ("<h3>" . $row['categoryId'] . "</h3><br>");
+                echo ("<h3>" . $row['tagId'] . "</h3>");
 
-                    echo("<a href=#><img src=\"ads/long/UniChannel.png\" alt=\"UniChannel Ad\"></a>");
+                echo ("<a href=#><img src=\"ads/long/UniChannel.png\" alt=\"UniChannel Ad\"></a>");
 
-                    echo("<h3>" . $row['articleBody'] . "</h3>");
+                echo ("<h3>" . $row['articleBody'] . "</h3>");
 
-                    while ($com = sqlsrv_fetch_array($sql2, SQLSRV_FETCH_ASSOC)){
-                        echo("<h3>" . $com['username'] . "</h3><br>");
-                        echo("<h3>" . $com['commentBody'] . "</h3><br>");
-                    }
+                while ($com = sqlsrv_fetch_array($sql2, SQLSRV_FETCH_ASSOC)) {
+                    echo ("<h3>" . $com['username'] . "</h3><br>");
+                    echo ("<h3>" . $com['commentBody'] . "</h3><br>");
                 }
-
-                //disconnect
             }
+
+            //disconnect
+        }
         ?>
     </div>
     <footer>

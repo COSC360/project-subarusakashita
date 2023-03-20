@@ -2,8 +2,21 @@
 // include 
 // database info
 $user = $_SESSION['user'];
-if (isset($_GET['userId'])) {
-    $userId = "%" . $_GET['userId'] . "%";
+if (isset($_GET['username'])) {
+    $username = $_GET['username'];
+}
+
+if (isset($_POST['emailNew'])) {
+    $email = $_POST['emailNew'];
+}
+if (isset($_POST['phoneNumNew'])) {
+    $phoneNum = $_POST['phoneNumNew'];
+}
+if (isset($_POST['addressNew'])) {
+    $address = $_POST['addressNew'];
+}
+if (isset($_POST['postalCodeNew'])) {
+    $postalCode = $_POST['postalCodeNew'];
 }
 ?>
 
@@ -43,34 +56,53 @@ if (isset($_GET['userId'])) {
     </div>
     <div id="right">
         <h2>My Info</h2>
+
         <?php
-
         // connect to server
-
-        $sql = "SELECT * FROM Users WHERE userId = ?";
+        
+        $sql = "SELECT * FROM Users WHERE username = ?";
         //connect sql
+        
+        while ($row = sqlsrv_fetch_array($sql, SQLSRV_FETCH_ASSOC, array($username))) {
+            echo ("<h3>Username: " . $username . "</h3><br>");
+            //username is unchangeable
+        
+            echo ("<form action=\"profile.php?username=" . $username . "\" method=\"post\">");
+            //form open, submitted change will change the variables at very top of page
+        
+            echo ("<label for=\"emailNew\">Email</label><br>");
+            echo ("<input type=\"email\" id=\"emailNew\" name=\"emailNew\" placeholder=\"" . $row['email'] . "\"><br><br>");
+            //current email in placeholder, email will update when typed into the input
+        
+            echo ("<label for=\"phoneNumNew\">Phone number</label><br>");
+            echo ("<input type=\"tel\" id=\"phoneNumNew\" name=\"phoneNumNew\" placeholder=\"" . $row['phoneNum'] . "\"><br><br>");
 
-        while ($row = sqlsrv_fetch_array($sql, SQLSRV_FETCH_ASSOC)) {
-            echo ("<h2>User ID: " . $userId . "</h2><br><h2>Username: " . $row['username'] . "</h2>");
-            echo ("<h3>Email: " . $row['email'] . "</h3><br>
-            <h3>" . "Phone Number: " . $row['phoneNum'] . "</h3><br>
-            <h3>" . "Address: " . $row['address'] . "</h3><br>
-            <h3>" . "City: " . $row['city'] . "</h3><br>
-            <h3>" . "State: " . $row['state'] . "</h3><br>
-            <h3>" . "Postal Code: " . $row['postalCode'] . "</h3><br>
-            <h3>" . "Country: " . $row['country'] . "</h3>");
+            echo ("<label for=\"addressNew\">Address</label><br>");
+            echo ("<input type=\"text\" id=\"addressNew\" name=\"addressNew\" placeholder=\"" . $row['address'] . "\"><br><br>");
+
+            echo ("<label for=\"postalCodeNew\">Postal Code</label><br>");
+            echo ("<input type=\"text\" id=\"postalCodeNew\" name=\"postalCodeNew\" placeholder=\"" . $row['postalCode'] . "\"><br><br>");
+
+            echo ("</form>");
+            //close form
+        
+            if ($row['isAdmin'] == true) {
+                echo ("<a href=\"adminControl.php\">Admin Control Page</a>");
+            }
         }
+
+        //close server connection
         ?>
 
         <a href="#"><img src="ads/long/UniChannel.png" alt="Orinthego Ad"></a>
         <h2>My Articles</h2>
 
         <?php
-        $sql2 = "SELECT articleId, articleTitle FROM Articles WHERE userId = ?";
+        $sql2 = "SELECT articleId, articleTitle FROM Articles WHERE username = ?";
         //connect
-
-        while ($row = sqlsrv_fetch_array($sql2, SQLSRV_FETCH_ASSOC)) {
-            echo ("<a href='$localhost/articles/article_" . $row['articleId'] . ".html>" . $row['articleTitle'] . "</a><br>");
+        
+        while ($row = sqlsrv_fetch_array($sql2, SQLSRV_FETCH_ASSOC, array($username))) {
+            echo ("<a href='$localhost/article.php?articleId=" . $row['articleId'] . ">" . $row['articleTitle'] . "</a><br>");
         }
 
         // close connection

@@ -1,3 +1,8 @@
+<?php
+    // if not logged in
+    // pop-up to encourage log in
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -62,7 +67,7 @@
                 $sql2 = "SELECT articleId, articleTitle FROM Articles ORDER BY views LIMIT 6";
                 //run sql
                 while ($row = sqlsrv_fetch_array($sql2, SQLSRV_FETCH_ASSOC)) {
-                    echo ("<li><a href=\"$localhost/articles/article_" . $row['articleId'] . ".html>" . $sql2['articleTitle'] . "</a></li>");
+                    echo ("<li><a href=\"$localhost/article.php?articleId=" . $row['articleId'] . ">" . $sql2['articleTitle'] . "</a></li>");
                 }
 
                 // disconnect
