@@ -5,7 +5,7 @@
     // $dbh = new PDO($dsn, $user, $pass);
     
     // var_dump($dbh);
-    $servername = "cosc360.ok.ubc.ca";
+    $servername = "s129.ok.ubc.ca";
     $username = "83395822";
     $password = "83395822";
     $dbname = "user";
