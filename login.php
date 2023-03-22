@@ -1,6 +1,9 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>UniChannel | Login Page</title>
     <link rel="stylesheet" href="css/default.css">
@@ -8,37 +11,12 @@
 </head>
 
 <body>
-    <header><a href="main.html">UniChannel Blog</a></header>
+    <header><a href="main.php">UniChannel Blog</a></header>
     <div id=trail>
-        <p><a href="main.html">Main Page</a> > <a href="login.html">Login Page</a></p>
+        <p><a href="main.php">Main Page</a> > <a href="login.php">Login Page</a></p>
     </div>
-    <div id=top>
-        <a href="login.html">Log in</a>
-        <form>
-            <fieldset>
-                <input type="type" id="search" placeholder="Search Users and Articles">
-                <input type="submit" value="Search" />
-            </fieldset>
-        </form>
-    </div>
-    <div id="left">
-        <h2>Categories</h2>
-        <ul>
-            <li><a href="category/academic.html">Academic</a></li>
-            <li><a href="category/lifestyle.html">Lifestyle</a></li>
-            <li><a href="category/relationship.html">Relationship</a></li>
-            <li><a href="category/extracurricular.html">Extracurricular</a></li>
-            <li><a href="category/hobby.html">Hobby</a></li>
-            <li><a href="category/random_chat.html">Random Chatting Platform</a></li>
-        </ul>
-        <a href="#"><img src="ads/short/Orinthego.png" alt="Orinthego Ad"></a>
-        <a href="#"><img src="ads/short/SummerCourse.png" alt="Summer Courses Ad"></a>
-        <a href="#"><img src="ads/short/UniChannel.png" alt="UniChannel Ad"></a>
-        <a href="#"><img src="ads/short/Orinthego.png" alt="Orinthego Ad"></a>
-        <a href="#"><img src="ads/short/SummerCourse.png" alt="Summer Courses Ad"></a>
-
-    </div>
-    <div id="right">
+    <?php include "include/top_left.php"?>
+        <div id="right">
         <h2>Log in</h2>
         <div id="login">
             <form action="signin.php" method="post">
@@ -83,30 +61,13 @@
                     <input type="password" id="password" placeholder="Re-enter password" required>
                     <br>
                     <br>
-                    <!-- <label for="phoneNum">Phone Number:</label>
-                    <br>
-                    <input type="tel" id="phoneNum" placeholder="Enter phone number" required>
-                    <br> -->
-                    <br>
-                    <label for="address">Address: </label>
-                    <br>
-                    <input type="text" id="address" placeholder="Enter address" required>
-                    <br>
-                    <br>
-                    <label for="postalCode">Postal Code:</label>
-                    <br>
-                    <input type="text" id="postalCode" placeholder="Enter postal code" required>
-                    <br>
-                    <br>  
                     <input type="submit" value="Sign up" />
                     <input type="reset" value="Reset" />
                 </fieldset>
             </form>
         </div>
     </div>
-    <footer>
-        <p>Footer Copyright info and etc</p>
-    </footer>
+    <?php include "include/footer.php";?>
 </body>
 
 </html>

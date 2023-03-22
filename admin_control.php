@@ -1,22 +1,10 @@
 <?php
-// include 
-// database info
-$user = $_SESSION['user'];
-if (isset($_GET['username'])) {
-    $username = $_GET['username'];
-}
+// database info?
 
-if (isset($_POST['emailNew'])) {
-    $email = $_POST['emailNew'];
-}
-if (isset($_POST['phoneNumNew'])) {
-    $phoneNum = $_POST['phoneNumNew'];
-}
-if (isset($_POST['addressNew'])) {
-    $address = $_POST['addressNew'];
-}
-if (isset($_POST['postalCodeNew'])) {
-    $postalCode = $_POST['postalCodeNew'];
+session_start();
+$username = null;
+if(isset($_SESSION['username'])){
+    $username = $_SESSION['username'];
 }
 ?>
 
@@ -30,30 +18,11 @@ if (isset($_POST['postalCodeNew'])) {
 </head>
 
 <body>
-    <header><a href="main.html">UniChannel Blog</a></header>
+    <header><a href="main.php">UniChannel Blog</a></header>
     <div id=trail>
-        <p><a href="main.html">Admin Control Page</a></p>
+        <p><a href="main.php">Main Page</a> > <a href="profile.php? <?php echo($username) ?>">Profile Page</a> > <a href="admin_control.php">Admin Control Page</a> </p>
     </div>
-    <div id=top>
-        <a href="login.html">Log in</a>
-        <fieldset>
-            <input type="type" id="search" placeholder="Search Users and Articles">
-            <input type="submit" value="Search">
-        </fieldset>
-    </div>
-    <div id="left">
-        <h2>Categories</h2>
-        <ul>
-            <li><a href="category/academic.html">Academic</a></li>
-            <li><a href="category/lifestyle.html">Lifestyle</a></li>
-            <li><a href="category/relationship.html">Relationship</a></li>
-            <li><a href="category/extracurricular.html">Extracurricular</a></li>
-            <li><a href="category/hobby.html">Hobby</a></li>
-            <li><a href="category/random_chat.html">Random Chatting Platform</a></li>
-        </ul>
-        <a href="#"><img src="ads/short/Orinthego.png" alt="Orinthego Ad"></a>
-        <a href="#"><img src="ads/short/SummerCourse.png" alt="Orinthego Ad"></a>
-    </div>
+    <?php include "include/top_left.php"?>
     <div id="right">
         <?php
         // connect to server
@@ -140,9 +109,8 @@ if (isset($_POST['postalCodeNew'])) {
 
     </div>
     </div>
-    <footer>
-        <p>Footer Copyright info and etc</p>
-    </footer>
+    <?php include "include/footer.php"?>
+
 </body>
 
 </html>

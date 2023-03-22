@@ -1,6 +1,8 @@
 <?php
-    // if not logged in
-    // pop-up to encourage log in
+session_start();
+// if not logged in
+// pop-up to encourage log in
+
 ?>
 
 <!DOCTYPE html>
@@ -13,32 +15,12 @@
 </head>
 
 <body>
-    <header><a href="main.html">UniChannel Blog</a></header>
+    <header><a href="main.php">UniChannel Blog</a></header>
     <div id=trail>
-        <p><a href="main.html">Main Page</a></p>
+        <p><a href="main.php">Main Page</a></p>
     </div>
-    <div id=top>
-        <a href="login.html">Log in</a>
-        <fieldset>
-            <form method="get" action="search.php">
-                <input type="search" id="searchKeyword" name="searchkeyword" placeholder="Search Users and Articles">
-                <input type="submit" value="Search">
-            </form>
-        </fieldset>
-    </div>
-    <div id="left">
-        <h2>Categories</h2>
-        <ul>
-            <li><a href="category/academic.html">Academic</a></li>
-            <li><a href="category/lifestyle.html">Lifestyle</a></li>
-            <li><a href="category/relationship.html">Relationship</a></li>
-            <li><a href="category/extracurricular.html">Extracurricular</a></li>
-            <li><a href="category/hobby.html">Hobby</a></li>
-            <li><a href="category/random_chat.html">Random Chatting Platform</a></li>
-        </ul>
-        <a href="#"><img src="ads/short/Orinthego.png" alt="Orinthego Ad"></a>
-        <a href="#"><img src="ads/short/SummerCourse.png" alt="Orinthego Ad"></a>
-    </div>
+    <?php include "include/top_left.php"?>
+    
     <div id="right">
         <h2>Trending Tags</h2>
         <div id="tag">
@@ -48,7 +30,7 @@
 
             //run sql
             while ($row = sqlsrv_fetch_array($sql1, SQLSRV_FETCH_ASSOC)) {
-                echo ("<a href=\"$localhost/tags/tag_" . $row['tagId'] . ".html>" . $sql1['tagName'] . "</a>");
+                echo ("<a href=\"tag.php?tagId=" . $row['tagId'] . "&tagName=" . $row['tagName'] . "\">" . $row['tagName'] . "</a>");
             }
             ?>
 
@@ -67,7 +49,7 @@
                 $sql2 = "SELECT articleId, articleTitle FROM Articles ORDER BY views LIMIT 6";
                 //run sql
                 while ($row = sqlsrv_fetch_array($sql2, SQLSRV_FETCH_ASSOC)) {
-                    echo ("<li><a href=\"$localhost/article.php?articleId=" . $row['articleId'] . ">" . $sql2['articleTitle'] . "</a></li>");
+                    echo ("<li><a href=\"article.php?articleId=" . $row['articleId'] . "&articleTitle=" . $row['articleTitle'] . ">" . $row['articleTitle'] . "</a></li>");
                 }
 
                 // disconnect
@@ -84,9 +66,8 @@
             </ul>
         </div>
     </div>
-    <footer>
-        <p>Footer Copyright info and etc</p>
-    </footer>
+    <?php include "include/footer.php"?>
+
 </body>
 
 </html>
