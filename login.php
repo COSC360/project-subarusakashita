@@ -4,7 +4,6 @@ session_start();
 
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>UniChannel | Login Page</title>
     <link rel="stylesheet" href="css/default.css">
