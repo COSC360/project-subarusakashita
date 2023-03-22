@@ -3,26 +3,24 @@
     // $user = 'subaru';
     // $pass = 'password';
     // $dbh = new PDO($dsn, $user, $pass);
-    
+
     // var_dump($dbh);
-    $servername = "cosc360.ok.ubc.ca";
-    $username = "83395822";
-    $password = "83395822";
-    $dbname = "user";
+    $servername = "localhost";
+    $username = "karen";
+    $password = "password";
+    $dbname = "testing";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+     die("Connection failed: " . $conn->connect_error);
 }
-else{
-    echo "Connected successfully";
-}
+ echo "Connected successfully";
 
-// $sql = "SELECT * FROM user";
-// $result = $conn->query($sql);
+//  $sql = "SELECT * FROM user";
+//  $result = $conn->query($sql);
 
 // if ($result->num_rows > 0) {
 //     // output data of each row
@@ -33,6 +31,6 @@ else{
 //     echo "0 results";
 // }
 
-// $conn->close();
+$conn->close();
 
 ?>

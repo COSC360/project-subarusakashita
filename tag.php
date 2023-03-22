@@ -1,3 +1,17 @@
+<?php
+session_start();
+
+$tagId = null;
+if (isset($_GET['tagId'])) {
+    $tagId = $_GET['tagId'];
+}
+
+$tagName = null;
+if (isset($_GET['tagName'])) {
+    $tagName = $_GET['tagName'];
+}
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -8,34 +22,12 @@
 </head>
 
 <body>
-    <header><a href="main.html">UniChannel Blog</a></header>
+<header><a href="main.php">UniChannel Blog</a></header>
     <div id=trail>
-        <p><a href="main.html">Main Page</a> > <a href="bark.html">BARK Tag</a></p>
+        <p><a href="main.php">Main Page</a> > <a href='tag.php <?php echo("?tagId=" . $tagId . "&tagName=" . $tagName . "'>" . $tagName);?></a></p>
     </div>
-    <div id=top>
-        <a href="login.html">Log in</a>
-        <form>
-            <fieldset>
-                <input type="type" id="search" placeholder="Search Users and Articles">
-                <input type="submit" value="Search" />
-            </fieldset>
-        </form>
-    </div>
-    <div id="left">
-        <h2>Categories</h2>
-        <ul>
-            <li><a href="category/academic.html">Academic</a></li>
-            <li><a href="category/lifestyle.html">Lifestyle</a></li>
-            <li><a href="category/relationship.html">Relationship</a></li>
-            <li><a href="category/extracurricular.html">Extracurricular</a></li>
-            <li><a href="category/hobby.html">Hobby</a></li>
-            <li><a href="category/random_chat.html">Random Chatting Platform</a></li>
-        </ul>
-        <?php
-        echo ("<a href=\"#\"><img src=\"ads/short/" . rand(1, 4) . ".png\" alt=\"Advertisement\"></a>");
-        echo ("<a href=\"#\"><img src=\"ads/short/" . rand(1, 4) . ".png\" alt=\"Advertisement\"></a>");
-        ?>
-    </div>
+    <?php include "include/top_left.php"?>
+
     <div id="right">
         <?php
         if (isset($_GET['tagId'])) {
@@ -52,7 +44,7 @@
                     echo ("<h2>Tag: " . $sql2['$tagName'] . "</h2><br>");
                 }
                 echo ("<a href=\"#\"><img src=\"ads/long/" . rand(1, 4) . ".png\" alt=\"Advertisement\"></a>");
-                echo ("<a href=\"$localhost/article.php?articleId=" . $row['articleId'] . "\">" . $row['articleTitle'] . "</a><br>");
+                echo ("<a href=\"article.php?articleId=" . $row['articleId'] . "\">" . $row['articleTitle'] . "</a><br>");
             }
 
             //disconnect
@@ -70,9 +62,7 @@
         <h3>Article Title</h3><br>
         <h3>Article Title</h3><br> -->
     </div>
-    <footer>
-        <p>Footer Copyright info and etc</p>
-    </footer>
+        <?php include "include/footer.php"?>
 </body>
 
 </html>
