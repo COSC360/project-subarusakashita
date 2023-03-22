@@ -17,23 +17,21 @@ $phonenum = $_POST['phoneNum'];
 $address = $_POST['address'];
 
 $sql = "SELECT * FROM users WHERE username='$username'";
-    $result = mysqli_query($conn, $sql);
+$result = mysqli_query($conn, $sql);
 
-    
+
 if (mysqli_num_rows($result) > 0) {
-        // Username already exists, display error message
-        $error = "Username already exists";
-}
-else{
+    // Username already exists, display error message
+    $error = "Username already exists";
+} else {
     $sql = "INSERT INTO Users(username, email, password, phoneNum) VALUES ($username, $email,$password, $phonenum, $address)";
-        if (mysqli_query($conn, $sql)) {
-            // Account created successfully, redirect to login page
-            header("Location: login.php");
-            exit;
-        }
-        else{
-            $error = "Account creation failed";
-        }
+    if (mysqli_query($conn, $sql)) {
+        // Account created successfully, redirect to login page
+        header("Location: login.php");
+        exit;
+    } else {
+        $error = "Account creation failed";
+    }
 }
 // $pdo = new PDO('mysql:host=localhost;dbname=mydb;charset=utf8', 'dbuser', 'P@ssw0rd');
 // $sql = "INSERT INTO Users(username, email, password, phoneNum) VALUES ($username, $email,
@@ -45,13 +43,18 @@ mysqli_close($conn);
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Create Account Validation</title>
 </head>
+
 <body>
     <h1>Create Account Validation Check...</h1>
     <?php if (isset($error)) { ?>
-        <p><?php echo $error; ?></p>
+        <p>
+            <?php echo $error; ?>
+        </p>
     <?php } ?>
 </body>
+
 </html>
