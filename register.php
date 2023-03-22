@@ -31,7 +31,7 @@ if (mysqli_num_rows($result) > 0) {
         $error = "Username already exists";
 }
 else{
-    $sql1 = "INSERT INTO users(username, email, passwords) VALUES ('$username','$email','$password')";
+    $sql1 = "INSERT INTO users(username, email, passwords) VALUES ('$username','$email','$password','','')";
         if (mysqli_query($conn, $sql1)) {
             // Account created successfully, redirect to login page
             header("Location: login.php");
