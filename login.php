@@ -56,9 +56,9 @@ session_start();
                     <input type="password" id="password" placeholder="Enter password" required>
                     <br>
                     <br>
-                    <label for="password">Re-enter Password: </label>
+                    <label for="password_conf">Re-enter Password: </label>
                     <br>
-                    <input type="password" id="password" placeholder="Re-enter password" required>
+                    <input type="password_conf" id="password_conf" placeholder="Re-enter password" required>
                     <br>
                     <br>
                     <input type="submit" value="Sign up" />
