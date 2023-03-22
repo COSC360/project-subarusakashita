@@ -15,17 +15,22 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 $phonenum = $_POST['phoneNum'];
 $address = $_POST['address'];
+$password_conf = $_POST['password_conf'];
 
-$sql = "SELECT * FROM users WHERE username='$username'";
+if ($password !== $password_conf) {
+    // Passwords don't match, display error message
+    $error = "Password and password confirmation do not match";
+} 
+else{
+
+    $sql = "SELECT * FROM users WHERE username='$username'";
     $result = mysqli_query($conn, $sql);
-
-    
-if (mysqli_num_rows($result) > 0) {
+    if (mysqli_num_rows($result) > 0) {
         // Username already exists, display error message
         $error = "Username already exists";
-}
-else{
-    $sql = "INSERT INTO Users(username, email, password, phoneNum) VALUES ($username, $email,$password, $phonenum, $address)";
+    }
+    else{
+        $sql = "INSERT INTO Users(username, email, password, phoneNum) VALUES ($username, $email,$password, $phonenum, $address)";
         if (mysqli_query($conn, $sql)) {
             // Account created successfully, redirect to login page
             header("Location: login.php");
@@ -34,6 +39,7 @@ else{
         else{
             $error = "Account creation failed";
         }
+    }
 }
 // $pdo = new PDO('mysql:host=localhost;dbname=mydb;charset=utf8', 'dbuser', 'P@ssw0rd');
 // $sql = "INSERT INTO Users(username, email, password, phoneNum) VALUES ($username, $email,
