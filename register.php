@@ -28,10 +28,10 @@ else{
     
 if (mysqli_num_rows($result) > 0) {
         // Username already exists, display error message
-        $error = "Username already exists";
+        $error = "Username already exists. Num of rows: ".mysqli_num_rows($result);
 }
 else{
-    $sql1 = "INSERT INTO users(username, email, passwords) VALUES ('$username','$email','$password','','')";
+    $sql1 = "INSERT INTO users(username, email, passwords) VALUES ('$username','$email','$password')";
         if (mysqli_query($conn, $sql1)) {
             // Account created successfully, redirect to login page
             header("Location: login.php");
