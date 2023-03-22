@@ -3,12 +3,12 @@
 session_start();
 
 // Connect to the database
-$servername = "localhost";
-$username = "your_username";
-$password = "your_password";
-$dbname = "your_database";
+$servername = "cosc360.ok.ubc.ca";
+$server_username = "83395822";
+$server_password = "83395822";
+$dbname = "db_83395822";
 
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+$conn = mysqli_connect($servername, $server_username, $server_password, $dbname);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }

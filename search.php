@@ -1,10 +1,10 @@
 <?php
 session_start();
 $servername = "cosc360.ok.ubc.ca";
-$username = "83395822";
+$server_username = "83395822";
 $password = "83395822";
 $dbname = "db_83395822";
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $server_username, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
