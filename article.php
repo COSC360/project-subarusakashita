@@ -1,6 +1,14 @@
 <?php
 // record count every time page loads (to display top viewed articles in main page)
+$servername = "cosc360.ok.ubc.ca";
+$username = "83395822";
+$password = "83395822";
+$dbname = "db_83395822";
 
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 session_start();
 $articleId = null;
 if (isset($_GET['articleId'])) {

@@ -1,6 +1,15 @@
 <?php
 session_start();
+$servername = "cosc360.ok.ubc.ca";
+$username = "83395822";
+$password = "83395822";
+$dbname = "db_83395822";
+$conn = new mysqli($servername, $username, $password, $dbname);
 
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 $tagId = null;
 if (isset($_GET['tagId'])) {
     $tagId = $_GET['tagId'];
