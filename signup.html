@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+    initial-scale=1.0">
+    <title>User Registration Page</title>
+</head>
+<body>
+    <h2>User Registration Form</h2>
+    <form action="C:/xampp/htdocs/COSC360_project/register.php" method="POST">
+        <p>
+        <label for="name">Name:</label>
+		<input type="text" name="name" id="name" required><br><br>
+        </p>
+        <p>
+            <label for="email">Email:</label>
+		    <input type="email" name="email" id="email" required><br><br>
+        </p>
+        <p>
+            <label for="password">Password:</label>
+		    <input type="password" name="password" id="password" required><br><br>
+        </p>
+        <p>
+            <label for="password_conf">Password Confirm</label>
+            <input type="password" name="password_conf">
+        </p>
+        <p>
+            <label for="id">ID</label>
+            <input type="text" name="id">
+        </p>
+       
+        <p>
+            <input type="submit" value="Create Account">
+        </p>
+
+    </form>
+</body>
+</html>
