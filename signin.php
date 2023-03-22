@@ -19,13 +19,27 @@ $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     // Login successful
     $_SESSION["username"] = $username;
-    header("Location: welcome.php");
+    header("Location: main.php");
     exit;
 } else {
     // Login failed
     $error = "Invalid username or password";
 }
 mysqli_close($conn);
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Validation</title>
+</head>
+<body>
+    <h1>Login Check</h1>
+    <?php if (isset($error)) { ?>
+        <p><?php echo $error; ?></p>
+    <?php } ?>
+</body>
+</html>
+
 // $username= $_POST['username'];
 // $password= $_POST['password'];
 
