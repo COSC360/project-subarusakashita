@@ -21,7 +21,7 @@ session_start();
         <div id="login">
             <form action="signin.php" method="post">
                 <fieldset>
-                    <label for="username">Email:</label>
+                    <label for="username">Username:</label>
                     <br>
                     <input type="text" id="username" name="username" placeholder="Enter email" required>
                     <br>

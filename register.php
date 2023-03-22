@@ -16,7 +16,6 @@ $password = $_POST['password'];
 // $phonenum = $_POST['phoneNum'];
 // $address = $_POST['address'];
 $password_conf = $_POST['password_conf'];
-
 if ($password !== $password_conf) {
     // Passwords don't match, display error message
     $error = "Password and password confirmation do not match";
@@ -32,8 +31,8 @@ if (mysqli_num_rows($result) > 0) {
         $error = "Username already exists";
 }
 else{
-    $sql = "INSERT INTO users(username, email, password) VALUES ($username, $email,$password)";
-        if (mysqli_query($conn, $sql)) {
+    $sql1 = "INSERT INTO users(username, email, passwords) VALUES ('$username','$email','$password')";
+        if (mysqli_query($conn, $sql1)) {
             // Account created successfully, redirect to login page
             header("Location: login.php");
             exit;
