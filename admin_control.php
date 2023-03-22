@@ -26,7 +26,16 @@ if(isset($_SESSION['username'])){
     <div id="right">
         <?php
         // connect to server
-        
+        $servername = "cosc360.ok.ubc.ca";
+        $username = "83395822";
+        $password = "83395822";
+        $dbname = "db_83395822";
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        // Check connection
+        if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+        }
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         $sql1 = "SELECT * FROM Users";
         //connect sql
