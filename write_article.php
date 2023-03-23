@@ -39,7 +39,7 @@ if ($conn->connect_error) {
                     <br>
 
                     <label for="category">Choose Category</label>
-                    <select name="category" id="category">
+                    <select name="category" id="category" onchange="showTags()" required>
                         <?php
                         // $sql = "SELECT categoryId, categoryName FROM Categories";
                         // run sql
@@ -56,40 +56,11 @@ if ($conn->connect_error) {
                     </select>
                     <br>
                     <br>
-                    <label for="newArticleTag">Choose Tag</label>
-                    <select name="newArticleTag" id="newArticleTag">
+                    <label for="tag">Choose Tag</label>
+                    <select name="tag" id="tag">
                     <option value="">-- Select Tag --</option>
-                        <?php
-                       // $sql = "SELECT tagId, tagName FROM Tags";
-                        // run sql
-                       // while ($row = sqlsrv_fetch_array($sql, SQLSRV_FETCH_ASSOC)) {
-                       //     echo ('<option value="' . $row['tagId'] . '">' . $row['tagName'] . '</option>');
-                       // }
                        
-                       if (getdata() == 'Academic') {
-                        echo '<option value="professor">Professor</option>';
-                        echo '<option value="course">Course</option>';
-                    } elseif (getdata() == 'Relationship') {
-                        echo '<option value="Finding Romance">Finding Romance</option>';
-                        echo '<option value="Finding classmates">Finding classmates</option>';
-                        echo '<option value="Finding group member">Finding group member</option>';
-                    } elseif (getdata() == 'Hobby') {
-                        echo '<option value="Gaming">Gaming</option>';
-                        echo '<option value="Plants">Plants</option>';
-                        echo '<option value="Travel">Travel</option>';
-                    }
-                    elseif (getdata() == 'Lifestyle') {
-                    echo '<option value="Gaming">Gaming</option>';
-                    echo '<option value="Plants">Plants</option>';
-                    echo '<option value="Travel">Travel</option>';
-                    }
-                    elseif (getdata() == 'Other') {
-                        echo '<option value="Gaming">Gaming</option>';
-                        echo '<option value="Plants">Plants</option>';
-                        echo '<option value="Travel">Travel</option>';
-                        }
-                        ?>
-                    </select>
+                    </select> 
                     <br>
                     <br>
 
@@ -104,6 +75,29 @@ if ($conn->connect_error) {
                     <input type="submit" value="Post article">
                 </fieldset>
             </form>
+            <script>
+		        function showTags() {
+			    let category = document.getElementById("category").value;
+			    let tagDropdown = document.getElementById("tag");
+			    tagDropdown.innerHTML = "";
+
+			    let tags = [];
+			    if (category === "Academic") {
+				tags = ["professor", "course"];
+			    } else if (category === "Relationship") {
+				tags = ["Finding Romance", "Finding classmates", "Finding group member"];
+			    } else if (category === "Hobby") {
+				tags = ["Gaming", "Plants", "Travel"];
+			    }
+
+			    for (let i = 0; i < tags.length; i++) {
+				let option = document.createElement("option");
+				option.value = tags[i];
+				option.text = tags[i];
+				tagDropdown.appendChild(option);
+			    }
+		    }
+	        </script>
 
             <?php
             if (isset($_POST['newArticleTitle']) and isset($_POST['newArticleCategory']) and isset($_POST['newArticleTag']) and isset($_POST['newArticleBody'])) {
