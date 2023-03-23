@@ -30,7 +30,7 @@ if ($conn->connect_error) {
     <div id="right">
         <h2>Write new article</h2>
         <div id="article">
-            <form method="post" action="write_article.php">
+            <form method="post" action="processArticle.php">
                 <fieldset>
                     <label for="newArticleTitle">Article title</label>
                     <input type="text" id="newArticleTitle" name="newArticleTitle" placeholder="Write article title"
@@ -51,7 +51,7 @@ if ($conn->connect_error) {
                     <br>
                     <br>
                     <label for="tag">Choose Tag</label>
-                    <select name="tag" id="tag">
+                    <select name="tag" id="tag" required>
                     <option value="">-- Select Tag --</option>
                     </select> 
                     <br>
