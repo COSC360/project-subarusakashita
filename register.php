@@ -10,12 +10,12 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$username = $_POST['rUsername'];
-$email = $_POST['rEmail'];
-$password = $_POST['rPassword'];
+$username = $_GET['rUsername'];
+$email = $_GET['rEmail'];
+$password = $_GET['rPassword'];
 // $phonenum = $_POST['phoneNum'];
 // $address = $_POST['address'];
-$password_conf = $_POST['password_conf'];
+$password_conf = $_GET['password_conf'];
 if ($password !== $password_conf) {
     // Passwords don't match, display error message
     $error = "Password and password confirmation do not match";

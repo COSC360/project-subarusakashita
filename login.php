@@ -39,7 +39,7 @@ session_start();
         <a href="#"><img src="ads/long/Orinthego.png" alt="Orinthego Ad"></a>
         <h2>Sign up</h2>
         <div id="signup">
-            <form action="register.php" action="post">
+            <form action="register.php" action="get">
                 <fieldset>
                     <label for="username">Username:</label>
                     <br>
@@ -58,7 +58,7 @@ session_start();
                     <br>
                     <label for="password_conf">Re-enter Password: </label>
                     <br>
-                    <input type="password_conf" id="password_conf" placeholder="Re-enter password" required>
+                    <input type="password" id="password_conf" name="password_conf" placeholder="Re-enter password" required>
                     <br>
                     <br>
                     <input type="submit" value="Sign up" />
