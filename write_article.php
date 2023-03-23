@@ -40,13 +40,6 @@ if ($conn->connect_error) {
 
                     <label for="category">Choose Category</label>
                     <select name="category" id="category" onchange="showTags()" required>
-                        <?php
-                        // $sql = "SELECT categoryId, categoryName FROM Categories";
-                        // run sql
-                        // while ($row = sqlsrv_fetch_array($sql, SQLSRV_FETCH_ASSOC)) {
-                        //     echo ('<option value="' . $row['categoryId'] . '">' . $row['categoryName'] . '</option>');
-                        // }
-                        // ?>
                     <option value="Academic">Academic</option>
                     <option value="Lifestyle">Lifestyle</option>
                     <option value="Relationship">Relationship</option>
@@ -59,7 +52,6 @@ if ($conn->connect_error) {
                     <label for="tag">Choose Tag</label>
                     <select name="tag" id="tag">
                     <option value="">-- Select Tag --</option>
-                       
                     </select> 
                     <br>
                     <br>
@@ -83,12 +75,18 @@ if ($conn->connect_error) {
 
 			    let tags = [];
 			    if (category === "Academic") {
-				tags = ["professor", "course"];
+				tags = ["Professor", "Course","Study methods"];
 			    } else if (category === "Relationship") {
 				tags = ["Finding Romance", "Finding classmates", "Finding group member"];
 			    } else if (category === "Hobby") {
-				tags = ["Gaming", "Plants", "Travel"];
-			    }
+				tags = ["Gaming", "Plants", "Travel","Art", "Pet"];
+			    } else if( category === "Lifestyle"){
+                    tags = ["Laungry Tips","Emergencies (clogged toilet, vomiting roommate)","Cooking", "Grocery Advice"]
+                } else if(category === "Other"){
+                    tags = ["LGBTQ","Same Language"];
+                } else if(category === "Extracurricular"){
+                    tags = ["Club info", "Events"];
+                }
 
 			    for (let i = 0; i < tags.length; i++) {
 				let option = document.createElement("option");
