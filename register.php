@@ -28,7 +28,7 @@ else{
     
 if (mysqli_num_rows($result) > 0) {
         // Username already exists, display error message
-        $error = "Username already exists. Num of rows: ".mysqli_num_rows($result);
+        $error = "Username already exists. Num of rows: ".mysqli_num_rows($result). " Username: ".$username;
 }
 else{
     $sql1 = "INSERT INTO users(username, email, passwords) VALUES ('$username','$email','$password')";
