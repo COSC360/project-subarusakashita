@@ -58,19 +58,14 @@ if ($conn->connect_error) {
                     <br>
                     <label for="newArticleTag">Choose Tag</label>
                     <select name="newArticleTag" id="newArticleTag">
+                    <option value="">-- Select Tag --</option>
                         <?php
                        // $sql = "SELECT tagId, tagName FROM Tags";
                         // run sql
                        // while ($row = sqlsrv_fetch_array($sql, SQLSRV_FETCH_ASSOC)) {
                        //     echo ('<option value="' . $row['tagId'] . '">' . $row['tagName'] . '</option>');
                        // }
-                       <script>
-                       function getdata(){
-                      var txtOne = document.getElementById('category').value;
-                        // Do Something 
-                        return txtOne;
-                       }
-                   </script>
+                       
                        if (getdata() == 'Academic') {
                         echo '<option value="professor">Professor</option>';
                         echo '<option value="course">Course</option>';
