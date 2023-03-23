@@ -40,6 +40,7 @@ if ($conn->connect_error) {
 
                     <label for="category">Choose Category</label>
                     <select name="category" id="category" onchange="showTags()" required>
+                    <option value="">-- Select Category --</option>
                     <option value="Academic">Academic</option>
                     <option value="Lifestyle">Lifestyle</option>
                     <option value="Relationship">Relationship</option>
