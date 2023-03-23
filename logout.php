@@ -25,8 +25,10 @@ session_start();
 
     <div id="right">
         <h2>Successfully Logged Out</h2>
-        <?php include "include/ad_long.php";
+        <a href="#"><img src="ads/long/UniChannel.png" alt="Ad"></a>
+        <?php
         session_destroy();
+        header("Location: main.php");
         ?>
     </div>
     <?php include "include/footer.php" ?>
