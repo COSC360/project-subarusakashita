@@ -38,8 +38,8 @@ if ($conn->connect_error) {
                     <br>
                     <br>
 
-                    <label for="newArticleCategory">Choose Category</label>
-                    <select name="newArticleCategory" id="newArticleCategory">
+                    <label for="category">Choose Category</label>
+                    <select name="category" id="category">
                         <?php
                         // $sql = "SELECT categoryId, categoryName FROM Categories";
                         // run sql
