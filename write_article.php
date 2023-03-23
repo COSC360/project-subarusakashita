@@ -64,7 +64,7 @@ if ($conn->connect_error) {
                     <br>
                     <br>
 
-                    <a href="#"><img src="ads/long/Orinthego.png" alt="Orinthego Ad"></a>
+                    <?php include "include/ad_long.php"; ?>
                     
                     <label for="newArticleBody">Article body</label>
                     <textarea id="newArticleBody" name="newArticleBody" rows="15" placeholder="Write article body here"

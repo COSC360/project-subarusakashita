@@ -40,7 +40,8 @@ if (isset($_GET['searchKeyword'])) {
         <?php
 
         // connection info
-        
+        include "include/ad_long.php";
+
         $sql = "SELECT articleId, articleTitle, articleLink FROM articles WHERE articleTitle LIKE ?";
 
         while ($art = sqlsrv_fetch_array($sql, SQLSRV_FETCH_ASSOC, array($searchKeyword))) {

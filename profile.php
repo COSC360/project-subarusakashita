@@ -40,10 +40,11 @@ if ($conn->connect_error) {
 <body>
     <header><a href="main.php">UniChannel Blog</a></header>
     <div id=trail>
-        <p><a href="main.php">Main Page</a> > <a href="profile.php?username= <?php echo($_SESSION['username'])?> ">Profile Page</a></p>
+        <p><a href="main.php">Main Page</a> > <a
+                href="profile.php?username= <?php echo ($_SESSION['username']) ?> ">Profile Page</a></p>
     </div>
-    <?php include "include/top_left.php"?>
-    
+    <?php include "include/top_left.php" ?>
+
     <div id="right">
         <h2>My Info</h2>
 
@@ -87,7 +88,7 @@ if ($conn->connect_error) {
         //close server connection
         ?>
 
-        <a href="#"><img src="ads/long/UniChannel.png" alt="Orinthego Ad"></a>
+        <?php include "include/ad_long.php"; ?>
         <h2>My Articles</h2>
 
         <?php
@@ -103,7 +104,7 @@ if ($conn->connect_error) {
 
     </div>
     </div>
-    <?php include "include/footer.php"?>
+    <?php include "include/footer.php" ?>
 
 </body>
 

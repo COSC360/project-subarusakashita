@@ -52,24 +52,13 @@ if (isset($_GET['tagName'])) {
                 while ($sql2 = sqlsrv_fetch_array($sql2, SQLSRV_FETCH_ASSOC, array($tagId))) {
                     echo ("<h2>Tag: " . $sql2['$tagName'] . "</h2><br>");
                 }
-                echo ("<a href=\"#\"><img src=\"ads/long/" . rand(1, 4) . ".png\" alt=\"Advertisement\"></a>");
+                include "include/ad_long.php";
                 echo ("<a href=\"article.php?articleId=" . $row['articleId'] . "\">" . $row['articleTitle'] . "</a><br>");
             }
 
             //disconnect
         }
         ?>
-
-        <!-- <h2>Tag: BARK</h2>
-        <a href="#"><img src="../ads/long/Orinthego.png" alt="Orinthego Ad"></a>
-        <h3>Article Title</h3><br>
-        <h3>Article Title</h3><br>
-        <h3>Article Title</h3><br>
-        <h3>Article Title</h3><br>
-        <h3>Article Title</h3><br>
-        <h3>Article Title</h3><br>
-        <h3>Article Title</h3><br>
-        <h3>Article Title</h3><br> -->
     </div>
         <?php include "include/footer.php"?>
 </body>

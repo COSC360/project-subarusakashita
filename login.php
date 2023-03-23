@@ -36,7 +36,7 @@ session_start();
             </form>
             <a href="reset_password.php" id="forgot">Forgot Password</a>
         </div>
-        <a href="#"><img src="ads/long/Orinthego.png" alt="Orinthego Ad"></a>
+        <?php include "include/ad_long.php"; ?>
         <h2>Sign up</h2>
         <div id="signup">
             <form action="register.php" action="get">

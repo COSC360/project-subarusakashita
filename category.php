@@ -33,11 +33,11 @@ if (isset($_GET['categoryName'])) {
 </head>
 
 <body>
-<header><a href="main.php">UniChannel Blog</a></header>
+    <header><a href="main.php">UniChannel Blog</a></header>
     <div id=trail>
-        <p><a href="main.php">Main Page</a> > <a href='category.php <?php echo("?categoryId=" . $categoryId . "&categoryName=" . $categoryName . "'>" . $categoryName);?></a></p>
+        <p><a href="main.php">Main Page</a> > <a href='category.php <?php echo ("?categoryId=" . $categoryId . "&categoryName=" . $categoryName . "'>" . $categoryName); ?></a></p>
     </div>
-    <?php include "include/top_left.php"?>
+    <?php include "include/top_left.php" ?>
     <div id="right">
         <?php
         if (isset($_GET['categoryId'])) {
@@ -48,12 +48,12 @@ if (isset($_GET['categoryName'])) {
             $sql2 = "SELECT categoryName FROM Categories WHERE categoryId = ?";
             //run sql
         
+            while ($sql2 = sqlsrv_fetch_array($sql2, SQLSRV_FETCH_ASSOC, array($categoryId))) {
+                echo ("<h2>Category: " . $sql2['$categoryName'] . "</h2><br>");
+            }
+            include "include/ad_long.php";
+
             while ($row = sqlsrv_fetch_array($sql, SQLSRV_FETCH_ASSOC, array($categoryId))) {
-                //run sql2
-                while ($sql2 = sqlsrv_fetch_array($sql2, SQLSRV_FETCH_ASSOC, array($categoryId))) {
-                    echo ("<h2>Category: " . $sql2['$categoryName'] . "</h2><br>");
-                }
-                echo ("<a href=\"#\"><img src=\"ads/long/" . rand(1,4) . ".png\" alt=\"Advertisement\"></a>");
                 echo ("<a href=\"article.php?articleId=" . $row['articleId'] . "\">" . $row['articleTitle'] . "</a><br>");
             }
 
@@ -61,18 +61,8 @@ if (isset($_GET['categoryName'])) {
         }
         ?>
 
-        <!-- <h2>Category: Academic</h2>
-        <a href="#"><img src="ads/long/SummerCourse.png" alt="Orinthego Ad"></a>
-        <h3>Article Title</h3><br>
-        <h3>Article Title</h3><br>
-        <h3>Article Title</h3><br>
-        <h3>Article Title</h3><br>
-        <h3>Article Title</h3><br>
-        <h3>Article Title</h3><br>
-        <h3>Article Title</h3><br>
-        <h3>Article Title</h3><br> -->
     </div>
-    <?php include "include/footer.php"?>
+    <?php include "include/footer.php" ?>
 
 </body>
 

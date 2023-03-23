@@ -41,31 +41,63 @@ if (isset($_GET['articleTitle'])) {
             $articleId = $_GET['articleId'];
 
             //connect
-            $sql = "SELECT articleTitle, username, categoryId, tagId, articleBody, commentId FROM Articles WHERE articleId = ?";
-            $sql2 = "SELECT username, commentBody FROM Comments WHERE articleId = ?";
-            $sql3 = "SELECT articleId, articleTitle, views FROM Articles WHERE categoryId = ? ORDER BY views LIMIT 3";
-            //run sql
         
-            $categoryId = "";
+            // article 
+            $sql1 = "SELECT articleTitle, username, categoryId, tagId, articleBody, commentId FROM Articles WHERE articleId = ?";
+            $result1 = mysqli_query($conn, $sql1, array());
 
-            while ($row = sqlsrv_fetch_array($sql, SQLSRV_FETCH_ASSOC, array($articleId))) {
+            //follow button
+            $sql2 = "SELECT following FROM Users WHERE username = ?";
+            $result2 = mysqli_query($conn, $sql2, array());
+            $sql3 = "INSERT INTO Users (following) VALUES (?) WHERE username = ?";
+
+            //comments
+            $sql4 = "SELECT username, commentBody FROM Comments WHERE articleId = ?";
+            $result4 = mysqli_query($conn, $sql4, array());
+
+
+            //related articles
+            $sql5 = "SELECT articleId, articleTitle, views FROM Articles WHERE categoryId = ? ORDER BY views LIMIT 3";
+            $result5 = mysqli_query($conn, $sql5, array());
+
+            $categoryId = "";
+            $authorId = "";
+
+            while ($row = sqlsrv_fetch_array($result1, SQLSRV_FETCH_ASSOC, array($articleId))) {
                 echo ("<h2>" . $row['articleTitle'] . "</h2><br>");
                 echo ("<h3>" . $row['username'] . "</h3><br>");
                 echo ("<h3>" . $row['categoryId'] . "</h3><br>");
                 echo ("<h3>" . $row['tagId'] . "</h3>");
 
-                echo ("<a href=#><img src=\"ads/long/UniChannel.png\" alt=\"UniChannel Ad\"></a>");
+                include "include/ad_long.php";
 
                 echo ("<h3>" . $row['articleBody'] . "</h3>");
 
                 $categoryId = $row['categoryId'];
+                $authorId = $row['username'];
             }
-            while ($row = sqlsrv_fetch_array($sql2, SQLSRV_FETCH_ASSOC, array($articleId))) {
+            while ($row = sqlsrv_fetch_array($result2, SQLSRV_FETCH_ASSOC, array($_SESSION['username']))) {
+                if (in_array($authorId, $row['following'])) {
+                    echo ("<Following this user>");
+                } else {
+                    echo ("
+                    function followUser(){
+                        <?php 
+                        //execute $sql3
+                        ?>
+                    }
+                    ");
+
+                    echo ("<button type=button onclick='followUser()'>Follow</button>");
+                }
+            }
+
+            while ($row = sqlsrv_fetch_array($result4, SQLSRV_FETCH_ASSOC, array($articleId))) {
                 echo ("<h3>" . $row['username'] . "</h3><br>");
                 echo ("<h3>" . $row['commentBody'] . "</h3><br>");
             }
 
-            while ($row = sqlsrv_fetch_array($sql3, SQLSRV_FETCH_ASSOC, array($categoryId))) {
+            while ($row = sqlsrv_fetch_array($result5, SQLSRV_FETCH_ASSOC, array($categoryId))) {
                 echo ('<h3><a href="article.php?articleId=' . $row["articleId"] . '&articleTitle=' . $row["articleTitle"] . '">' . $row["articleTitle"] . '</a></h3><br>');
             }
 

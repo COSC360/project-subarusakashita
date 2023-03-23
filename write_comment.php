@@ -63,7 +63,7 @@ if (isset($_GET['articleId'])) {
 
 
         </div>
-        <a href="#"><img src="ads/long/Orinthego.png" alt="Orinthego Ad"></a>
+        <?php include "include/ad_long.php"; ?>
     </div>
     <?php include "include/footer.php" ?>
 

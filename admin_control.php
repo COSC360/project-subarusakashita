@@ -3,7 +3,7 @@
 
 session_start();
 $username = null;
-if(isset($_SESSION['username'])){
+if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 }
 ?>
@@ -20,9 +20,10 @@ if(isset($_SESSION['username'])){
 <body>
     <header><a href="main.php">UniChannel Blog</a></header>
     <div id=trail>
-        <p><a href="main.php">Main Page</a> > <a href="profile.php? <?php echo($username) ?>">Profile Page</a> > <a href="admin_control.php">Admin Control Page</a> </p>
+        <p><a href="main.php">Main Page</a> > <a href="profile.php? <?php echo ($username) ?>">Profile Page</a> > <a
+                href="admin_control.php">Admin Control Page</a> </p>
     </div>
-    <?php include "include/top_left.php"?>
+    <?php include "include/top_left.php" ?>
     <div id="right">
         <?php
         // connect to server
@@ -34,7 +35,7 @@ if(isset($_SESSION['username'])){
 
         // Check connection
         if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+            die("Connection failed: " . $conn->connect_error);
         }
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         $sql1 = "SELECT * FROM Users";
@@ -50,9 +51,16 @@ if(isset($_SESSION['username'])){
                     <th>Address</th>
                     <th>Postal Code</th>
                     <th>Admin</th>
+                    <th>Disabled</th>
                 </tr>");
 
         while ($row = sqlsrv_fetch_array($sql1, SQLSRV_FETCH_ASSOC)) {
+            $disabled = "false";
+            if (isset($_POST['userDisabled'])) {
+                $disabled = $_POST['userDisabled'];
+            } else {
+                $disabled = $row['isDisabled'];
+            }
             echo ("
                 <tr>
                     <td>" . $row['username'] . "</td>
@@ -61,6 +69,12 @@ if(isset($_SESSION['username'])){
                     <td>" . $row['address'] . "</td>
                     <td>" . $row['postalCode'] . "</td>
                     <td>" . $row['isAdmin'] . "</td>
+                    <td>
+                        <form method='post' action='admin_control.php'>
+                            <input type='checkbox' id='userDisabled' name='userDisabled' checked='" . $disabled . "'>
+                            </input>
+                        </form>
+                    </td>
                 </tr>
             ");
         }
@@ -70,7 +84,13 @@ if(isset($_SESSION['username'])){
         
         $sql2 = "SELECT * FROM Articles";
         //connect sql
-        
+        $disabled = "false";
+        if (isset($_POST['artDisabled'])) {
+            $disabled = $_POST['artDisabled'];
+        } else {
+            $disabled = $row['isDisabled'];
+        }
+
         echo ("<h3>Articles</h3><br>");
         echo ("
             <table>
@@ -80,6 +100,7 @@ if(isset($_SESSION['username'])){
                     <th>Author</th>
                     <th>Category ID</th>
                     <th>Views</th>
+                    <th>Disabled</th>
                 </tr>");
 
         while ($row = sqlsrv_fetch_array($sql2, SQLSRV_FETCH_ASSOC)) {
@@ -90,6 +111,12 @@ if(isset($_SESSION['username'])){
                     <td>" . $row['username'] . "</td>
                     <td>" . $row['categoryId'] . "</td>
                     <td>" . $row['views'] . "</td>
+                    <td>
+                        <form method='post' action='admin_control.php'>
+                            <input type='checkbox' id='artDisabled' name='artDisabled' checked='" . $disabled . "'>
+                            </input>
+                        </form>
+                    </td>
                 </tr>
             ");
         }
@@ -97,17 +124,28 @@ if(isset($_SESSION['username'])){
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         
-        $sql1 = "SELECT * FROM Ads";
+        $sql3 = "SELECT * FROM Ads";
         //connect sql
-        
-        echo ("<h3>Ads</h3><br>");
+        $disabled = "false";
+        if (isset($_POST['userDisabled'])) {
+            $disabled = $_POST['userDisabled'];
+        } else {
+            $disabled = $row['isDisabled'];
+        }
 
-        while ($row = sqlsrv_fetch_array($sql1, SQLSRV_FETCH_ASSOC)) {
-            echo ("<img src=\"" . $row['adPath'] . "\" alt=\"Ads\">");
+        echo ("<h3>Ads</h3><br>");
+        
+        while ($row = sqlsrv_fetch_array($sql3, SQLSRV_FETCH_ASSOC)) {
+            echo ("<img src='" . $row['adPath'] . "' alt='Ads'>");
+            echo ("
+            <form method='post' action='admin_control.php'>
+                <input type='checkbox' id='adDisabled' name='adDisabled' checked='" . $disabled . "'>
+                </input>
+            </form>");
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+        
 
         //close server connection
         ?>
@@ -118,7 +156,7 @@ if(isset($_SESSION['username'])){
 
     </div>
     </div>
-    <?php include "include/footer.php"?>
+    <?php include "include/footer.php" ?>
 
 </body>
 

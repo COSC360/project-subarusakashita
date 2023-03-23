@@ -26,7 +26,7 @@ if ($conn->connect_error) {
         <p><a href="main.php">Main Page</a> > <a href="login.php">Login Page</a> > <a href="reset_password.php">Reset
                 Password Page</a></p>
     </div>
-    <?php include "include/top_left.php"?>
+    <?php include "include/top_left.php" ?>
 
     <div id="right">
         <h2>Reset Password</h2>
@@ -41,33 +41,68 @@ if ($conn->connect_error) {
                 </fieldset>
             </form>
         </div>
-        <a href="#"><img src="ads/long/Orinthego.png" alt="Orinthego Ad"></a>
-    <?php
-        if(isset($_GET['recoverUser'])){
+        <?php include "include/ad_long.php"; ?>
+        <?php
+        if (isset($_GET['recoverUser'])) {
             //connect
+        
+            $passwordParts = [
+                "a",
+                "b",
+                "c",
+                "d",
+                "e",
+                "f",
+                "g",
+                "h",
+                "i",
+                "j",
+                "k",
+                "l",
+                "m",
+                "n",
+                "o",
+                "p",
+                "q",
+                "r",
+                "s",
+                "t",
+                "u",
+                "v",
+                "w",
+                "x",
+                "y",
+                "z",
+                "!",
+                "@",
+                "#",
+                "$",
+                "%",
+                "^",
+                "&",
+                "*",
+                "(",
+                ")"
+            ];
 
-            $passwordParts = ["a","b","c","d","e","f","g","h","i","j","k","l",
-            "m","n","o","p","q","r","s","t","u","v","w","x","y","z",
-            "!","@","#","$","%","^","&","*","(",")"];
-
-            $newPassword = strtoupper($passwordParts[rand(0,26)]) . strtoupper($passwordParts[rand(0,26)])
-             . $passwordParts[rand(0,26)] . $passwordParts[rand(0,26)] . $passwordParts[rand(0,26)]
-             . $passwordParts[rand(0,26)] . rand(0,10) . rand(0,10) . $passwordParts[rand(26,36)];
+            $newPassword = strtoupper($passwordParts[rand(0, 26)]) . strtoupper($passwordParts[rand(0, 26)])
+                . $passwordParts[rand(0, 26)] . $passwordParts[rand(0, 26)] . $passwordParts[rand(0, 26)]
+                . $passwordParts[rand(0, 26)] . rand(0, 10) . rand(0, 10) . $passwordParts[rand(26, 36)];
             //auto decide new password using $passwordParts, format: AAaaaa11!
-
+        
             $recoverUser = $_GET['recoverUser'];
             $sql1 = "SELECT email FROM Users WHERE username = " . $recoverUser;
             $sql2 = "UPDATE Users SET password = " . $newPassword . "WHERE username = " . $recoverUser;
-            
+
             // run sql statements
             // send email of new password
-
+        
 
             //disconnect
         }
-    ?>
+        ?>
     </div>
-        <?php include "include/footer.php"?>
+    <?php include "include/footer.php" ?>
 </body>
 
 </html>
