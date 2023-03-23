@@ -56,12 +56,6 @@ if ($conn->connect_error) {
                     </select>
                     <br>
                     <br>
-                    <script>
-                        function getdata(){
-                       $txtOne = document.getElementById('category').value;
-                         // Do Something 
-                        }
-                    </script>
                     <label for="newArticleTag">Choose Tag</label>
                     <select name="newArticleTag" id="newArticleTag">
                         <?php
@@ -70,24 +64,31 @@ if ($conn->connect_error) {
                        // while ($row = sqlsrv_fetch_array($sql, SQLSRV_FETCH_ASSOC)) {
                        //     echo ('<option value="' . $row['tagId'] . '">' . $row['tagName'] . '</option>');
                        // }
-                       if ($txtOne == 'Academic') {
+                       <script>
+                       function getdata(){
+                      var txtOne = document.getElementById('category').value;
+                        // Do Something 
+                        return txtOne;
+                       }
+                   </script>
+                       if (getdata() == 'Academic') {
                         echo '<option value="professor">Professor</option>';
                         echo '<option value="course">Course</option>';
-                    } elseif ($textOne == 'Relationship') {
+                    } elseif (getdata() == 'Relationship') {
                         echo '<option value="Finding Romance">Finding Romance</option>';
                         echo '<option value="Finding classmates">Finding classmates</option>';
                         echo '<option value="Finding group member">Finding group member</option>';
-                    } elseif ($txtOne == 'Hobby') {
+                    } elseif (getdata() == 'Hobby') {
                         echo '<option value="Gaming">Gaming</option>';
                         echo '<option value="Plants">Plants</option>';
                         echo '<option value="Travel">Travel</option>';
                     }
-                    elseif ($txtOne == 'Lifestyle') {
+                    elseif (getdata() == 'Lifestyle') {
                     echo '<option value="Gaming">Gaming</option>';
                     echo '<option value="Plants">Plants</option>';
                     echo '<option value="Travel">Travel</option>';
                     }
-                    elseif ($txtOne == 'Other') {
+                    elseif (getdata() == 'Other') {
                         echo '<option value="Gaming">Gaming</option>';
                         echo '<option value="Plants">Plants</option>';
                         echo '<option value="Travel">Travel</option>';
