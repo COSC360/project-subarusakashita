@@ -41,12 +41,18 @@ if ($conn->connect_error) {
                     <label for="newArticleCategory">Choose Category</label>
                     <select name="newArticleCategory" id="newArticleCategory">
                         <?php
-                        $sql = "SELECT categoryId, categoryName FROM Categories";
+                        // $sql = "SELECT categoryId, categoryName FROM Categories";
                         // run sql
-                        while ($row = sqlsrv_fetch_array($sql, SQLSRV_FETCH_ASSOC)) {
-                            echo ('<option value="' . $row['categoryId'] . '">' . $row['categoryName'] . '</option>');
-                        }
-                        ?>
+                        // while ($row = sqlsrv_fetch_array($sql, SQLSRV_FETCH_ASSOC)) {
+                        //     echo ('<option value="' . $row['categoryId'] . '">' . $row['categoryName'] . '</option>');
+                        // }
+                        // ?>
+                    <option value="Academic">Academic</option>
+                    <option value="Lifestyle">Lifestyle</option>
+                    <option value="Relationship">Relationship</option>
+                    <option value="Extracurricular">Extracurricular</option>
+                    <option value="Hobby">Hobby</option>
+                    <option value="Other">Other</option>
                     </select>
                     <br>
                     <br>
@@ -54,10 +60,32 @@ if ($conn->connect_error) {
                     <label for="newArticleTag">Choose Tag</label>
                     <select name="newArticleTag" id="newArticleTag">
                         <?php
-                        $sql = "SELECT tagId, tagName FROM Tags";
+                       // $sql = "SELECT tagId, tagName FROM Tags";
                         // run sql
-                        while ($row = sqlsrv_fetch_array($sql, SQLSRV_FETCH_ASSOC)) {
-                            echo ('<option value="' . $row['tagId'] . '">' . $row['tagName'] . '</option>');
+                       // while ($row = sqlsrv_fetch_array($sql, SQLSRV_FETCH_ASSOC)) {
+                       //     echo ('<option value="' . $row['tagId'] . '">' . $row['tagName'] . '</option>');
+                       // }
+                       if ($_POST['category'] == 'Academic') {
+                        echo '<option value="professor">Professor</option>';
+                        echo '<option value="course">Course</option>';
+                    } elseif ($_POST['category'] == 'Relationship') {
+                        echo '<option value="Finding Romance">Finding Romance</option>';
+                        echo '<option value="Finding classmates">Finding classmates</option>';
+                        echo '<option value="Finding group member">Finding group member</option>';
+                    } elseif ($_POST['category'] == 'Hobby') {
+                        echo '<option value="Gaming">Gaming</option>';
+                        echo '<option value="Plants">Plants</option>';
+                        echo '<option value="Travel">Travel</option>';
+                    }
+                    elseif ($_POST['category'] == 'Lifestyle') {
+                    echo '<option value="Gaming">Gaming</option>';
+                    echo '<option value="Plants">Plants</option>';
+                    echo '<option value="Travel">Travel</option>';
+                    }
+                    elseif ($_POST['category'] == 'Other') {
+                        echo '<option value="Gaming">Gaming</option>';
+                        echo '<option value="Plants">Plants</option>';
+                        echo '<option value="Travel">Travel</option>';
                         }
                         ?>
                     </select>
