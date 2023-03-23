@@ -56,7 +56,12 @@ if ($conn->connect_error) {
                     </select>
                     <br>
                     <br>
-
+                    <script>
+                        function getdata(){
+                        var txtOne = document.getElementById('category').value;
+                         // Do Something 
+                        }
+                    </script>
                     <label for="newArticleTag">Choose Tag</label>
                     <select name="newArticleTag" id="newArticleTag">
                         <?php
@@ -65,24 +70,24 @@ if ($conn->connect_error) {
                        // while ($row = sqlsrv_fetch_array($sql, SQLSRV_FETCH_ASSOC)) {
                        //     echo ('<option value="' . $row['tagId'] . '">' . $row['tagName'] . '</option>');
                        // }
-                       if ($_POST['category'] == 'Academic') {
+                       if (txtOne == 'Academic') {
                         echo '<option value="professor">Professor</option>';
                         echo '<option value="course">Course</option>';
-                    } elseif ($_POST['category'] == 'Relationship') {
+                    } elseif (textOne == 'Relationship') {
                         echo '<option value="Finding Romance">Finding Romance</option>';
                         echo '<option value="Finding classmates">Finding classmates</option>';
                         echo '<option value="Finding group member">Finding group member</option>';
-                    } elseif ($_POST['category'] == 'Hobby') {
+                    } elseif (txtOne == 'Hobby') {
                         echo '<option value="Gaming">Gaming</option>';
                         echo '<option value="Plants">Plants</option>';
                         echo '<option value="Travel">Travel</option>';
                     }
-                    elseif ($_POST['category'] == 'Lifestyle') {
+                    elseif (txtOne == 'Lifestyle') {
                     echo '<option value="Gaming">Gaming</option>';
                     echo '<option value="Plants">Plants</option>';
                     echo '<option value="Travel">Travel</option>';
                     }
-                    elseif ($_POST['category'] == 'Other') {
+                    elseif (txtOne == 'Other') {
                         echo '<option value="Gaming">Gaming</option>';
                         echo '<option value="Plants">Plants</option>';
                         echo '<option value="Travel">Travel</option>';
