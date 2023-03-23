@@ -10,9 +10,9 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$username = $_POST['username'];
-$email = $_POST['email'];
-$password = $_POST['password'];
+$username = $_POST['rUsername'];
+$email = $_POST['rEmail'];
+$password = $_POST['rPassword'];
 // $phonenum = $_POST['phoneNum'];
 // $address = $_POST['address'];
 $password_conf = $_POST['password_conf'];

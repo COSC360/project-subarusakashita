@@ -39,21 +39,21 @@ session_start();
         <a href="#"><img src="ads/long/Orinthego.png" alt="Orinthego Ad"></a>
         <h2>Sign up</h2>
         <div id="signup">
-            <form method="post" action="register.php">
+            <form action="register.php" action="post">
                 <fieldset>
                     <label for="username">Username:</label>
                     <br>
-                    <input type="text" id="username" placeholder="Enter username" required>
+                    <input type="text" id="rUsername" name="rUsername" placeholder="Enter username" required>
                     <br>
                     <br>
                     <label for="email">Email:</label>
                     <br>
-                    <input type="email" id="email" placeholder="Enter email" required>
+                    <input type="email" id="rEmail"  name ='rEmail'placeholder="Enter email" required>
                     <br>
                     <br>
                     <label for="password">Password: </label>
                     <br>
-                    <input type="password" id="password" placeholder="Enter password" required>
+                    <input type="password" id="rPassword" name="rPassword" placeholder="Enter password" required>
                     <br>
                     <br>
                     <label for="password_conf">Re-enter Password: </label>
