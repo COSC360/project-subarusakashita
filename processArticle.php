@@ -45,12 +45,11 @@ $body = $_POST["newArticleBody"];
 $username = $_SESSION['username'];
 $sql = "INSERT INTO Articles(articleTitle, username, categoryId, tagId, articleBody) VALUES ('$title','$username','$category','$tag','$body')";
 if (mysqli_query($conn, $sql)) {
-    // Account created successfully, redirect to login page
     header("Location: main.php");
     exit;
 }
 else{
-    $error = "Account creation failed";
+    $error = "Article Upload failed";
 }
 mysqli_close($conn);
 ?>
