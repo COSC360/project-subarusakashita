@@ -44,7 +44,7 @@ if (isset($_GET['categoryName'])) {
             $categoryId = $_GET['categoryId'];
 
             //connect
-            $sql = "SELECT articleTitle FROM Articles WHERE categoryId =  '$cateogryId' LIMIT 5";
+            $sql = "SELECT articleTitle FROM Articles WHERE categoryId =  '$cateogryId'";
             //$sql2 = "SELECT categoryName FROM Categories WHERE categoryId = ?";
             //run sql
             $result = $conn->query($sql);
@@ -56,7 +56,7 @@ if (isset($_GET['categoryName'])) {
 
             // Display article titles on screen
             while ($row = $result->fetch_assoc()) {
-                echo $row["articleTitle"] . "<br>";
+                echo "<p>".$row["articleTitle"] . "</p>";
             }
             
             // while ($sql2 = sqlsrv_fetch_array($sql2, SQLSRV_FETCH_ASSOC, array($categoryId))) {
