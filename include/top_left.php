@@ -17,7 +17,6 @@ echo '
     </fieldset>
 </form>
 </div>
-
 <div id="left">
 <h2>Categories</h2>
 <ul>
