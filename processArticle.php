@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $servername = "cosc360.ok.ubc.ca";
 $server_username = "83395822";
 $server_password = "83395822";
