@@ -11,6 +11,6 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    echo(_POST['articleId']);
-    echo(_POST['comment']);
+    echo($_POST['articleId']);
+    echo($_POST['comment']);
 ?>
