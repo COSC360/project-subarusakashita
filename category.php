@@ -44,14 +44,14 @@ if (isset($_GET['categoryName'])) {
             $categoryId = $_GET['categoryId'];
 
             //connect
-            $sql = "SELECT articleTitle FROM Articles WHERE categoryId =  '$categoryId'";
+            $sql = "SELECT articleId, articleTitle FROM Articles WHERE categoryId =  '$categoryId'";
             //$sql2 = "SELECT categoryName FROM Categories WHERE categoryId = ?";
             //run sql
             $result = mysqli_query($conn, $sql);
 
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
-                    echo "<h2>" . $row["articleTitle"] . "</h2>";
+                    echo "<h2><a href='article.php?id=" . $row["id"] . "'>". $row["articleTitle"] . "</h2>";
                     //echo "<p>" . $row["body"] . "</p>";
                 }
             } else {
