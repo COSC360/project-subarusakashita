@@ -27,7 +27,8 @@ echo ('
 </ul>'
 );
 
-echo ("<a href=\'#\'><img src=\'../ads/short/" . rand(1, 4) . ".png\' alt=\'Advertisement\'></a>");
-echo ("<a href=\'#\'><img src=\'../ads/short/" . rand(1, 4) . ".png\' alt=\'Advertisement\'></a>");
+echo ('<a href="#"><img src="ads/short/' . rand(1,3) . '.png" alt="Advertisement"></a>');
+echo ('<a href="#"><img src="ads/short/' . rand(1,3) . '.png" alt="Advertisement"></a>');
+
 echo ('</div>');
 ?>
