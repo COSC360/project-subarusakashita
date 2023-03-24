@@ -34,7 +34,7 @@ if (isset($_GET['articleTitle'])) {
     <div id=trail>
         <p><a href="main.php">Main Page</a> > <a href='article.php <?php echo ("?articleId=" . $articleId . "&articleTitle=" . $articleTitle . "'>" . $articleTitle); ?></a></p>
     </div>
-    <?php include "include/top_left.php" ?>
+    <!-- <?php include "include/top_left.php" ?> -->
     <div id="right">
         <?php
         if (isset($_GET['articleId'])) {

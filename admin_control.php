@@ -150,10 +150,6 @@ if (isset($_SESSION['username'])) {
         //close server connection
         ?>
 
-        <a href="#"><img src="ads/long/UniChannel.png" alt="Orinthego Ad"></a>
-        <h2>My Articles</h2>
-
-
     </div>
     </div>
     <?php include "include/footer.php" ?>
