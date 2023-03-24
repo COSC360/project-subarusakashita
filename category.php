@@ -44,20 +44,32 @@ if (isset($_GET['categoryName'])) {
             $categoryId = $_GET['categoryId'];
 
             //connect
-            $sql = "SELECT articleTitle,  views FROM Articles WHERE categoryId =  ? ORDER BY views LIMIT 6";
-            $sql2 = "SELECT categoryName FROM Categories WHERE categoryId = ?";
+            $sql = "SELECT articleTitle FROM Articles WHERE categoryId =  '$cateogryId' LIMIT 5";
+            //$sql2 = "SELECT categoryName FROM Categories WHERE categoryId = ?";
             //run sql
-        
-            while ($sql2 = sqlsrv_fetch_array($sql2, SQLSRV_FETCH_ASSOC, array($categoryId))) {
-                echo ("<h2>Category: " . $sql2['$categoryName'] . "</h2><br>");
+            $result = $conn->query($sql);
+
+            // Check for errors
+            if (!$result) {
+                die("Query failed: " . $conn->error);
             }
+
+            // Display article titles on screen
+            while ($row = $result->fetch_assoc()) {
+                echo $row["articleTitle"] . "<br>";
+            }
+            
+            // while ($sql2 = sqlsrv_fetch_array($sql2, SQLSRV_FETCH_ASSOC, array($categoryId))) {
+            //     echo ("<h2>Category: " . $sql2['$categoryName'] . "</h2><br>");
+            // }
             include "include/ad_long.php";
 
-            while ($row = sqlsrv_fetch_array($sql, SQLSRV_FETCH_ASSOC, array($categoryId))) {
-                echo ("<a href=\"article.php?articleId=" . $row['articleId'] . "\">" . $row['articleTitle'] . "</a><br>");
-            }
+            // while ($row = sqlsrv_fetch_array($sql, SQLSRV_FETCH_ASSOC, array($categoryId))) {
+            //     echo ("<a href=\"article.php?articleId=" . $row['articleId'] . "\">" . $row['articleTitle'] . "</a><br>");
+            // }
 
             //disconnect
+            $conn->close();
         }
         ?>
 
