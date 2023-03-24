@@ -24,8 +24,8 @@ echo '
     <li><a href="category.php?categoryId=2&categoryName=Lifestyle">Lifestyle</a></li>
 </ul>
 <?php
-    echo ("<a href=\'#\'><img src=\'ads/short/" . rand(1, 4) . ".png\' alt=\'Advertisement\'></a>");
-    echo ("<a href=\'#\'><img src=\'ads/short/" . rand(1, 4) . ".png\' alt=\'Advertisement\'></a>");
+    echo ("<a href=\'#\'><img src=\'..ads/short/" . rand(1, 4) . ".png\' alt=\'Advertisement\'></a>");
+    echo ("<a href=\'#\'><img src=\'..ads/short/" . rand(1, 4) . ".png\' alt=\'Advertisement\'></a>");
 ?>
 </div>';
 ?>
