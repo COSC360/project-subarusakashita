@@ -43,9 +43,12 @@ if (isset($_GET['articleTitle'])) {
             //connect
         
             // article 
-            $sql1 = "SELECT articleTitle, username, categoryId, tagId, articleBody, commentId FROM Articles WHERE articleId = ?";
-            $result1 = mysqli_query($conn, $sql1, array());
-
+            //$sql1 = "SELECT articleTitle, username, categoryId, tagId, articleBody, commentId FROM Articles WHERE articleId = ?";
+            $sql1 = "SELECT articleId, articleTitle, articleBody FROM Articles WHERE articleId =  '$articleId'";
+            $result1 = mysqli_query($conn, $sql1);
+            $row = mysqli_fetch_assoc($result1);
+            echo "<h2>". $row["articleTitle"] . "</h2>";
+            echo "<p>" . $row["articleBody"] . "</p>";
             //follow button
             $sql2 = "SELECT following FROM Users WHERE username = ?";
             $result2 = mysqli_query($conn, $sql2, array());

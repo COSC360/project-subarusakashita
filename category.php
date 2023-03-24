@@ -51,7 +51,7 @@ if (isset($_GET['categoryName'])) {
 
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
-                    echo "<h2><a href='article.php?id=" . $row["id"] . "'>". $row["articleTitle"] . "</h2>";
+                    echo "<h2><a href='article.php?articleId=" . $row["articleId"] . "'>". $row["articleTitle"] . "</h2>";
                     //echo "<p>" . $row["body"] . "</p>";
                 }
             } else {
