@@ -109,9 +109,8 @@ if (isset($_GET['articleTitle'])) {
     <?php include "include/footer.php"; ?> 
 
     <?php
-        if (!isset($_SESSION['username'])) {
-            // if not logged in
-            // pop-up to encourage log in
+        if (isset($_SESSION['username'])) {
+
             echo "<form method = processComment.php action='post'>
                 <fieldset>
                     <label for='comment'>Comment</label>
