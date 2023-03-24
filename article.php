@@ -33,7 +33,10 @@ if (isset($_GET['articleTitle'])) {
 <body>
     <header><a href="main.php">UniChannel Blog</a></header>
     <div id=trail>
-        <p><a href="main.php">Main Page</a> > <a href='article.php <?php echo ("?articleId=" . $articleId . "&articleTitle=" . $articleTitle . "'>" . $articleTitle); ?></a></p>
+        <p><a href="main.php">Main Page</a> > 
+        <a href='article.php <?php echo "?articleId=" . $articleId . "&articleTitle=" . $articleTitle; ?>' >
+        <?php echo $articleTitle; ?>
+    </a></p>
     </div>
     <?php include "include/top_left.php" ?>
     <div id="right">
@@ -61,62 +64,49 @@ if (isset($_GET['articleTitle'])) {
 
 
             //related articles
-            $sql5 = "SELECT articleId, articleTitle, views FROM Articles WHERE categoryId = ? ORDER BY views LIMIT 3";
-            $result5 = mysqli_query($conn, $sql5, array());
+           // $sql5 = "SELECT articleId, articleTitle, views FROM Articles WHERE categoryId = ? ORDER BY views LIMIT 3";
+          //  $result5 = mysqli_query($conn, $sql5, array());
 
-            $categoryId = "";
-            $authorId = "";
+           // $categoryId = "";
+           // $authorId = "";
 
-            while ($row = sqlsrv_fetch_array($result1, SQLSRV_FETCH_ASSOC, array($articleId))) {
-                echo ("<h2>" . $row['articleTitle'] . "</h2><br>");
-                echo ("<h3>" . $row['username'] . "</h3><br>");
-                echo ("<h3>" . $row['categoryId'] . "</h3><br>");
-                echo ("<h3>" . $row['tagId'] . "</h3>");
+            // while ($row = sqlsrv_fetch_array($result1, SQLSRV_FETCH_ASSOC, array($articleId))) {
+            //     echo ("<h2>" . $row['articleTitle'] . "</h2><br>");
+            //     echo ("<h3>" . $row['username'] . "</h3><br>");
+            //     echo ("<h3>" . $row['categoryId'] . "</h3><br>");
+            //     echo ("<h3>" . $row['tagId'] . "</h3>");
 
-                include "include/ad_long.php";
+            //     include "include/ad_long.php";
 
-                echo ("<h3>" . $row['articleBody'] . "</h3>");
+            //     echo ("<h3>" . $row['articleBody'] . "</h3>");
 
-                $categoryId = $row['categoryId'];
-                $authorId = $row['username'];
-            }
-            while ($row = sqlsrv_fetch_array($result2, SQLSRV_FETCH_ASSOC, array($_SESSION['username']))) {
-                if (in_array($authorId, $row['following'])) {
-                    echo ("<Following this user>");
-                } else {
-                    echo ("
-                    function followUser(){
-                        <?php 
-                        //execute $sql3
-                        ?>
-                    }
-                    ");
+            //     $categoryId = $row['categoryId'];
+            //     $authorId = $row['username'];
+            // }
+            // while ($row = sqlsrv_fetch_array($result2, SQLSRV_FETCH_ASSOC, array($_SESSION['username']))) {
+            //     if (in_array($authorId, $row['following'])) {
+            //         echo ("<Following this user>");
+            //     } else {
+                   
 
-                    echo ("<button type=button onclick='followUser()'>Follow</button>");
-                }
-            }
+            //         //echo ("<button type=button onclick='followUser()'>Follow</button>");
+            //     }
+            // }
 
-            while ($row = sqlsrv_fetch_array($result4, SQLSRV_FETCH_ASSOC, array($articleId))) {
-                echo ("<h3>" . $row['username'] . "</h3><br>");
-                echo ("<h3>" . $row['commentBody'] . "</h3><br>");
-            }
+            // while ($row = sqlsrv_fetch_array($result4, SQLSRV_FETCH_ASSOC, array($articleId))) {
+            //     echo ("<h3>" . $row['username'] . "</h3><br>");
+            //     echo ("<h3>" . $row['commentBody'] . "</h3><br>");
+            // }
 
-            while ($row = sqlsrv_fetch_array($result5, SQLSRV_FETCH_ASSOC, array($categoryId))) {
-                echo ('<h3><a href="article.php?articleId=' . $row["articleId"] . '&articleTitle=' . $row["articleTitle"] . '">' . $row["articleTitle"] . '</a></h3><br>');
-            }
+            // while ($row = sqlsrv_fetch_array($result5, SQLSRV_FETCH_ASSOC, array($categoryId))) {
+            //     echo ('<h3><a href="article.php?articleId=' . $row["articleId"] . '&articleTitle=' . $row["articleTitle"] . '">' . $row["articleTitle"] . '</a></h3><br>');
+            // }
 
             //disconnect
         }
         ?>
     </div>
-    <?php include "include/footer.php" ?>
-    <form action = "process_comment.php" method = "post">
-        <fieldset>
-        <label for="comment">Write Comment </label>
-                <textarea id="comment" name="comment" rows="15" placeholder="Write article body here" required></textarea>
-        </fieldset>
-
-    </form> 
+    <?php include "include/footer.php"; ?> 
 </body>
 
 </html>
