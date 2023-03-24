@@ -17,7 +17,7 @@ Logged in users can also comment, search, browse other users posts and access/ed
 The following is the detail for each category. 
 | Category  |  Detail(tag) |   
 |---|---|
-| Academic  | -About specific course<br> -About specific prof <br> -Study methods|   
+| Academic  | -About specific course id:2<br> -About specific prof id:1 <br> -Study methods id:3|   
 | Lifestyle  | -Sharing recipes<br> -Grocery advice<br> -Laundry tips <br> -Cleaning lists and methods<br> -Emergencies (clogged toiled, vomting roommate)<br>  |   
 | Relationship  | -Finding Romance<br> -Finding classmates<br> -Finding friends<br> -Labmates/project group struggles<br>   |  
 | Extracurricular | -Club info (looking for new members, etc<br> -Events<br> | 

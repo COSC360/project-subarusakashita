@@ -76,19 +76,10 @@ if ($conn->connect_error) {
 
 			    let tags = [];
 			    if (category === "Academic") {
-				tags = ["Professor", "Course","Study methods"];
-			    } else if (category === "Relationship") {
-				tags = ["Finding Romance", "Finding classmates", "Finding group member"];
-			    } else if (category === "Hobby") {
-				tags = ["Gaming", "Plants", "Travel","Art", "Pet"];
+				tags = ["Professor", "Course","Study"];
 			    } else if( category === "Lifestyle"){
-                    tags = ["Laungry Tips","Emergencies (clogged toilet, vomiting roommate)","Cooking", "Grocery Advice"]
-                } else if(category === "Other"){
-                    tags = ["LGBTQ","Same Language"];
-                } else if(category === "Extracurricular"){
-                    tags = ["Club info", "Events"];
-                }
-
+                    tags = ["Laundry","Emergencies","Cooking", "Grocery"]
+                } 
 			    for (let i = 0; i < tags.length; i++) {
 				let option = document.createElement("option");
 				option.value = tags[i];
