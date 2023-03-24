@@ -1,5 +1,6 @@
 <?php
 // record count every time page loads (to display top viewed articles in main page)
+session_start();
 $servername = "cosc360.ok.ubc.ca";
 $server_username = "83395822";
 $server_password = "83395822";
@@ -50,13 +51,13 @@ if (isset($_GET['articleTitle'])) {
             echo "<h2>". $row["articleTitle"] . "</h2>";
             echo "<p>" . $row["articleBody"] . "</p>";
             //follow button
-            $sql2 = "SELECT following FROM Users WHERE username = ?";
-            $result2 = mysqli_query($conn, $sql2, array());
-            $sql3 = "INSERT INTO Users (following) VALUES (?) WHERE username = ?";
+            // $sql2 = "SELECT following FROM Users WHERE username = ?";
+            // $result2 = mysqli_query($conn, $sql2, array());
+            // $sql3 = "INSERT INTO Users (following) VALUES (?) WHERE username = ?";
 
             //comments
-            $sql4 = "SELECT username, commentBody FROM Comments WHERE articleId = ?";
-            $result4 = mysqli_query($conn, $sql4, array());
+            // $sql4 = "SELECT username, commentBody FROM Comments WHERE articleId = ?";
+            // $result4 = mysqli_query($conn, $sql4, array());
 
 
             //related articles
@@ -109,7 +110,13 @@ if (isset($_GET['articleTitle'])) {
         ?>
     </div>
     <?php include "include/footer.php" ?>
+    <form action = "process_comment.php" method = "post">
+        <fieldset>
+        <label for="comment">Write Comment </label>
+                <textarea id="comment" name="comment" rows="15" placeholder="Write article body here" required></textarea>
+        </fieldset>
 
+    </form> 
 </body>
 
 </html>
