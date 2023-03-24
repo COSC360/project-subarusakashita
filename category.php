@@ -56,7 +56,8 @@ if (isset($_GET['categoryName'])) {
 
             // Display article titles on screen
             while ($row = $result->fetch_assoc()) {
-                echo "<p>".$row["articleTitle"] . "</p>";
+                echo "<p>".$row['articleTitle'] . "</p>";
+                echo "<script>alert($row['articleTitle'])</script>";
             }
             
             // while ($sql2 = sqlsrv_fetch_array($sql2, SQLSRV_FETCH_ASSOC, array($categoryId))) {
