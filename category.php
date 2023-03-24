@@ -44,7 +44,7 @@ if (isset($_GET['categoryName'])) {
             $categoryId = $_GET['categoryId'];
 
             //connect
-            $sql = "SELECT articleId, articleTitle, views FROM Articles WHERE categoryId =  ? ORDER BY views LIMIT 6";
+            $sql = "SELECT articleTitle,  views FROM Articles WHERE categoryId =  ? ORDER BY views LIMIT 6";
             $sql2 = "SELECT categoryName FROM Categories WHERE categoryId = ?";
             //run sql
         
