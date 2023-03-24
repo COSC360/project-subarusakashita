@@ -47,17 +47,15 @@ if (isset($_GET['categoryName'])) {
             $sql = "SELECT articleTitle FROM Articles WHERE categoryId =  '$cateogryId'";
             //$sql2 = "SELECT categoryName FROM Categories WHERE categoryId = ?";
             //run sql
-            $result = $conn->query($sql);
+            $result = mysqli_query($conn, $sql);
 
-            // Check for errors
-            if (!$result) {
-                die("Query failed: " . $conn->error);
-            }
-
-            // Display article titles on screen
-            while ($row = $result->fetch_assoc()) {
-                echo "<p>".$row['articleTitle'] . "</p>";
-                echo "<script>alert($row['articleTitle'])</script>";
+            if (mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_assoc($result)) {
+                    echo "<h2>" . $row["articleTitle"] . "</h2>";
+                    //echo "<p>" . $row["body"] . "</p>";
+                }
+            } else {
+                echo "0 results";
             }
             
             // while ($sql2 = sqlsrv_fetch_array($sql2, SQLSRV_FETCH_ASSOC, array($categoryId))) {
@@ -70,7 +68,7 @@ if (isset($_GET['categoryName'])) {
             // }
 
             //disconnect
-            $conn->close();
+            mysqli_close($conn);
         }
         ?>
 
