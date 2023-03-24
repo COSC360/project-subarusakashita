@@ -44,7 +44,7 @@ if (isset($_GET['categoryName'])) {
             $categoryId = $_GET['categoryId'];
 
             //connect
-            $sql = "SELECT articleTitle FROM Articles WHERE categoryId =  '$cateogryId'";
+            $sql = "SELECT articleTitle FROM Articles WHERE categoryId =  '$categoryId'";
             //$sql2 = "SELECT categoryName FROM Categories WHERE categoryId = ?";
             //run sql
             $result = mysqli_query($conn, $sql);
