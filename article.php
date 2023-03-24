@@ -76,7 +76,7 @@ if (isset($_GET['articleTitle'])) {
             //     echo ("<h3>" . $row['categoryId'] . "</h3><br>");
             //     echo ("<h3>" . $row['tagId'] . "</h3>");
 
-            //     include "include/ad_long.php";
+            include "include/ad_long.php";
 
             //     echo ("<h3>" . $row['articleBody'] . "</h3>");
 
