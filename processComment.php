@@ -13,11 +13,11 @@
         die("Connection failed: " . $conn->connect_error);
     }
     $username = $_SESSION('username');
-    $articleId = $_POST['articleId'];
-    $comment = $_POST['comment'];
-    echo($comment);
-    echo($articleId);
-    echo($username);
+    //$articleId = $_POST['articleId'];
+    //$comment = $_POST['comment'];
+   // echo $comment;
+    //echo $articleId;
+    echo $username;
     // $sql = "INSERT INTO Comments(username, articleId, commentBody) VALUES('$username','$articleId','$comment')";
     // if (mysqli_query($conn, $sql)) {
     //     //echo("<script>alert('Comment Uploaded. Going back to main page') </script>");
