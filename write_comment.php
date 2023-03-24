@@ -7,7 +7,7 @@
                 <textarea id='comment' name='comment' rows='15' placeholder='Write acomment here'
                     required></textarea>
                 <br>
-                <input type='hidden' name = 'articleId' value= echo $articleId>
+                <input type='hidden' name = 'articleId' value= $articleId>
                 <input type='submit' value='Post Comment'>
                 </fieldset> 
             ";
