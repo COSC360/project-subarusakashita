@@ -3,6 +3,7 @@ session_start();
 if (!isset($_SESSION['username'])) {
     // if not logged in
     // pop-up to encourage log in
+    echo '<script>alert("Please login! If you do not have an account, Make it!!")</script>';
 }
 
 $servername = "cosc360.ok.ubc.ca";
@@ -36,12 +37,12 @@ if (!$conn) {
         <h2>Trending Tags</h2>
         <div id="tag">
             <?php
-            $sql1 = "SELECT tagId, tagName FROM Tags ORDER BY articleNumber LIMIT 10";
-            $result1 = mysqli_query($conn, $sql1);
+            //$sql1 = "SELECT tagId, tagName FROM Tags ORDER BY articleNumber LIMIT 10";
+           // $result1 = mysqli_query($conn, $sql1);
 
-            while ($row = sqlsrv_fetch_array($result1, SQLSRV_FETCH_ASSOC)) {
-                echo ("<a href='tag.php?tagId=" . $row['tagId'] . "&tagName=" . $row['tagName'] . "'>" . $row['tagName'] . "</a>");
-            }
+            //while ($row = sqlsrv_fetch_array($result1, SQLSRV_FETCH_ASSOC)) {
+              //  echo ("<a href='tag.php?tagId=" . $row['tagId'] . "&tagName=" . $row['tagName'] . "'>" . $row['tagName'] . "</a>");
+           // }
             ?>
         </div>
         <?php include "include/ad_long.php"; ?>
