@@ -43,10 +43,6 @@ if ($conn->connect_error) {
                     <option value="">-- Select Category --</option>
                     <option value="Academic">Academic</option>
                     <option value="Lifestyle">Lifestyle</option>
-                    <option value="Relationship">Relationship</option>
-                    <option value="Extracurricular">Extracurricular</option>
-                    <option value="Hobby">Hobby</option>
-                    <option value="Other">Other</option>
                     </select>
                     <br>
                     <br>
