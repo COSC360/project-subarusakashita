@@ -109,18 +109,7 @@ if (isset($_GET['articleTitle'])) {
     <?php include "include/footer.php"; ?> 
 
     <?php
-        if (isset($_SESSION['username'])) {
-
-            echo "<form method = processComment.php action='post'>
-                <fieldset>
-                    <label for='comment'>Comment</label>
-                <textarea id='comment' name='comment' rows='15' placeholder='Write acomment here'
-                    required></textarea>
-                <br>
-                <input type='submit' value='Post Comment'>
-                </fieldset> 
-            ";
-        }
+        include "write_comment.php";
     ?>
 </body>
 
