@@ -27,7 +27,7 @@ if (!$conn) {
 </head>
 
 <body>
-    <header><a href="main.php">UniChannel Blog</a></header>
+    <header><a href="main.php">UniChannel BlogUniChannel BlogUniChannel BlogUniChannel BlogUniChannel BlogUniChannel Blog</a></header>
     <div id=trail>
         <p><a href="main.php">Main Page</a></p>
     </div>
