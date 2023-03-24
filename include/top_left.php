@@ -27,11 +27,7 @@ echo ('
 </ul>'
 );
 
-echo ("<a href=\'#\'><img src=\'..ads/short/" . rand(1, 4) . ".png\' alt=\'Advertisement\'></a>");
-echo ("<a href=\'#\'><img src=\'..ads/short/" . rand(1, 4) . ".png\' alt=\'Advertisement\'></a>");
+echo ("<a href=\'#\'><img src=\'../ads/short/" . rand(1, 4) . ".png\' alt=\'Advertisement\'></a>");
+echo ("<a href=\'#\'><img src=\'../ads/short/" . rand(1, 4) . ".png\' alt=\'Advertisement\'></a>");
 echo ('</div>');
-$random="../long/".rand(1, 4).".png";
 ?>
-
-
-<img src="<?php echo $random?>">
