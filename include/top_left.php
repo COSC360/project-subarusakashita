@@ -6,11 +6,11 @@ echo ('
 <div id=top>
 ');
 
-// if (isset($_SESSION['username'])) {
-//     echo ('<a href="profile.php?username=' . $_SESSION['username'] . '>' . $_SESSION['username'] . '</a>');
-// } else {
-//     echo ('<a href="login.php">Log in</a>');
-// }
+if (isset($_SESSION['username'])) {
+    echo ('<a href="profile.php?username=' . $_SESSION['username'] . '">' . $_SESSION['username'] . '</a>');
+} else {
+    echo ('<a href="login.php">Log in</a>');
+}
 
 echo ('
 <form action="search.php" method="get">
