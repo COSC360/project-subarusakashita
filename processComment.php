@@ -1,5 +1,4 @@
 <?php
-    //session_start();
     $servername = "cosc360.ok.ubc.ca";
     $server_username = "83395822";
     $server_password = "83395822";
@@ -12,6 +11,7 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
+    session_start();
     //$username = $_SESSION('username');
     $articleId = $_POST['articleId'];
     //$comment = $_POST['comment'];
