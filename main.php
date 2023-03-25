@@ -21,7 +21,7 @@ if (!$conn) {
     <link rel="stylesheet" href="css/main.css">
     <?php
     if (!isset($_SESSION['username'])) {
-        echo '<script>alert("Please login! If you do not have an account, Make it!!")</script>';
+        echo '<script>alert("Please login! If you do not have an account, Make it!!");</script>';
     }
     ?>
 
