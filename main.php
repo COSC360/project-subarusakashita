@@ -1,5 +1,10 @@
 <?php
 session_start();
+if (!isset($_SESSION['username'])) {
+    // if not logged in
+    // pop-up to encourage log in
+    echo '<script>alert("Please login! If you do not have an account, Make it!!")</script>';
+}
 
 $servername = "cosc360.ok.ubc.ca";
 $server_username = "83395822";
@@ -19,12 +24,6 @@ if (!$conn) {
     <title>UniChannel | Main Page</title>
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/main.css">
-    <!-- <?php
-    if (!isset($_SESSION['username'])) {
-        echo '<script>alert("Please login! If you do not have an account, Make it!!");</script>';
-    }
-    ?> -->
-
 </head>
 
 <body>
@@ -39,11 +38,11 @@ if (!$conn) {
         <div id="tag">
             <?php
             //$sql1 = "SELECT tagId, tagName FROM Tags ORDER BY articleNumber LIMIT 10";
-            // $result1 = mysqli_query($conn, $sql1);
-            
+           // $result1 = mysqli_query($conn, $sql1);
+
             //while ($row = sqlsrv_fetch_array($result1, SQLSRV_FETCH_ASSOC)) {
-            //  echo ("<a href='tag.php?tagId=" . $row['tagId'] . "&tagName=" . $row['tagName'] . "'>" . $row['tagName'] . "</a>");
-            // }
+              //  echo ("<a href='tag.php?tagId=" . $row['tagId'] . "&tagName=" . $row['tagName'] . "'>" . $row['tagName'] . "</a>");
+           // }
             ?>
         </div>
         <?php include "include/ad_long.php"; ?>
@@ -53,7 +52,7 @@ if (!$conn) {
             <ul>
                 <?php
                 $sql2 = "SELECT articleId, articleTitle FROM Articles ORDER BY views LIMIT 6";
-                $result2 = mysqli_query($conn, $sql2);
+                $result2 = mysqli_query($conn, $sql2 );
                 while ($row = sqlsrv_fetch_array($result2, SQLSRV_FETCH_ASSOC)) {
                     echo ("<li><a href='article.php?articleId=" . $row['articleId'] . "&articleTitle=" . $row['articleTitle'] . "'>" . $row['articleTitle'] . "</a></li>");
                 }
