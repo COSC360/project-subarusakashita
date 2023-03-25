@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="css/default.css">
+<link rel="stylesheet" href="css/login.css">
+
 <?php
 session_start();
 
@@ -27,8 +30,8 @@ echo ('
 </ul>'
 );
 
-echo ('<a href="#"><img src="ads/short/' . rand(1,3) . '.png" alt="Advertisement"></a>');
-echo ('<a href="#"><img src="ads/short/' . rand(1,3) . '.png" alt="Advertisement"></a>');
+echo ('<a href="#"><img src="ads/short/' . rand(1, 3) . '.png" alt="Advertisement"></a>');
+echo ('<a href="#"><img src="ads/short/' . rand(1, 3) . '.png" alt="Advertisement"></a>');
 
 echo ('</div>');
 ?>
