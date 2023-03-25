@@ -60,6 +60,8 @@ session_start();
                     <br>
                     <input type="password" id="password_conf" name="password_conf" placeholder="Re-enter password" required>
                     <br>
+                    <input type="hidden" name="MAX_FILE_SIZE" value="5" />
+                    <input name="img" type="file" accept="image/*" />
                     <br>
                     <input type="submit" value="Sign up" />
                     <input type="reset" value="Reset" />
