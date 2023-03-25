@@ -13,13 +13,15 @@ if (!$conn) {
 $username = $_GET['rUsername'];
 $email = $_GET['rEmail'];
 $password = $_GET['rPassword'];
-// $phonenum = $_POST['phoneNum'];
-// $address = $_POST['address'];
 $password_conf = $_GET['password_conf'];
+
+//Validate password and confirmation password
 if ($password !== $password_conf) {
     // Passwords don't match, display error message
     $error = "Password and password confirmation do not match";
 } 
+
+//Validate User
 else{
 
     $sql = "SELECT * FROM users WHERE username='$username'";
@@ -30,6 +32,7 @@ if (mysqli_num_rows($result) > 0) {
         // Username already exists, display error message
         $error = "Username already exists. Num of rows: ".mysqli_num_rows($result). " Username: ".$username;
 }
+//Uploading to DB
 else{
     $sql1 = "INSERT INTO users(username, email, passwords) VALUES ('$username','$email','$password')";
         if (mysqli_query($conn, $sql1)) {
