@@ -4,6 +4,7 @@ session_start();
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>UniChannel | Login Page</title>
     <link rel="stylesheet" href="css/default.css">
@@ -15,8 +16,36 @@ session_start();
     <div id=trail>
         <p><a href="main.php">Main Page</a> > <a href="login.php">Login Page</a></p>
     </div>
-    <?php include "include/top_left.php"?>
-        <div id="right">
+    <!-- <?php include "include/top_left.php" ?> -->
+
+
+
+
+    <div id=top>
+        <a href=" login.php">Log in</a>
+        <form action="search.php" method="get">
+            <fieldset>
+                <input type="search" id="searchKeyword" name="searchKeyword" placeholder="Search Users and Articles">
+                <input type="submit" value="Search" />
+            </fieldset>
+        </form>
+    </div>
+    <div id="left">
+        <h2>Categories</h2>
+        <ul>
+            <li><a href="category.php?categoryId=1&categoryName=Academic">Academic</a></li>
+            <li><a href="category.php?categoryId=2&categoryName=Lifestyle">Lifestyle</a></li>
+        </ul>
+        <a href="#"><img src="ads/short/1.png" alt="Advertisement"></a>
+        <a href="#"><img src="ads/short/1.png" alt="Advertisement"></a>
+    </div>
+
+
+
+
+
+
+    <div id="right">
         <h2>Log in</h2>
         <div id="login">
             <form action="signin.php" method="post">
@@ -48,7 +77,7 @@ session_start();
                     <br>
                     <label for="email">Email:</label>
                     <br>
-                    <input type="email" id="rEmail"  name ='rEmail'placeholder="Enter email" required>
+                    <input type="email" id="rEmail" name='rEmail' placeholder="Enter email" required>
                     <br>
                     <br>
                     <label for="password">Password: </label>
@@ -58,7 +87,8 @@ session_start();
                     <br>
                     <label for="password_conf">Re-enter Password: </label>
                     <br>
-                    <input type="password" id="password_conf" name="password_conf" placeholder="Re-enter password" required>
+                    <input type="password" id="password_conf" name="password_conf" placeholder="Re-enter password"
+                        required>
                     <br>
                     <br>
                     <input type="submit" value="Sign up" />
@@ -67,7 +97,7 @@ session_start();
             </form>
         </div>
     </div>
-    <?php include "include/footer.php";?>
+    <?php include "include/footer.php"; ?>
 </body>
 
 </html>
