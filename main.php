@@ -3,7 +3,7 @@ session_start();
 if (!isset($_SESSION['username'])) {
     // if not logged in
     // pop-up to encourage log in
-    echo '<script>alert("Please login! If you do not have an account, Make it!!")</script>';
+    echo '<script>alert("Please login! If you do not have an account, Make it!!");</script>';
 }
 
 $servername = "cosc360.ok.ubc.ca";
