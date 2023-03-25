@@ -31,12 +31,12 @@ if (!$conn) {
     <div id=trail>
         <p><a href="main.php">Main Page</a></p>
     </div>
-    <!-- <?php include "include/top_left.php" ?> -->
+    <?php include "include/top_left.php" ?>
 
 
 
-    
-    <div id=top>
+
+    <!-- <div id=top>
         <a href=" login.php">Log in</a>
         <form action="search.php" method="get">
             <fieldset>
@@ -52,7 +52,7 @@ if (!$conn) {
             <li><a href="category.php?categoryId=2&categoryName=Lifestyle">Lifestyle</a></li>
         </ul>
         <a href="#"><img src="ads/short/1.png" alt="Advertisement"></a>
-        <a href="#"><img src="ads/short/1.png" alt="Advertisement"></a>
+        <a href="#"><img src="ads/short/1.png" alt="Advertisement"></a> -->
 
 
 
