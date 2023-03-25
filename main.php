@@ -19,11 +19,11 @@ if (!$conn) {
     <title>UniChannel | Main Page</title>
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/main.css">
-    <?php
+    <!-- <?php
     if (!isset($_SESSION['username'])) {
         echo '<script>alert("Please login! If you do not have an account, Make it!!");</script>';
     }
-    ?>
+    ?> -->
 
 </head>
 
