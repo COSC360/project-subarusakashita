@@ -37,7 +37,8 @@ if (!$conn) {
         <div id="tag">
             <?php
             $sql1 = "SELECT * FROM Tags ORDER BY articleNumber LIMIT 10";
-            $result1 = mysqli_query($conn, $sql1);
+            $sql2 = "SELECT * FROM Tags";
+            $result1 = mysqli_query($conn, $sql2);
 
             echo $sql1;
 
