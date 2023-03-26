@@ -44,14 +44,11 @@ if ($conn->connect_error) {
         <h2>My Info</h2>
 
         <?php
-        // connect to server
-        
         $session_username = $_SESSION['username'];
-        $sql = "SELECT * FROM users WHERE username = '$session_username'";
-        // echo $sql;
-        $sql2 = "SELECT * FROM users";
 
+        $sql = "SELECT * FROM users WHERE username = '$session_username'";
         $result = mysqli_query($conn, $sql);
+
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
                 echo ("<h3>Username: " . $row['username'] . "</h3><br>");
@@ -86,22 +83,29 @@ if ($conn->connect_error) {
         } else {
             echo "No rows";
         }
-
-        //close server connection
         ?>
 
         <?php include "include/ad_long.php"; ?>
         <h2>My Articles</h2>
 
         <?php
-        $sql2 = "SELECT articleId, articleTitle FROM Articles WHERE username = ?";
-        //connect
+        $session_username = $_SESSION['username'];
+        $sql2 = "SELECT articleId, articleTitle FROM Articles WHERE username = '$session_username'";
         
-        while ($row = sqlsrv_fetch_array($sql2, SQLSRV_FETCH_ASSOC, array($username))) {
-            echo ("<a href='$localhost/article.php?articleId=" . $row['articleId'] . ">" . $row['articleTitle'] . "</a><br>");
-        }
+        $result2 = mysqli_query($conn, $sql2);
 
-        // close connection
+        if (mysqli_num_rows($result2) > 0) {
+            while ($row = mysqli_fetch_assoc($result2)) {
+                echo ("<h3>" . $row['articleTitle'] . "</h3><br>");
+            }
+        } else {
+            echo "No rows";
+        }
+        // while ($row = sqlsrv_fetch_array($sql2, SQLSRV_FETCH_ASSOC, array($username))) {
+        //     echo ("<a href='$localhost/article.php?articleId=" . $row['articleId'] . ">" . $row['articleTitle'] . "</a><br>");
+        // }
+
+        mysqli_close($conn);
         ?>
 
     </div>
