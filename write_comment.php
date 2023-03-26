@@ -75,7 +75,7 @@ if (isset($_GET['articleId'])) {
             <form method="post" action="write_comment.php?articleId=<?php echo $articleId; ?>">
                 <!-- <textarea id="commentBody" name="commentBody" rows="5" cols="100" placeholder="Write Comment here"
                     required></textarea> -->
-                <input id="commentBody" name="commentBody" placeholder="Write comment here" required>
+                <input type="text" id="commentBody" name="commentBody" placeholder="Write comment here" required>
                 <br>
                 <br>
                 <input type="submit" value="Comment">
