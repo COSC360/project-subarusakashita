@@ -97,11 +97,11 @@ $user = $_SESSION['username'];
         mysqli_close($conn);
         ?>
     </div>
-    
+
     <?php
     include "include/footer.php";
-    include "showComment.php";
-    include "write_comment.php";
+    // include "showComment.php";
+    // include "write_comment.php";
     ?>
 
 </body>
