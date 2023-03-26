@@ -46,23 +46,23 @@ session_start();
                 <fieldset>
                     <label for="username">Username:</label>
                     <br>
-                    <input type="text" id="rUsername" name="rUsername" placeholder="Enter username" >
+                    <input type="text" id="rUsername" name="rUsername" placeholder="Enter username" required>
                     <br>
                     <br>
                     <label for="email">Email:</label>
                     <br>
-                    <input type="email" id="rEmail" name='rEmail' placeholder="Enter email" >
+                    <input type="email" id="rEmail" name='rEmail' placeholder="Enter email" required >
                     <br>
                     <br>
                     <label for="password">Password: </label>
                     <br>
-                    <input type="password" id="rPassword" name="rPassword" placeholder="Enter password" >
+                    <input type="password" id="rPassword" name="rPassword" placeholder="Enter password" required >
                     <br>
                     <br>
                     <label for="password_conf">Re-enter Password: </label>
                     <br>
                     <input type="password" id="password_conf" name="password_conf" placeholder="Re-enter password"
-                        >
+                      required  >
                     <br>
                     <!-- <input type="hidden" name="MAX_FILE_SIZE" value="5" />
                     <input name="img" type="file" accept="image/*" /> -->
@@ -72,7 +72,6 @@ session_start();
                     <p id="errormessage"></p>
                 </fieldset>
             </form>
-            <script src="js/register.js"></script>
         </div>
     </div>
     <?php include "include/footer.php"; ?>
