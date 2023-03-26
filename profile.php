@@ -89,7 +89,7 @@ if ($conn->connect_error) {
                 //username is unchangeable
         
                 echo ("<form action=\"profile.php?username=" . $_SESSION['username'] . "\" method=\"post\">");
-                //form open, submitted change will change the variables at very top of page
+                //form open, submitted change will change the variables above
         
                 echo ("<label for=\"emailNew\">Email</label><br>");
                 echo ("<input type=\"email\" id=\"emailNew\" name=\"emailNew\" placeholder=\"" . $row['email'] . "\"><br><br>");
@@ -108,11 +108,11 @@ if ($conn->connect_error) {
                 echo ("<input type=\"text\" id=\"postalCodeNew\" name=\"postalCodeNew\" placeholder=\"" . $row['postalCode'] . "\"><br><br>");
 
                 echo ("<input type=\"submit\" value='Save edits'>");
-                echo ("</form>");
+                echo ("</form><br><br>");
                 //close form
         
                 if ($row['isAdmin'] == true) {
-                    echo ("<br><br><a href=\"admin_control.php\">Admin Control Page</a><br>");
+                    echo ("<a href=\"admin_control.php\">Admin Control Page</a><br>");
                 }
 
                 // log out button
