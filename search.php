@@ -49,8 +49,8 @@ if (isset($_GET['searchKeyword'])) {
         if (mysqli_num_rows($result1) > 0) {
             while ($row = mysqli_fetch_assoc($result1)) {
                 $articleTitle = $row['articleTitle'];
-                $articleTitle = str_replace('\'', '%27', $articleTitle);
-                $articleTitle = str_replace(' ', '%20', $articleTitle);
+                // $articleTitle = str_replace('\'', '%27', $articleTitle);
+                // $articleTitle = str_replace(' ', '%20', $articleTitle);
                 echo ("<h3><a href='article.php?articleId=" . $row['articleId'] . "'>" . $articleTitle . "</a></h3>");
             }
         } else {
