@@ -46,29 +46,30 @@ session_start();
                 <fieldset>
                     <label for="username">Username:</label>
                     <br>
-                    <input type="text" id="rUsername" name="rUsername" placeholder="Enter username" required>
+                    <input type="text" id="rUsername" name="rUsername" placeholder="Enter username" >
                     <br>
                     <br>
                     <label for="email">Email:</label>
                     <br>
-                    <input type="email" id="rEmail" name='rEmail' placeholder="Enter email" required>
+                    <input type="email" id="rEmail" name='rEmail' placeholder="Enter email" >
                     <br>
                     <br>
                     <label for="password">Password: </label>
                     <br>
-                    <input type="password" id="rPassword" name="rPassword" placeholder="Enter password" required>
+                    <input type="password" id="rPassword" name="rPassword" placeholder="Enter password" >
                     <br>
                     <br>
                     <label for="password_conf">Re-enter Password: </label>
                     <br>
                     <input type="password" id="password_conf" name="password_conf" placeholder="Re-enter password"
-                        required>
+                        >
                     <br>
                     <!-- <input type="hidden" name="MAX_FILE_SIZE" value="5" />
                     <input name="img" type="file" accept="image/*" /> -->
                     <br>
                     <input type="submit" value="Sign up" />
                     <input type="reset" value="Reset" />
+                    <p id="error-message"></p>
                 </fieldset>
             </form>
         </div>
