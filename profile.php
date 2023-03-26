@@ -57,16 +57,16 @@ if ($conn->connect_error) {
         echo "2222222222" . $email . $address . $session_username. "<br>";
 
         // update info from form
-        if (isset($_POST['emailNew'])) {
+        if (!empty($_POST['emailNew'])) {
             $email = $_POST['emailNew'];
         }
-        if (isset($_POST['phoneNumNew'])) {
+        if (!empty($_POST['phoneNumNew'])) {
             $phoneNum = $_POST['phoneNumNew'];
         }
-        if (isset($_POST['addressNew'])) {
+        if (!empty($_POST['addressNew'])) {
             $address = $_POST['addressNew'];
         }
-        if (isset($_POST['postalCodeNew'])) {
+        if (!empty($_POST['postalCodeNew'])) {
             $postalCode = $_POST['postalCodeNew'];
         }
         $sql2 = "UPDATE TABLE users SET address='$address' WHERE username='$session_username'";
