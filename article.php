@@ -72,7 +72,7 @@ $user = $_SESSION['username'];
             echo ("<br><h2>Comments</h2>");
             if (mysqli_num_rows($result4) > 0) {
                 while ($row = mysqli_fetch_assoc($result4)) {
-                    echo ('<h3>' . $row["username"] . ' - ' . $row["commentBody"] . '</h3><br>');
+                    echo ('<h3>' . $row["username"] . ' - ' . $row["commentBody"] . '</h3>');
                 }
             }
             else {
