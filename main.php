@@ -54,7 +54,7 @@ if (!$conn) {
         <div id="article">
             <ol>
                 <?php
-                $sql2 = "SELECT articleId, articleTitle FROM Articles LIMIT 10";
+                $sql2 = "SELECT articleId, articleTitle FROM Articles ORDER BY views LIMIT 10";
                 $result2 = mysqli_query($conn, $sql2);
                 if (mysqli_num_rows($result2) > 0) {
                     while ($row = mysqli_fetch_assoc($result2)) {

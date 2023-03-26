@@ -45,11 +45,11 @@ if (isset($_GET['tagId'])) {
                 }
             }
 
-            $sql2 = "SELECT * FROM Articles WHERE tagId = '$tagId";
+            $sql2 = "SELECT * FROM Articles WHERE tagId = '$tagId' ORDER BY views LIMIT 10";
             $result2 = mysqli_query($conn, $sql2);
             if (mysqli_num_rows($result2) > 0) {
                 while ($row = mysqli_fetch_assoc($result2)) {
-                    echo ("<a href='article.php?articleId=" . $row['articleId'] . "'>" . $row['articleTitle'] . "</a>");
+                    echo ("<a href='article.php?articleId=" . $row['articleId'] . "'>" . $row['articleTitle'] . "</a><br>");
                 }
             }
 
