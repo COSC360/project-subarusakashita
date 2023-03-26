@@ -4,19 +4,19 @@
 | --- | --- |
 |Hand-styled layout with contextual menus| Done |
 |2 or 3 column layout using appropriate design principles |Done|
-|Form validation with JavaScript|   |
+|Form validation with JavaScript| Done  |
 |Server-side scripting with PHP | Done |
 | Data storage in MySQL| Done
 |Appropriate security for data| Done |
 | Site must maintain state (user state being logged on, etc) | Done |
 | Responsive design philosophy (minimum requirements for different non-mobile display sizes) | Done |
-| AJAX (or similar) utilization for asynchronous updates (meaning that if a discussion thread is updated, another user who is viewing the same thread will not have to refresh the page to see the update) | 
+| AJAX (or similar) utilization for asynchronous updates (meaning that if a discussion thread is updated, another user who is viewing the same thread will not have to refresh the page to see the update) | Not done |
 | User images (thumbnail) and profile stored in database | Not done |
 | Simple discussion (topics) grouping and display | Done |
 | Navigation breadcrumb strategy (i.e. user can determine where they are in threads) | Done |
 | Error handling (bad navigation) | Done |
 | Browse discussions without registering | Done |
-| Search for items/posts by keyword without registering | |
+| Search for items/posts by keyword without registering | Done |
 | Register at the site by providing their name, e-mail and image| Partially done |
 | Allow user login by providing user id and password| Done |
 | Create and comment (specific for each project) when logged into the site| Done |
