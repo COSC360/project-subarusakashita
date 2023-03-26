@@ -56,8 +56,8 @@ if (isset($_SESSION['username'])){
         <div id="comment">
             <form method="post" action="write_comment.php?articleId=<?php echo $articleId; ?>">
                 <fieldset>
-                    <textarea id="commentBody" name="commentBody" rows="5" placeholder="Write Comment for Article here"
-                        required></textarea>
+                    <textarea id="commentBody" name="commentBody" rows="5" cols="100" 
+                    placeholder="Write Comment here" required></textarea>
                     <br>
                     <br>
                     <input type="submit" value="Comment">
