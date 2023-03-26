@@ -54,6 +54,7 @@ if ($conn->connect_error) {
                 $postalCode = $row['postalCode'];
             }
         }
+        echo "2222222222" . $email . $address . $session_username. "<br>";
 
         // update info from form
         if (isset($_POST['emailNew'])) {
