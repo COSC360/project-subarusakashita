@@ -15,11 +15,11 @@ if (isset($_SESSION['username'])) {
     <title>UniChannel | Admin Control Page</title>
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/main.css">
-    <script>
-        img {
+    <style>
+        div#right img {
             width: 7%;
         }
-    </script>
+    </style>
 </head>
 
 <body>

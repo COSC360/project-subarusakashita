@@ -22,9 +22,9 @@ if ($conn->connect_error) {
 </head>
 
 <body>
-    <header><a href="main.html">UniChannel Blog</a></header>
+    <header><a href="main.php">UniChannel Blog</a></header>
     <div id=trail>
-        <p><a href="main.html">Main Page</a></p>
+        <p><a href="main.php">Main Page</a></p>
     </div>
     <?php include "include/top_left.php" ?>
     <div id="right">
