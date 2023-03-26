@@ -15,6 +15,11 @@ if (isset($_SESSION['username'])) {
     <title>UniChannel | Admin Control Page</title>
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/main.css">
+    <script>
+        div#right img {
+            width: 7%;
+        }
+    </script>
 </head>
 
 <body>
@@ -38,7 +43,7 @@ if (isset($_SESSION['username'])) {
             die("Connection failed: " . $conn->connect_error);
         }
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        $sql1 = "SELECT * FROM Users";
+        $sql1 = "SELECT * FROM users";
         $result1 = mysqli_query($conn, $sql1);
 
         echo ("<h3>Users</h3><br>");
