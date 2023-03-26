@@ -1,18 +1,13 @@
-<?php
-// Check if form was submitted
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  // Get form data
-  $formName = $_POST['formName'];
-  $formPath = $_FILES['formFile']['tmp_name'];
-  $formType = $_FILES['formFile']['type'];
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Gallery</title>
+</head>
+<body>
+  <h1>Image Gallery</h1>
   
-  // Check if file is an image
-  $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
-  if (!in_array($formType, $allowedTypes)) {
-    die('Error: File must be an image (JPEG, PNG, or GIF)');
-  }
-  
-  // Insert form name and path into database
+  <?php
+  // Connect to database
   $servername = "cosc360.ok.ubc.ca";
   $username = "83395822";
   $password = "83395822";
@@ -23,32 +18,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     die("Connection failed: " . $conn->connect_error);
   }
   
-  $sql = "INSERT INTO images (file_name, file_path) VALUES ('$formName', '$formPath')";
-  if ($conn->query($sql) === TRUE) {
-    echo "Form submitted successfully";
+  // Insert form data into database
+  if (isset($_POST['submit'])) {
+    $filename = $_FILES['image']['name'];
+    $filepath = $_FILES['image']['tmp_name'];
+    $destination = "uploads/" . $filename;
+    
+    if (!empty($filename)) {
+      if (move_uploaded_file($filepath, $destination)) {
+        $sql = "INSERT INTO images (file_name, file_path) VALUES ('$filename', '$destination')";
+        if ($conn->query($sql) === TRUE) {
+          echo "<p>Image uploaded successfully</p>";
+        } else {
+          echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+      } else {
+        echo "<p>There was an error uploading the file</p>";
+      }
+    } else {
+      echo "<p>Please select an image to upload</p>";
+    }
+  }
+  
+  // Display images from database
+  $sql = "SELECT id, file_name, file_path FROM images";
+  $result = $conn->query($sql);
+  
+  if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+      $id = $row['id'];
+      $filename = $row['file_name'];
+      $filepath = $row['file_path'];
+      echo "<div>";
+      echo "<img src=\"$filepath\" alt=\"$filename\">";
+      echo "<p>$filename</p>";
+      echo "</div>";
+    }
   } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "<p>No images found</p>";
   }
   
   $conn->close();
-}
-?>
-
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Upload Form</title>
-</head>
-<body>
-  <h1>Upload Form</h1>
+  ?>
+  
   <form method="post" enctype="multipart/form-data">
-    <label for="formName">Form Name:</label>
-    <input type="text" name="formName" required>
-    <br>
-    <label for="formFile">Select an image file:</label>
-    <input type="file" name="formFile" accept="image/*" required>
-    <br>
-    <input type="submit" value="Submit">
+    <input type="file" name="image">
+    <input type="submit" name="submit" value="Upload">
   </form>
 </body>
 </html>
