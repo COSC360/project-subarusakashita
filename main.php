@@ -33,7 +33,6 @@ if (!$conn) {
             overflow-x: scroll;
             overflow-y: hidden;
             height: 8em;
-            margin: 2em 0em 0em 0em;
         }
 
         div#tag a {
@@ -42,7 +41,7 @@ if (!$conn) {
             border: 0.2em solid blue;
             border-radius: 1em;
             padding: 0.5em;
-            margin: 0em 1em 0em 0em;
+            margin: 10em 1em 0em 0em;
             background-color: blue;
             color: gold;
         }
