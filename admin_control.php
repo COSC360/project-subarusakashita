@@ -17,7 +17,7 @@ if (isset($_SESSION['username'])) {
     <link rel="stylesheet" href="css/main.css">
     <style>
         div#right img {
-            width: 7%;
+            height: 10em;
         }
     </style>
 </head>

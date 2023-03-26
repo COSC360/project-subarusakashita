@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (isset($_SESSION['username'])){
+    $username = $_SESSION['username'];
+}
 $servername = "cosc360.ok.ubc.ca";
 $server_username = "83395822";
 $server_password = "83395822";
@@ -24,7 +27,11 @@ if ($conn->connect_error) {
 <body>
     <header><a href="main.php">UniChannel Blog</a></header>
     <div id=trail>
-        <p><a href="main.php">Main Page</a></p>
+        <p>
+            <a href="main.php">Main Page</a> >
+            <a href="profile.php? <?php echo ($username) ?>">Profile Page</a> >
+            <a href="write_article.php">Write Article Page</a>
+        </p>
     </div>
     <?php include "include/top_left.php" ?>
     <div id="right">
@@ -56,7 +63,7 @@ if ($conn->connect_error) {
                     <?php include "include/ad_long.php"; ?>
 
                     <label for="newArticleBody">Article body</label>
-                    <textarea id="newArticleBody" name="newArticleBody" rows="15" placeholder="Write article body here"
+                    <textarea id="newArticleBody" name="newArticleBody" rows="5" cols="100" placeholder="Write article body here"
                         required></textarea>
                     <br>
                     <br>
