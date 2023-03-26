@@ -47,41 +47,44 @@ if ($conn->connect_error) {
         echo ("<h3>1</h3><br>");
         // connect to server
         
-        $sql = "SELECT * FROM users WHERE username = ?";
-        $result = mysqli_query($conn, $sql);
-        
-        while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC, array($_SESSION['username']))) {
-            echo ("<h3>2 </h3><br>");
-            echo ("<h3>Username: " . $_SESSION['username'] . "</h3><br>");
-            //username is unchangeable
-        
-            // echo ("<form action=\"profile.php?username=" . $_SESSION['username'] . "\" method=\"post\">");
-            // //form open, submitted change will change the variables at very top of page
-        
-            // echo ("<label for=\"emailNew\">Email</label><br>");
-            // echo ("<input type=\"email\" id=\"emailNew\" name=\"emailNew\" placeholder=\"" . $row['email'] . "\"><br><br>");
-            // //current email in placeholder, email will update when typed into the input
-        
-            // echo ("<label for=\"phoneNumNew\">Phone number</label><br>");
-            // echo ("<input type=\"tel\" id=\"phoneNumNew\" name=\"phoneNumNew\" placeholder=\"" . $row['phoneNum'] . "\"><br><br>");
-
-            // echo ("<label for=\"addressNew\">Address</label><br>");
-            // echo ("<input type=\"text\" id=\"addressNew\" name=\"addressNew\" placeholder=\"" . $row['address'] . "\"><br><br>");
-
-            // echo ("<label for=\"postalCodeNew\">Postal Code</label><br>");
-            // echo ("<input type=\"text\" id=\"postalCodeNew\" name=\"postalCodeNew\" placeholder=\"" . $row['postalCode'] . "\"><br><br>");
-
-            // echo ("</form>");
-            // //close form
-        
-            // if ($row['isAdmin'] == true) {
-            //     echo ("<a href=\"adminControl.php\">Admin Control Page</a>");
-            // }
-
-            // // log out button
-            // echo ("<a href=\"logout.php\">Log Out</a>");
+        // $sql = "SELECT * FROM users WHERE username = ?";
+        // $result = mysqli_query($conn, $sql);
+        if ($result = $conn->query("SELECT * FROM users WHERE username = ?")) {
+            echo ("1");
         }
 
+        // while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC, array($_SESSION['username']))) {
+        //     echo ("<h3>2 </h3><br>");
+        //     echo ("<h3>Username: " . $_SESSION['username'] . "</h3><br>");
+        //username is unchangeable
+        
+        // echo ("<form action=\"profile.php?username=" . $_SESSION['username'] . "\" method=\"post\">");
+        // //form open, submitted change will change the variables at very top of page
+        
+        // echo ("<label for=\"emailNew\">Email</label><br>");
+        // echo ("<input type=\"email\" id=\"emailNew\" name=\"emailNew\" placeholder=\"" . $row['email'] . "\"><br><br>");
+        // //current email in placeholder, email will update when typed into the input
+        
+        // echo ("<label for=\"phoneNumNew\">Phone number</label><br>");
+        // echo ("<input type=\"tel\" id=\"phoneNumNew\" name=\"phoneNumNew\" placeholder=\"" . $row['phoneNum'] . "\"><br><br>");
+        
+        // echo ("<label for=\"addressNew\">Address</label><br>");
+        // echo ("<input type=\"text\" id=\"addressNew\" name=\"addressNew\" placeholder=\"" . $row['address'] . "\"><br><br>");
+        
+        // echo ("<label for=\"postalCodeNew\">Postal Code</label><br>");
+        // echo ("<input type=\"text\" id=\"postalCodeNew\" name=\"postalCodeNew\" placeholder=\"" . $row['postalCode'] . "\"><br><br>");
+        
+        // echo ("</form>");
+        // //close form
+        
+        // if ($row['isAdmin'] == true) {
+        //     echo ("<a href=\"adminControl.php\">Admin Control Page</a>");
+        // }
+        
+        // // log out button
+        // echo ("<a href=\"logout.php\">Log Out</a>");
+        // }
+        
         //close server connection
         ?>
 
