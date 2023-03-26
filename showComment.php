@@ -7,7 +7,7 @@
            
         }
     } else {
-        echo "No comments. Comment!!".<br>;
+        echo "No comments. Comment!!";
         echo $articleId;
     }
     
