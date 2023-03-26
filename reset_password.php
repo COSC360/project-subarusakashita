@@ -34,7 +34,7 @@ if ($conn->connect_error) {
             <form method="post" action="reset_password.php">
                 <fieldset>
                     <label for="recoverUser">Username:</label>
-                    <input type="text" id="recoverUser" placeholder="Enter username" required>
+                    <input type="text" id="recoverUser" name="recoverUser" placeholder="Enter username" required>
                     <br>
                     <br>
                     <input type="submit" value="Reset Password" />
@@ -44,6 +44,8 @@ if ($conn->connect_error) {
         <?php include "include/ad_long.php"; ?>
         <?php
         if (isset($_POST['recoverUser'])) {
+            $recoverUser = $_POST['recoverUser'];
+            
             $passwordParts = [
                 "a",
                 "b",
@@ -90,7 +92,6 @@ if ($conn->connect_error) {
             
             echo $newPassword;
 
-            $recoverUser = $_POST['recoverUser'];
             $sql2 = "UPDATE users SET password = '$newPassword' WHERE username = '$recoverUser'";
             if (mysqli_query($conn, $sql2)) {
                 echo '<script>alert("Password updated");</script>';
