@@ -28,15 +28,13 @@ if (isset($_GET['tagId'])) {
 <body>
     <header><a href="main.php">UniChannel Blog</a></header>
     <div id=trail>
-        <p><a href="main.php">Main Page</a> > <a href='tag.php <?php echo ("?tagId=" . $tagId . "&tagName=" . $tagName . "'>" . $tagName); ?></a></p>
+        <p><a href="main.php">Main Page</a> > <a href='tag.php?tagId= <?php $tagId ?>'>Tag Page</a></p>
     </div>
     <?php include "include/top_left.php" ?>
 
     <div id="right">
         <?php
         if (isset($_GET['tagId'])) {
-            $tagId = $_GET['tagId'];
-
             $sql1 = "SELECT tagName FROM Tags WHERE tagId = '$tagId'";
             $result1 = mysqli_query($conn, $sql1);
             if (mysqli_num_rows($result1) > 0) {
@@ -51,7 +49,7 @@ if (isset($_GET['tagId'])) {
             $result2 = mysqli_query($conn, $sql2);
             if (mysqli_num_rows($result2) > 0) {
                 while ($row = mysqli_fetch_assoc($result2)) {
-                    echo ("<a href='article.php?articleId=" . $row['articleId'] . "'>" . $row['articleTitle'] . "</a><br>");
+                    echo ("<h3><a href='article.php?articleId=" . $row['articleId'] . "'>" . $row['articleTitle'] . "</a></h3><br>");
                 }
             }
 
