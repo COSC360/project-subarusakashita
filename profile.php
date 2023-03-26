@@ -1,7 +1,6 @@
 <?php
-// include 
-// database info
 session_start();
+
 $servername = "cosc360.ok.ubc.ca";
 $server_username = "83395822";
 $server_password = "83395822";
@@ -12,10 +11,6 @@ $conn = new mysqli($servername, $server_username, $server_password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-// if (isset($_GET['username'])) {
-//     $username = $_GET['username'];
-// }
-
 // if (isset($_POST['emailNew'])) {
 //     $email = $_POST['emailNew'];
 // }
@@ -52,13 +47,13 @@ if ($conn->connect_error) {
         // connect to server
         
         $sql = "SELECT * FROM Users WHERE username = ?";
-        //connect sql
+        $result = mysqli_query($conn, $sql);
         
-        while ($row = sqlsrv_fetch_array($sql, SQLSRV_FETCH_ASSOC, array($username))) {
-            echo ("<h3>Username: " . $username . "</h3><br>");
+        while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC, array($_SESSION['username']))) {
+            echo ("<h3>Username: " . $_SESSION['username'] . "</h3><br>");
             //username is unchangeable
         
-            echo ("<form action=\"profile.php?username=" . $username . "\" method=\"post\">");
+            echo ("<form action=\"profile.php?username=" . $_SESSION['username'] . "\" method=\"post\">");
             //form open, submitted change will change the variables at very top of page
         
             echo ("<label for=\"emailNew\">Email</label><br>");

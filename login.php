@@ -17,34 +17,6 @@ session_start();
         <p><a href="main.php">Main Page</a> > <a href="login.php">Login Page</a></p>
     </div>
     <?php include "include/top_left.php" ?>
-
-
-
-
-    <!-- <div id=top>
-        <a href=" login.php">Log in</a>
-        <form action="search.php" method="get">
-            <fieldset>
-                <input type="search" id="searchKeyword" name="searchKeyword" placeholder="Search Users and Articles">
-                <input type="submit" value="Search" />
-            </fieldset>
-        </form>
-    </div>
-    <div id="left">
-        <h2>Categories</h2>
-        <ul>
-            <li><a href="category.php?categoryId=1&categoryName=Academic">Academic</a></li>
-            <li><a href="category.php?categoryId=2&categoryName=Lifestyle">Lifestyle</a></li>
-        </ul>
-        <a href="#"><img src="ads/short/1.png" alt="Advertisement"></a>
-        <a href="#"><img src="ads/short/1.png" alt="Advertisement"></a>
-    </div> -->
-
-
-
-
-
-
     <div id="right">
         <h2>Log in</h2>
         <div id="login">
