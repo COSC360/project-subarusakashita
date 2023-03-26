@@ -19,7 +19,7 @@
    // echo $comment;
    // echo $articleId;
    // echo $username;
-    $sql = "INSERT INTO Comments(username, articleId, commentBody) VALUES('$username','$articleId','$comment')";
+    $sql = "INSERT INTO Comments(username, articleId, commentBody) VALUES('$username',$articleId,'$comment')";
     if (mysqli_query($conn, $sql)) {
         echo '<script>alert("Comment Uploaded")</script>';
         header("Location: main.php");
