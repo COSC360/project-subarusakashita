@@ -3,6 +3,7 @@ div#right {
     margin: 0em 5em 0em 25em;
     padding: 1em;
     height: 70em;
+    background-color: black;
 }
 
 #content {
@@ -33,7 +34,7 @@ div#tag a {
     white-space: nowrap;
     background-color: blue; */
 
-    
+
     text-decoration: none;
     border: 0.2em solid blue;
     border-radius: 1em;
