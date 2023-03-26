@@ -25,9 +25,9 @@ if (isset($_GET['tagName'])) {
 <html>
 
 <head>
-    <title>UniChannel | Article Page</title>
-    <link rel="stylesheet" href="../css/default.css">
-    <link rel="stylesheet" href="../css/article.css">
+    <title>UniChannel | Tag Page</title>
+    <link rel="stylesheet" href="css/default.css">
+    <link rel="stylesheet" href="css/article.css">
 </head>
 
 <body>
