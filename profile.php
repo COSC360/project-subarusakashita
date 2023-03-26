@@ -70,6 +70,7 @@ if ($conn->connect_error) {
                 echo ("<label for=\"postalCodeNew\">Postal Code</label><br>");
                 echo ("<input type=\"text\" id=\"postalCodeNew\" name=\"postalCodeNew\" placeholder=\"" . $row['postalCode'] . "\"><br><br>");
 
+                echo ("<input type=\"submit\" value='Edit Info'>");
                 echo ("</form>");
                 //close form
         

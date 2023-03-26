@@ -73,7 +73,7 @@ if (isset($_SESSION['username'])) {
                     <td>
                         <form method='post' action='admin_control.php'>
                             <input type='checkbox' id='userDisabled' name='userDisabled' checked='" . $disabled . "'>
-                            </input>
+                            <input type='submit' value='Save'>
                         </form>
                     </td>
                 </tr>
@@ -118,7 +118,7 @@ if (isset($_SESSION['username'])) {
                     <td>
                         <form method='post' action='admin_control.php'>
                             <input type='checkbox' id='artDisabled' name='artDisabled' checked='" . $disabled . "'>
-                            </input>
+                            <input type='submit' value='Save'>
                         </form>
                     </td>
                 </tr>
@@ -148,6 +148,7 @@ if (isset($_SESSION['username'])) {
             <form method='post' action='admin_control.php'>
                 <input type='checkbox' id='adDisabled' name='adDisabled' checked='" . $disabled . "'>
                 </input>
+                <input type='submit' value='Save'>
             </form>");
             }
         }
