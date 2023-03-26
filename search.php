@@ -50,7 +50,8 @@ if (isset($_GET['searchKeyword'])) {
             while ($row = mysqli_fetch_assoc($result1)) {
                 // $articleTitle = str_replace('\'', '%27', $art['articleTitle']);
                 // $articleTitle = str_replace(' ', '%20', $art['articleTitle']);
-                echo ("<h3><a href='article.php?articleId=" . $row['articleId'] . "'>" . $articleTitle . "</a></h3>");
+                echo ("000000000000");
+                echo ("<h3><a href='article.php?articleId=" . $row['articleId'] . "'>" . $row['articleTitle'] . "</a></h3>");
             }
         } else {
             echo ("<h3>No results found</h3>");
