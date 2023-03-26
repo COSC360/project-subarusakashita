@@ -1,57 +1,30 @@
 <?php
-require_once "./dbc.php";
-$files = getAllFile();
+if (isset($_POST['submit'])) {
+  $image = $_FILES['image'];
 
+  // Check if file is an image
+  $fileType = strtolower(pathinfo($image['name'], PATHINFO_EXTENSION));
+  if (!in_array($fileType, array('jpg', 'jpeg', 'png', 'gif'))) {
+    die("File is not an image.");
+  }
+  
+  // Generate unique file name
+  $fileName = uniqid() . '.' . $fileType;
+
+  // Set upload directory
+  $uploadDir = "uploads/";
+  
+  // Move file to upload directory
+  if (!move_uploaded_file($image['tmp_name'], $uploadDir . $fileName)) {
+    die("Error uploading file.");
+  }
+  
+  echo "File uploaded successfully!";
+}
 ?>
 
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>アップロードフォーム</title>
-  </head>
-  <style>
-    body {
-      padding: 30px;
-      margin: 0 auto;
-      width: 50%;
-    }
-    textarea {
-      width: 98%;
-      height: 60px;
-    }
-    .file-up {
-      margin-bottom: 10px;
-    }
-    .submit {
-      text-align: right;
-    }
-    .btn {
-      display: inline-block;
-      border-radius: 3px;
-      font-size: 18px;
-      background: #67c5ff;
-      border: 2px solid #67c5ff;
-      padding: 5px 10px;
-      color: #fff;
-      cursor: pointer;
-    }
-  </style>
-  <body>
-    <form enctype="multipart/form-data" action="processFile.php" method="POST">
-      <div class="file-up">
-        <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
-        <input name="img" type="file" accept="image/*" />
-      </div>
-      <div class="submit">
-        <input type="submit" value="送信" class="btn" />
-      </div>
-    </form>
-    <div>
-      <?php foreach($files as $file): ?>
-        <img src="<?php echo "{$file['file_path']}"; ?>" alt="">
-      <?php endforeach; ?>
-    </div>
-  </body>
-</html>
+<form method="post" enctype="multipart/form-data">
+  <label>Select image to upload:</label>
+  <input type="file" name="image">
+  <button type="submit" name="submit">Upload</button>
+</form>

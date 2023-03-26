@@ -7,10 +7,10 @@ $filename = basename($file['name']);
 $tmp_path = $file['tmp_name'];
 $file_err = $file['error'];
 $filesize = $file['size'];
-$upload_dir = 'uploads/';
-$save_filename = date('YmdHis') . $filename;
+$upload_dir = 'uploads';
+// $save_filename = date('YmdHis') . $filename;
 $err_msgs = array();
-$save_path = $upload_dir . $save_filename;
+$save_path = $upload_dir . $filename;
 
 // ファイルのバリデーション
 // ファイルサイズが1MB未満か
@@ -34,19 +34,28 @@ if (count($err_msgs) === 0) {
       // DBに保存(ファイル名、ファイルパス、キャプション)
       $result = fileSave($filename, $save_path);
 
-      if ($result) {
+      if ($result) 
+      {
         echo 'データベースに保存しました！';
-      } else {
+      } 
+      else 
+      {
         echo 'データベースへの保存が失敗しました！';
       }
-    } else {
+    } 
+    else 
+    {
       echo 'ファイルが保存できませんでした。';
     }
-  } else {
+  } 
+  else 
+  {
     echo 'ファイルが選択されていません。';
     echo '<br>';
   }
-} else {
+} 
+else 
+{
   foreach ($err_msgs as $msg) {
     echo $msg;
     echo '<br>';
