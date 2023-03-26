@@ -68,7 +68,7 @@ $user = $_SESSION['username'];
             $sql4 = "SELECT * FROM Comments WHERE articleId = '$articleId'";
             $result4 = mysqli_query($conn, $sql4);
             echo ("<br><h2>Comments</h2>");
-            echo ("<h3><a href='write_comment.php?articleId=" . $articleId . "'>[Post new comment]</a></h3>");
+            //echo ("<h3><a href='write_comment.php?articleId=" . $articleId . "'>[Post new comment]</a></h3>");
             if (mysqli_num_rows($result4) > 0) {
                 while ($row = mysqli_fetch_assoc($result4)) {
                     echo ('<h3>' . $row["username"] . ' - ' . $row["commentBody"] . '</h3>');
@@ -78,6 +78,21 @@ $user = $_SESSION['username'];
             }
 
 
+            // Write Comment
+            if (isset($_SESSION['username'])) {
+                // if not logged in
+                // pop-up to encourage log in
+                echo '<form action ="writecomment.php" method = "post"
+                      <input type="text" id="commentBody" name="commentBody" placeholder="Write comment here" required>
+                      <input type = "hidden" name = "username" value = '$user'>
+                      <input type = "hidden" name = "articleId" value = '$articleId'>
+                      <br>
+                      <br>
+                      <input type="submit" value="Comment">
+                
+                ';
+            }
+            
             // Related articles
             $sql5 = "SELECT * FROM Articles WHERE categoryId = '$categoryId' ORDER BY views LIMIT 3";
             $result5 = mysqli_query($conn, $sql5);
