@@ -3,6 +3,7 @@ div#right {
     margin: 0em 5em 0em 25em;
     padding: 1em;
     height: 70em;
+    overflow: scroll;
 }
 
 #content {
@@ -21,27 +22,7 @@ div#right {
 
 }
 
-div#tag {
-    /* background-color: blue; */
-}
 
-div#tag a {
-    /* margin: 5em 1em 5em 1em;
-    
-    
-    width: 100%;
-    white-space: nowrap;
-    background-color: blue; */
-    overflow: scroll;
-    font-size: 2em;
-    text-decoration: none;
-    border: 0.2em solid blue;
-    border-radius: 1em;
-    padding: 0.5em;
-    margin: 0em 1em 0em 0em;
-    background-color: blue;
-    color: gold;
-}
 
 div#right img {
     display: block;
@@ -55,4 +36,8 @@ div#right img {
 div#right div#article ol {
     font-size: 2em;
     line-height: 2em;
+}
+
+div#right h3 {
+    font-size: 2em;
 }

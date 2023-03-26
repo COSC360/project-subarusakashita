@@ -24,6 +24,27 @@ if (!$conn) {
     <title>UniChannel | Main Page</title>
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/main.css">
+    <style>
+        div#right {
+            overflow: hidden;
+        }
+
+        div#tag {
+            overflow-x: scroll;
+            overflow-y: hidden;
+        }
+
+        div#tag a {
+            font-size: 2em;
+            text-decoration: none;
+            border: 0.2em solid blue;
+            border-radius: 1em;
+            padding: 0.5em;
+            margin: 0em 1em 0em 0em;
+            background-color: blue;
+            color: gold;
+        }
+    </style>
 </head>
 
 <body>
@@ -36,12 +57,12 @@ if (!$conn) {
         <h2>Trending Tags</h2>
         <div id="tag">
             <?php
-            $sql1 = "SELECT * FROM Tags ORDER BY articleNumber LIMIT 10";
+            $sql1 = "SELECT * FROM Tags ORDER BY articleNumber DESC LIMIT 10";
             $result1 = mysqli_query($conn, $sql1);
 
             if (mysqli_num_rows($result1) > 0) {
                 while ($row = mysqli_fetch_assoc($result1)) {
-                    echo ("<a href='tag.php?tagId=" . $row['tagId'] . "'>" . $row['tagName'] . "</a>&nbsp&nbsp");
+                    echo ("<a href='tag.php?tagId=" . $row['tagId'] . "'>" . $row['tagName'] . "</a>");
                 }
             } else {
                 echo "no rows";
@@ -54,7 +75,7 @@ if (!$conn) {
         <div id="article">
             <ol>
                 <?php
-                $sql2 = "SELECT articleId, articleTitle FROM Articles ORDER BY views DESC LIMIT 10";
+                $sql2 = "SELECT articleId, articleTitle FROM Articles ORDER BY views DESC LIMIT 8";
                 $result2 = mysqli_query($conn, $sql2);
                 if (mysqli_num_rows($result2) > 0) {
                     while ($row = mysqli_fetch_assoc($result2)) {
