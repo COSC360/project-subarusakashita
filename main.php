@@ -25,7 +25,28 @@ if (!$conn) {
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/main.css">
     <style>
-        
+        /* div#right {
+            overflow: hidden;
+        } */
+
+        div#tag {
+            overflow-x: scroll;
+            overflow-y: hidden;
+            height: 8em;
+            /* position: absolute;
+            top: 50%; */
+        }
+
+        div#tag a {
+            font-size: 2em;
+            text-decoration: none;
+            border: 0.2em solid blue;
+            border-radius: 1em;
+            padding: 0.5em;
+            margin: 0em 1em 0em 0em;
+            background-color: blue;
+            color: gold;
+        }
     </style>
 </head>
 
