@@ -3,6 +3,7 @@ div#right {
     margin: 0em 5em 0em 25em;
     padding: 1em;
     height: 70em;
+    overflow: scroll;
 }
 
 div#right img {
@@ -13,10 +14,12 @@ div#right img {
     width: 70%;
     box-shadow: 0.1em 0.1em 0.1em 0.1em;
 }
+
 h3 {
     font-size: 1.7em;
     color: black;
 }
-div#right p{
+
+div#right p {
     font-size: 1.5em;
 }
