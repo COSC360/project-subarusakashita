@@ -21,7 +21,7 @@ if (isset($_GET['searchKeyword'])) {
 <html>
 
 <head>
-    <title>UniChannel | <?php echo($searchKeyword);?> </title>
+    <title>UniChannel | Search Page</title>
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
@@ -29,10 +29,13 @@ if (isset($_GET['searchKeyword'])) {
 <body>
     <header><a href="main.php">UniChannel Blog</a></header>
     <div id=trail>
-        <p><a href="main.php">Main Page</a> > <a href="search.php?searchKeyword= <?php echo($searchKeyword)?> "></p>
+        <p>
+            <a href="main.php">Main Page</a> >
+            <a href="search.php?searchKeyword= <?php echo ($searchKeyword) ?>">Search Page</a>">
+        </p>
     </div>
-    <?php include "include/top_left.php"?>
-    
+    <?php include "include/top_left.php" ?>
+
     <div id="right">
         <h2>Search Result</h2>
         <?php
@@ -53,7 +56,7 @@ if (isset($_GET['searchKeyword'])) {
         ?>
 
     </div>
-    <?php include "include/footer.php"?>
+    <?php include "include/footer.php" ?>
 </body>
 
 </html>

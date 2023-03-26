@@ -49,7 +49,6 @@ if (isset($_GET['articleId'])) {
         }
 
         if (isset($_POST['commentBody'])) {
-            $commentBody = '';
             $commentBody = $_POST['commentBody'];
             $commentingUser = '';
             if (isset($_SESSION['username'])) {
