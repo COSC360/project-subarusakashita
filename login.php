@@ -9,6 +9,7 @@ session_start();
     <title>UniChannel | Login Page</title>
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/login.css">
+    <script src="comment.js"></script>
 </head>
 
 <body>
@@ -20,16 +21,16 @@ session_start();
     <div id="right">
         <h2>Log in</h2>
         <div id="login">
-            <form action="signin.php" method="post">
+            <form id = "loginform"action="signin.php" method="post">
                 <fieldset>
                     <label for="username">Username:</label>
                     <br>
-                    <input type="text" id="username" name="username" placeholder="Enter email" required>
+                    <input type="text" id="username" name="username" placeholder="Enter username" >
                     <br>
                     <br>
                     <label for="password">Password: </label>
                     <br>
-                    <input type="password" id="password" name="password" placeholder="Enter password" required>
+                    <input type="password" id="password" name="password" placeholder="Enter password" >
                     <br>
                     <br>
                     <input type="submit" value="Log in" />
