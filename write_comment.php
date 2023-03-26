@@ -37,7 +37,7 @@ if (isset($_SESSION['username'])){
     <div id=trail>
         <p>
             <a href="main.php">Main Page</a> >
-            <a href="article.php?articleId= <?php echo $articleId; ?> ">Article Page</a> >
+            <a href="article.php?articleId=<?php echo $articleId; ?>">Article Page</a> >
             <a href="write_comment.php">Commenting</a>
         </p>
     </div>
