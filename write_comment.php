@@ -16,10 +16,6 @@ if (isset($_GET['articleId'])) {
     $articleId = $_GET['articleId'];
 }
 
-$commentingUser = "";
-if (isset($_SESSION['username'])){
-    $commentingUser = $_SESSION['username'];
-}
 ?>
 
 
@@ -56,8 +52,8 @@ if (isset($_SESSION['username'])){
         <div id="comment">
             <form method="post" action="write_comment.php?articleId=<?php echo $articleId; ?>">
                 <fieldset>
-                    <textarea id="commentBody" name="commentBody" rows="5" cols="100" 
-                    placeholder="Write Comment here" required></textarea>
+                    <textarea id="commentBody" name="commentBody" rows="5" cols="100" placeholder="Write Comment here"
+                        required></textarea>
                     <br>
                     <br>
                     <input type="submit" value="Comment">
@@ -66,8 +62,13 @@ if (isset($_SESSION['username'])){
             <?php
             if (isset($_POST['commentBody'])) {
                 // leave out commentId because it is auto increment
-
+            
                 $commentBody = $_POST['commentBody'];
+                $commentingUser = "";
+                if (isset($_SESSION['username'])) {
+                    $commentingUser = $_SESSION['username'];
+                }
+
                 $sql2 = "INSERT INTO Comments (username, articleId, commentBody) VALUES ($commentingUser, $articleId, $commentBody)";
                 if (mysqli_query($conn, $sql2)) {
                     echo '<script>alert("Comment posted!");</script>';
