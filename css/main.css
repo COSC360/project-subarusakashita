@@ -33,6 +33,8 @@ div#tag a {
     white-space: nowrap;
     background-color: blue; */
 
+    
+    text-decoration: none;
     border: 0.2em solid blue;
     border-radius: 1em;
     padding: 0.5em;
