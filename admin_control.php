@@ -16,7 +16,7 @@ if (isset($_SESSION['username'])) {
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/main.css">
     <script>
-        div#right img {
+        img {
             width: 7%;
         }
     </script>
@@ -46,7 +46,7 @@ if (isset($_SESSION['username'])) {
         $sql1 = "SELECT * FROM users";
         $result1 = mysqli_query($conn, $sql1);
 
-        echo ("<h3>Users</h3><br>");
+        echo ("<h2>Users</h2>");
         echo ("
             <table>
                 <tr>
@@ -99,7 +99,7 @@ if (isset($_SESSION['username'])) {
             $disabled = $row['isDisabled'];
         }
 
-        echo ("<h3>Articles</h3><br>");
+        echo ("<h2>Articles</h2>");
         echo ("
             <table>
                 <tr>
@@ -144,7 +144,7 @@ if (isset($_SESSION['username'])) {
             $disabled = $row['isDisabled'];
         }
 
-        echo ("<h3>Ads</h3><br>");
+        echo ("<h2>Advertisements</h2>");
 
         if (mysqli_num_rows($result3) > 0) {
             while ($row = mysqli_fetch_assoc($result3)) {
@@ -152,7 +152,6 @@ if (isset($_SESSION['username'])) {
                 echo ("
             <form method='post' action='admin_control.php'>
                 <input type='checkbox' id='adDisabled' name='adDisabled' checked='" . $disabled . "'>
-                </input>
                 <input type='submit' value='Save'>
             </form>");
             }
