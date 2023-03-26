@@ -52,7 +52,7 @@ div#right img {
     box-shadow: 0.1em 0.1em 0.1em 0.1em;
 }
 
-div#right div#article a {
+div#right div#article ol {
     font-size: 2em;
     line-height: 2em;
 }
