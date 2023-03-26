@@ -87,7 +87,7 @@ if ($conn->connect_error) {
         ?>
 
         <?php include "include/ad_long.php"; ?>
-        <h2>My Articles <a href="write_article.php"> - new article</a></h2>
+        <h2>My Articles <a href="write_article.php"> - [write new article]</a></h2>
 
         <?php
         $session_username = $_SESSION['username'];
