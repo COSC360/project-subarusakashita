@@ -44,6 +44,7 @@ if ($conn->connect_error) {
         <h2>My Info</h2>
 
         <?php
+        echo ("<h3>Username: </h3><br>");
         // connect to server
         
         $sql = "SELECT * FROM users WHERE username = ?";
