@@ -96,7 +96,7 @@ if ($conn->connect_error) {
                 //current email in placeholder, email will update when typed into the input
         
                 echo ("<label for=\"passwordNew\">Password</label><br>");
-                echo ("<input type=\"text\" id=\"passwordNew\" name=\"passwordNew\" placeholder=\"" . $row['passwords'] . "\"><br><br>");
+                echo ("<input type=\"password\" id=\"passwordNew\" name=\"passwordNew\"><br><br>");
 
                 echo ("<label for=\"phoneNumNew\">Phone number</label><br>");
                 echo ("<input type=\"tel\" id=\"phoneNumNew\" name=\"phoneNumNew\" placeholder=\"" . $row['phoneNum'] . "\"><br><br>");
