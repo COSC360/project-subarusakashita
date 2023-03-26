@@ -23,7 +23,7 @@ if (!$conn) {
 <head>
     <title>UniChannel | Main Page</title>
     <link rel="stylesheet" href="css/default.css">
-    <link rel="stylesheet" href="css/main.css">
+    <!-- <link rel="stylesheet" href="css/main.css"> -->
 </head>
 
 <body>
