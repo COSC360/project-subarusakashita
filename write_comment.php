@@ -50,18 +50,15 @@ if (isset($_GET['articleId'])) {
 
         if (isset($_POST['commentBody'])) {
             // leave out commentId because it is auto increment
-        
             $commentBody = $_POST['commentBody'];
             $commentingUser = "";
             if (isset($_SESSION['username'])) {
                 $commentingUser = $_SESSION['username'];
             }
-
-            $sql2 = "INSERT INTO Comments (username, articleId, commentBody) VALUES ($commentingUser, $articleId,
-        $commentBody)";
+            echo ($articleId . "<br>" . $commentBody . "<br>" . $commentingUser);
+            $sql2 = "INSERT INTO Comments (username, articleId, commentBody) VALUES ($commentingUser, $articleId, $commentBody)";
             if (mysqli_query($conn, $sql2)) {
-                echo '
-        <script>alert("Comment posted!");</script>';
+                echo '<script>alert("Comment posted!");</script>';
             }
         } ?>
         <div id="comment">
