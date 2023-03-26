@@ -23,7 +23,7 @@ if (!$conn) {
 <head>
     <title>UniChannel | Main Page</title>
     <link rel="stylesheet" href="css/default.css">
-    <!-- <link rel="stylesheet" href="css/main.css"> -->
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
@@ -34,7 +34,6 @@ if (!$conn) {
     <?php include "include/top_left.php" ?>
     <div id="right">
         <h2>Trending Tags</h2>
-        <h2>qoooooooooooooooooooooooooooooooo</h2>
         <div id="tag">
             <?php
             $sql1 = "SELECT * FROM Tags ORDER BY articleNumber LIMIT 10";
@@ -43,7 +42,7 @@ if (!$conn) {
 
             if (mysqli_num_rows($result1) > 0) {
                 while ($row = mysqli_fetch_assoc($result1)) {
-                    echo ("<a href='tag.php?tagId=" . $row['tagId'] . "'>" . $row['tagName'] . "</a>");
+                    echo ("<a href='tag.php?tagId=" . $row['tagId'] . "'>" . $row['tagName'] . "</a>&nbsp&nbsp");
                 }
             } else {
                 echo "no rows";
