@@ -31,7 +31,7 @@ if (isset($_GET['searchKeyword'])) {
     <div id=trail>
         <p>
             <a href="main.php">Main Page</a> >
-            <a href="search.php?searchKeyword= <?php echo ($searchKeyword) ?>">Search Page</a>
+            <a href="search.php?searchKeyword= <?php $_GET['searchKeyword'] ?>">Search Page</a>
         </p>
     </div>
     <?php include "include/top_left.php" ?>
@@ -43,7 +43,7 @@ if (isset($_GET['searchKeyword'])) {
         // connection info
         include "include/ad_long.php";
 
-        $sql1 = "SELECT * FROM Articles WHERE articleTitle LIKE 'searchKeyword'";
+        $sql1 = "SELECT * FROM Articles WHERE articleTitle LIKE '$searchKeyword'";
         $result1 = mysqli_query($conn, $sql1);
 
         if (mysqli_num_rows($result1) > 0) {
