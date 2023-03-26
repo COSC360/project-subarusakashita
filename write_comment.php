@@ -11,7 +11,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$articleId = "";
+$articleId = 0;
 if (isset($_GET['articleId'])) {
     $articleId = $_GET['articleId'];
 }
@@ -56,7 +56,7 @@ if (isset($_GET['articleId'])) {
             }
             echo ($articleId . "<br>" . $commentBody . "<br>" . $commentingUser);
             $articleId = intval($articleId);
-            echo (gettype($articleId) . "<br>" . gettype($commentBody) . "<br>" . gettype($commentingUser));
+            echo ("<br><br>" . gettype($articleId) . "<br>" . gettype($commentBody) . "<br>" . gettype($commentingUser));
             
             // leave out commentId because it is auto increment
             // $sql2 = "INSERT INTO Comments (username, articleId, commentBody) VALUES ('yie', 5, 'Hello Subaru!')";
