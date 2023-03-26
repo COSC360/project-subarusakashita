@@ -46,7 +46,7 @@ if ($conn->connect_error) {
         <?php
         // connect to server
         
-        $sql = "SELECT * FROM Users WHERE username = ?";
+        $sql = "SELECT * FROM users WHERE username = ?";
         $result = mysqli_query($conn, $sql);
         
         while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC, array($_SESSION['username']))) {
