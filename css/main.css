@@ -25,6 +25,7 @@ div#right {
 div#tag {
     /* background-color: blue; */
     overflow: scroll;
+    height: 4em;
 }
 
 div#tag a {
