@@ -46,7 +46,8 @@ if ($conn->connect_error) {
         <?php
         // connect to server
         
-        $sql = "SELECT * FROM users WHERE username = " . $_SESSION['username'];
+        $session_username = $_SESSION['username'];
+        $sql = "SELECT * FROM users WHERE username = '$session_username'";
         echo $sql;
         $sql2 = "SELECT * FROM users";
 
