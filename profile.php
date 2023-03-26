@@ -54,7 +54,7 @@ if ($conn->connect_error) {
             while ($row = mysqli_fetch_row($result)) {
                 echo ("11111111111");
                 echo ("<h3>Username: " . $_SESSION['username'] . "</h3><br>");
-                echo ("<h3>Email: " . $row['email'] . "</h3>");
+                echo ("<h3>Email: " . $row[1] . $row['email'] . "</h3>");
             }
         }
 
