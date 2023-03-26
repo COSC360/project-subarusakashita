@@ -49,14 +49,22 @@ if ($conn->connect_error) {
         $sql = "SELECT * FROM users WHERE username = " . $_SESSION['username'];
         $sql2 = "SELECT * FROM users";
 
-        if ($result = mysqli_query($conn, $sql)) {
-            echo ("00000000");
-            while ($row = mysqli_fetch_row($result)) {
-                echo ("11111111111");
-                echo ("<h3>Username: " . $_SESSION['username'] . "</h3><br>");
-                echo ("<h3>Email: " . $row[1] . $row['email'] . "</h3>");
-            }
-        }
+        $result = mysqli_query($conn, $sql2);
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        echo("000000000");
+        echo ("Email: " . $row['email']);
+
+
+        // if ($result = mysqli_query($conn, $sql2)) {
+        //     echo ("00000000");
+        //     while ($row = mysqli_fetch_row($result)) {
+        //         echo ("11111111111");
+        //         echo ("<h3>Username: " . $_SESSION['username'] . "</h3><br>");
+        //         echo ("<h3>Email: " . $row[1] . $row['email'] . "</h3>");
+        //     }
+        // }
+
+
 
         // while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC, array($_SESSION['username']))) {
         //     echo ("<h3>2 </h3><br>");
