@@ -48,15 +48,12 @@ if ($conn->connect_error) {
 
         if (mysqli_num_rows($result1) > 0) {
             while ($row = mysqli_fetch_assoc($result1)) {
-                echo "00000000000000";
                 $email = $row['email'];
                 $phoneNum = $row['phoneNum'];
                 $address = $row['address'];
                 $postalCode = $row['postalCode'];
             }
         }
-
-        echo "2222222222222222" . $email . $phoneNum . $address;
 
         // update info from form
         if (isset($_POST['emailNew'])) {
@@ -76,7 +73,7 @@ if ($conn->connect_error) {
             echo '<script>alert("Personal information updated successfully");</script>';
         }
 
-        echo "3333333333333" . $email . $phoneNum . $address;
+        echo "3333333333333" . $email . $address . $session_username;
 
         // Show updated info in placeholder
         // Form to let users change info
