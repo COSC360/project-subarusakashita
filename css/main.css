@@ -28,12 +28,12 @@ div#tag {
 div#tag a {
     /* margin: 5em 1em 5em 1em;
     
-    overflow: auto;
+    
     width: 100%;
     white-space: nowrap;
     background-color: blue; */
-
-    font-size: 4em;
+    overflow: auto;
+    font-size: 2em;
     text-decoration: none;
     border: 0.2em solid blue;
     border-radius: 1em;
@@ -41,7 +41,7 @@ div#tag a {
     margin: 0em 1em 0em 0em;
     background-color: blue;
     color: gold;
-} 
+}
 
 div#right img {
     display: block;
