@@ -29,11 +29,15 @@ if (isset($_POST['submit'])) {
   // Move file to server
   $uploadDir = "uploads/";
   $uploadPath = $uploadDir . $fileName;
-  move_uploaded_file($image['tmp_name'], $uploadPath);
+  if (!move_uploaded_file($image['tmp_name'], $uploadPath)) {
+    die("Error uploading file.");
+  }
   
   // Insert file name and path into database
   $sql = "INSERT INTO images (file_name, file_path) VALUES ('$fileName', '$uploadPath')";
-  $conn->query($sql);
+  if (!$conn->query($sql)) {
+    die("Error inserting file into database.");
+  }
 }
 
 // Display uploaded images from database
@@ -44,7 +48,11 @@ if ($result->num_rows > 0) {
   while ($row = $result->fetch_assoc()) {
     $fileName = $row['file_name'];
     $filePath = $row['file_path'];
-    echo "<img src=\"$filePath\" alt=\"$fileName\" />";
+    if (!file_exists($filePath)) {
+      echo "Error: file not found.";
+    } else {
+      echo "<img src=\"$filePath\" alt=\"$fileName\" />";
+    }
   }
 } else {
   echo "No images found";
@@ -53,6 +61,7 @@ if ($result->num_rows > 0) {
 // Close database connection
 $conn->close();
 ?>
+
 
 <!DOCTYPE html>
 <html>
