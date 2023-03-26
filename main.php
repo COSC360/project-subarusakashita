@@ -57,8 +57,10 @@ if (!$conn) {
                 <?php
                 $sql2 = "SELECT articleId, articleTitle FROM Articles ORDER BY views LIMIT 6";
                 $result2 = mysqli_query($conn, $sql2);
-                while ($row = sqlsrv_fetch_array($result2, SQLSRV_FETCH_ASSOC)) {
-                    echo ("<li><a href='article.php?articleId=" . $row['articleId'] . "&articleTitle=" . $row['articleTitle'] . "'>" . $row['articleTitle'] . "</a></li>");
+                if (mysqli_num_rows($result2) > 0) {
+                    while ($row = mysqli_fetch_assoc($result2)) {
+                        echo ("<li><a href='article.php?articleId=" . $row['articleId'] . "&articleTitle=" . $row['articleTitle'] . "'>" . $row['articleTitle'] . "</a></li>");
+                    }
                 }
                 ?>
             </ul>
