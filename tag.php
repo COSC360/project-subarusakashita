@@ -49,7 +49,7 @@ if (isset($_GET['tagId'])) {
             $result2 = mysqli_query($conn, $sql2);
             if (mysqli_num_rows($result2) > 0) {
                 while ($row = mysqli_fetch_assoc($result2)) {
-                    echo ("<h3><a href='article.php?articleId=" . $row['articleId'] . "'>" . $row['articleTitle'] . "</a></h3><br>");
+                    echo ("<h3><a href='article.php?articleId=" . $row['articleId'] . "'>" . $row['articleTitle'] . "</a></h3>");
                 }
             }
 
