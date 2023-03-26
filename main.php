@@ -37,7 +37,6 @@ if (!$conn) {
         <div id="tag">
             <?php
             $sql1 = "SELECT * FROM Tags ORDER BY articleNumber LIMIT 10";
-            $sql2 = "SELECT * FROM Tags";
             $result1 = mysqli_query($conn, $sql1);
 
             if (mysqli_num_rows($result1) > 0) {
@@ -55,7 +54,7 @@ if (!$conn) {
         <div id="article">
             <ul>
                 <?php
-                $sql2 = "SELECT articleId, articleTitle FROM Articles ORDER BY views LIMIT 6";
+                $sql2 = "SELECT articleId, articleTitle FROM Articles LIMIT 6";
                 $result2 = mysqli_query($conn, $sql2);
                 if (mysqli_num_rows($result2) > 0) {
                     while ($row = mysqli_fetch_assoc($result2)) {
