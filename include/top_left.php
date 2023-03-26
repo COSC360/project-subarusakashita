@@ -23,8 +23,8 @@ echo ('
 <div id="left">
 <h2>Categories</h2>
 <ul>
-    <li><a href="category.php?categoryId=1&categoryName=Academic">Academic</a></li>
-    <li><a href="category.php?categoryId=2&categoryName=Lifestyle">Lifestyle</a></li>
+    <li><a href="category.php?categoryId=1">Academic</a></li>
+    <li><a href="category.php?categoryId=2">Lifestyle</a></li>
 </ul>'
 );
 
