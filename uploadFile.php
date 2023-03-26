@@ -1,78 +1,57 @@
 <?php
-// Database configuration
-$servername = "cosc360.ok.ubc.ca";
-$username = "83395822";
-$password = "83395822";
-$dbname = "db_83395822";
+require_once "./dbc.php";
+$files = getAllFile();
 
-// Create database connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-
-// Handle image upload
-if (isset($_POST['submit'])) {
-  $image = $_FILES['image'];
-  
-  // Check if file is an image
-  $fileType = strtolower(pathinfo($image['name'], PATHINFO_EXTENSION));
-  if (!in_array($fileType, array('jpg', 'jpeg', 'png', 'gif'))) {
-    die("File is not an image.");
-  }
-  
-  // Generate unique file name
-  $fileName = uniqid() . '.' . $fileType;
-  
-  // Move file to server
-  $uploadDir = "uploads/";
-  $uploadPath = $uploadDir . $fileName;
-  if (!move_uploaded_file($image['tmp_name'], $uploadPath)) {
-    die("Error uploading file.");
-  }
-  
-  // Insert file name and path into database
-  $sql = "INSERT INTO images (file_name, file_path) VALUES ('$fileName', '$uploadPath')";
-  if (!$conn->query($sql)) {
-    die("Error inserting file into database.");
-  }
-}
-
-// Display uploaded images from database
-$sql = "SELECT file_name, file_path FROM images";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-  while ($row = $result->fetch_assoc()) {
-    $fileName = $row['file_name'];
-    $filePath = $row['file_path'];
-    if (!file_exists($filePath)) {
-      echo "Error: file not found.";
-    } else {
-      echo "<img src=\"$filePath\" alt=\"$fileName\" />";
-    }
-  }
-} else {
-  echo "No images found";
-}
-
-// Close database connection
-$conn->close();
 ?>
 
-
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Image Uploader</title>
-</head>
-<body>
-  <h1>Image Uploader</h1>
-  <form method="post" enctype="multipart/form-data">
-    <input type="file" name="image" />
-    <button type="submit" name="submit">Upload</button>
-  </form>
-</body>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>アップロードフォーム</title>
+  </head>
+  <style>
+    body {
+      padding: 30px;
+      margin: 0 auto;
+      width: 50%;
+    }
+    textarea {
+      width: 98%;
+      height: 60px;
+    }
+    .file-up {
+      margin-bottom: 10px;
+    }
+    .submit {
+      text-align: right;
+    }
+    .btn {
+      display: inline-block;
+      border-radius: 3px;
+      font-size: 18px;
+      background: #67c5ff;
+      border: 2px solid #67c5ff;
+      padding: 5px 10px;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <form enctype="multipart/form-data" action="./file_upload.php" method="POST">
+      <div class="file-up">
+        <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
+        <input name="img" type="file" accept="image/*" />
+      </div>
+      <div class="submit">
+        <input type="submit" value="送信" class="btn" />
+      </div>
+    </form>
+    <div>
+      <?php foreach($files as $file): ?>
+        <img src="<?php echo "{$file['file_path']}"; ?>" alt="">
+      <?php endforeach; ?>
+    </div>
+  </body>
 </html>
