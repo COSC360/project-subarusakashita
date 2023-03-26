@@ -46,6 +46,8 @@ if ($conn->connect_error) {
         $address = "";
         $postalCode = "";
 
+        echo $email . $phoneNum . $address;
+
         if (mysqli_num_rows($result1) > 0) {
             while ($row = mysqli_fetch_assoc($result1)) {
                 $email = $row['email'];
@@ -70,7 +72,9 @@ if ($conn->connect_error) {
         }
         $sql2 = "UPDATE TABLE users SET email='$email', phoneNum='$phoneNum', address='$address', postalCode='$postalCode'
         WHERE username='$session_username'";
-        $result2 = mysqli_query($conn, $sql2);
+        if (mysqli_query($conn, $sql2)) {
+            echo '<script>alert("Personal information updated successfully");</script>';
+        }
 
         // Show updated info in placeholder
         // Form to let users change info
