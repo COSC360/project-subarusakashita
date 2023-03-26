@@ -69,7 +69,7 @@ if ($conn->connect_error) {
         if (!empty($_POST['postalCodeNew'])) {
             $postalCode = $_POST['postalCodeNew'];
         }
-        $sql2 = "UPDATE TABLE users SET address='$address' WHERE username='$session_username'";
+        $sql2 = "UPDATE users SET address='$address' WHERE username='$session_username'";
         if (mysqli_query($conn, $sql2)) {
             echo '<script>alert("Personal information updated successfully");</script>';
         }
@@ -80,7 +80,6 @@ if ($conn->connect_error) {
         // Form to let users change info
         $sql3 = "SELECT * FROM users WHERE username = '$session_username'";
         $result3 = mysqli_query($conn, $sql3);
-
         if (mysqli_num_rows($result3) > 0) {
             while ($row = mysqli_fetch_assoc($result3)) {
                 echo ("<h3>Username: " . $row['username'] . "</h3>");
