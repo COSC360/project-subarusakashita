@@ -9,7 +9,6 @@ session_start();
     <title>UniChannel | Login Page</title>
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/login.css">
-    <script src="js/comments.js"></script>
 </head>
 
 <body>
@@ -34,8 +33,10 @@ session_start();
                     <br>
                     <br>
                     <input type="submit" value="Log in" />
+                    <p id="error-message"></p>
                 </fieldset>
             </form>
+            <script src="js/comment.js"></script>
             <a href="reset_password.php" id="forgot">Forgot Password</a>
         </div>
         <?php include "include/ad_long.php"; ?>

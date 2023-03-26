@@ -1,32 +1,24 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-    const required = document.getElementsByClassName('required');
-    const username = required[0];
-    const password = required[1];
-    inputs.addEventListener('submit', function (event) {
-        
-        if((username.value==="") || (username.value==null)){
-            event.preventDefault();
-            alert("Username is blank")
-           //title.style.border = "1px solid red";
-        }
-        if((password.value==="") || (password.value==null)){
-            event.preventDefault();
-            alert("Password is blank");
-            //desc.style.border = "1px solid red";
-        }
-        // if(!accept.checked){
-        //     event.preventDefault();
-        //    //accept.parentNode.style.border = "1px solid red";
-        // }
-
-    });
-    // desc.addEventListener("change", function (event) {
-    //     desc.style.border="1px solid black";
-    // });
-    // title.addEventListener("change", function (event) {
-    //     title.style.border="1px solid black";
-    // });
-    // accept.addEventListener("change", function (event) {
-    //     accept.parentNode.style.border="1px solid black";
-    // });
-}); 
+document.getElementById("loginform").addEventListener("submit", function(event) {
+    // Prevent the form from submitting normally
+    event.preventDefault();
+  
+    // Get the form data
+    var formData = new FormData(this);
+  
+    // Validate the form data
+    if (formData.get("username") == "") {
+      document.getElementById("error-message").textContent = "Please enter your name.";
+      return;
+    }
+  
+    if (formData.get("password") == "") {
+      document.getElementById("error-message").textContent = "Please enter your email.";
+      return;
+    }
+  
+    // Clear the error message
+    document.getElementById("error-message").textContent = "";
+  
+    // Submit the form data if it is valid
+    this.submit();
+  });
