@@ -75,23 +75,18 @@ if ($conn->connect_error) {
 
                 echo ("</form>");
                 //close form
+        
+                if ($row['isAdmin'] == true) {
+                    echo ("<a href=\"adminControl.php\">Admin Control Page</a>");
+                }
+
+                // log out button
+                echo ("<a href=\"logout.php\">Log Out</a>");
             }
         } else {
             echo "No rows";
         }
 
-
-
-
-
-        // if ($row['isAdmin'] == true) {
-        //     echo ("<a href=\"adminControl.php\">Admin Control Page</a>");
-        // }
-        
-        // // log out button
-        // echo ("<a href=\"logout.php\">Log Out</a>");
-        // }
-        
         //close server connection
         ?>
 
