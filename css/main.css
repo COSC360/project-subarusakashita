@@ -17,7 +17,7 @@ div#right {
     box-sizing:border-box;
 } */
 
-#content{
+#content {
     border-radius: 1em;
     font-size: 2em;
     /* display: table-cell; */
@@ -33,11 +33,15 @@ div#right {
 
 }
 
+div#tag {
+    background-color: blue;
+}
+
 div#tag a {
-    margin:5em 1em 5em 1em;
+    margin: 5em 1em 5em 1em;
     font-size: 2em;
-    overflow:auto;
-    width:100%;
+    overflow: auto;
+    width: 100%;
     white-space: nowrap;
     background-color: blue;
 }
