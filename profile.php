@@ -54,7 +54,6 @@ if ($conn->connect_error) {
                 $postalCode = $row['postalCode'];
             }
         }
-        echo "2222222222" . $email . $address . $session_username. "<br>";
 
         // update info from form
         if (!empty($_POST['emailNew'])) {
@@ -69,12 +68,10 @@ if ($conn->connect_error) {
         if (!empty($_POST['postalCodeNew'])) {
             $postalCode = $_POST['postalCodeNew'];
         }
-        $sql2 = "UPDATE users SET address='$address' WHERE username='$session_username'";
+        $sql2 = "UPDATE users SET email='$email', phoneNum='$phoneNum', address='$address', postalCode='$postalCode' WHERE username='$session_username'";
         if (mysqli_query($conn, $sql2)) {
             echo '<script>alert("Personal information updated successfully");</script>';
         }
-
-        echo "3333333333333" . $email . $address . $session_username;
 
         // Show updated info in placeholder
         // Form to let users change info
