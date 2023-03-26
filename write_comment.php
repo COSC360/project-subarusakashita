@@ -38,7 +38,7 @@ if (isset($_SESSION['username'])){
         <p>
             <a href="main.php">Main Page</a> >
             <a href="article.php?articleId=<?php echo $articleId; ?>">Article Page</a> >
-            <a href="write_comment.php">Commenting</a>
+            <a href="write_comment.php?articleId=<?php echo $articleId; ?>">Commenting</a>
         </p>
     </div>
     <?php include "include/top_left.php" ?>

@@ -30,7 +30,8 @@ $user = $_SESSION['username'];
 <body>
     <header><a href="main.php">UniChannel Blog</a></header>
     <div id=trail>
-        <p><a href="main.php">Main Page</a> > <a href='article.php?articleId=<?php echo $articleId; ?>'>Article Page</a></p>
+        <p><a href="main.php">Main Page</a> > <a href='article.php?articleId=<?php echo $articleId; ?>'>Article Page</a>
+        </p>
     </div>
     <?php include "include/top_left.php" ?>
     <div id="right">
@@ -75,8 +76,7 @@ $user = $_SESSION['username'];
                 while ($row = mysqli_fetch_assoc($result4)) {
                     echo ('<h3>' . $row["username"] . ' - ' . $row["commentBody"] . '</h3>');
                 }
-            }
-            else {
+            } else {
                 echo "No comments yet";
             }
 
@@ -97,7 +97,12 @@ $user = $_SESSION['username'];
         mysqli_close($conn);
         ?>
     </div>
-    <?php include "include/footer.php" ?>
+    
+    <?php
+    include "include/footer.php";
+    include "showComment.php";
+    include "write_comment.php";
+    ?>
 
 </body>
 
