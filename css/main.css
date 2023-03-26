@@ -26,6 +26,8 @@ div#tag {
     overflow-x: scroll;
     overflow-y: hidden;
     height: 8em;
+    position: absolute;
+    top: 50%;
 }
 
 div#tag a {

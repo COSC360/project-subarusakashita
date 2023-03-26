@@ -24,11 +24,11 @@ if (!$conn) {
     <title>UniChannel | Main Page</title>
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/main.css">
-    <script>
+    <style>
         div#right {
             overflow: hidden;
         }
-    </script>
+    </style>
 </head>
 
 <body>
