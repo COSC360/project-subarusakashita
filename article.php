@@ -15,10 +15,6 @@ if (isset($_GET['articleId'])) {
     $articleId = $_GET['articleId'];
 }
 
-$articleTitle = null;
-if (isset($_GET['articleTitle'])) {
-    $articleTitle = $_GET['articleTitle'];
-}
 ?>
 
 <!DOCTYPE html>
@@ -33,32 +29,37 @@ if (isset($_GET['articleTitle'])) {
 <body>
     <header><a href="main.php">UniChannel Blog</a></header>
     <div id=trail>
-        <p><a href="main.php">Main Page</a> > <a href='article.php <?php echo ("?articleId=" . $articleId . "&articleTitle=" . $articleTitle . "'>" . $articleTitle); ?></a></p>
+        <p><a href="main.php">Main Page</a> > <a href='article.php?articleId= <?php $articleId ?>'>Article Page</a></p>
     </div>
     <?php include "include/top_left.php" ?>
     <div id="right">
         <?php
         if (isset($_GET['articleId'])) {
-            $articleId = $_GET['articleId'];
 
             //connect
         
             // article 
             //$sql1 = "SELECT articleTitle, username, categoryId, tagId, articleBody, commentId FROM Articles WHERE articleId = ?";
-            $sql1 = "SELECT articleId, articleTitle, articleBody FROM Articles WHERE articleId =  '$articleId'";
+            $sql1 = "SELECT * FROM Articles WHERE articleId =  '$articleId'";
             $result1 = mysqli_query($conn, $sql1);
-            $row = mysqli_fetch_assoc($result1);
-            echo "<h2>". $row["articleTitle"] . "</h2>";
-            echo "<p>" . $row["articleBody"] . "</p>";
-            //follow button
-            $sql2 = "SELECT following FROM Users WHERE username = ?";
-            $result2 = mysqli_query($conn, $sql2, array());
-            $sql3 = "INSERT INTO Users (following) VALUES (?) WHERE username = ?";
+            if (mysqli_num_rows($result1) > 0) {
+                while ($row = mysqli_fetch_assoc($result1)) {
+                    echo "<h2>" . $row["articleTitle"] . "</h2>";
+                    echo "<h3>" . $row['username'] . "</h3>";
+                    include "include/ad_long.php";
+                    echo "<p>" . $row["articleBody"] . "</p>";
+                }
+            }
 
-            //comments
-            $sql4 = "SELECT username, commentBody FROM Comments WHERE articleId = ?";
-            $result4 = mysqli_query($conn, $sql4, array());
-
+            // //follow button
+            // $sql2 = "SELECT following FROM Users WHERE username = ?";
+            // $result2 = mysqli_query($conn, $sql2, array());
+            // $sql3 = "INSERT INTO Users (following) VALUES (?) WHERE username = ?";
+        
+            // //comments
+            // $sql4 = "SELECT username, commentBody FROM Comments WHERE articleId = ?";
+            // $result4 = mysqli_query($conn, $sql4, array());
+        
 
             //related articles
             $sql5 = "SELECT articleId, articleTitle, views FROM Articles WHERE categoryId = ? ORDER BY views LIMIT 3";
