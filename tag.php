@@ -45,7 +45,9 @@ if (isset($_GET['tagId'])) {
                 }
             }
 
-            $sql2 = "SELECT * FROM Articles WHERE tagId = '$tagId' ORDER BY views LIMIT 10";
+            include "include/ad_long.php";
+
+            $sql2 = "SELECT * FROM Articles WHERE tagId = '$tagId' ORDER BY views DESC LIMIT 20";
             $result2 = mysqli_query($conn, $sql2);
             if (mysqli_num_rows($result2) > 0) {
                 while ($row = mysqli_fetch_assoc($result2)) {
