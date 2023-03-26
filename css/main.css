@@ -33,11 +33,13 @@ div#right {
 
 }
 
-#tag a{
-    /* margin:5em 1em 5em 1em; */
+div#tag a{
+    margin:5em 1em 5em 1em;
+    font-size: 2em;
     overflow:auto;
     width:100%;
     white-space: nowrap;
+    background-color: blue;
 }
 
 div#right img {
