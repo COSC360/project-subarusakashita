@@ -54,30 +54,15 @@ if ($conn->connect_error) {
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-                echo ("000000000");
-                echo ("Email: " . $row['email']);
+                echo ("<h3>Username: " . $row['username'] . "</h3><br>");
+                //username is unchangeable
             }
-        }
-        else{
+        } else {
             echo "No rows";
         }
 
-        // if ($result = mysqli_query($conn, $sql2)) {
-        //     echo ("00000000");
-        //     while ($row = mysqli_fetch_row($result)) {
-        //         echo ("11111111111");
-        //         echo ("<h3>Username: " . $_SESSION['username'] . "</h3><br>");
-        //         echo ("<h3>Email: " . $row[1] . $row['email'] . "</h3>");
-        //     }
-        // }
-        
 
 
-        // while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC, array($_SESSION['username']))) {
-        //     echo ("<h3>2 </h3><br>");
-        //     echo ("<h3>Username: " . $_SESSION['username'] . "</h3><br>");
-        //username is unchangeable
-        
         // echo ("<form action=\"profile.php?username=" . $_SESSION['username'] . "\" method=\"post\">");
         // //form open, submitted change will change the variables at very top of page
         
