@@ -46,11 +46,11 @@ if ($conn->connect_error) {
         <?php
         // connect to server
         
-        $sql = "SELECT * FROM users WHERE username = " . $_SESSION['username'];
+        $sql = "SELECT * FROM users WHERE username = ?";
         $sql2 = "SELECT * FROM users";
 
         $result = mysqli_query($conn, $sql2);
-        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC, array($_SESSION['username']));
         echo("000000000");
         echo ("Email: " . $row['email']);
 
