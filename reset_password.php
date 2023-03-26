@@ -45,7 +45,7 @@ if ($conn->connect_error) {
         <?php
         if (isset($_POST['recoverUser'])) {
             $recoverUser = $_POST['recoverUser'];
-            
+
             $passwordParts = [
                 "a",
                 "b",
@@ -91,6 +91,7 @@ if ($conn->connect_error) {
             //auto decide new password using $passwordParts, format: AAaaaa11!
             
             echo $newPassword;
+            echo $recoverUser;
 
             $sql2 = "UPDATE users SET password = '$newPassword' WHERE username = '$recoverUser'";
             if (mysqli_query($conn, $sql2)) {
