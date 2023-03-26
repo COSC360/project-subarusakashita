@@ -25,7 +25,7 @@ div#tag {
     background-color: blue;
 }
 
-div#tag a {
+a {
     /* margin: 5em 1em 5em 1em;
     font-size: 2em;
     overflow: auto;
