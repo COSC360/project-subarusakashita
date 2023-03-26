@@ -116,7 +116,7 @@ if (isset($_SESSION['username'])) {
                 echo ("
                 <tr>
                     <td>" . $row['articleId'] . "</td>
-                    <td>" . $row['articleName'] . "</td>
+                    <td>" . $row['articleTitle'] . "</td>
                     <td>" . $row['username'] . "</td>
                     <td>" . $row['categoryId'] . "</td>
                     <td>" . $row['views'] . "</td>
