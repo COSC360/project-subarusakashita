@@ -25,9 +25,9 @@ if (!$conn) {
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/main.css">
     <style>
-        /* div#right {
+        div#right {
             overflow: hidden;
-        } */
+        }
 
         div#tag {
             overflow-x: scroll;
