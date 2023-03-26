@@ -47,11 +47,12 @@ if ($conn->connect_error) {
         // connect to server
         
         $sql = "SELECT * FROM users WHERE username = " . $_SESSION['username'];
+        echo $sql;
         $sql2 = "SELECT * FROM users";
 
         // $result = mysqli_query($conn, $sql);
         if ($result = mysqli_query($conn, $sql2)) {
-            echo ("1");
+            echo ("11111111111");
             echo ("<h3>Username: " . $_SESSION['username'] . "</h3><br>");
         }
 
