@@ -7,12 +7,12 @@ document.getElementById("loginform").addEventListener("submit", function(event) 
   
     // Validate the form data
     if (formData.get("username") == "") {
-      document.getElementById("error-message").textContent = "Please enter your name.";
+      document.getElementById("error-message").textContent = "Please enter your username.";
       return;
     }
   
     if (formData.get("password") == "") {
-      document.getElementById("error-message").textContent = "Please enter your email.";
+      document.getElementById("error-message").textContent = "Please enter your password.";
       return;
     }
   
