@@ -74,7 +74,7 @@ if ($conn->connect_error) {
                 //close form
         
                 if ($row['isAdmin'] == true) {
-                    echo ("<a href=\"adminControl.php\">Admin Control Page</a>");
+                    echo ("<a href=\"admin_control.php\">Admin Control Page</a><br>");
                 }
 
                 // log out button
