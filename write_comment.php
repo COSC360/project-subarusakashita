@@ -39,20 +39,19 @@ if (isset($_GET['articleId'])) {
         $result1 = mysqli_query($conn, $sql1);
         if (mysqli_num_rows($result1) > 0) {
             while ($row = mysqli_fetch_assoc($result1)) {
-                echo ("<h2>Commenting on \"" . $row['articleTitle'] . "\"</h2>");
+                echo ("<h2>Commenting on Article: " . $row['articleTitle'] . "</h2>");
             }
         }
         ?>
 
         <div id="comment">
             <form method="post" action="write_comment.php?articleId=<?php echo $articleId; ?>">
-                <fieldset>
-                    <textarea id="commentBody" name="commentBody" rows="5" cols="100" placeholder="Write Comment here"
-                        required></textarea>
-                    <br>
-                    <br>
-                    <input type="submit" value="Comment">
-                </fieldset>
+            <label for="commentBody">Post comment on article</label>
+                <textarea id="commentBody" name="commentBody" rows="5" cols="100" 
+                placeholder="Write Comment here" required></textarea>
+                <br>
+                <br>
+                <input type="submit" value="Comment">
             </form>
             <?php
             if (isset($_POST['commentBody'])) {
