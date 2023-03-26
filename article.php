@@ -15,6 +15,7 @@ if (isset($_GET['articleId'])) {
     $articleId = $_GET['articleId'];
 }
 
+$user = $_SESSION['username'];
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +39,7 @@ if (isset($_GET['articleId'])) {
             $categoryId = "";
             $authorId = "";
 
-            // article 
+            // Article 
             $sql1 = "SELECT * FROM Articles WHERE articleId =  '$articleId'";
             $result1 = mysqli_query($conn, $sql1);
             if (mysqli_num_rows($result1) > 0) {
@@ -52,9 +53,18 @@ if (isset($_GET['articleId'])) {
                 }
             }
 
-            
+            // Follow button
+            // $sql2 = "SELECT * FROM users WHERE username = '$user'";
+            // $result2 = mysqli_query($conn, $sql2);
+            // if (mysqli_num_rows($result2) > 0) {
+            //     while ($row = mysqli_fetch_assoc($result2)) {
+            //         if ($row['following'] ){}
+            //     }
+            // }
 
-            // <!-- follow button -->
+            // Comments
+
+            // Related articles
             // $sql2 = "SELECT following FROM Users WHERE username = ?";
             // $result2 = mysqli_query($conn, $sql2, array());
             // $sql3 = "INSERT INTO Users (following) VALUES (?) WHERE username = ?";
@@ -67,6 +77,7 @@ if (isset($_GET['articleId'])) {
             //related articles
             $sql5 = "SELECT * FROM Articles WHERE categoryId = '$categoryId' ORDER BY views LIMIT 3";
             $result5 = mysqli_query($conn, $sql5);
+            echo ("<h3>Related Articles</h3><br>");
             if (mysqli_num_rows($result5) > 0) {
                 while ($row = mysqli_fetch_assoc($result5)) {
                     echo ('<h3><a href="article.php?articleId=' . $row["articleId"] . '">' . $row["articleTitle"] . '</a></h3>');
