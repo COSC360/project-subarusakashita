@@ -50,10 +50,10 @@ if ($conn->connect_error) {
         $sql2 = "SELECT * FROM users";
 
         $result = mysqli_query($conn, $sql2);
-        $row = mysqli_fetch_array($result, MYSQLI_ASSOC, array($_SESSION['username']));
-        echo("000000000");
-        echo ("Email: " . $row['email']);
-
+        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC, array($_SESSION['username']))) {
+            echo ("000000000");
+            echo ("Email: " . $row['email']);
+        }
 
         // if ($result = mysqli_query($conn, $sql2)) {
         //     echo ("00000000");
@@ -63,7 +63,7 @@ if ($conn->connect_error) {
         //         echo ("<h3>Email: " . $row[1] . $row['email'] . "</h3>");
         //     }
         // }
-
+        
 
 
         // while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC, array($_SESSION['username']))) {
