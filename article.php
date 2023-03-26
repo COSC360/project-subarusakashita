@@ -80,12 +80,14 @@ $user = $_SESSION['username'];
 
             // Write Comment
             if (isset($_SESSION['username'])) {
+                $articleId =  $articleId = $_GET['articleId'];
+                echo($articleId);
                 // if not logged in
                 // pop-up to encourage log in
                 echo '<form action ="processComment.php" method = "post">
                       <input type="text" id="comment" name="comment" placeholder="Write comment here" required>
-                      <input type = "hidden" name = "username" value = echo $user>
-                      <input type = "hidden" name = "articleId" value = echo $_GET['articleId']>
+                      <input type = "hidden" name = "username" value = echo $user >
+                      <input type = "hidden" name = "articleId" value = echo $articleId >
                       <br>
                       <br>
                       <input type="submit" value="Comment">
