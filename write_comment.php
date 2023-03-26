@@ -12,8 +12,8 @@ if ($conn->connect_error) {
 }
 
 $articleId = "";
-if (isset($_POST['articleId'])) {
-    $articleId = $_POST['articleId'];
+if (isset($_GET['articleId'])) {
+    $articleId = $_GET['articleId'];
 }
 
 $commentingUser = "";
