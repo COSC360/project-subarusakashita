@@ -47,11 +47,11 @@ if ($conn->connect_error) {
         echo ("<h3>1</h3><br>");
         // connect to server
         
-        // $sql = "SELECT * FROM users WHERE username = ?";
+        $sql = "SELECT * FROM users WHERE username = " . $_SESSION['username'];
         // $result = mysqli_query($conn, $sql);
-        if ($result = mysqli_query($conn, "SELECT * FROM users WHERE username = ?", array($_SESSION['username']))) {
+        if ($result = mysqli_query($conn, $sql)) {
             echo ("1");
-            echo ($_SESSION['username']);
+            echo ("<h3>Username: " . $_SESSION['username'] . "</h3><br>");
         }
 
         // while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC, array($_SESSION['username']))) {
