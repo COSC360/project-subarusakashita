@@ -61,20 +61,27 @@ $user = $_SESSION['username'];
             //         if ($row['following'] ){}
             //     }
             // }
-
-            // Comments
-
-            // Related articles
             // $sql2 = "SELECT following FROM Users WHERE username = ?";
             // $result2 = mysqli_query($conn, $sql2, array());
             // $sql3 = "INSERT INTO Users (following) VALUES (?) WHERE username = ?";
         
-            // //comments
-            // $sql4 = "SELECT username, commentBody FROM Comments WHERE articleId = ?";
-            // $result4 = mysqli_query($conn, $sql4, array());
-        
 
-            //related articles
+            // Comments
+            $sql4 = "SELECT * FROM Comments WHERE articleId = '$articleId'";
+            $result4 = mysqli_query($conn, $sql4);
+            echo ("<br><h2>Comments</h2>");
+            if (mysqli_num_rows($result4) > 0) {
+                while ($row = mysqli_fetch_assoc($result4)) {
+                    echo ('<h3>' . $row["username"] . '</h3><br>');
+                    echo ('<h3>' . $row["commentBody"] . '</h3><br><br>');
+                }
+            }
+            else {
+                echo "No comments yet";
+            }
+
+
+            // Related articles
             $sql5 = "SELECT * FROM Articles WHERE categoryId = '$categoryId' ORDER BY views LIMIT 3";
             $result5 = mysqli_query($conn, $sql5);
             echo ("<br><h2>Related Articles</h2>");
