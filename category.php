@@ -31,7 +31,7 @@ if (isset($_GET['categoryId'])) {
 <body>
     <header><a href="main.php">UniChannel Blog</a></header>
     <div id=trail>
-        <p><a href="main.php">Main Page</a> > <a href='category.php?categoryId=<?php $categoryId?>>Category Page</a></p>
+        <p><a href="main.php">Main Page</a> > <a href='category.php?categoryId= <?php $categoryId?> '>Category Page</a></p>
     </div>
     <?php include "include/top_left.php" ?>
     <div id="right">
