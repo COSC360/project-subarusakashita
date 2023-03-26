@@ -9,7 +9,7 @@ session_start();
     <title>UniChannel | Login Page</title>
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/login.css">
-    <script src="comment.js"></script>
+    <script src="js/comment.js"></script>
 </head>
 
 <body>
