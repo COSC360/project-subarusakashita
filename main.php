@@ -32,8 +32,6 @@ if (!$conn) {
         div#tag {
             overflow-x: scroll;
             overflow-y: hidden;
-            height: 8em;
-            vertical-align: baseline;
         }
 
         div#tag a {
