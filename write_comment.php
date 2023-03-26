@@ -71,13 +71,6 @@ if (isset($_GET['articleId'])) {
                 // run sql?
             }
         } 
-        // if (isset($_POST['newArticleTitle']) and isset($_POST['newArticleCategory']) and isset($_POST['newArticleTag']) and isset($_POST['newArticleBody'])) {
-        //     $sql = "INSERT INTO Articles (articleTitle, username, categoryId, tagId, articleBody, views, isDisabled) VALUES (?, ?, ?, ?, ?, 0, FALSE)";
-        //     // leave out commentId because it is auto increment
-        //     while ($row = sqlsrv_fetch_array($sql2, SQLSRV_FETCH_ASSOC, array($_POST['newArticleTitle'], $_SESSION['username'], $_POST['newArticleCategory'], $_POST['newArticleTag'], $_POST['newArticleBody']))) {
-        //         // run sql?
-        //     }
-        // }
         ?>
 
         

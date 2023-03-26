@@ -24,6 +24,7 @@ div#right {
 
 div#tag {
     /* background-color: blue; */
+    overflow: scroll;
 }
 
 div#tag a {
@@ -33,7 +34,7 @@ div#tag a {
     width: 100%;
     white-space: nowrap;
     background-color: blue; */
-    overflow: scroll;
+    
     font-size: 2em;
     text-decoration: none;
     border: 0.2em solid blue;
