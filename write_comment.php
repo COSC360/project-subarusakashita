@@ -57,7 +57,8 @@ if (isset($_GET['articleId'])) {
             echo ($articleId . "<br>" . $commentBody . "<br>" . $commentingUser);
             
             // leave out commentId because it is auto increment
-            $sql2 = "INSERT INTO Comments (username, articleId, commentBody) VALUES ($commentingUser, $articleId, $commentBody)";
+            $sql2 = "INSERT INTO Comments (username, articleId, commentBody) VALUES ('yie', 5, 'Hello Suabru!')";
+            // $sql2 = "INSERT INTO Comments (username, articleId, commentBody) VALUES ($commentingUser, $articleId, $commentBody)";
             if (mysqli_query($conn, $sql2)) {
                 echo '<script>alert("Comment posted!");</script>';
             }
