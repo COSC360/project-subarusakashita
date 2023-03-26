@@ -41,9 +41,14 @@ if (!$conn) {
 
             echo $sql1;
 
-            while ($row = sqlsrv_fetch_array($result1, SQLSRV_FETCH_ASSOC)) {
-                echo "000000";
-                echo ("<a href='tag.php?tagId=" . $row['tagId'] . "'>" . $row['tagName'] . "</a>");
+            if (mysqli_num_rows($result) > 0) {
+
+                while ($row = sqlsrv_fetch_array($result1, SQLSRV_FETCH_ASSOC)) {
+                    echo "000000";
+                    echo ("<a href='tag.php?tagId=" . $row['tagId'] . "'>" . $row['tagName'] . "</a>");
+                }
+            } else {
+                echo "no rows";
             }
             ?>
         </div>
