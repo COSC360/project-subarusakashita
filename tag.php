@@ -52,6 +52,9 @@ if (isset($_GET['tagId'])) {
                     echo ("<h3><a href='article.php?articleId=" . $row['articleId'] . "'>" . $row['articleTitle'] . "</a></h3>");
                 }
             }
+            else{
+                echo ("Articles not found in this tag yet");
+            }
 
             //disconnect
         }
