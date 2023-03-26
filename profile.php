@@ -115,15 +115,15 @@ if ($conn->connect_error) {
         ?>
 
         <?php include "include/ad_long.php"; ?>
-        <h2>My Articles <a href="write_article.php"> - [write new article]</a></h2>
+        <h2>My Articles <a href="write_article.php">[write new article]</a></h2>
 
         <?php
         $session_username = $_SESSION['username'];
-        $sql2 = "SELECT articleId, articleTitle FROM Articles WHERE username = '$session_username'";
-        $result2 = mysqli_query($conn, $sql2);
+        $sql4 = "SELECT articleId, articleTitle FROM Articles WHERE username = '$session_username'";
+        $result4 = mysqli_query($conn, $sql4);
 
-        if (mysqli_num_rows($result2) > 0) {
-            while ($row = mysqli_fetch_assoc($result2)) {
+        if (mysqli_num_rows($result4) > 0) {
+            while ($row = mysqli_fetch_assoc($result4)) {
                 echo ("<h3><a href='article.php?articleId=" . $row['articleId'] . "'>" . $row['articleTitle'] . "</a></h3>");
             }
         } else {
