@@ -27,6 +27,7 @@ if (isset($_GET['articleTitle'])) {
 <head>
     <title>UniChannel | Article Page</title>
     <link rel="stylesheet" href="css/default.css">
+    <link rel="stylesheet" href="css/article.css">
 </head>
 
 <body>
