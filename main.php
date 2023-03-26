@@ -52,9 +52,9 @@ if (!$conn) {
 
         <h2>Trending Articles</h2>
         <div id="article">
-            <ul>
+            <ol>
                 <?php
-                $sql2 = "SELECT articleId, articleTitle FROM Articles LIMIT 6";
+                $sql2 = "SELECT articleId, articleTitle FROM Articles LIMIT 10";
                 $result2 = mysqli_query($conn, $sql2);
                 if (mysqli_num_rows($result2) > 0) {
                     while ($row = mysqli_fetch_assoc($result2)) {
@@ -62,7 +62,7 @@ if (!$conn) {
                     }
                 }
                 ?>
-            </ul>
+            </ol>
         </div>
     </div>
     <!-- <?php include "include/footer.php" ?> -->
