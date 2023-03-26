@@ -5,18 +5,6 @@ div#right {
     height: 70em;
 }
 
-/* div#right div#tag {
-    margin: 0em 2em 4em 0em;
-} */
-
-/* div{
-    width:100%;
-} */
-/* #right{
-    width:100%;
-    box-sizing:border-box;
-} */
-
 #content {
     border-radius: 1em;
     font-size: 2em;
@@ -38,12 +26,19 @@ div#tag {
 }
 
 div#tag a {
-    margin: 5em 1em 5em 1em;
+    /* margin: 5em 1em 5em 1em;
     font-size: 2em;
     overflow: auto;
     width: 100%;
     white-space: nowrap;
+    background-color: blue; */
+
+    border: 0.2em solid blue;
+    border-radius: 1em;
+    padding: 0.5em;
+    margin: 0em 1em 0em 0em;
     background-color: blue;
+    color: gold;
 }
 
 div#right img {
