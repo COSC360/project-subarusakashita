@@ -60,15 +60,27 @@ if (isset($_GET['articleId'])) {
             
             // leave out commentId because it is auto increment
             // $sql2 = "INSERT INTO Comments (username, articleId, commentBody) VALUES ($commentingUser, $articleId, $commentBody)";
-            $sql2 = "INSERT INTO Comments (username, articleId, commentBody) VALUES ($commentingUser, $articleId, $commentBody)";
-            if (mysqli_query($conn, $sql2)) {
-                echo '<script>alert("Comment posted!");</script>';
-            }
-            else{
-                echo '<script>alert("Error");</script>';
+            $sql2 = "INSERT INTO Comments (username, articleId, commentBody) VALUES (?, ?, ?)";
+            // if (mysqli_query($conn, $sql2)) {
+            //     echo '<script>alert("Comment posted!");</script>';
+            // }
+            // else{
+            //     echo '<script>alert("Error");</script>';
+            // }
+            while ($row = sqlsrv_fetch_array($sql2, SQLSRV_FETCH_ASSOC, array($commentingUser, $articleId, $commentBody))) {
+                // run sql?
             }
         } 
+        // if (isset($_POST['newArticleTitle']) and isset($_POST['newArticleCategory']) and isset($_POST['newArticleTag']) and isset($_POST['newArticleBody'])) {
+        //     $sql = "INSERT INTO Articles (articleTitle, username, categoryId, tagId, articleBody, views, isDisabled) VALUES (?, ?, ?, ?, ?, 0, FALSE)";
+        //     // leave out commentId because it is auto increment
+        //     while ($row = sqlsrv_fetch_array($sql2, SQLSRV_FETCH_ASSOC, array($_POST['newArticleTitle'], $_SESSION['username'], $_POST['newArticleCategory'], $_POST['newArticleTag'], $_POST['newArticleBody']))) {
+        //         // run sql?
+        //     }
+        // }
         ?>
+
+        
 
         <div id="comment">
             <form method="post" action="write_comment.php?articleId=<?php echo $articleId; ?>">
