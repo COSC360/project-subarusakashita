@@ -36,7 +36,7 @@ session_start();
                     <p id="error-message"></p>
                 </fieldset>
             </form>
-            <script src="js/comment.js"></script>
+            <script src="js/login.js"></script>
             <a href="reset_password.php" id="forgot">Forgot Password</a>
         </div>
         <?php include "include/ad_long.php"; ?>
@@ -72,6 +72,7 @@ session_start();
                     <p id="error-message"></p>
                 </fieldset>
             </form>
+            <script src="js/register.js"></script>
         </div>
     </div>
     <?php include "include/footer.php"; ?>
