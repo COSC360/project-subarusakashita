@@ -52,6 +52,8 @@ if (isset($_GET['searchKeyword'])) {
                 // $articleTitle = str_replace(' ', '%20', $art['articleTitle']);
                 echo ("<a href='article.php?articleId=" . $row['articleId'] . "'>" . $articleTitle . "</a>");
             }
+        } else {
+            echo ("No results found");
         }
 
         // close connection
