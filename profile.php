@@ -45,6 +45,7 @@ if ($conn->connect_error) {
         $phoneNum = "";
         $address = "";
         $postalCode = "";
+        $password = "";
 
         if (mysqli_num_rows($result1) > 0) {
             while ($row = mysqli_fetch_assoc($result1)) {
@@ -52,6 +53,7 @@ if ($conn->connect_error) {
                 $phoneNum = $row['phoneNum'];
                 $address = $row['address'];
                 $postalCode = $row['postalCode'];
+                $password = $row['passwords'];
             }
         }
 
@@ -68,7 +70,11 @@ if ($conn->connect_error) {
         if (!empty($_POST['postalCodeNew'])) {
             $postalCode = $_POST['postalCodeNew'];
         }
-        $sql2 = "UPDATE users SET email='$email', phoneNum='$phoneNum', address='$address', postalCode='$postalCode' WHERE username='$session_username'";
+        if (!empty($_POST['passwordNew'])) {
+            $password = $_POST['passwordNew'];
+        }
+        $sql2 = "UPDATE users SET email='$email', phoneNum='$phoneNum', address='$address', 
+        postalCode='$postalCode', passwords='$password' WHERE username='$session_username'";
         if (mysqli_query($conn, $sql2)) {
             echo '<script>alert("Personal information updated successfully");</script>';
         }
@@ -89,6 +95,9 @@ if ($conn->connect_error) {
                 echo ("<input type=\"email\" id=\"emailNew\" name=\"emailNew\" placeholder=\"" . $row['email'] . "\"><br><br>");
                 //current email in placeholder, email will update when typed into the input
         
+                echo ("<label for=\"passwordNew\">Password</label><br>");
+                echo ("<input type=\"text\" id=\"passwordNew\" name=\"passwordNew\" placeholder=\"" . $row['passwords'] . "\"><br><br>");
+
                 echo ("<label for=\"phoneNumNew\">Phone number</label><br>");
                 echo ("<input type=\"tel\" id=\"phoneNumNew\" name=\"phoneNumNew\" placeholder=\"" . $row['phoneNum'] . "\"><br><br>");
 

@@ -89,21 +89,18 @@ if ($conn->connect_error) {
                 . $passwordParts[rand(0, 25)] . $passwordParts[rand(0, 25)] . $passwordParts[rand(0, 25)]
                 . $passwordParts[rand(0, 25)] . rand(0, 9) . rand(0, 9) . $passwordParts[rand(26, 35)];
             //auto decide new password using $passwordParts, format: AAaaaa11!
-            
-            echo $newPassword;
-            echo $recoverUser;
 
-            $sql2 = "UPDATE users SET passwords = '$newPassword' WHERE username = '$recoverUser'";
-            if (mysqli_query($conn, $sql2)) {
-                echo '<script>alert("Password updated");</script>';
+            $sql1 = "UPDATE users SET passwords = '$newPassword' WHERE username = '$recoverUser'";
+            if (mysqli_query($conn, $sql1)) {
+                echo '<script>alert("Password updated! New password sent to email");</script>';
             }
             
 
             // send email of new password
-            // $sql1 = "SELECT email FROM users WHERE username = '$recoverUser'";
+            // $sql2 = "SELECT email FROM users WHERE username = '$recoverUser'";
         
 
-            //disconnect
+            mysqli_close($conn);
         }
         ?>
     </div>
