@@ -15,7 +15,7 @@
     $username = $_SESSION['username'];
     $articleId = $_POST['articleId'];
     $comment = $_POST['comment'];
-    echo "<script> alert ('$articleId') </script>"
+    echo '<script>alert("' . $articleId . '");</script>';
    // echo $comment;
    // echo $articleId;
    // echo $username;
