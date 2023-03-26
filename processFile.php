@@ -1,4 +1,4 @@
 <?php
-    $file = $_POST['img'];
+    $file = $_POST['image'];
     var_dump($file);
 ?>
