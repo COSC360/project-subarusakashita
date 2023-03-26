@@ -79,11 +79,18 @@ $user = $_SESSION['username'];
         mysqli_close($conn);
         ?>
     </div>
+
+    <?php
+
+    include "showComment.php";
+    include "write_comment.php";
+
+    ?>
     <?php include "include/footer.php"; ?>
 
     <?php
-    include "showComment.php";
-    include "write_comment.php";
+   // include "showComment.php";
+   // include "write_comment.php";
     ?>
 </body>
 
