@@ -87,7 +87,7 @@ $user = $_SESSION['username'];
                 echo '<form action ="processComment.php" method = "post">
                       <input type="text" id="comment" name="comment" placeholder="Write comment here" required>
                       <input type = "hidden" name = "username" value = echo $user >
-                      <input type = "hidden" name = "articleId" value = $articleId >
+                      <input type = "hidden" name = "articleId" value = "' . $articleId . '" >
                       <br>
                       <br>
                       <input type="submit" value="Comment">

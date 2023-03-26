@@ -15,7 +15,7 @@
     $username = $_SESSION['username'];
     $articleId = $_POST['articleId'];
     $comment = $_POST['comment'];
-    var_dump($articleId);
+//    var_dump($articleId);
    // echo $comment;
    // echo $articleId;
    // echo $username;
