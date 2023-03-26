@@ -25,12 +25,12 @@ session_start();
                 <fieldset>
                     <label for="username">Username:</label>
                     <br>
-                    <input type="text" id="username" name="username" placeholder="Enter username" >
+                    <input type="text" id="username" name="username" placeholder="Enter username" class="required" >
                     <br>
                     <br>
                     <label for="password">Password: </label>
                     <br>
-                    <input type="password" id="password" name="password" placeholder="Enter password" >
+                    <input type="password" id="password" name="password" placeholder="Enter password" class="required" >
                     <br>
                     <br>
                     <input type="submit" value="Log in" />
