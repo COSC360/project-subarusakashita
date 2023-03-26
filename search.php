@@ -37,27 +37,46 @@ if (isset($_GET['searchKeyword'])) {
     <?php include "include/top_left.php" ?>
 
     <div id="right">
-        <h2>Search Result</h2>
         <?php
-
-        // connection info
-        include "include/ad_long.php";
+        echo ("<h2>Search Result in Articles</h2>");
 
         $sql1 = "SELECT * FROM Articles WHERE articleTitle LIKE '$searchKeyword'";
         $result1 = mysqli_query($conn, $sql1);
-
         if (mysqli_num_rows($result1) > 0) {
             while ($row = mysqli_fetch_assoc($result1)) {
-                $articleTitle = $row['articleTitle'];
-                // $articleTitle = str_replace('\'', '%27', $articleTitle);
-                // $articleTitle = str_replace(' ', '%20', $articleTitle);
-                echo ("<h3><a href='article.php?articleId=" . $row['articleId'] . "'>" . $articleTitle . "</a></h3>");
+                echo ("<h3><a href='article.php?articleId=" . $row['articleId'] . "'>" . $row['articleTitle'] . "</a></h3>");
             }
         } else {
-            echo ("<h3>No results found</h3>");
+            echo ("<h3>No results found for Articles</h3>");
         }
+        
+        include "include/ad_long.php";
+        echo ("<h2>Search Result in Users</h2>");
 
-        // close connection
+        $sql2 = "SELECT * FROM users WHERE username LIKE '$searchKeyword'";
+        $result2 = mysqli_query($conn, $sql2);
+        if (mysqli_num_rows($result2) > 0) {
+            while ($row = mysqli_fetch_assoc($result2)) {
+                echo ("<h3>" . $row['username'] . "</h3>");
+            }
+        } else {
+            echo ("<h3>No results found for Users</h3>");
+        }
+        
+        include "include/ad_long.php";
+        
+        echo ("<h2>Search Result in Tags</h2>");
+
+        $sql3 = "SELECT * FROM Tags WHERE tagName LIKE '$searchKeyword'";
+        $result3 = mysqli_query($conn, $sql3);
+        if (mysqli_num_rows($result3) > 0) {
+            while ($row = mysqli_fetch_assoc($result3)) {
+                echo ("<h3><a href='tag.php?tagId=" . $row['tagId'] . "'>" . $row['tagName'] . "</a></h3>");
+            }
+        } else {
+            echo ("<h3>No results found for Tags</h3>");
+        }
+        mysqli_close($conn);
         ?>
 
     </div>
