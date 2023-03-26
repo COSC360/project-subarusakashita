@@ -77,7 +77,7 @@ $user = $_SESSION['username'];
             //related articles
             $sql5 = "SELECT * FROM Articles WHERE categoryId = '$categoryId' ORDER BY views LIMIT 3";
             $result5 = mysqli_query($conn, $sql5);
-            echo ("<h3>Related Articles</h3><br>");
+            echo ("<br><h2>Related Articles</h2>");
             if (mysqli_num_rows($result5) > 0) {
                 while ($row = mysqli_fetch_assoc($result5)) {
                     echo ('<h3><a href="article.php?articleId=' . $row["articleId"] . '">' . $row["articleTitle"] . '</a></h3>');
