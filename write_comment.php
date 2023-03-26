@@ -49,8 +49,9 @@ if (isset($_GET['articleId'])) {
         }
 
         if (isset($_POST['commentBody'])) {
+            $commentBody = '';
             $commentBody = $_POST['commentBody'];
-            $commentingUser = "";
+            $commentingUser = '';
             if (isset($_SESSION['username'])) {
                 $commentingUser = $_SESSION['username'];
             }
@@ -59,8 +60,8 @@ if (isset($_GET['articleId'])) {
             echo ("<br><br>" . gettype($articleId) . "<br>" . gettype($commentBody) . "<br>" . gettype($commentingUser));
             
             // leave out commentId because it is auto increment
-            // $sql2 = "INSERT INTO Comments (username, articleId, commentBody) VALUES ('yie', 5, 'Hello Subaru!')";
-            $sql2 = "INSERT INTO Comments (username, articleId, commentBody) VALUES ($commentingUser, $articleId, 'Hello!')";
+            // $sql2 = "INSERT INTO Comments (username, articleId, commentBody) VALUES ($commentingUser, $articleId, $commentBody)";
+            $sql2 = "INSERT INTO Comments (username, articleId, commentBody) VALUES ($commentingUser, $articleId, $commentBody)";
             if (mysqli_query($conn, $sql2)) {
                 echo '<script>alert("Comment posted!");</script>';
             }
