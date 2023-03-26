@@ -39,7 +39,10 @@ if (!$conn) {
             $sql1 = "SELECT * FROM Tags ORDER BY articleNumber LIMIT 10";
             $result1 = mysqli_query($conn, $sql1);
 
+            echo $sql1;
+
             while ($row = sqlsrv_fetch_array($result1, SQLSRV_FETCH_ASSOC)) {
+                echo "000000";
                 echo ("<a href='tag.php?tagId=" . $row['tagId'] . "'>" . $row['tagName'] . "</a>");
             }
             ?>
