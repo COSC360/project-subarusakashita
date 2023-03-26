@@ -31,7 +31,7 @@ if (isset($_GET['searchKeyword'])) {
     <div id=trail>
         <p>
             <a href="main.php">Main Page</a> >
-            <a href="search.php?searchKeyword= <?php echo ($searchKeyword) ?>">Search Page</a>">
+            <a href="search.php?searchKeyword= <?php echo ($searchKeyword) ?>">Search Page</a>
         </p>
     </div>
     <?php include "include/top_left.php" ?>
@@ -43,13 +43,15 @@ if (isset($_GET['searchKeyword'])) {
         // connection info
         include "include/ad_long.php";
 
-        $sql = "SELECT articleId, articleTitle, articleLink FROM articles WHERE articleTitle LIKE ?";
-        $result = mysqli_query($conn, $sql);
+        $sql1 = "SELECT * FROM Articles WHERE articleTitle LIKE 'searchKeyword'";
+        $result1 = mysqli_query($conn, $sql1);
 
-        while ($art = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC, array($searchKeyword))) {
-            // $articleTitle = str_replace('\'', '%27', $art['articleTitle']);
-            // $articleTitle = str_replace(' ', '%20', $art['articleTitle']);
-            echo ("<a href='article.php?articleId=" . $art['articleId'] . "&articleTitle=" . $articleTitle . "'>" . $articleTitle . "</a><br>");
+        if (mysqli_num_rows($result1) > 0) {
+            while ($row = mysqli_fetch_assoc($result1)) {
+                // $articleTitle = str_replace('\'', '%27', $art['articleTitle']);
+                // $articleTitle = str_replace(' ', '%20', $art['articleTitle']);
+                echo ("<a href='article.php?articleId=" . $row['articleId'] . "'>" . $articleTitle . "</a>");
+            }
         }
 
         // close connection
