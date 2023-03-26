@@ -42,7 +42,7 @@ session_start();
         <?php include "include/ad_long.php"; ?>
         <h2>Sign up</h2>
         <div id="signup">
-            <form action="register.php" action="get">
+            <form id = "registerform" action="register.php" action="get">
                 <fieldset>
                     <label for="username">Username:</label>
                     <br>
