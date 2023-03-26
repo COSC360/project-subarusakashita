@@ -53,3 +53,17 @@ if ($result->num_rows > 0) {
 // Close database connection
 $conn->close();
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Uploader</title>
+</head>
+<body>
+  <h1>Image Uploader</h1>
+  <form method="post" enctype="multipart/form-data">
+    <input type="file" name="image" />
+    <button type="submit" name="submit">Upload</button>
+  </form>
+</body>
+</html>
