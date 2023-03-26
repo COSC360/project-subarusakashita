@@ -30,11 +30,11 @@ if (isset($_GET['articleTitle'])) {
 </head>
 
 <body>
-    <header><a href="main.php">UniChannel Blog nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn</a></header>
+    <header><a href="main.php">UniChannel Blog</a></header>
     <div id=trail>
         <p><a href="main.php">Main Page</a> > <a href='article.php <?php echo ("?articleId=" . $articleId . "&articleTitle=" . $articleTitle . "'>" . $articleTitle); ?></a></p>
     </div>
-    <!-- <?php include "include/top_left.php" ?> -->
+    <?php include "include/top_left.php" ?>
     <div id="right">
         <?php
         if (isset($_GET['articleId'])) {

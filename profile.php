@@ -96,7 +96,7 @@ if ($conn->connect_error) {
 
         if (mysqli_num_rows($result2) > 0) {
             while ($row = mysqli_fetch_assoc($result2)) {
-                echo ("<h3>" . $row['articleTitle'] . "</h3><br>");
+                echo ("<h3><a href='article.php?articleId=" . $row['articleId'] . "'>" . $row['articleTitle'] . "</a></h3><br>");
             }
         } else {
             echo "No rows";
