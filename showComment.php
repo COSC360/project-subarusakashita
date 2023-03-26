@@ -1,5 +1,5 @@
 <?php
-    $sqlcomment = "SELECT username, commentBody FROM Comments WHERE articleId = '$articleId'";
+    $sqlcomment = "SELECT username, commentBody FROM Comments";
     $resultcomment = mysqli_query($conn, $sqlcomment);
     var_dump($resultcomment);
     if (mysqli_num_rows($resultcomment) > 0) {
