@@ -33,8 +33,7 @@ if (!$conn) {
             overflow-x: scroll;
             overflow-y: hidden;
             height: 8em;
-            /* position: absolute;
-            top: 50%; */
+            margin: 2em 0em 0em 0em;
         }
 
         div#tag a {
