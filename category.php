@@ -17,10 +17,6 @@ if (isset($_GET['categoryId'])) {
     $categoryId = $_GET['categoryId'];
 }
 
-$categoryName = null;
-if (isset($_GET['categoryName'])) {
-    $categoryName = $_GET['categoryName'];
-}
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +31,7 @@ if (isset($_GET['categoryName'])) {
 <body>
     <header><a href="main.php">UniChannel Blog</a></header>
     <div id=trail>
-        <p><a href="main.php">Main Page</a> > <a href='category.php <?php echo ("?categoryId=" . $categoryId . "&categoryName=" . $categoryName . "'>" . $categoryName); ?></a></p>
+        <p><a href="main.php">Main Page</a> > <a href='category.php?categoryId= <?php $categoryId?> '>Category Page</a></p>
     </div>
     <?php include "include/top_left.php" ?>
     <div id="right">
@@ -43,31 +39,26 @@ if (isset($_GET['categoryName'])) {
         if (isset($_GET['categoryId'])) {
             $categoryId = $_GET['categoryId'];
 
-            //connect
-            $sql = "SELECT articleId, articleTitle FROM Articles WHERE categoryId =  '$categoryId'";
-            //$sql2 = "SELECT categoryName FROM Categories WHERE categoryId = ?";
-            //run sql
-            $result = mysqli_query($conn, $sql);
-
-            if (mysqli_num_rows($result) > 0) {
-                while($row = mysqli_fetch_assoc($result)) {
-                    echo "<h2><a href='article.php?articleId=" . $row["articleId"] . "'>". $row["articleTitle"] . "</h2>";
-                    //echo "<p>" . $row["body"] . "</p>";
+            $sql1 = "SELECT categoryName FROM Categories WHERE categoryId = '$categoryId'";
+            $result1 = mysqli_query($conn, $sql1);
+            if (mysqli_num_rows($result1) > 0) {
+                while ($row = mysqli_fetch_assoc($result1)) {
+                    echo ("<h2>Category: " . $row['categoryName'] . "</h2>");
                 }
-            } else {
-                echo "0 results";
             }
-            
-            // while ($sql2 = sqlsrv_fetch_array($sql2, SQLSRV_FETCH_ASSOC, array($categoryId))) {
-            //     echo ("<h2>Category: " . $sql2['$categoryName'] . "</h2><br>");
-            // }
+
             include "include/ad_long.php";
 
-            // while ($row = sqlsrv_fetch_array($sql, SQLSRV_FETCH_ASSOC, array($categoryId))) {
-            //     echo ("<a href=\"article.php?articleId=" . $row['articleId'] . "\">" . $row['articleTitle'] . "</a><br>");
-            // }
-
-            //disconnect
+            $sql2 = "SELECT articleId, articleTitle FROM Articles WHERE categoryId =  '$categoryId'";
+            $result2 = mysqli_query($conn, $sql2);
+            if (mysqli_num_rows($result2) > 0) {
+                while($row = mysqli_fetch_assoc($result2)) {
+                    echo "<h3><a href='article.php?articleId=" . $row["articleId"] . "'>". $row["articleTitle"] . "</h3>";
+                }
+            } else {
+                echo "Articles not found in this category yet";
+            }
+            
             mysqli_close($conn);
         }
         ?>

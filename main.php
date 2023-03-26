@@ -3,7 +3,7 @@ session_start();
 if (!isset($_SESSION['username'])) {
     // if not logged in
     // pop-up to encourage log in
-    echo '<script>alert("Please login! If you do not have an account, Make it!!")</script>';
+    echo '<script>alert("Please login! If you do not have an account, Make it!!");</script>';
 }
 
 $servername = "cosc360.ok.ubc.ca";
@@ -32,36 +32,43 @@ if (!$conn) {
         <p><a href="main.php">Main Page</a></p>
     </div>
     <?php include "include/top_left.php" ?>
-
     <div id="right">
         <h2>Trending Tags</h2>
         <div id="tag">
             <?php
-            //$sql1 = "SELECT tagId, tagName FROM Tags ORDER BY articleNumber LIMIT 10";
-           // $result1 = mysqli_query($conn, $sql1);
+            $sql1 = "SELECT * FROM Tags ORDER BY articleNumber LIMIT 10";
+            $result1 = mysqli_query($conn, $sql1);
 
-            //while ($row = sqlsrv_fetch_array($result1, SQLSRV_FETCH_ASSOC)) {
-              //  echo ("<a href='tag.php?tagId=" . $row['tagId'] . "&tagName=" . $row['tagName'] . "'>" . $row['tagName'] . "</a>");
-           // }
+            if (mysqli_num_rows($result1) > 0) {
+                while ($row = mysqli_fetch_assoc($result1)) {
+                    echo ("<a href='tag.php?tagId=" . $row['tagId'] . "'>" . $row['tagName'] . "</a>&nbsp&nbsp");
+                }
+            } else {
+                echo "no rows";
+            }
             ?>
         </div>
         <?php include "include/ad_long.php"; ?>
 
         <h2>Trending Articles</h2>
         <div id="article">
-            <ul>
+            <ol>
                 <?php
-                $sql2 = "SELECT articleId, articleTitle FROM Articles ORDER BY views LIMIT 6";
-                $result2 = mysqli_query($conn, $sql2 );
-                while ($row = sqlsrv_fetch_array($result2, SQLSRV_FETCH_ASSOC)) {
-                    echo ("<li><a href='article.php?articleId=" . $row['articleId'] . "&articleTitle=" . $row['articleTitle'] . "'>" . $row['articleTitle'] . "</a></li>");
+                $sql2 = "SELECT articleId, articleTitle FROM Articles ORDER BY views DESC LIMIT 10";
+                $result2 = mysqli_query($conn, $sql2);
+                if (mysqli_num_rows($result2) > 0) {
+                    while ($row = mysqli_fetch_assoc($result2)) {
+                        echo ("<li><a href='article.php?articleId=" . $row['articleId'] . "&articleTitle=" . $row['articleTitle'] . "'>" . $row['articleTitle'] . "</a></li>");
+                    }
                 }
                 ?>
-            </ul>
+            </ol>
         </div>
     </div>
-    <?php include "include/footer.php" ?>
-
+    <!-- <?php include "include/footer.php" ?> -->
+    <footer>
+        <p>Footer Copyright info and etc</p>
+    </footer>
 </body>
 
 </html>

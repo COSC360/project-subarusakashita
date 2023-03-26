@@ -16,10 +16,7 @@ if (isset($_GET['articleId'])) {
     $articleId = $_GET['articleId'];
 }
 
-$articleTitle = null;
-if (isset($_GET['articleTitle'])) {
-    $articleTitle = $_GET['articleTitle'];
-}
+$user = $_SESSION['username'];
 ?>
 
 <!DOCTYPE html>
@@ -28,15 +25,13 @@ if (isset($_GET['articleTitle'])) {
 <head>
     <title>UniChannel | Article Page</title>
     <link rel="stylesheet" href="css/default.css">
+    <link rel="stylesheet" href="css/article.css">
 </head>
 
 <body>
     <header><a href="main.php">UniChannel Blog</a></header>
     <div id=trail>
-        <p><a href="main.php">Main Page</a> > 
-        <a href='article.php <?php echo "?articleId=" . $articleId . "&articleTitle=" . $articleTitle; ?>' >
-        <?php echo $articleTitle; ?>
-    </a></p>
+        <p><a href="main.php">Main Page</a> > <a href='article.php <?php echo ("?articleId=" . $articleId . "&articleTitle=" . $articleTitle . "'>" . $articleTitle); ?></a></p>
     </div>
     <?php include "include/top_left.php" ?>
     <div id="right">
@@ -54,67 +49,64 @@ if (isset($_GET['articleTitle'])) {
             echo "<h2>". $row["articleTitle"] . "</h2>";
             echo "<p>" . $row["articleBody"] . "</p>";
             //follow button
-            // $sql2 = "SELECT following FROM Users WHERE username = ?";
-            // $result2 = mysqli_query($conn, $sql2, array());
-            // $sql3 = "INSERT INTO Users (following) VALUES (?) WHERE username = ?";
+            $sql2 = "SELECT following FROM Users WHERE username = ?";
+            $result2 = mysqli_query($conn, $sql2, array());
+            $sql3 = "INSERT INTO Users (following) VALUES (?) WHERE username = ?";
 
             //comments
-            // $sql4 = "SELECT username, commentBody FROM Comments WHERE articleId = ?";
-            // $result4 = mysqli_query($conn, $sql4, array());
+            $sql4 = "SELECT username, commentBody FROM Comments WHERE articleId = ?";
+            $result4 = mysqli_query($conn, $sql4, array());
 
 
             //related articles
-           // $sql5 = "SELECT articleId, articleTitle, views FROM Articles WHERE categoryId = ? ORDER BY views LIMIT 3";
-          //  $result5 = mysqli_query($conn, $sql5, array());
+            $sql5 = "SELECT articleId, articleTitle, views FROM Articles WHERE categoryId = ? ORDER BY views LIMIT 3";
+            $result5 = mysqli_query($conn, $sql5, array());
 
-           // $categoryId = "";
-           // $authorId = "";
+            $categoryId = "";
+            $authorId = "";
 
-            // while ($row = sqlsrv_fetch_array($result1, SQLSRV_FETCH_ASSOC, array($articleId))) {
-            //     echo ("<h2>" . $row['articleTitle'] . "</h2><br>");
-            //     echo ("<h3>" . $row['username'] . "</h3><br>");
-            //     echo ("<h3>" . $row['categoryId'] . "</h3><br>");
-            //     echo ("<h3>" . $row['tagId'] . "</h3>");
+            while ($row = sqlsrv_fetch_array($result1, SQLSRV_FETCH_ASSOC, array($articleId))) {
+                echo ("<h2>" . $row['articleTitle'] . "</h2><br>");
+                echo ("<h3>" . $row['username'] . "</h3><br>");
+                echo ("<h3>" . $row['categoryId'] . "</h3><br>");
+                echo ("<h3>" . $row['tagId'] . "</h3>");
 
-            include "include/ad_long.php";
+                include "include/ad_long.php";
 
-            // $sql = "SELECT username, commentBody FROM Comments WHERE articleId = '$articleId'";
-            // $result = mysqli_query($conn, $sql);
-            // if (mysqli_num_rows($result) > 0) {
-            // while($row = mysqli_fetch_assoc($result)) {
-            //      echo "<p>". $row["username"] . $row["commentBody"]. "</p>";
-           
-            //  }
-            // } else {
-            //     echo "No comments. Comment!!";
-            // }
+                echo ("<h3>" . $row['articleBody'] . "</h3>");
 
-            //     echo ("<h3>" . $row['articleBody'] . "</h3>");
+                $categoryId = $row['categoryId'];
+                $authorId = $row['username'];
+            }
+            while ($row = sqlsrv_fetch_array($result2, SQLSRV_FETCH_ASSOC, array($_SESSION['username']))) {
+                if (in_array($authorId, $row['following'])) {
+                    echo ("<Following this user>");
+                } else {
+                    echo ("
+                    function followUser(){
+                        <?php 
+                        //execute $sql3
+                        ?>
+                    }
+                    ");
 
-            //     $categoryId = $row['categoryId'];
-            //     $authorId = $row['username'];
-            // }
-            // while ($row = sqlsrv_fetch_array($result2, SQLSRV_FETCH_ASSOC, array($_SESSION['username']))) {
-            //     if (in_array($authorId, $row['following'])) {
-            //         echo ("<Following this user>");
-            //     } else {
-                   
+                    echo ("<button type=button onclick='followUser()'>Follow</button>");
+                }
+            }
 
-            //         //echo ("<button type=button onclick='followUser()'>Follow</button>");
-            //     }
-            // }
+            while ($row = sqlsrv_fetch_array($result4, SQLSRV_FETCH_ASSOC, array($articleId))) {
+                echo ("<h3>" . $row['username'] . "</h3><br>");
+                echo ("<h3>" . $row['commentBody'] . "</h3><br>");
+            }
 
-            // while ($row = sqlsrv_fetch_array($result4, SQLSRV_FETCH_ASSOC, array($articleId))) {
-            //     echo ("<h3>" . $row['username'] . "</h3><br>");
-            //     echo ("<h3>" . $row['commentBody'] . "</h3><br>");
-            // }
+            while ($row = sqlsrv_fetch_array($result5, SQLSRV_FETCH_ASSOC, array($categoryId))) {
+                echo ('<h3><a href="article.php?articleId=' . $row["articleId"] . '&articleTitle=' . $row["articleTitle"] . '">' . $row["articleTitle"] . '</a></h3><br>');
+            }
 
-            // while ($row = sqlsrv_fetch_array($result5, SQLSRV_FETCH_ASSOC, array($categoryId))) {
-            //     echo ('<h3><a href="article.php?articleId=' . $row["articleId"] . '&articleTitle=' . $row["articleTitle"] . '">' . $row["articleTitle"] . '</a></h3><br>');
-            // }
-
-            //disconnect
+        } else {
+            echo "Article not found";
         }
+        mysqli_close($conn);
         ?>
     </div>
     <?php include "include/footer.php"; ?> 

@@ -14,53 +14,53 @@ $tagId = null;
 if (isset($_GET['tagId'])) {
     $tagId = $_GET['tagId'];
 }
-
-$tagName = null;
-if (isset($_GET['tagName'])) {
-    $tagName = $_GET['tagName'];
-}
 ?>
 
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>UniChannel | Article Page</title>
-    <link rel="stylesheet" href="../css/default.css">
-    <link rel="stylesheet" href="../css/article.css">
+    <title>UniChannel | Tag Page</title>
+    <link rel="stylesheet" href="css/default.css">
+    <link rel="stylesheet" href="css/article.css">
 </head>
 
 <body>
-<header><a href="main.php">UniChannel Blog</a></header>
+    <header><a href="main.php">UniChannel Blog</a></header>
     <div id=trail>
-        <p><a href="main.php">Main Page</a> > <a href='tag.php <?php echo("?tagId=" . $tagId . "&tagName=" . $tagName . "'>" . $tagName);?></a></p>
+        <p><a href="main.php">Main Page</a> > <a href='tag.php?tagId= <?php $tagId ?>'>Tag Page</a></p>
     </div>
-    <?php include "include/top_left.php"?>
+    <?php include "include/top_left.php" ?>
 
     <div id="right">
         <?php
         if (isset($_GET['tagId'])) {
-            $tagId = $_GET['tagId'];
-
-            //connect
-            $sql = "SELECT articleId, articleTitle, views FROM Articles WHERE tagId =  ? ORDER BY views LIMIT 6";
-            $sql2 = "SELECT tagName FROM Tags WHERE tagId = ?";
-            //run sql
-        
-            while ($row = sqlsrv_fetch_array($sql, SQLSRV_FETCH_ASSOC, array($tagId))) {
-                //run sql2
-                while ($sql2 = sqlsrv_fetch_array($sql2, SQLSRV_FETCH_ASSOC, array($tagId))) {
-                    echo ("<h2>Tag: " . $sql2['$tagName'] . "</h2><br>");
+            $sql1 = "SELECT tagName FROM Tags WHERE tagId = '$tagId'";
+            $result1 = mysqli_query($conn, $sql1);
+            if (mysqli_num_rows($result1) > 0) {
+                while ($row = mysqli_fetch_assoc($result1)) {
+                    echo ("<h2>Tag: " . $row['tagName'] . "</h2>");
                 }
-                include "include/ad_long.php";
-                echo ("<a href=\"article.php?articleId=" . $row['articleId'] . "\">" . $row['articleTitle'] . "</a><br>");
+            }
+
+            include "include/ad_long.php";
+
+            $sql2 = "SELECT * FROM Articles WHERE tagId = '$tagId' ORDER BY views DESC LIMIT 20";
+            $result2 = mysqli_query($conn, $sql2);
+            if (mysqli_num_rows($result2) > 0) {
+                while ($row = mysqli_fetch_assoc($result2)) {
+                    echo ("<h3><a href='article.php?articleId=" . $row['articleId'] . "'>" . $row['articleTitle'] . "</a></h3>");
+                }
+            }
+            else{
+                echo ("Articles not found in this tag yet");
             }
 
             //disconnect
         }
         ?>
     </div>
-        <?php include "include/footer.php"?>
+        <?php include "include/footer.php" ?>
 </body>
 
 </html>

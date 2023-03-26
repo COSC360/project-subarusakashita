@@ -15,6 +15,11 @@ if (isset($_SESSION['username'])) {
     <title>UniChannel | Admin Control Page</title>
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/main.css">
+    <script>
+        img {
+            width: 7%;
+        }
+    </script>
 </head>
 
 <body>
@@ -38,10 +43,10 @@ if (isset($_SESSION['username'])) {
             die("Connection failed: " . $conn->connect_error);
         }
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        $sql1 = "SELECT * FROM Users";
-        //connect sql
-        
-        echo ("<h3>Users</h3><br>");
+        $sql1 = "SELECT * FROM users";
+        $result1 = mysqli_query($conn, $sql1);
+
+        echo ("<h2>Users</h2>");
         echo ("
             <table>
                 <tr>
@@ -54,14 +59,15 @@ if (isset($_SESSION['username'])) {
                     <th>Disabled</th>
                 </tr>");
 
-        while ($row = sqlsrv_fetch_array($sql1, SQLSRV_FETCH_ASSOC)) {
-            $disabled = "false";
-            if (isset($_POST['userDisabled'])) {
-                $disabled = $_POST['userDisabled'];
-            } else {
-                $disabled = $row['isDisabled'];
-            }
-            echo ("
+        if (mysqli_num_rows($result1) > 0) {
+            while ($row = mysqli_fetch_assoc($result1)) {
+                $disabled = "false";
+                if (isset($_POST['userDisabled'])) {
+                    $disabled = $_POST['userDisabled'];
+                } else {
+                    $disabled = $row['isDisabled'];
+                }
+                echo ("
                 <tr>
                     <td>" . $row['username'] . "</td>
                     <td>" . $row['email'] . "</td>
@@ -72,18 +78,20 @@ if (isset($_SESSION['username'])) {
                     <td>
                         <form method='post' action='admin_control.php'>
                             <input type='checkbox' id='userDisabled' name='userDisabled' checked='" . $disabled . "'>
-                            </input>
+                            <input type='submit' value='Save'>
                         </form>
                     </td>
                 </tr>
             ");
+            }
         }
         echo ("</table>");
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         
         $sql2 = "SELECT * FROM Articles";
-        //connect sql
+        $result2 = mysqli_query($conn, $sql2);
+
         $disabled = "false";
         if (isset($_POST['artDisabled'])) {
             $disabled = $_POST['artDisabled'];
@@ -91,7 +99,7 @@ if (isset($_SESSION['username'])) {
             $disabled = $row['isDisabled'];
         }
 
-        echo ("<h3>Articles</h3><br>");
+        echo ("<h2>Articles</h2>");
         echo ("
             <table>
                 <tr>
@@ -103,29 +111,32 @@ if (isset($_SESSION['username'])) {
                     <th>Disabled</th>
                 </tr>");
 
-        while ($row = sqlsrv_fetch_array($sql2, SQLSRV_FETCH_ASSOC)) {
-            echo ("
+        if (mysqli_num_rows($result2) > 0) {
+            while ($row = mysqli_fetch_assoc($result2)) {
+                echo ("
                 <tr>
                     <td>" . $row['articleId'] . "</td>
-                    <td>" . $row['articleName'] . "</td>
+                    <td>" . $row['articleTitle'] . "</td>
                     <td>" . $row['username'] . "</td>
                     <td>" . $row['categoryId'] . "</td>
                     <td>" . $row['views'] . "</td>
                     <td>
                         <form method='post' action='admin_control.php'>
                             <input type='checkbox' id='artDisabled' name='artDisabled' checked='" . $disabled . "'>
-                            </input>
+                            <input type='submit' value='Save'>
                         </form>
                     </td>
                 </tr>
             ");
+            }
         }
         echo ("</table>");
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         
         $sql3 = "SELECT * FROM Ads";
-        //connect sql
+        $result3 = mysqli_query($conn, $sql3);
+
         $disabled = "false";
         if (isset($_POST['userDisabled'])) {
             $disabled = $_POST['userDisabled'];
@@ -133,26 +144,24 @@ if (isset($_SESSION['username'])) {
             $disabled = $row['isDisabled'];
         }
 
-        echo ("<h3>Ads</h3><br>");
-        
-        while ($row = sqlsrv_fetch_array($sql3, SQLSRV_FETCH_ASSOC)) {
-            echo ("<img src='" . $row['adPath'] . "' alt='Ads'>");
-            echo ("
+        echo ("<h2>Advertisements</h2>");
+
+        if (mysqli_num_rows($result3) > 0) {
+            while ($row = mysqli_fetch_assoc($result3)) {
+                echo ("<img src='" . $row['adPath'] . "' alt='Ads'>");
+                echo ("
             <form method='post' action='admin_control.php'>
                 <input type='checkbox' id='adDisabled' name='adDisabled' checked='" . $disabled . "'>
-                </input>
+                <input type='submit' value='Save'>
             </form>");
+            }
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         
 
-        //close server connection
+        mysqli_close($conn);
         ?>
-
-        <a href="#"><img src="ads/long/UniChannel.png" alt="Orinthego Ad"></a>
-        <h2>My Articles</h2>
-
 
     </div>
     </div>

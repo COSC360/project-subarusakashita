@@ -4,11 +4,12 @@ header {
     color: gold;
     padding: 1em 0em 1em 2em;
 }
-title{
-    width:100%;
+
+title {
+    width: 100%;
 }
 
-header a{
+header a {
     text-decoration: none;
     color: gold;
 }
@@ -40,16 +41,16 @@ div#top a {
     float: left;
 }
 
-div#top fieldset{
+div#top fieldset {
     border: 0em;
 }
 
-div#top input{
+div#top input {
     font-size: 1em;
 }
 
-div#top input#search{
-    width: 80%;
+div#top input#search {
+    width: 280%;
 }
 
 div#left {
@@ -66,10 +67,10 @@ div#left li {
     margin: 0.5em 0em 0em 0em;
 }
 
-div#left img{
+div#left img {
     margin: 3em 0em 0em 0em;
     box-shadow: 0.1em 0.1em 0.1em 0.1em;
-    width:100%;
+    width: 100%;
 }
 
 footer {

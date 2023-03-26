@@ -10,10 +10,8 @@ $conn = new mysqli($servername, $server_username, $server_password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-include 'main.html';
-// include database info
 
-$searchKeyword = "";
+$searchKeyword = "%";
 if (isset($_GET['searchKeyword'])) {
     $searchKeyword = "%" . $_GET['searchKeyword'] . "%";
 }
@@ -43,8 +41,9 @@ if (isset($_GET['searchKeyword'])) {
         include "include/ad_long.php";
 
         $sql = "SELECT articleId, articleTitle, articleLink FROM articles WHERE articleTitle LIKE ?";
+        $result = mysqli_query($conn, $sql);
 
-        while ($art = sqlsrv_fetch_array($sql, SQLSRV_FETCH_ASSOC, array($searchKeyword))) {
+        while ($art = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC, array($searchKeyword))) {
             // $articleTitle = str_replace('\'', '%27', $art['articleTitle']);
             // $articleTitle = str_replace(' ', '%20', $art['articleTitle']);
             echo ("<a href='article.php?articleId=" . $art['articleId'] . "&articleTitle=" . $articleTitle . "'>" . $articleTitle . "</a><br>");

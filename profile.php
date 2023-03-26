@@ -1,7 +1,6 @@
 <?php
-// include 
-// database info
 session_start();
+
 $servername = "cosc360.ok.ubc.ca";
 $server_username = "83395822";
 $server_password = "83395822";
@@ -12,10 +11,6 @@ $conn = new mysqli($servername, $server_username, $server_password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-// if (isset($_GET['username'])) {
-//     $username = $_GET['username'];
-// }
-
 // if (isset($_POST['emailNew'])) {
 //     $email = $_POST['emailNew'];
 // }
@@ -49,57 +44,65 @@ if ($conn->connect_error) {
         <h2>My Info</h2>
 
         <?php
-        // connect to server
-        
-        $sql = "SELECT * FROM Users WHERE username = ?";
-        //connect sql
-        
-        while ($row = sqlsrv_fetch_array($sql, SQLSRV_FETCH_ASSOC, array($username))) {
-            echo ("<h3>Username: " . $username . "</h3><br>");
-            //username is unchangeable
-        
-            echo ("<form action=\"profile.php?username=" . $username . "\" method=\"post\">");
-            //form open, submitted change will change the variables at very top of page
-        
-            echo ("<label for=\"emailNew\">Email</label><br>");
-            echo ("<input type=\"email\" id=\"emailNew\" name=\"emailNew\" placeholder=\"" . $row['email'] . "\"><br><br>");
-            //current email in placeholder, email will update when typed into the input
-        
-            echo ("<label for=\"phoneNumNew\">Phone number</label><br>");
-            echo ("<input type=\"tel\" id=\"phoneNumNew\" name=\"phoneNumNew\" placeholder=\"" . $row['phoneNum'] . "\"><br><br>");
+        $session_username = $_SESSION['username'];
 
-            echo ("<label for=\"addressNew\">Address</label><br>");
-            echo ("<input type=\"text\" id=\"addressNew\" name=\"addressNew\" placeholder=\"" . $row['address'] . "\"><br><br>");
+        $sql = "SELECT * FROM users WHERE username = '$session_username'";
+        $result = mysqli_query($conn, $sql);
 
-            echo ("<label for=\"postalCodeNew\">Postal Code</label><br>");
-            echo ("<input type=\"text\" id=\"postalCodeNew\" name=\"postalCodeNew\" placeholder=\"" . $row['postalCode'] . "\"><br><br>");
-
-            echo ("</form>");
-            //close form
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo ("<h3>Username: " . $row['username'] . "</h3><br>");
+                //username is unchangeable
         
-            if ($row['isAdmin'] == true) {
-                echo ("<a href=\"adminControl.php\">Admin Control Page</a>");
+                echo ("<form action=\"profile.php?username=" . $_SESSION['username'] . "\" method=\"post\">");
+                //form open, submitted change will change the variables at very top of page
+        
+                echo ("<label for=\"emailNew\">Email</label><br>");
+                echo ("<input type=\"email\" id=\"emailNew\" name=\"emailNew\" placeholder=\"" . $row['email'] . "\"><br><br>");
+                //current email in placeholder, email will update when typed into the input
+        
+                echo ("<label for=\"phoneNumNew\">Phone number</label><br>");
+                echo ("<input type=\"tel\" id=\"phoneNumNew\" name=\"phoneNumNew\" placeholder=\"" . $row['phoneNum'] . "\"><br><br>");
+
+                echo ("<label for=\"addressNew\">Address</label><br>");
+                echo ("<input type=\"text\" id=\"addressNew\" name=\"addressNew\" placeholder=\"" . $row['address'] . "\"><br><br>");
+
+                echo ("<label for=\"postalCodeNew\">Postal Code</label><br>");
+                echo ("<input type=\"text\" id=\"postalCodeNew\" name=\"postalCodeNew\" placeholder=\"" . $row['postalCode'] . "\"><br><br>");
+
+                echo ("<input type=\"submit\" value='Edit Info'>");
+                echo ("</form>");
+                //close form
+        
+                if ($row['isAdmin'] == true) {
+                    echo ("<a href=\"admin_control.php\">Admin Control Page</a><br>");
+                }
+
+                // log out button
+                echo ("<a href=\"logout.php\">Log Out</a>");
             }
-
-            // log out button
-            echo ("<a href=\"logout.php\">Log Out</a>");
+        } else {
+            echo "No rows";
         }
-
-        //close server connection
         ?>
 
         <?php include "include/ad_long.php"; ?>
-        <h2>My Articles</h2>
+        <h2>My Articles <a href="write_article.php"> - [write new article]</a></h2>
 
         <?php
-        $sql2 = "SELECT articleId, articleTitle FROM Articles WHERE username = ?";
-        //connect
-        
-        while ($row = sqlsrv_fetch_array($sql2, SQLSRV_FETCH_ASSOC, array($username))) {
-            echo ("<a href='$localhost/article.php?articleId=" . $row['articleId'] . ">" . $row['articleTitle'] . "</a><br>");
+        $session_username = $_SESSION['username'];
+        $sql2 = "SELECT articleId, articleTitle FROM Articles WHERE username = '$session_username'";
+        $result2 = mysqli_query($conn, $sql2);
+
+        if (mysqli_num_rows($result2) > 0) {
+            while ($row = mysqli_fetch_assoc($result2)) {
+                echo ("<h3><a href='article.php?articleId=" . $row['articleId'] . "'>" . $row['articleTitle'] . "</a></h3>");
+            }
+        } else {
+            echo "No articles published yet";
         }
 
-        // close connection
+        mysqli_close($conn);
         ?>
 
     </div>
