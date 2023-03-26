@@ -49,8 +49,8 @@ if ($conn->connect_error) {
         $sql = "SELECT * FROM users WHERE username = ?";
         $sql2 = "SELECT * FROM users";
 
-        $result = mysqli_query($conn, $sql2);
-        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC, array($_SESSION['username']))) {
+        $result = mysqli_query($conn, $sql, array($_SESSION['username']));
+        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             echo ("000000000");
             echo ("Email: " . $row['email']);
         }
