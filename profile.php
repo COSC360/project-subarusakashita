@@ -71,8 +71,7 @@ if ($conn->connect_error) {
         if (isset($_POST['postalCodeNew'])) {
             $postalCode = $_POST['postalCodeNew'];
         }
-        $sql2 = "UPDATE TABLE users SET email='$email', phoneNum='$phoneNum', address='$address', postalCode='$postalCode'
-        WHERE username='$session_username'";
+        $sql2 = "UPDATE TABLE users SET address='$address' WHERE username='$session_username'";
         if (mysqli_query($conn, $sql2)) {
             echo '<script>alert("Personal information updated successfully");</script>';
         }
