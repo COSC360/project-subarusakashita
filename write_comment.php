@@ -10,8 +10,15 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-if (isset($_GET['articleId'])) {
-    $articleId = $_GET['articleId'];
+
+$articleId = "";
+if (isset($_POST['articleId'])) {
+    $articleId = $_POST['articleId'];
+}
+
+$commentingUser = "";
+if (isset($_SESSION['username'])){
+    $commentingUser = $_SESSION['username'];
 }
 ?>
 
@@ -26,20 +33,26 @@ if (isset($_GET['articleId'])) {
 </head>
 
 <body>
-    <header><a href="main.html">UniChannel Blog</a></header>
+    <header><a href="main.php">UniChannel Blog</a></header>
     <div id=trail>
-        <p><a href="main.html">Main Page</a> > <a href="article_001.html">Study Tips for the Procrastinators</a> > <a
-                href="comment.html">Commenting</a></p>
+        <p>
+            <a href="main.php">Main Page</a> >
+            <a href="article.php?articleId= <?php $articleId ?> ">Article Page</a> >
+            <a href="write_comment.php">Commenting</a>
+        </p>
     </div>
     <?php include "include/top_left.php" ?>
     <div id="right">
         <?php
-        $sql1 = "SELECT articleTitle FROM Articles WHERE articleId = ?";
-        // run sql1
-        while ($row = sqlsrv_fetch_array($sql1, SQLSRV_FETCH_ASSOC, array($articleId))) {
-            echo ("<h2>" . $row['articleTitle'] . "</h2>");
+        $sql1 = "SELECT articleTitle FROM Articles WHERE articleId = '$articleId'";
+        $result1 = mysqli_query($conn, $sql1);
+        if (mysqli_num_rows($result1) > 0) {
+            while ($row = mysqli_fetch_assoc($result1)) {
+                echo ("<h2>Commenting on \"" . $row['articleTitle'] . "\"</h2>");
+            }
         }
         ?>
+
         <div id="comment">
             <form method="post" action="write_comment.php">
                 <fieldset>
@@ -52,13 +65,16 @@ if (isset($_GET['articleId'])) {
             </form>
             <?php
             if (isset($_POST['commentBody'])) {
-                $sql2 = "INSERT INTO Comments (username, articleId, commentBody) VALUES (?, ?, ?)";
                 // leave out commentId because it is auto increment
-                // run sql2
-                while ($row = sqlsrv_fetch_array($sql2, SQLSRV_FETCH_ASSOC, array($_SESSION['username'], $articleId, $_POST['commentBody']))) {
-                    // run sql?
+
+                $commentBody = $_POST['commentBody'];
+                $sql2 = "INSERT INTO Comments (username, articleId, commentBody, uploadTime) VALUES ($commentingUser, $articleId, $commentBody, 'date-time')";
+                if (mysqli_query($conn, $sql2)) {
+                    echo '<script>alert("Comment posted!");</script>';
                 }
             }
+
+            mysqli_close($conn);
             ?>
 
 
