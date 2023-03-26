@@ -21,7 +21,7 @@ if (isset($_GET['searchKeyword'])) {
 <html>
 
 <head>
-    <title>UniChannel | <?php echo($searchKeyword);?> </title>
+    <title>UniChannel | Search Page</title>
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
@@ -29,31 +29,58 @@ if (isset($_GET['searchKeyword'])) {
 <body>
     <header><a href="main.php">UniChannel Blog</a></header>
     <div id=trail>
-        <p><a href="main.php">Main Page</a> > <a href="search.php?searchKeyword= <?php echo($searchKeyword)?> "></p>
+        <p>
+            <a href="main.php">Main Page</a> >
+            <a href="search.php?searchKeyword= <?php $_GET['searchKeyword'] ?>">Search Page</a>
+        </p>
     </div>
-    <?php include "include/top_left.php"?>
-    
+    <?php include "include/top_left.php" ?>
+
     <div id="right">
-        <h2>Search Result</h2>
         <?php
+        echo ("<h2>Search Result in Articles</h2>");
 
-        // connection info
-        include "include/ad_long.php";
-
-        $sql = "SELECT articleId, articleTitle, articleLink FROM articles WHERE articleTitle LIKE ?";
-        $result = mysqli_query($conn, $sql);
-
-        while ($art = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC, array($searchKeyword))) {
-            // $articleTitle = str_replace('\'', '%27', $art['articleTitle']);
-            // $articleTitle = str_replace(' ', '%20', $art['articleTitle']);
-            echo ("<a href='article.php?articleId=" . $art['articleId'] . "&articleTitle=" . $articleTitle . "'>" . $articleTitle . "</a><br>");
+        $sql1 = "SELECT * FROM Articles WHERE articleTitle LIKE '$searchKeyword'";
+        $result1 = mysqli_query($conn, $sql1);
+        if (mysqli_num_rows($result1) > 0) {
+            while ($row = mysqli_fetch_assoc($result1)) {
+                echo ("<h3><a href='article.php?articleId=" . $row['articleId'] . "'>" . $row['articleTitle'] . "</a></h3>");
+            }
+        } else {
+            echo ("<h3>No results found for Articles</h3>");
         }
+        
+        include "include/ad_long.php";
+        echo ("<h2>Search Result in Users</h2>");
 
-        // close connection
+        $sql2 = "SELECT * FROM users WHERE username LIKE '$searchKeyword'";
+        $result2 = mysqli_query($conn, $sql2);
+        if (mysqli_num_rows($result2) > 0) {
+            while ($row = mysqli_fetch_assoc($result2)) {
+                echo ("<h3>" . $row['username'] . "</h3>");
+            }
+        } else {
+            echo ("<h3>No results found for Users</h3>");
+        }
+        
+        include "include/ad_long.php";
+        
+        echo ("<h2>Search Result in Tags</h2>");
+
+        $sql3 = "SELECT * FROM Tags WHERE tagName LIKE '$searchKeyword'";
+        $result3 = mysqli_query($conn, $sql3);
+        if (mysqli_num_rows($result3) > 0) {
+            while ($row = mysqli_fetch_assoc($result3)) {
+                echo ("<h3><a href='tag.php?tagId=" . $row['tagId'] . "'>" . $row['tagName'] . "</a></h3>");
+            }
+        } else {
+            echo ("<h3>No results found for Tags</h3>");
+        }
+        mysqli_close($conn);
         ?>
 
     </div>
-    <?php include "include/footer.php"?>
+    <?php include "include/footer.php" ?>
 </body>
 
 </html>

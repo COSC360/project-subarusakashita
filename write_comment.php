@@ -6,7 +6,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$articleId = "";
+$articleId = 0;
 if (isset($_GET['articleId'])) {
     $articleId = $_GET['articleId'];
 }
@@ -42,32 +42,40 @@ if (isset($_GET['articleId'])) {
                 echo ("<h2>Commenting on Article: " . $row['articleTitle'] . "</h2>");
             }
         }
+
+        if (isset($_POST['commentBody'])) {
+            $commentBody = $_POST['commentBody'];
+            $commentingUser = '';
+            if (isset($_SESSION['username'])) {
+                $commentingUser = $_SESSION['username'];
+            }
+            echo ($articleId . "<br>" . $commentBody . "<br>" . $commentingUser);
+            $articleId = intval($articleId);
+            echo ("<br><br>" . gettype($articleId) . "<br>" . gettype($commentBody) . "<br>" . gettype($commentingUser));
+            
+            // leave out commentId because it is auto increment
+            // $sql2 = "INSERT INTO Comments (username, articleId, commentBody) VALUES ($commentingUser, $articleId, $commentBody)";
+            $sql2 = "INSERT INTO Comments (username, articleId, commentBody) VALUES ($commentingUser, $articleId, $commentBody)";
+            if (mysqli_query($conn, $sql2)) {
+                echo '<script>alert("Comment posted!");</script>';
+            }
+            else{
+                echo '<script>alert("Error");</script>';
+            }
+        } 
         ?>
 
         <div id="comment">
             <form method="post" action="write_comment.php?articleId=<?php echo $articleId; ?>">
-            <label for="commentBody">Post comment on article</label>
-                <textarea id="commentBody" name="commentBody" rows="5" cols="100" 
-                placeholder="Write Comment here" required></textarea>
+                <!-- <textarea id="commentBody" name="commentBody" rows="5" cols="100" placeholder="Write Comment here"
+                    required></textarea> -->
+                <input type="text" id="commentBody" name="commentBody" placeholder="Write comment here" required>
                 <br>
                 <br>
                 <input type="submit" value="Comment">
             </form>
             <?php
-            if (isset($_POST['commentBody'])) {
-                // leave out commentId because it is auto increment
-            
-                $commentBody = $_POST['commentBody'];
-                $commentingUser = "";
-                if (isset($_SESSION['username'])) {
-                    $commentingUser = $_SESSION['username'];
-                }
 
-                $sql2 = "INSERT INTO Comments (username, articleId, commentBody) VALUES ($commentingUser, $articleId, $commentBody)";
-                if (mysqli_query($conn, $sql2)) {
-                    echo '<script>alert("Comment posted!");</script>';
-                }
-            }
 
             mysqli_close($conn);
             ?>
