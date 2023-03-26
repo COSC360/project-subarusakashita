@@ -37,7 +37,7 @@ if (isset($_SESSION['username'])){
     <div id=trail>
         <p>
             <a href="main.php">Main Page</a> >
-            <a href="article.php?articleId= <?php $articleId ?> ">Article Page</a> >
+            <a href="article.php?articleId= <?php echo $articleId; ?> ">Article Page</a> >
             <a href="write_comment.php">Commenting</a>
         </p>
     </div>
@@ -68,7 +68,7 @@ if (isset($_SESSION['username'])){
                 // leave out commentId because it is auto increment
 
                 $commentBody = $_POST['commentBody'];
-                $sql2 = "INSERT INTO Comments (username, articleId, commentBody, uploadTime) VALUES ($commentingUser, $articleId, $commentBody, 'date-time')";
+                $sql2 = "INSERT INTO Comments (username, articleId, commentBody) VALUES ($commentingUser, $articleId, $commentBody)";
                 if (mysqli_query($conn, $sql2)) {
                     echo '<script>alert("Comment posted!");</script>';
                 }
