@@ -49,8 +49,9 @@ if ($conn->connect_error) {
         
         // $sql = "SELECT * FROM users WHERE username = ?";
         // $result = mysqli_query($conn, $sql);
-        if ($result = $conn->query("SELECT * FROM users WHERE username = ?")) {
+        if ($result = mysqli_query($conn, "SELECT * FROM users WHERE username = ?", array($_SESSION['username']))) {
             echo ("1");
+            echo ($_SESSION['username']);
         }
 
         // while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC, array($_SESSION['username']))) {
