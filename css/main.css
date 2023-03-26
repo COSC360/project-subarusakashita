@@ -23,19 +23,12 @@ div#right {
 }
 
 div#tag {
-    /* background-color: blue; */
-    overflow: scroll;
+    overflow-x: scroll;
+    overflow-y: hidden;
     height: 8em;
 }
 
 div#tag a {
-    /* margin: 5em 1em 5em 1em;
-    
-    
-    width: 100%;
-    white-space: nowrap;
-    background-color: blue; */
-    
     font-size: 2em;
     text-decoration: none;
     border: 0.2em solid blue;
