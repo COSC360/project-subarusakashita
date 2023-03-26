@@ -51,10 +51,14 @@ if ($conn->connect_error) {
         $sql2 = "SELECT * FROM users";
 
         $result = mysqli_query($conn, $sql);
-        while ($row = mysqli_fetch_assoc($result)) {
-            echo ("000000000");
-            echo ("Email: " . $row['email']);
-
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo ("000000000");
+                echo ("Email: " . $row['email']);
+            }
+        }
+        else{
+            echo "No rows";
         }
 
         // if ($result = mysqli_query($conn, $sql2)) {
