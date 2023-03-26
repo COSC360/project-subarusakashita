@@ -11,16 +11,7 @@ $conn = new mysqli($servername, $server_username, $server_password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-// if (isset($_POST['emailNew'])) {
-//     $email = $_POST['emailNew'];
-// }
 
-// if (isset($_POST['addressNew'])) {
-//     $address = $_POST['addressNew'];
-// }
-// if (isset($_POST['postalCodeNew'])) {
-//     $postalCode = $_POST['postalCodeNew'];
-// }
 ?>
 
 <!DOCTYPE html>
@@ -46,12 +37,49 @@ if ($conn->connect_error) {
         <?php
         $session_username = $_SESSION['username'];
 
-        $sql = "SELECT * FROM users WHERE username = '$session_username'";
-        $result = mysqli_query($conn, $sql);
+        // user info before edit
+        $sql1 = "SELECT * FROM users WHERE username = '$session_username'";
+        $result1 = mysqli_query($conn, $sql1);
 
-        if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo ("<h3>Username: " . $row['username'] . "</h3><br>");
+        $email = "";
+        $phoneNum = "";
+        $address = "";
+        $postalCode = "";
+
+        if (mysqli_num_rows($result1) > 0) {
+            while ($row = mysqli_fetch_assoc($result1)) {
+                $email = $row['email'];
+                $phoneNum = $row['phoneNum'];
+                $address = $row['address'];
+                $postalCode = $row['postalCode'];
+            }
+        }
+
+        // update info from form
+        if (isset($_POST['emailNew'])) {
+            $email = $_POST['emailNew'];
+        }
+        if (isset($_POST['phoneNumNew'])) {
+            $phoneNum = $_POST['phoneNumNew'];
+        }
+        if (isset($_POST['addressNew'])) {
+            $address = $_POST['addressNew'];
+        }
+        if (isset($_POST['postalCodeNew'])) {
+            $postalCode = $_POST['postalCodeNew'];
+        }
+        $sql2 = "UPDATE TABLE users SET email='$email', phoneNum='$phoneNum', address='$address', postalCode='$postalCode'
+        WHERE username='$session_username'";
+        $result2 = mysqli_query($conn, $sql2);
+
+        // Show updated info in placeholder
+        // Form to let users change info
+        $sql3 = "SELECT * FROM users WHERE username = '$session_username'";
+        $result3 = mysqli_query($conn, $sql3);
+
+        if (mysqli_num_rows($result3) > 0) {
+            while ($row = mysqli_fetch_assoc($result3)) {
+                echo ("<h3>Username: " . $row['username'] . "</h3>");
                 //username is unchangeable
         
                 echo ("<form action=\"profile.php?username=" . $_SESSION['username'] . "\" method=\"post\">");
@@ -70,19 +98,19 @@ if ($conn->connect_error) {
                 echo ("<label for=\"postalCodeNew\">Postal Code</label><br>");
                 echo ("<input type=\"text\" id=\"postalCodeNew\" name=\"postalCodeNew\" placeholder=\"" . $row['postalCode'] . "\"><br><br>");
 
-                echo ("<input type=\"submit\" value='Edit Info'>");
+                echo ("<input type=\"submit\" value='Save edits'>");
                 echo ("</form>");
                 //close form
         
                 if ($row['isAdmin'] == true) {
-                    echo ("<a href=\"admin_control.php\">Admin Control Page</a><br>");
+                    echo ("<br><br><a href=\"admin_control.php\">Admin Control Page</a><br>");
                 }
 
                 // log out button
                 echo ("<a href=\"logout.php\">Log Out</a>");
             }
         } else {
-            echo "No rows";
+            echo "User not found";
         }
         ?>
 
