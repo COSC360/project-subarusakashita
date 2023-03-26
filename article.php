@@ -31,7 +31,8 @@ $user = $_SESSION['username'];
 <body>
     <header><a href="main.php">UniChannel Blog</a></header>
     <div id=trail>
-        <p><a href="main.php">Main Page</a> > <a href='article.php?articleId= <?php $articleId ?>'>Article Page</a></p>
+        <p><a href="main.php">Main Page</a> > <a href='article.php?articleId=<?php echo $articleId; ?>'>Article Page</a>
+        </p>
     </div>
     <?php include "include/top_left.php" ?>
     <div id="right">
@@ -58,12 +59,26 @@ $user = $_SESSION['username'];
             // $sql2 = "SELECT following FROM Users WHERE username = ?";
             // $result2 = mysqli_query($conn, $sql2, array());
             // $sql3 = "INSERT INTO Users (following) VALUES (?) WHERE username = ?";
-
+        
             // //comments
             // $sql4 = "SELECT username, commentBody FROM Comments WHERE articleId = ?";
             // $result4 = mysqli_query($conn, $sql4, array());
+        
+            // Comments
+            $sql4 = "SELECT * FROM Comments WHERE articleId = '$articleId'";
+            $result4 = mysqli_query($conn, $sql4);
+            echo ("<br><h2>Comments</h2>");
+            echo ("<h3><a href='write_comment.php?articleId=" . $articleId . "'>[Post new comment]</a></h3>");
+            if (mysqli_num_rows($result4) > 0) {
+                while ($row = mysqli_fetch_assoc($result4)) {
+                    echo ('<h3>' . $row["username"] . ' - ' . $row["commentBody"] . '</h3>');
+                }
+            } else {
+                echo "No comments yet";
+            }
 
-            //related articles
+
+            // Related articles
             $sql5 = "SELECT * FROM Articles WHERE categoryId = '$categoryId' ORDER BY views LIMIT 3";
             $result5 = mysqli_query($conn, $sql5);
             echo ("<br><h2>Related Articles</h2>");
@@ -80,12 +95,12 @@ $user = $_SESSION['username'];
         ?>
     </div>
 
-    <?php include "include/footer.php"; ?>
-
     <?php
-   include "showComment.php";
-   include "write_comment.php";
+    include "include/footer.php";
+    // include "showComment.php";
+    // include "write_comment.php";
     ?>
+
 </body>
 
 </html>

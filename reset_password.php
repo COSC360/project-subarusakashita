@@ -34,7 +34,7 @@ if ($conn->connect_error) {
             <form method="post" action="reset_password.php">
                 <fieldset>
                     <label for="recoverUser">Username:</label>
-                    <input type="text" id="recoverUser" placeholder="Enter username" required>
+                    <input type="text" id="recoverUser" name="recoverUser" placeholder="Enter username" required>
                     <br>
                     <br>
                     <input type="submit" value="Reset Password" />
@@ -43,9 +43,9 @@ if ($conn->connect_error) {
         </div>
         <?php include "include/ad_long.php"; ?>
         <?php
-        if (isset($_GET['recoverUser'])) {
-            //connect
-        
+        if (isset($_POST['recoverUser'])) {
+            $recoverUser = $_POST['recoverUser'];
+
             $passwordParts = [
                 "a",
                 "b",
@@ -85,20 +85,22 @@ if ($conn->connect_error) {
                 ")"
             ];
 
-            $newPassword = strtoupper($passwordParts[rand(0, 26)]) . strtoupper($passwordParts[rand(0, 26)])
-                . $passwordParts[rand(0, 26)] . $passwordParts[rand(0, 26)] . $passwordParts[rand(0, 26)]
-                . $passwordParts[rand(0, 26)] . rand(0, 10) . rand(0, 10) . $passwordParts[rand(26, 36)];
+            $newPassword = strtoupper($passwordParts[rand(0, 26)]) . strtoupper($passwordParts[rand(0, 25)])
+                . $passwordParts[rand(0, 25)] . $passwordParts[rand(0, 25)] . $passwordParts[rand(0, 25)]
+                . $passwordParts[rand(0, 25)] . rand(0, 9) . rand(0, 9) . $passwordParts[rand(26, 35)];
             //auto decide new password using $passwordParts, format: AAaaaa11!
-        
-            $recoverUser = $_GET['recoverUser'];
-            $sql1 = "SELECT email FROM Users WHERE username = " . $recoverUser;
-            $sql2 = "UPDATE Users SET password = " . $newPassword . "WHERE username = " . $recoverUser;
 
-            // run sql statements
+            $sql1 = "UPDATE users SET passwords = '$newPassword' WHERE username = '$recoverUser'";
+            if (mysqli_query($conn, $sql1)) {
+                echo '<script>alert("Password updated! New password sent to email");</script>';
+            }
+            
+
             // send email of new password
+            // $sql2 = "SELECT email FROM users WHERE username = '$recoverUser'";
         
 
-            //disconnect
+            mysqli_close($conn);
         }
         ?>
     </div>

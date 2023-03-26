@@ -22,18 +22,18 @@ div#right {
 }
 
 div#tag {
-    background-color: blue;
+    /* background-color: blue; */
 }
 
 div#tag a {
     /* margin: 5em 1em 5em 1em;
-    font-size: 2em;
-    overflow: auto;
+    
+    
     width: 100%;
     white-space: nowrap;
     background-color: blue; */
-
-
+    overflow: scroll;
+    font-size: 2em;
     text-decoration: none;
     border: 0.2em solid blue;
     border-radius: 1em;
