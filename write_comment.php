@@ -55,6 +55,7 @@ if (isset($_GET['articleId'])) {
                 $commentingUser = $_SESSION['username'];
             }
             echo ($articleId . "<br>" . $commentBody . "<br>" . $commentingUser);
+            $articleId = intval($articleId);
             echo (gettype($articleId) . "<br>" . gettype($commentBody) . "<br>" . gettype($commentingUser));
             
             // leave out commentId because it is auto increment
