@@ -86,24 +86,20 @@ if ($conn->connect_error) {
         ?>
 
         <?php include "include/ad_long.php"; ?>
-        <h2>My Articles</h2>
+        <h2>My Articles <a href="write_article.php"> - new article</a></h2>
 
         <?php
         $session_username = $_SESSION['username'];
         $sql2 = "SELECT articleId, articleTitle FROM Articles WHERE username = '$session_username'";
-        
         $result2 = mysqli_query($conn, $sql2);
 
         if (mysqli_num_rows($result2) > 0) {
             while ($row = mysqli_fetch_assoc($result2)) {
-                echo ("<h3><a href='article.php?articleId=" . $row['articleId'] . "'>" . $row['articleTitle'] . "</a></h3><br>");
+                echo ("<h3><a href='article.php?articleId=" . $row['articleId'] . "'>" . $row['articleTitle'] . "</a></h3>");
             }
         } else {
-            echo "No rows";
+            echo "No articles published yet";
         }
-        // while ($row = sqlsrv_fetch_array($sql2, SQLSRV_FETCH_ASSOC, array($username))) {
-        //     echo ("<a href='$localhost/article.php?articleId=" . $row['articleId'] . ">" . $row['articleTitle'] . "</a><br>");
-        // }
 
         mysqli_close($conn);
         ?>
