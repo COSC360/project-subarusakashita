@@ -34,6 +34,7 @@ if (!$conn) {
     <?php include "include/top_left.php" ?>
     <div id="right">
         <h2>Trending Tags</h2>
+        <h2>qoooooooooooooooooooooooooooooooo</h2>
         <div id="tag">
             <?php
             $sql1 = "SELECT * FROM Tags ORDER BY articleNumber LIMIT 10";
