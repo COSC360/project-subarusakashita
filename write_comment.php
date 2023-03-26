@@ -47,8 +47,23 @@ if (isset($_GET['articleId'])) {
                 echo ("<h2>Commenting on Article: " . $row['articleTitle'] . "</h2>");
             }
         }
-        ?>
 
+        if (isset($_POST['commentBody'])) {
+            // leave out commentId because it is auto increment
+        
+            $commentBody = $_POST['commentBody'];
+            $commentingUser = "";
+            if (isset($_SESSION['username'])) {
+                $commentingUser = $_SESSION['username'];
+            }
+
+            $sql2 = "INSERT INTO Comments (username, articleId, commentBody) VALUES ($commentingUser, $articleId,
+        $commentBody)";
+            if (mysqli_query($conn, $sql2)) {
+                echo '
+        <script>alert("Comment posted!");</script>';
+            }
+        } ?>
         <div id="comment">
             <form method="post" action="write_comment.php?articleId=<?php echo $articleId; ?>">
                 <!-- <textarea id="commentBody" name="commentBody" rows="5" cols="100" placeholder="Write Comment here"
@@ -59,20 +74,7 @@ if (isset($_GET['articleId'])) {
                 <input type="submit" value="Comment">
             </form>
             <?php
-            if (isset($_POST['commentBody'])) {
-                // leave out commentId because it is auto increment
-            
-                $commentBody = $_POST['commentBody'];
-                $commentingUser = "";
-                if (isset($_SESSION['username'])) {
-                    $commentingUser = $_SESSION['username'];
-                }
 
-                $sql2 = "INSERT INTO Comments (username, articleId, commentBody) VALUES ($commentingUser, $articleId, $commentBody)";
-                if (mysqli_query($conn, $sql2)) {
-                    echo '<script>alert("Comment posted!");</script>';
-                }
-            }
 
             mysqli_close($conn);
             ?>
