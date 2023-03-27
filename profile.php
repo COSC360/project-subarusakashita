@@ -94,35 +94,35 @@ if ($conn->connect_error) {
                 echo ("<h3>Username: " . $row['username'] . "</h3>");
                 //username is unchangeable
         
-                echo ("<form action=\"profile.php?username=" . $_SESSION['username'] . "\" method=\"post\">");
+                echo ("<form action='profile.php?username=" . $_SESSION['username'] . "' method='post'>");
                 //form open, submitted change will change the variables above
         
-                echo ("<label for=\"emailNew\">Email</label><br>");
-                echo ("<input type=\"email\" id=\"emailNew\" name=\"emailNew\" placeholder=\"" . $row['email'] . "\"><br><br>");
+                echo ("<label for='emailNew'>Email</label><br>");
+                echo ("<input type='email' id='emailNew' name='emailNew' placeholder='" . $row['email'] . "'><br><br>");
                 //current email in placeholder, email will update when typed into the input
         
-                echo ("<label for=\"passwordNew\">Password</label><br>");
-                echo ("<input type=\"password\" id=\"passwordNew\" name=\"passwordNew\ placeholder=\"●●●●●●●\"><br><br>");
+                echo ("<label for='passwordNew'>Password</label><br>");
+                echo ("<input type='password' id='passwordNew' name='passwordNew' placeholder='●●●●●●●'><br><br>");
 
-                echo ("<label for=\"phoneNumNew\">Phone number</label><br>");
-                echo ("<input type=\"tel\" id=\"phoneNumNew\" name=\"phoneNumNew\" placeholder=\"" . $row['phoneNum'] . "\"><br><br>");
+                echo ("<label for='phoneNumNew'>Phone number</label><br>");
+                echo ("<input type='tel' id='phoneNumNew' name='phoneNumNew' placeholder='" . $row['phoneNum'] . "'><br><br>");
 
-                echo ("<label for=\"addressNew\">Address</label><br>");
-                echo ("<input type=\"text\" id=\"addressNew\" name=\"addressNew\" placeholder=\"" . $row['address'] . "\"><br><br>");
+                echo ("<label for='addressNew'>Address</label><br>");
+                echo ("<input type='text' id='addressNew' name='addressNew' placeholder='" . $row['address'] . "'><br><br>");
 
-                echo ("<label for=\"postalCodeNew\">Postal Code</label><br>");
-                echo ("<input type=\"text\" id=\"postalCodeNew\" name=\"postalCodeNew\" placeholder=\"" . $row['postalCode'] . "\"><br><br>");
+                echo ("<label for='postalCodeNew'>Postal Code</label><br>");
+                echo ("<input type='text' id='postalCodeNew' name='postalCodeNew' placeholder='" . $row['postalCode'] . "'><br><br>");
 
-                echo ("<input type=\"submit\" value='Save edits'>");
+                echo ("<input type='submit' value='Save edits'>");
                 echo ("</form><br><br>");
                 //close form
         
                 if ($row['isAdmin'] == true) {
-                    echo ("<a href=\"admin_control.php\">Admin Control Page</a><br>");
+                    echo ("<a href='admin_control.php'>Admin Control Page</a><br>");
                 }
 
                 // log out button
-                echo ("<a href=\"logout.php\">Log Out</a>");
+                echo ("<a href='logout.php'>Log Out</a>");
             }
         } else {
             echo "User not found";
