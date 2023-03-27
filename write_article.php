@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['username'])){
+if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 }
 $servername = "cosc360.ok.ubc.ca";
@@ -33,7 +33,12 @@ if ($conn->connect_error) {
             <a href="write_article.php">Write Article Page</a>
         </p>
     </div>
-    <?php include "include/top_left.php" ?>
+    
+    <?php
+    include "include/top_left.php";
+    echo ('</div>');
+    ?>
+
     <div id="right">
         <h2>Write new article</h2>
         <div id="article">
@@ -63,8 +68,8 @@ if ($conn->connect_error) {
                     <?php include "include/ad_long.php"; ?>
 
                     <label for="newArticleBody">Article body</label>
-                    <textarea id="newArticleBody" name="newArticleBody" rows="5" cols="100" placeholder="Write article body here"
-                        required></textarea>
+                    <textarea id="newArticleBody" name="newArticleBody" rows="5" cols="100"
+                        placeholder="Write article body here" required></textarea>
                     <br>
                     <br>
 

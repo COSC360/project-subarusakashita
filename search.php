@@ -34,7 +34,13 @@ if (isset($_GET['searchKeyword'])) {
             <a href="search.php?searchKeyword= <?php $_GET['searchKeyword'] ?>">Search Page</a>
         </p>
     </div>
-    <?php include "include/top_left.php" ?>
+    
+    <?php
+    include "include/top_left.php";
+    echo ('<a href="#"><img src="ads/short/' . rand(1, 3) . '.png" alt="Advertisement"></a>');
+    echo ('</div>');
+    ?>
+
 
     <div id="right">
         <?php

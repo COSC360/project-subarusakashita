@@ -21,7 +21,13 @@ session_start();
     <div id=trail>
         <p><a href="main.php">Main Page</a> > <a href="logout.php">Logged Out Page</a></p>
     </div>
-    <?php include "include/top_left.php" ?>
+    
+    <?php
+    include "include/top_left.php";
+    echo ('<a href="#"><img src="ads/short/' . rand(1, 3) . '.png" alt="Advertisement"></a>');
+    echo ('</div>');
+    ?>
+
 
     <div id="right">
         <h2>Successfully Logged Out</h2>

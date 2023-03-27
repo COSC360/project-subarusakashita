@@ -32,7 +32,13 @@ if (isset($_GET['articleId'])) {
             <a href="write_comment.php?articleId=<?php echo $articleId; ?>">Commenting</a>
         </p>
     </div>
-    <?php include "include/top_left.php" ?>
+    
+    <?php
+    include "include/top_left.php";
+    echo ('<a href="#"><img src="ads/short/' . rand(1, 3) . '.png" alt="Advertisement"></a>');
+    echo ('</div>');
+    ?>
+
     <div id="right">
         <?php
         $sql1 = "SELECT articleTitle FROM Articles WHERE articleId = '$articleId'";

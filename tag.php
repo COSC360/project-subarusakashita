@@ -30,7 +30,13 @@ if (isset($_GET['tagId'])) {
     <div id=trail>
         <p><a href="main.php">Main Page</a> > <a href='tag.php?tagId= <?php $tagId ?>'>Tag Page</a></p>
     </div>
-    <?php include "include/top_left.php" ?>
+    
+    <?php
+    include "include/top_left.php";
+    echo ('<a href="#"><img src="ads/short/' . rand(1, 3) . '.png" alt="Advertisement"></a>');
+    echo ('</div>');
+    ?>
+
 
     <div id="right">
         <?php

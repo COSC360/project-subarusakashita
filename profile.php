@@ -29,7 +29,13 @@ if ($conn->connect_error) {
         <p><a href="main.php">Main Page</a> > <a
                 href="profile.php?username= <?php echo ($_SESSION['username']) ?> ">Profile Page</a></p>
     </div>
-    <?php include "include/top_left.php" ?>
+    
+    <?php
+    include "include/top_left.php";
+    echo ('<a href="#"><img src="ads/short/' . rand(1, 3) . '.png" alt="Advertisement"></a>');
+    echo ('</div>');
+    ?>
+
 
     <div id="right">
         <h2>My Info</h2>

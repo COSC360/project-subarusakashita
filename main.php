@@ -52,7 +52,13 @@ if (!$conn) {
     <div id=trail>
         <p><a href="main.php">Main Page</a></p>
     </div>
-    <?php include "include/top_left.php" ?>
+    
+    <?php
+    include "include/top_left.php";
+    echo ('<a href="#"><img src="ads/short/' . rand(1, 3) . '.png" alt="Advertisement"></a>');
+    echo ('</div>');
+    ?>
+
     <div id="right">
         <h2>Trending Tags</h2>
         <div id="tag">

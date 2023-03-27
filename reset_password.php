@@ -26,7 +26,12 @@ if ($conn->connect_error) {
         <p><a href="main.php">Main Page</a> > <a href="login.php">Login Page</a> > <a href="reset_password.php">Reset
                 Password Page</a></p>
     </div>
-    <?php include "include/top_left.php" ?>
+    
+    <?php
+    include "include/top_left.php";
+    echo ('</div>');
+    ?>
+
 
     <div id="right">
         <h2>Reset Password</h2>
