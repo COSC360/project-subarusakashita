@@ -97,7 +97,7 @@ if ($conn->connect_error) {
 
             $sql1 = "UPDATE users SET passwords = '$newPassword' WHERE username = '$recoverUser'";
             if (mysqli_query($conn, $sql1)) {
-                echo '<script>alert("Password updated! New password sent to email");</script>';
+                echo '<script>alert("New password is ' . $newPassword . ' (working on sending new password to email)");</script>';
             }
             
 
