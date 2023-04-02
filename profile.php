@@ -140,7 +140,7 @@ if ($conn->connect_error) {
         
                 echo $row['isAdmin'];
 
-                if ($row['isAdmin'] === '31') {
+                if ($row['isAdmin'] === '1') {
                     echo ("<a href='admin_control.php'>Admin Control Page</a><br>");
                 }
 
