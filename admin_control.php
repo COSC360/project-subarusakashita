@@ -10,7 +10,7 @@ $sql = "SELECT * FROM users WHERE username = '$username'";
 $result1 = mysqli_query($conn, $sql1);
 if (mysqli_num_rows($result1) > 0) {
     while ($row = mysqli_fetch_assoc($result1)) {
-        if ($row['isAdmin'] !== 31) {
+        if ($row['isAdmin'] !== true) {
             echo '<script>alert("Admin page is restricted to admin users");</script>';
             header("Location: main.php");
             exit;
