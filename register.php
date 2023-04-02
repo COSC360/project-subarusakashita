@@ -10,10 +10,10 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$username = $_GET['rUsername'];
-$email = $_GET['rEmail'];
-$password = $_GET['rPassword'];
-$password_conf = $_GET['password_conf'];
+$username = $_POST['rUsername'];
+$email = $_POST['rEmail'];
+$password = $_POST['rPassword'];
+$password_conf = $_POST['password_conf'];
 
 //Validate password and confirmation password
 if ($password !== $password_conf) {

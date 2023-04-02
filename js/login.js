@@ -7,17 +7,17 @@ document.getElementById("loginform").addEventListener("submit", function(event) 
   
     // Validate the form data
     if (formData.get("username") == "") {
-      document.getElementById("error-message").textContent = "Please enter your username.";
+      document.getElementById("error-message2").textContent = "Please enter your username.";
       return;
     }
   
     if (formData.get("password") == "") {
-      document.getElementById("error-message").textContent = "Please enter your password.";
+      document.getElementById("error-message2").textContent = "Please enter your password.";
       return;
     }
   
     // Clear the error message
-    document.getElementById("error-message").textContent = "";
+    document.getElementById("error-message2").textContent = "";
   
     // Submit the form data if it is valid
     this.submit();

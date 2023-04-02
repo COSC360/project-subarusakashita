@@ -16,7 +16,7 @@ session_start();
     <div id=trail>
         <p><a href="main.php">Main Page</a> > <a href="login.php">Login Page</a></p>
     </div>
-    
+
     <?php
     include "include/top_left.php";
     echo ('<a href="#"><img src="ads/short/' . rand(1, 3) . '.png" alt="Advertisement"></a>');
@@ -28,16 +28,16 @@ session_start();
     <div id="right">
         <h2>Log in</h2>
         <div id="login">
-            <form id = "loginform"action="signin.php" method="post">
+            <form id="loginform" action="signin.php" method="post">
                 <fieldset>
                     <label for="username">Username:</label>
                     <br>
-                    <input type="text" id="username" name="username" placeholder="Enter username" class="required" >
+                    <input type="text" id="username" name="username" placeholder="Enter username" class="required">
                     <br>
                     <br>
                     <label for="password">Password: </label>
                     <br>
-                    <input type="password" id="password" name="password" placeholder="Enter password" class="required" >
+                    <input type="password" id="password" name="password" placeholder="Enter password" class="required">
                     <br>
                     <br>
                     <input type="submit" value="Log in" />
@@ -50,7 +50,7 @@ session_start();
         <?php include "include/ad_long.php"; ?>
         <h2>Sign up</h2>
         <div id="signup">
-            <form id = "registerform" action="register.php" action="get">
+            <form id="registerform" action="register.php" action="post">
                 <fieldset>
                     <label for="username">Username:</label>
                     <br>
@@ -59,25 +59,25 @@ session_start();
                     <br>
                     <label for="email">Email:</label>
                     <br>
-                    <input type="email" id="rEmail" name='rEmail' placeholder="Enter email" required >
+                    <input type="email" id="rEmail" name='rEmail' placeholder="Enter email" required>
                     <br>
                     <br>
                     <label for="password">Password: </label>
                     <br>
-                    <input type="password" id="rPassword" name="rPassword" placeholder="Enter password" required >
+                    <input type="password" id="rPassword" name="rPassword" placeholder="Enter password" required>
                     <br>
                     <br>
                     <label for="password_conf">Re-enter Password: </label>
                     <br>
                     <input type="password" id="password_conf" name="password_conf" placeholder="Re-enter password"
-                      required  >
+                        required>
                     <br>
                     <!-- <input type="hidden" name="MAX_FILE_SIZE" value="5" />
                     <input name="img" type="file" accept="image/*" /> -->
                     <br>
                     <input type="submit" value="Sign up" />
                     <input type="reset" value="Reset" />
-                    <p id="error-message"></p>
+                    <p id="error-message2"></p>
                 </fieldset>
             </form>
             <script src="js/register.js"></script>
