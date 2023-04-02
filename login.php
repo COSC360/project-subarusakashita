@@ -85,7 +85,7 @@ session_start();
                     <input name="img" type="file" accept="image/*" /> -->
                     <br>
                     <input type="submit" value="Sign up" />
-                    <!-- <input type="reset" value="Reset" /> -->
+                    <input type="reset" value="Reset" />
                     <p id="error-message2"></p>
                 </fieldset>
             </form>
