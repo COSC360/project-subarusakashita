@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+if (!isset($_SESSION['username'])) {
+    header("profile.php?username=" . $_SESSION['username'] . "'");
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
