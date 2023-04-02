@@ -42,8 +42,8 @@ else {
         $sql1 = "INSERT INTO users(username, email, passwords) VALUES ('$username','$email','$password')";
         if (mysqli_query($conn, $sql1)) {
             // Account created successfully, redirect to login page
-            header("Location: login.php");
             echo '<script>alert("Account created👍");</script>';
+            header("Location: login.php");
             exit;
         } else {
             $error = "Account creation failed";
