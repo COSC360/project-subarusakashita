@@ -34,7 +34,8 @@ else {
 
     if (mysqli_num_rows($result) > 0) {
         // Username already exists, display error message
-        $error = "Username already exists. Num of rows: " . mysqli_num_rows($result) . " Username: " . $username;
+        // $error = "Username already exists. Num of rows: " . mysqli_num_rows($result) . " Username: " . $username;
+        $error = "Username already exists.<br> Go back to <a href='login.php'>Login Page</a>";
     }
     //Uploading to DB
     else {
