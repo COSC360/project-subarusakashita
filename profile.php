@@ -138,6 +138,8 @@ if ($conn->connect_error) {
                 echo ("</form><br><br>");
                 //close form
         
+                echo $row['isAdmin'];
+
                 if ($row['isAdmin'] === '31') {
                     echo ("<a href='admin_control.php'>Admin Control Page</a><br>");
                 }
