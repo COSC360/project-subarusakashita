@@ -77,7 +77,7 @@ session_start();
                     <br>
                     <input type="submit" value="Sign up" />
                     <input type="reset" value="Reset" />
-                    <p id="errormessage"></p>
+                    <p id="error-message"></p>
                 </fieldset>
             </form>
             <script src="js/register.js"></script>
