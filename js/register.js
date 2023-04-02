@@ -16,13 +16,13 @@ document.getElementById("registerform").addEventListener("submit", function (eve
         return;
     }
 
-    if (formData.get("rPassword") == "") {
+    if (formData.get("rPassword") == "" || formData.get("password_conf") == "") {
         document.getElementById("error-message2").textContent = "Please enter your password.";
         return;
     }
 
     if (formData.get("rPassword") !== formData.get("password_conf")) {
-        document.getElementsByid("error-message2").textContent = "Passwords do not match.";
+        document.getElementById("error-message2").textContent = "Passwords do not match.";
     }
 
     // Clear the error message
