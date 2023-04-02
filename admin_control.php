@@ -18,6 +18,7 @@ if (isset($_SESSION['username'])) {
     <style>
         div#right img {
             height: 10em;
+            width: 10em;
         }
     </style>
 </head>
