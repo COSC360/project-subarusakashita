@@ -43,13 +43,31 @@ if($_POST["tag"] === "Professor"){
 
 $body = $_POST["newArticleBody"];
 $username = $_SESSION['username'];
-$sql = "INSERT INTO Articles(articleTitle, username, categoryId, tagId, articleBody) VALUES ('$title','$username','$category','$tag','$body')";
-if (mysqli_query($conn, $sql)) {
-    header("Location: main.php");
-    exit;
+// $sql = "INSERT INTO Articles(articleTitle, username, categoryId, tagId, articleBody) VALUES ('$title','$username','$category','$tag','$body')";
+// if (mysqli_query($conn, $sql)) {
+//     header("Location: main.php");
+//     exit;
+// }
+// else{
+//     $error = "Article Upload failed";
+// }
+
+
+try {
+    $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $server_username, $server_password);
+    $sql = "INSERT INTO Articles(articleTitle, username, categoryId, tagId, articleBody) VALUES (?,?,?,?,?)";
+    $statement = $pdo->prepare($sql);
+    $statement->bindValue(1, $title);
+    $statement->bindValue(2, $username);
+    $statement->bindValue(3, $category);
+    $statement->bindValue(4, $tag);
+    $statement->bindValue(5, $body);
+    $statement->execute();
+    echo '<script>alert("Article Published");</script>';
+} catch (Exception $e) {
+    echo '<script>alert("Error publishing article");</script>';
 }
-else{
-    $error = "Article Upload failed";
-}
+
+
 mysqli_close($conn);
 ?>
