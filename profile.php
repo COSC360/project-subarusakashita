@@ -12,6 +12,11 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+if (isset($_SESSION['username'])) {
+    header("Location: login.php");
+    exit;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -138,8 +143,6 @@ if ($conn->connect_error) {
                 echo ("</form><br><br>");
                 //close form
         
-                echo $row['isAdmin'];
-
                 if ($row['isAdmin'] === '1') {
                     echo ("<a href='admin_control.php'>Admin Control Page</a><br>");
                 }
