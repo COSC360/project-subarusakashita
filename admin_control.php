@@ -20,11 +20,11 @@ if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 }
 
-$sql = "SELECT * FROM users WHERE username = '" . $username . "'";
+$sql = "SELECT * FROM users WHERE username = '$username'";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
-        if ($row['isAdmin'] !== true) {
+        if (!$row['isAdmin']) {
             header("Location: main.php");
             exit;
         }
