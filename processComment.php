@@ -15,18 +15,18 @@
     $username = $_SESSION['username'];
     $articleId = $_POST['articleId'];
     $comment = $_POST['comment'];
-//    var_dump($articleId);
-   // echo $comment;
-   // echo $articleId;
-   // echo $username;
-    $sql = "INSERT INTO Comments(username, articleId, commentBody) VALUES('$username',$articleId,'$comment')";
-    if (mysqli_query($conn, $sql)) {
-        echo '<script>alert("Comment Uploaded")</script>';
-        header("Location: main.php");
-        exit;
-    }
-    else{
-        $error = "Comment Upload failed";
+
+    try {
+        $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $server_username, $server_password);
+        $sql = "INSERT INTO Comments(username, articleId, commentBody) VALUES(?,?,?)";
+        $statement = $pdo->prepare($sql);
+        $statement->bindValue(1, $username);
+        $statement->bindValue(2, $articleId);
+        $statement->bindValue(3, $comment);
+        $statement->execute();
+        echo '<script>alert("Comment Posted");</script>';
+    } catch (Exception $e) {
+        echo '<script>alert("Error posting comment");</script>';
     }
     mysqli_close($conn);
 ?>
