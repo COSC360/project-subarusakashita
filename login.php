@@ -62,25 +62,24 @@ session_start();
 
             <form id="registerform" action="register.php" action="post">
                 <fieldset>
-                    <label for="username">Username:</label>
+                    <label for="rUsername">Username:</label>
                     <br>
-                    <input type="text" id="rUsername" name="rUsername" placeholder="Enter username" required>
-                    <br>
-                    <br>
-                    <label for="email">Email:</label>
-                    <br>
-                    <input type="email" id="rEmail" name='rEmail' placeholder="Enter email" required>
+                    <input type="text" id="rUsername" name="rUsername" placeholder="Enter username">
                     <br>
                     <br>
-                    <label for="password">Password: </label>
+                    <label for="rEmail">Email:</label>
                     <br>
-                    <input type="password" id="rPassword" name="rPassword" placeholder="Enter password" required>
+                    <input type="email" id="rEmail" name='rEmail' placeholder="Enter email">
+                    <br>
+                    <br>
+                    <label for="rPassword">Password: </label>
+                    <br>
+                    <input type="password" id="rPassword" name="rPassword" placeholder="Enter password">
                     <br>
                     <br>
                     <label for="password_conf">Re-enter Password: </label>
                     <br>
-                    <input type="password" id="password_conf" name="password_conf" placeholder="Re-enter password"
-                        required>
+                    <input type="password" id="password_conf" name="password_conf" placeholder="Re-enter password">
                     <br>
                     <!-- <input type="hidden" name="MAX_FILE_SIZE" value="5" />
                     <input name="img" type="file" accept="image/*" /> -->
