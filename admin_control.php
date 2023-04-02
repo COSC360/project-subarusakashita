@@ -5,8 +5,7 @@ $username = null;
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 }
-echo '<script>alert("username");</script>';
-echo '<script>alert(' . $username . ');</script>';
+echo '<script>alert("username is ' . $username . '");</script>';
 
 $sql = "SELECT * FROM users WHERE username = '$username'";
 $result = mysqli_query($conn, $sql);
