@@ -80,6 +80,7 @@ session_start();
                     <p id="errormessage"></p>
                 </fieldset>
             </form>
+            <script src="js/register.js"></script>
         </div>
     </div>
     <?php include "include/footer.php"; ?>
