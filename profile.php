@@ -73,7 +73,8 @@ if (!isset($_SESSION['username'])) {
         }
 
         if ($isDisabled) {
-            echo "This account is disabled. ";
+            echo "This account is disabled. <br>";
+            echo ("<a href='logout.php'>Log Out</a>");
         } else {
 
             if (
