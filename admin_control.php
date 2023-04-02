@@ -102,7 +102,7 @@ if (mysqli_num_rows($result) > 0) {
                     <td>" . $row['isAdmin'] . "</td>
                     <td>
                         <form method='post' action='admin_control.php'>
-                            <input type='checkbox' id='userDisabled' name='userDisabled' checked='" . $disabled . "'>
+                            <input type='checkbox' id='userDisabled' name='userDisabled' checked='$disabled'>
                             <input type='submit' value='Save'>
                         </form>
                     </td>
@@ -147,7 +147,7 @@ if (mysqli_num_rows($result) > 0) {
                     <td>" . $row['views'] . "</td>
                     <td>
                         <form method='post' action='admin_control.php'>
-                            <input type='checkbox' id='artDisabled' name='artDisabled' checked='" . $disabled . "'>
+                            <input type='checkbox' id='artDisabled' name='artDisabled'  checked='$disabled'>
                             <input type='submit' value='Save'>
                         </form>
                     </td>
@@ -176,7 +176,7 @@ if (mysqli_num_rows($result) > 0) {
                 echo ("<img src='" . $row['adPath'] . "' alt='Ads'>");
                 echo ("
             <form method='post' action='admin_control.php'>
-                <input type='checkbox' id='adDisabled' name='adDisabled' checked='" . $disabled . "'>
+                <input type='checkbox' id='adDisabled' name='adDisabled' checked='$disabled'>
                 <input type='submit' value='Save'>
             </form>");
             }
