@@ -68,6 +68,8 @@ try {
     echo '<script>alert("Error publishing article");</script>';
 }
 
-
 mysqli_close($conn);
+
+echo "Back to <a href='article.php?articleId=" . $articleId . "'>Article</a>";
+
 ?>

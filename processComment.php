@@ -29,4 +29,6 @@
         echo '<script>alert("Error posting comment");</script>';
     }
     mysqli_close($conn);
+
+    echo "Back to <a href='article.php?articleId=" . $articleId . "'>Article</a>";
 ?>
