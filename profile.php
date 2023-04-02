@@ -138,7 +138,7 @@ if ($conn->connect_error) {
                 echo ("</form><br><br>");
                 //close form
         
-                if ($row['isAdmin'] == true) {
+                if ($row['isAdmin'] === true) {
                     echo ("<a href='admin_control.php'>Admin Control Page</a><br>");
                 }
 
