@@ -1,4 +1,4 @@
-Team members: Karen Masuda (41561259), Subaru Sakashita (83395822)
+
 
 Topic: 3 MyBlogPost 
 
