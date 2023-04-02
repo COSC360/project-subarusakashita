@@ -15,7 +15,6 @@ if (isset($_POST['rUsername'])) {
     $email = $_POST['rEmail'];
     $password = $_POST['rPassword'];
     $password_conf = $_POST['password_conf'];
-    echo $username . "<br><br><br><br><br>";
 } else {
     echo "Username is not loaded. Try again.";
 }
@@ -52,13 +51,14 @@ else {
         }
 
 
-
+        echo $_FILES['userImage']['name'];
 
         if (
             getimagesize($_FILES['userImage']['tmp_name']) !== false &&
             $_FILES['userImage']['size'] < 100000 &&
             ($imageFileType == "jpg" || $imageFileType == "png")
         ) {
+            echo "Image";
             $imageFileType = strtolower(pathinfo(basename($_FILES['userImage']["name"]), PATHINFO_EXTENSION));
             $imagedata = file_get_contents($_FILES['userImage']['tmp_name']);
             $sql2 = "INSERT INTO images (file_type, userID, file) VALUES(?, ?, ?)";
@@ -72,7 +72,8 @@ else {
             echo '<script>alert("Image uploaded 👍");</script>';
 
         }
-
+        header("Location: login.php");
+        exit;
 
     }
 }
