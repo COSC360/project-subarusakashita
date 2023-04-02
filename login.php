@@ -81,8 +81,11 @@ session_start();
                     <br>
                     <input type="password" id="password_conf" name="password_conf" placeholder="Re-enter password">
                     <br>
-                    <!-- <input type="hidden" name="MAX_FILE_SIZE" value="5" />
-                    <input name="img" type="file" accept="image/*" /> -->
+                    <br>
+                    <label for="userImage">Insert Image: </label>
+                    <br>
+                    <input type="file" name="userImage" id="userImage">
+                    <br>
                     <br>
                     <input type="submit" value="Sign up" />
                     <input type="reset" value="Reset" />
