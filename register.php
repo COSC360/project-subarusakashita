@@ -51,7 +51,7 @@ else {
         }
 
 
-        echo $_FILES['userImage']['name'];
+        echo basename($_FILES['userImage']['name']);
 
         if (
             getimagesize($_FILES['userImage']['tmp_name']) !== false &&
