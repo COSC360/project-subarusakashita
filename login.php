@@ -26,8 +26,11 @@ session_start();
     ?>
 
     <div id="right">
+
         <h2>Log in</h2>
+
         <div id="login">
+
             <form id="loginform" action="signin.php" method="post">
                 <fieldset>
                     <label for="username">Username:</label>
@@ -44,12 +47,19 @@ session_start();
                     <p id="error-message"></p>
                 </fieldset>
             </form>
+
             <script src="js/login.js"></script>
             <a href="reset_password.php" id="forgot">Forgot Password</a>
         </div>
+
+
         <?php include "include/ad_long.php"; ?>
+
+
         <h2>Sign up</h2>
+
         <div id="signup">
+
             <form id="registerform" action="register.php" action="post">
                 <fieldset>
                     <label for="username">Username:</label>
@@ -76,7 +86,7 @@ session_start();
                     <input name="img" type="file" accept="image/*" /> -->
                     <br>
                     <input type="submit" value="Sign up" />
-                    <input type="reset" value="Reset" />
+                    <!-- <input type="reset" value="Reset" /> -->
                     <p id="error-message2"></p>
                 </fieldset>
             </form>
