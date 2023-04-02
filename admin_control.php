@@ -7,7 +7,7 @@ if (isset($_SESSION['username'])) {
 }
 echo '<script>alert("username is ' . $username . '");</script>';
 
-$sql = "SELECT * FROM users WHERE username = '$username'";
+$sql = "SELECT * FROM users WHERE username = '" . $username . "'";
 echo '<script>alert("sql is ' . $sql . '");</script>';
 
 $result = mysqli_query($conn, $sql);
