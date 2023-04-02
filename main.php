@@ -44,6 +44,10 @@ if (!$conn) {
             background-color: blue;
             color: gold;
         }
+
+        div#tag a:hover {
+            color: red;
+        }
     </style>
 </head>
 
@@ -52,7 +56,7 @@ if (!$conn) {
     <div id=trail>
         <p><a href="main.php">Main Page</a></p>
     </div>
-    
+
     <?php
     include "include/top_left.php";
     echo ('<a href="#"><img src="ads/short/' . rand(1, 3) . '.png" alt="Advertisement"></a>');
