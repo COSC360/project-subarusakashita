@@ -7,22 +7,22 @@ document.getElementById("registerform").addEventListener("submit", function(even
   
     // Validate the form data
     if (formData.get("rUsername") == "") {
-      document.getElementById("error-message").textContent = "Please enter your username.";
+      document.getElementById("error-message2").textContent = "Please enter your username.";
       return;
     }
 
     if (formData.get("rEmail") == "") {
-        document.getElementById("error-message").textContent = "Please enter your email.";
+        document.getElementById("error-message2").textContent = "Please enter your email.";
         return;
       }
   
     if (formData.get("rPassword") == "") {
-      document.getElementById("error-message").textContent = "Please enter your password.";
+      document.getElementById("error-message2").textContent = "Please enter your password.";
       return;
     }
 
     // Clear the error message
-    document.getElementById("error-message").textContent = "";
+    document.getElementById("error-message2").textContent = "";
   
     // Submit the form data if it is valid
     this.submit();
