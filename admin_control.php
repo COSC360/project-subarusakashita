@@ -15,7 +15,14 @@ if (mysqli_num_rows($result) > 0) {
             header("Location: main.php");
             exit;
         }
+        else {
+            echo '<script>alert("is admin");</script>';
+
+        }
     }
+} else {
+    echo '<script>alert("user not found");</script>';
+
 }
 
 ?>
