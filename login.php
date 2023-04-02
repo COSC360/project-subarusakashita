@@ -60,7 +60,7 @@ session_start();
 
         <div id="signup">
 
-            <form id="registerform" action="register.php" action="post">
+            <form id="registerform" action="register.php" method="post">
                 <fieldset>
                     <label for="rUsername">Username:</label>
                     <br>

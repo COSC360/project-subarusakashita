@@ -10,40 +10,44 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$username = $_POST['rUsername'];
-$email = $_POST['rEmail'];
-$password = $_POST['rPassword'];
-$password_conf = $_POST['password_conf'];
+if (isset($_POST['rUsername'])) {
+    $username = $_POST['rUsername'];
+    $email = $_POST['rEmail'];
+    $password = $_POST['rPassword'];
+    $password_conf = $_POST['password_conf'];
+    echo $username . "<br><br><br><br><br>";
+} else {
+    echo "Username is not loaded. Try again.";
+}
 
 //Validate password and confirmation password
 if ($password !== $password_conf) {
     // Passwords don't match, display error message
     $error = "Password and password confirmation do not match";
-} 
+}
 
 //Validate User
-else{
+else {
 
     $sql = "SELECT * FROM users WHERE username='$username'";
     $result = mysqli_query($conn, $sql);
 
-    
-if (mysqli_num_rows($result) > 0) {
+
+    if (mysqli_num_rows($result) > 0) {
         // Username already exists, display error message
-        $error = "Username already exists. Num of rows: ".mysqli_num_rows($result). " Username: ".$username;
-}
-//Uploading to DB
-else{
-    $sql1 = "INSERT INTO users(username, email, passwords) VALUES ('$username','$email','$password')";
+        $error = "Username already exists. Num of rows: " . mysqli_num_rows($result) . " Username: " . $username;
+    }
+    //Uploading to DB
+    else {
+        $sql1 = "INSERT INTO users(username, email, passwords) VALUES ('$username','$email','$password')";
         if (mysqli_query($conn, $sql1)) {
             // Account created successfully, redirect to login page
             header("Location: login.php");
             exit;
-        }
-        else{
+        } else {
             $error = "Account creation failed";
         }
-}
+    }
 }
 // $pdo = new PDO('mysql:host=localhost;dbname=mydb;charset=utf8', 'dbuser', 'P@ssw0rd');
 // $sql = "INSERT INTO Users(username, email, password, phoneNum) VALUES ($username, $email,

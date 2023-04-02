@@ -23,6 +23,7 @@ document.getElementById("registerform").addEventListener("submit", function (eve
 
     if (formData.get("rPassword") !== formData.get("password_conf")) {
         document.getElementById("error-message2").textContent = "Passwords do not match.";
+        return;
     }
 
     // Clear the error message
