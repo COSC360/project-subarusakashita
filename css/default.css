@@ -1,7 +1,3 @@
-a:hover {
-    color: red;
-}
-
 header {
     font-size: 4em;
     background-color: blue;
@@ -16,6 +12,10 @@ title {
 header a {
     text-decoration: none;
     color: gold;
+}
+
+header a:hover {
+    color: red;
 }
 
 h2 {
@@ -45,6 +45,10 @@ div#top a {
     float: left;
 }
 
+div#top a:hover {
+    color: red;
+}
+
 div#top fieldset {
     border: 0em;
 }
@@ -54,7 +58,7 @@ div#top input {
 }
 
 div#top input#search {
-    width: 280%;
+    width: 580%;
 }
 
 div#left {
@@ -66,9 +70,12 @@ div#left {
     height: 70em;
 }
 
-div#left li {
+div#left ul li {
     font-size: 2em;
     margin: 0.5em 0em 0em 0em;
+}
+div#left ul li a:hover {
+    color: red;
 }
 
 div#left img {
