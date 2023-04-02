@@ -39,16 +39,6 @@ else {
     //Uploading to DB
     else {
 
-        // insert new user info
-        // $sql1 = "INSERT INTO users(username, email, passwords) VALUES ('$username','$email','$password')";
-        // if (mysqli_query($conn, $sql1)) {
-        //     // Account created successfully, redirect to login page
-        //     echo '<script>alert("Account created👍");</script>';
-        //     // header("Location: login.php");
-        //     // exit;
-        // } else {
-        //     $error = "Account creation failed";
-        // }
         try {
             $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $server_username, $server_password);
             $sql2 = "INSERT INTO users (username, email, passwords) VALUES (?, ?, ?)";
@@ -59,9 +49,8 @@ else {
             $statement->execute();
             echo "Account created";
         } catch (Exception $e) {
-            echo "Error crating account";
+            echo "Error creating account";
         }
-
 
         echo basename($_FILES['userImage']['name']);
 
