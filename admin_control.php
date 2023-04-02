@@ -19,22 +19,14 @@ $username = null;
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 }
-echo '<script>alert("username is ' . $username . '");</script>';
 
 $sql = "SELECT * FROM users WHERE username = '" . $username . "'";
-echo '<script>alert("sql is ' . $sql . '");</script>';
-
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         if ($row['isAdmin'] !== true) {
-            echo '<script>alert("Admin page is restricted to admin users");</script>';
             header("Location: main.php");
             exit;
-        }
-        else {
-            echo '<script>alert("is admin");</script>';
-
         }
     }
 } else {
@@ -74,7 +66,7 @@ if (mysqli_num_rows($result) > 0) {
 
     <div id="right">
         <?php
-        
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         $sql1 = "SELECT * FROM users";
         $result1 = mysqli_query($conn, $sql1);
