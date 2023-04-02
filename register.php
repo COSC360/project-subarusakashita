@@ -40,14 +40,26 @@ else {
     else {
 
         // insert new user info
-        $sql1 = "INSERT INTO users(username, email, passwords) VALUES ('$username','$email','$password')";
-        if (mysqli_query($conn, $sql1)) {
-            // Account created successfully, redirect to login page
-            echo '<script>alert("Account created👍");</script>';
-            // header("Location: login.php");
-            // exit;
-        } else {
-            $error = "Account creation failed";
+        // $sql1 = "INSERT INTO users(username, email, passwords) VALUES ('$username','$email','$password')";
+        // if (mysqli_query($conn, $sql1)) {
+        //     // Account created successfully, redirect to login page
+        //     echo '<script>alert("Account created👍");</script>';
+        //     // header("Location: login.php");
+        //     // exit;
+        // } else {
+        //     $error = "Account creation failed";
+        // }
+        try {
+            $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $server_username, $server_password);
+            $sql2 = "INSERT INTO users (username, email, passwords) VALUES (?, ?, ?)";
+            $statement = $pdo->prepare($sql2);
+            $statement->bindValue(1, $username);
+            $statement->bindValue(2, $email);
+            $statement->bindValue(3, md5($password));
+            $statement->execute();
+            echo "Account created";
+        } catch (Exception $e) {
+            echo "Error crating account";
         }
 
 
