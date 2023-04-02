@@ -3,7 +3,7 @@ session_start();
 
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
-    header("profile.php?username='$username'");
+    header("Location: profile.php?username='$username'");
     exit;
 }
 ?>
