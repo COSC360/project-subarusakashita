@@ -7,9 +7,9 @@ if (isset($_SESSION['username'])) {
 }
 
 $sql = "SELECT * FROM users WHERE username = '$username'";
-$result1 = mysqli_query($conn, $sql1);
-if (mysqli_num_rows($result1) > 0) {
-    while ($row = mysqli_fetch_assoc($result1)) {
+$result = mysqli_query($conn, $sql);
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
         if ($row['isAdmin'] !== true) {
             echo '<script>alert("Admin page is restricted to admin users");</script>';
             header("Location: main.php");
