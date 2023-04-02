@@ -158,29 +158,28 @@ if (mysqli_num_rows($result) > 0) {
         echo ("</table>");
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        
-        $sql3 = "SELECT * FROM Ads";
-        $result3 = mysqli_query($conn, $sql3);
-
-        $disabled = "false";
-        if (isset($_POST['userDisabled'])) {
-            $disabled = $_POST['userDisabled'];
-        } else {
-            $disabled = $row['isDisabled'];
-        }
-
         echo ("<h2>Advertisements</h2>");
 
-        if (mysqli_num_rows($result3) > 0) {
-            while ($row = mysqli_fetch_assoc($result3)) {
-                echo ("<img src='" . $row['adPath'] . "' alt='Ads'>");
-                echo ("
+        $sql3 = "SELECT * FROM Ads";
+        $result3 = mysqli_query($conn, $sql3);
+        while ($row = mysqli_fetch_assoc($result3)) {
+            $adName = 'adDisabled' . $row['adPath'];
+
+            $disabled = null;
+            if (isset($_POST['adName'])) {
+                $disabled = $_POST['adName'];
+            } else {
+                $disabled = $row['isDisabled'];
+            }
+
+            echo ("<img src='" . $row['adPath'] . "' alt='Ads'>");
+            echo ("
             <form method='post' action='admin_control.php'>
-                <input type='checkbox' id='adDisabled' name='adDisabled' checked='$disabled'>
+                <input type='checkbox' id='$adName' name='$adName' checked='$disabled'>
                 <input type='submit' value='Save'>
             </form>");
-            }
         }
+
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         
