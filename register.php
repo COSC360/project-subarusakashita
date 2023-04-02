@@ -41,11 +41,13 @@ else {
 
         try {
             $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $server_username, $server_password);
-            $sql2 = "INSERT INTO users (username, email, passwords) VALUES (?, ?, ?)";
+            $sql2 = "INSERT INTO users (username, email, passwords, isAdmin, isDisabled) VALUES (?, ?, ?, ?, ?)";
             $statement = $pdo->prepare($sql2);
             $statement->bindValue(1, $username);
             $statement->bindValue(2, $email);
             $statement->bindValue(3, md5($password));
+            $statement->bindValue(4, false);
+            $statement->bindValue(5, false);
             $statement->execute();
             echo "Account created";
         } catch (Exception $e) {
