@@ -72,8 +72,8 @@ else {
             echo '<script>alert("Image uploaded 👍");</script>';
 
         }
-        header("Location: login.php");
-        exit;
+        // header("Location: login.php");
+        // exit;
 
     }
 }
