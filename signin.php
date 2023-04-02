@@ -19,7 +19,8 @@ $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     // Login successful
     $_SESSION["username"] = $username;
-    header("Location: main.php");
+    // header("Location: main.php");
+    header ("Location: profile.php?username='$username'");
     exit;
 } else {
     // Login failed
