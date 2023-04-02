@@ -63,41 +63,47 @@ if ($conn->connect_error) {
             }
         }
 
-        // update info from form
-        if (!empty($_POST['emailNew'])) {
-            $email = $_POST['emailNew'];
-        }
-        if (!empty($_POST['phoneNumNew'])) {
-            $phoneNum = $_POST['phoneNumNew'];
-        }
-        if (!empty($_POST['addressNew'])) {
-            $address = $_POST['addressNew'];
-        }
-        if (!empty($_POST['postalCodeNew'])) {
-            $postalCode = $_POST['postalCodeNew'];
-        }
-        if (!empty($_POST['passwordNew'])) {
-            $password = $_POST['passwordNew'];
-        }
-        // $sql2 = "UPDATE users SET email='$email', phoneNum='$phoneNum', address='$address', 
-        // postalCode='$postalCode', passwords='$password' WHERE username='$session_username'";
-        // if (mysqli_query($conn, $sql2)) {
-        //     echo '<script>alert("Personal information updated successfully");</script>';
-        // }
-        try {
-            $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $server_username, $server_password);
-            $sql2 = "UPDATE users SET email=?, phoneNum=?, address=?, postalCode=?, passwords=? WHERE username=?";
-            $statement = $pdo->prepare($sql2);
-            $statement->bindValue(1, $email);
-            $statement->bindValue(2, $phoneNum);
-            $statement->bindValue(3, $address);
-            $statement->bindValue(4, $postalCode);
-            $statement->bindValue(5, md5($password));
-            $statement->bindValue(6, $session_username);
-            $statement->execute();
-            echo '<script>alert("Personal information updated successfully");</script>';
-        } catch (Exception $e) {
-            echo '<script>alert("Error updating personal info");</script>';
+        if (
+            !empty($_POST['emailNew']) || !empty($_POST['phoneNumNew']) || !empty($_POST['addressNew'])
+            || !empty($_POST['postalCodeNew']) || !empty($_POST['passwordNew'])
+        ) {
+
+            // update info from form
+            if (!empty($_POST['emailNew'])) {
+                $email = $_POST['emailNew'];
+            }
+            if (!empty($_POST['phoneNumNew'])) {
+                $phoneNum = $_POST['phoneNumNew'];
+            }
+            if (!empty($_POST['addressNew'])) {
+                $address = $_POST['addressNew'];
+            }
+            if (!empty($_POST['postalCodeNew'])) {
+                $postalCode = $_POST['postalCodeNew'];
+            }
+            if (!empty($_POST['passwordNew'])) {
+                $password = $_POST['passwordNew'];
+            }
+            // $sql2 = "UPDATE users SET email='$email', phoneNum='$phoneNum', address='$address', 
+            // postalCode='$postalCode', passwords='$password' WHERE username='$session_username'";
+            // if (mysqli_query($conn, $sql2)) {
+            //     echo '<script>alert("Personal information updated successfully");</script>';
+            // }
+            try {
+                $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $server_username, $server_password);
+                $sql2 = "UPDATE users SET email=?, phoneNum=?, address=?, postalCode=?, passwords=? WHERE username=?";
+                $statement = $pdo->prepare($sql2);
+                $statement->bindValue(1, $email);
+                $statement->bindValue(2, $phoneNum);
+                $statement->bindValue(3, $address);
+                $statement->bindValue(4, $postalCode);
+                $statement->bindValue(5, md5($password));
+                $statement->bindValue(6, $session_username);
+                $statement->execute();
+                echo '<script>alert("Personal information updated successfully");</script>';
+            } catch (Exception $e) {
+                echo '<script>alert("Error updating personal info");</script>';
+            }
         }
 
         // Show updated info in placeholder
