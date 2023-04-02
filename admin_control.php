@@ -1,11 +1,21 @@
 <?php
-// database info?
-
 session_start();
+
 $username = null;
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 }
+
+$sql = "SELECT * FROM users WHERE username = '$username'";
+$result1 = mysqli_query($conn, $sql1);
+if (mysqli_num_rows($result1) > 0) {
+    while ($row = mysqli_fetch_assoc($result1)) {
+        if ($row['isAdmin'] !== 31) {
+            header("Location: main.php");
+        }
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +39,7 @@ if (isset($_SESSION['username'])) {
         <p><a href="main.php">Main Page</a> > <a href="profile.php? <?php echo ($username) ?>">Profile Page</a> > <a
                 href="admin_control.php">Admin Control Page</a> </p>
     </div>
-    
+
     <?php
     include "include/top_left.php";
     echo ('<a href="#"><img src="ads/short/' . rand(1, 3) . '.png" alt="Advertisement"></a>');
