@@ -49,9 +49,12 @@ else {
             $statement->bindValue(4, false);
             $statement->bindValue(5, false);
             $statement->execute();
-            echo "Account created";
+            echo '<script>alert("Account created");</script>';
+            echo "Go login at <a href='login.php'>Login Page</a>";
         } catch (Exception $e) {
-            echo "Error creating account";
+            echo '<script>alert("Error creating account");</script>';
+            echo "Back to <a href='login.php'>Login Page</a>";
+
         }
 
         echo basename($_FILES['userImage']['name']);
@@ -96,7 +99,7 @@ mysqli_close($conn);
 </head>
 
 <body>
-    <h1>Create Account Validation Check...</h1>
+    <!-- <h1>Create Account Validation Check...</h1> -->
     <?php if (isset($error)) { ?>
         <p>
             <?php echo $error; ?>
