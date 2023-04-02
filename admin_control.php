@@ -1,6 +1,20 @@
 <?php
 session_start();
 
+// connect to server
+$servername = "cosc360.ok.ubc.ca";
+$server_username = "83395822";
+$server_password = "83395822";
+$dbname = "db_83395822";
+$conn = new mysqli($servername, $server_username, $server_password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+
+
 $username = null;
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
@@ -60,17 +74,7 @@ if (mysqli_num_rows($result) > 0) {
 
     <div id="right">
         <?php
-        // connect to server
-        $servername = "cosc360.ok.ubc.ca";
-        $server_username = "83395822";
-        $server_password = "83395822";
-        $dbname = "db_83395822";
-        $conn = new mysqli($servername, $server_username, $server_password, $dbname);
-
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+        
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         $sql1 = "SELECT * FROM users";
         $result1 = mysqli_query($conn, $sql1);
