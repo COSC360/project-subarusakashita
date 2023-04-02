@@ -164,6 +164,7 @@ if (mysqli_num_rows($result) > 0) {
         $result3 = mysqli_query($conn, $sql3);
         while ($row = mysqli_fetch_assoc($result3)) {
             $adName = 'adDisabled' . $row['adPath'];
+            echo $adName;
 
             $disabled = null;
             if (isset($_POST['adName'])) {
