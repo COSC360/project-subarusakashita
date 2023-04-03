@@ -103,7 +103,7 @@ $user = $_SESSION['username'];
             }
             
             // Related articles
-            $sql5 = "SELECT * FROM Articles WHERE categoryId = '$categoryId' ORDER BY views LIMIT 3";
+            $sql5 = "SELECT * FROM Articles WHERE categoryId = '$categoryId' ORDER BY commentNum LIMIT 3";
             $result5 = mysqli_query($conn, $sql5);
             echo ("<br><h2>Related Articles</h2>");
             if (mysqli_num_rows($result5) > 0) {
