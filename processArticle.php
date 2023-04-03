@@ -33,28 +33,38 @@ if ($conn->connect_error) {
     }
     // user account is not disabled
 
-    $title = $_POST["newArticleTitle"];
+    $title = null;
     if ($_POST["category"] === "Academic") {
         $category = 1;
     } else if ($_POST["category"] === "Lifestyle") {
         $category = 2;
     }
 
-    $tag = $_POST["tag"];
-    if ($_POST["tag"] === "Professor") {
+    $tag = null;
+    if ($_POST["tag"] === "COSC360") {
         $tag = 1;
-    } else if ($_POST["tag"] === "Course") {
+    } else if ($_POST["tag"] === "Dog") {
         $tag = 2;
-    } else if ($_POST["tag"] === "Study") {
+    } else if ($_POST["tag"] === "UBC") {
         $tag = 3;
-    } else if ($_POST["tag"] === "Laundry") {
+    } else if ($_POST["tag"] === "Subway") {
         $tag = 4;
-    } else if ($_POST["tag"] === "Emergencies") {
+    } else if ($_POST["tag"] === "Prof") {
         $tag = 5;
-    } else if ($_POST["tag"] === "Cooking") {
+    } else if ($_POST["tag"] === "Course") {
         $tag = 6;
-    } else if ($_POST["tag"] === "Grocery") {
+    } else if ($_POST["tag"] === "Study") {
         $tag = 7;
+    } else if ($_POST["tag"] === "Laundry") {
+        $tag = 8;
+    } else if ($_POST["tag"] === "Emergency") {
+        $tag = 9;
+    } else if ($_POST["tag"] === "Cooking") {
+        $tag = 10;
+    } else if ($_POST["tag"] === "Grocery") {
+        $tag = 11;
+    } else if ($_POST["tag"] === "Event") {
+        $tag = 12;
     }
 
     try {

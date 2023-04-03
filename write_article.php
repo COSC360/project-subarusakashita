@@ -84,9 +84,9 @@ if ($conn->connect_error) {
 
                     let tags = [];
                     if (category === "Academic") {
-                        tags = ["Professor", "Course", "Study"];
+                        tags = ["COSC360", "Prof", "Course", "Study"];
                     } else if (category === "Lifestyle") {
-                        tags = ["Laundry", "Emergencies", "Cooking", "Grocery"]
+                        tags = ["Dog", "UBC", "Subway", "Laundry", "Emergency", "Cooking", "Grocery", "Event"];
                     }
                     for (let i = 0; i < tags.length; i++) {
                         let option = document.createElement("option");
