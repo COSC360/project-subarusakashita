@@ -58,7 +58,11 @@ if (mysqli_num_rows($result) > 0) {
         }
 
         .red {
-            background-color: rgb(255, 224, 246);
+            background-color: rgb(245, 162, 164);
+        }
+
+        .green {
+            background-color: rgb(192, 242, 165);
         }
     </style>
 </head>
@@ -125,7 +129,7 @@ if (mysqli_num_rows($result) > 0) {
                             <input type='submit' value='Enable'>");
                 } else {
                     echo ("
-                <tr>
+                <tr class='green'>
                     <td>" . $row['username'] . "</td>
                     <td>" . $row['email'] . "</td>
                     <td>" . $row['phoneNum'] . "</td>
@@ -133,6 +137,7 @@ if (mysqli_num_rows($result) > 0) {
                     <td>" . $row['postalCode'] . "</td>
                     <td>" . $row['isAdmin'] . "</td>
                     <td>
+                        '$name'
                         <form method='post' action='admin_control.php'>
                             <input type='hidden' id='$name' name='$name' value='$true'>
                             <input type='submit' value='Disable'>");
