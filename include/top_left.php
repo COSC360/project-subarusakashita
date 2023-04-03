@@ -16,7 +16,7 @@ echo ('
 <form action="search.php" method="get">
     <fieldset>
         <input type="search" id="searchKeyword" name="searchKeyword" placeholder="Search Users and Articles">
-        <input type="submit" value="Search" />
+        <input type="submit" value="Search">
     </fieldset>
 </form>
 </div>
