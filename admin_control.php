@@ -56,6 +56,10 @@ if (mysqli_num_rows($result) > 0) {
             font-weight: bold;
             border-collapse: collapse;
         }
+
+        .red {
+            background-color: red;
+        }
     </style>
 </head>
 
@@ -102,8 +106,13 @@ if (mysqli_num_rows($result) > 0) {
                 } else {
                     $disabled = $row['isDisabled'];
                 }
+
+                if ($disabled) {
+                    echo ("<tr class='red'>");
+                } else {
+                    echo ("<tr>");
+                }
                 echo ("
-                <tr>
                     <td>" . $row['username'] . "</td>
                     <td>" . $row['email'] . "</td>
                     <td>" . $row['phoneNum'] . "</td>
