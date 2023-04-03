@@ -58,7 +58,7 @@ if (mysqli_num_rows($result) > 0) {
         }
 
         .red {
-            background-color: lightcoral;
+            background-color: rgb(255, 224, 246);
         }
     </style>
 </head>
@@ -93,13 +93,15 @@ if (mysqli_num_rows($result) > 0) {
                     <th>Address</th>
                     <th>Postal Code</th>
                     <th>Admin</th>
-                    <th>Disabled</th>
+                    <th>Enable/Disable</th>
                 </tr>");
 
         if (mysqli_num_rows($result1) > 0) {
             while ($row = mysqli_fetch_assoc($result1)) {
                 $disabled = null;
                 $name = $row['username'] . "_disabled";
+                $true = true;
+                $false = false;
 
                 if (!empty($_POST['$name'])) {
                     $disabled = $_POST['$name'];
@@ -119,7 +121,7 @@ if (mysqli_num_rows($result) > 0) {
                     <td>
                         '$name'
                         <form method='post' action='admin_control.php'>
-                            <input type='hidden' name='$name' value='null'>
+                            <input type='hidden' id='$name' name='$name' value='$false'>
                             <input type='submit' value='Enable'>");
                 } else {
                     echo ("
@@ -132,7 +134,7 @@ if (mysqli_num_rows($result) > 0) {
                     <td>" . $row['isAdmin'] . "</td>
                     <td>
                         <form method='post' action='admin_control.php'>
-                            <input type='hidden' name='$name' value='true'>
+                            <input type='hidden' id='$name' name='$name' value='$true'>
                             <input type='submit' value='Disable'>");
                 }
                 echo (" 
