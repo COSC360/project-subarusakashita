@@ -173,8 +173,8 @@ if (mysqli_num_rows($result) > 0) {
         echo ("
             <table>
                 <tr>
-                    <th></th>
-                    <th></th>
+                    <th>Advertisement Image</th>
+                    <th>isDisabled (0 false, 1 true)</th>
                 </tr>");
 
         while ($row = mysqli_fetch_assoc($result3)) {
