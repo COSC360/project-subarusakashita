@@ -14,7 +14,7 @@ header a {
     color: gold;
 }
 
-header a:hover {
+a:hover {
     color: red;
 }
 
@@ -45,10 +45,6 @@ div#top a {
     float: left;
 }
 
-div#top a:hover {
-    color: red;
-}
-
 div#top fieldset {
     border: 0em;
 }
@@ -73,9 +69,6 @@ div#left {
 div#left ul li {
     font-size: 2em;
     margin: 0.5em 0em 0em 0em;
-}
-div#left ul li a:hover {
-    color: red;
 }
 
 div#left img {
