@@ -34,7 +34,7 @@ $user = $_SESSION['username'];
         <p><a href="main.php">Main Page</a> > <a href='article.php?articleId=<?php echo $articleId; ?>'>Article Page</a>
         </p>
     </div>
-    
+
     <?php
     include "include/top_left.php";
     echo ('<a href="#"><img src="ads/short/' . rand(1, 3) . '.png" alt="Advertisement"></a>');
@@ -70,7 +70,7 @@ $user = $_SESSION['username'];
             // $sql4 = "SELECT username, commentBody FROM Comments WHERE articleId = ?";
             // $result4 = mysqli_query($conn, $sql4, array());
         
-            // Comments
+            // Show Comments
             $sql4 = "SELECT * FROM Comments WHERE articleId = '$articleId'";
             $result4 = mysqli_query($conn, $sql4);
             echo ("<br><h2>Comments</h2>");
@@ -85,11 +85,17 @@ $user = $_SESSION['username'];
 
 
             // Write Comment
-            if (isset($_SESSION['username'])) {
-                $articleId =  $articleId = $_GET['articleId'];
-                //echo($articleId);
-                // if not logged in
-                // pop-up to encourage log in
+            $disabled = null;
+            $sql5 = "SELECT * FROM users WHERE username='$user'";
+            $result5 = mysqli_query($conn, $sql5);
+            if (mysqli_num_rows($result5) > 0) {
+                while ($row = mysqli_fetch_assoc($result5)) {
+                    $disabled = $row['isDisabled'];
+                }
+            }
+            if (isset($user) && $disabled !== false) {
+                $articleId = $articleId = $_GET['articleId'];
+                // if logged in
                 echo '<form action ="processComment.php" method = "post">
                       <input type="text" id="comment" name="comment" placeholder="Write comment here" required>
                       <input type = "hidden" name = "username" value = echo $user >
@@ -97,17 +103,15 @@ $user = $_SESSION['username'];
                       <br>
                       <br>
                       <input type="submit" value="Comment">
-                      </form>
-                
-                ';
+                      </form>';
             }
-            
+
             // Related articles
-            $sql5 = "SELECT * FROM Articles WHERE categoryId = '$categoryId' ORDER BY commentNum LIMIT 3";
-            $result5 = mysqli_query($conn, $sql5);
+            $sql6 = "SELECT * FROM Articles WHERE categoryId = '$categoryId' ORDER BY commentNum LIMIT 3";
+            $result6 = mysqli_query($conn, $sql6);
             echo ("<br><h2>Related Articles</h2>");
-            if (mysqli_num_rows($result5) > 0) {
-                while ($row = mysqli_fetch_assoc($result5)) {
+            if (mysqli_num_rows($result6) > 0) {
+                while ($row = mysqli_fetch_assoc($result6)) {
                     echo ('<h3><a href="article.php?articleId=' . $row["articleId"] . '">' . $row["articleTitle"] . '</a></h3>');
                 }
             }
