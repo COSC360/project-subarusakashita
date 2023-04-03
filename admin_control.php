@@ -117,6 +117,7 @@ if (mysqli_num_rows($result) > 0) {
                     <td>" . $row['postalCode'] . "</td>
                     <td>" . $row['isAdmin'] . "</td>
                     <td>
+                        '$name'
                         <form method='post' action='admin_control.php'>
                             <input type='hidden' name='$name' value='null'>
                             <input type='submit' value='Enable'>");
