@@ -170,6 +170,13 @@ if (mysqli_num_rows($result) > 0) {
 
         $sql3 = "SELECT * FROM Ads";
         $result3 = mysqli_query($conn, $sql3);
+        echo ("
+            <table>
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>");
+
         while ($row = mysqli_fetch_assoc($result3)) {
             $adName = 'adDisabled' . $row['adPath'];
 
@@ -182,15 +189,21 @@ if (mysqli_num_rows($result) > 0) {
                 $disabled = $row['isDisabled'];
             }
 
-            echo "Ad is disabled? " . $disabled;
-
-            echo ("<img src='" . $row['adPath'] . "' alt='Ads'>");
             echo ("
-            <form method='post' action='admin_control.php'>
-                <input type='text' id='$adName' name='$adName' placeholder='$disabled'>
-                <input type='submit' value='Save'>
-            </form>");
+            <tr>
+                <td>
+                    <img src='" . $row['adPath'] . "' alt='Ads'>
+                </td>");
+            echo ("
+                <td>
+                    <form method='post' action='admin_control.php'>
+                        <input type='text' id='$adName' name='$adName' placeholder='$disabled'>
+                        <input type='submit' value='Save'>
+                    </form>
+                </td>
+            </tr>");
         }
+        echo ("</table>");
 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
