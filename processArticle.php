@@ -12,7 +12,26 @@ $conn = new mysqli($servername, $server_username, $server_password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } else {
+    if (!isset($_POST["newArticleBody"]) || !isset($_SESSION['username'])) {
+        header("Location: main.php");
+        exit;
+    }
+    $body = $_POST["newArticleBody"];
+    $username = $_SESSION['username'];
 
+    $sql1 = "SELECT * FROM users WHERE username='$username'";
+    $result1 = mysqli_query($conn, $sql1);
+    if (mysqli_num_rows($result1) > 0) {
+        while ($row = mysqli_fetch_assoc($result1)) {
+            if ($row['isDisabled === 1']) {
+                // if user account is disabled
+                echo '<script>alert("Account is disabled");</script>';
+                header("Location: main.php");
+                exit;
+            }
+        }
+    }
+    // user account is not disabled
 
     $title = $_POST["newArticleTitle"];
     if ($_POST["category"] === "Academic") {
@@ -38,28 +57,24 @@ if ($conn->connect_error) {
         $tag = 7;
     }
 
-    $body = $_POST["newArticleBody"];
-    $username = $_SESSION['username'];
-    // $sql = "INSERT INTO Articles(articleTitle, username, categoryId, tagId, articleBody) VALUES ('$title','$username','$category','$tag','$body')";
-// if (mysqli_query($conn, $sql)) {
-//     header("Location: main.php");
-//     exit;
-// }
-// else{
-//     $error = "Article Upload failed";
-// }
-
-
     try {
         $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $server_username, $server_password);
-        $sql = "INSERT INTO Articles(articleTitle, username, categoryId, tagId, articleBody) VALUES (?,?,?,?,?)";
-        $statement = $pdo->prepare($sql);
+
+        $sql2 = "INSERT INTO Articles(articleTitle, username, categoryId, tagId, articleBody, commentNum) VALUES (?,?,?,?,?,?)";
+        $statement = $pdo->prepare($sql2);
         $statement->bindValue(1, $title);
         $statement->bindValue(2, $username);
         $statement->bindValue(3, $category);
         $statement->bindValue(4, $tag);
         $statement->bindValue(5, $body);
+        $statement->bindValue(6, 0);
         $statement->execute();
+
+        $sql3 = "UPDATE Tags SET articleNumber = articleNumber+1 WHERE tagId=?";
+        $statement = $pdo->prepare($sql3);
+        $statement->bindValue(1, $tag);
+        $statement->execute();
+
         echo '<script>alert("Article Published");</script>';
     } catch (Exception $e) {
         echo '<script>alert("Error publishing article");</script>';
