@@ -70,7 +70,7 @@ if ($conn->connect_error) {
     try {
         $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $server_username, $server_password);
 
-        $sql2 = "INSERT INTO Articles(articleTitle, username, categoryId, tagId, articleBody, commentNum) VALUES (?,?,?,?,?,?)";
+        $sql2 = "INSERT INTO Articles(articleTitle, username, categoryId, tagId, articleBody, commentNum, isDisabled) VALUES (?,?,?,?,?,?,?)";
         $statement = $pdo->prepare($sql2);
         $statement->bindValue(1, $title);
         $statement->bindValue(2, $username);
@@ -78,6 +78,7 @@ if ($conn->connect_error) {
         $statement->bindValue(4, $tag);
         $statement->bindValue(5, $body);
         $statement->bindValue(6, 0);
+        $statement->bindValue(7, 0);
         $statement->execute();
 
         $sql3 = "UPDATE Tags SET articleNumber = articleNumber+1 WHERE tagId=?";
