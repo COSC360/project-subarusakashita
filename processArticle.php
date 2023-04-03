@@ -78,7 +78,7 @@ if ($conn->connect_error) {
         $statement->bindValue(4, $tag);
         $statement->bindValue(5, $body);
         $statement->bindValue(6, 0);
-        $statement->bindValue(7, false);
+        $statement->bindValue(7, '30');
         $statement->execute();
 
         $sql3 = "UPDATE Tags SET articleNumber = articleNumber+1 WHERE tagId=?";
