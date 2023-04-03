@@ -95,8 +95,10 @@ if (mysqli_num_rows($result) > 0) {
         if (mysqli_num_rows($result1) > 0) {
             while ($row = mysqli_fetch_assoc($result1)) {
                 $disabled = null;
-                if (!empty($_POST['userDisabled'])) {
-                    $disabled = $_POST['userDisabled'];
+                $name = $row['username'] . "_disabled";
+
+                if (!empty($_POST['$name'])) {
+                    $disabled = $_POST['$name'];
                 } else {
                     $disabled = $row['isDisabled'];
                 }
@@ -109,10 +111,18 @@ if (mysqli_num_rows($result) > 0) {
                     <td>" . $row['postalCode'] . "</td>
                     <td>" . $row['isAdmin'] . "</td>
                     <td>
-                        <form method='post' action='admin_control.php'>
-                            <input type='text' id='userDisabled' name='userDisabled' placeholder='$disabled'>
-                            <input type='submit' value='Save'>
-                        </form>
+                        <form method='post' action='admin_control.php'>");
+
+                if ($disabled) {
+                    echo ("
+                        <input type='hidden' name='$name' value='false'>
+                        <input type='submit' value='Enable'>");
+                } else {
+                    echo ("
+                        <input type='hidden' name='$name' value='true'>
+                        <input type='submit' value='Disable'>");
+                }
+                echo (" </form>
                     </td>
                 </tr>
             ");
