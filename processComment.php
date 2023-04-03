@@ -16,7 +16,7 @@ $username = $_SESSION['username'];
 $articleId = $_POST['articleId'];
 $comment = $_POST['comment'];
 
-$sql1 = "SELECT * FROM users WHERE $username='$username'";
+$sql1 = "SELECT * FROM users WHERE username='$username'";
 $result1 = mysqli_query($conn, $sql1);
 if (mysqli_num_rows($result1) > 0) {
     while ($row = mysqli_fetch_assoc($result1)) {
