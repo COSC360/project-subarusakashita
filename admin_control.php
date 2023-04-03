@@ -58,7 +58,7 @@ if (mysqli_num_rows($result) > 0) {
         }
 
         .red {
-            background-color: red;
+            background-color: lightcoral;
         }
     </style>
 </head>
@@ -108,11 +108,8 @@ if (mysqli_num_rows($result) > 0) {
                 }
 
                 if ($disabled) {
-                    echo ("<tr class='red'>");
-                } else {
-                    echo ("<tr>");
-                }
-                echo ("
+                    echo ("
+                <tr class='red'>
                     <td>" . $row['username'] . "</td>
                     <td>" . $row['email'] . "</td>
                     <td>" . $row['phoneNum'] . "</td>
@@ -120,18 +117,25 @@ if (mysqli_num_rows($result) > 0) {
                     <td>" . $row['postalCode'] . "</td>
                     <td>" . $row['isAdmin'] . "</td>
                     <td>
-                        <form method='post' action='admin_control.php'>");
-
-                if ($disabled) {
-                    echo ("
-                        <input type='hidden' name='$name' value='false'>
-                        <input type='submit' value='Enable'>");
+                        <form method='post' action='admin_control.php'>
+                            <input type='hidden' name='$name' value='false'>
+                            <input type='submit' value='Enable'>");
                 } else {
                     echo ("
-                        <input type='hidden' name='$name' value='true'>
-                        <input type='submit' value='Disable'>");
+                <tr>
+                    <td>" . $row['username'] . "</td>
+                    <td>" . $row['email'] . "</td>
+                    <td>" . $row['phoneNum'] . "</td>
+                    <td>" . $row['address'] . "</td>
+                    <td>" . $row['postalCode'] . "</td>
+                    <td>" . $row['isAdmin'] . "</td>
+                    <td>
+                        <form method='post' action='admin_control.php'>
+                            <input type='hidden' name='$name' value='true'>
+                            <input type='submit' value='Disable'>");
                 }
-                echo (" </form>
+                echo (" 
+                        </form>
                     </td>
                 </tr>
             ");
