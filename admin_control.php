@@ -45,7 +45,7 @@ if (mysqli_num_rows($result) > 0) {
     <link rel="stylesheet" href="css/main.css">
     <style>
         div#right img {
-            height: 10em;
+            height: 7em;
             width: auto;
         }
 
