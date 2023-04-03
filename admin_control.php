@@ -118,7 +118,7 @@ if (mysqli_num_rows($result) > 0) {
                     <td>" . $row['isAdmin'] . "</td>
                     <td>
                         <form method='post' action='admin_control.php'>
-                            <input type='hidden' name='$name' value='0'>
+                            <input type='hidden' name='$name' value=0>
                             <input type='submit' value='Enable'>");
                 } else {
                     echo ("
