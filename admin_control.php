@@ -48,6 +48,14 @@ if (mysqli_num_rows($result) > 0) {
             height: 10em;
             width: auto;
         }
+
+        div#right table,
+        div#right th,
+        div#right td {
+            border: 1px solid black;
+            font-weight: bold;
+            border-collapse: collapse;
+        }
     </style>
 </head>
 
@@ -86,8 +94,8 @@ if (mysqli_num_rows($result) > 0) {
 
         if (mysqli_num_rows($result1) > 0) {
             while ($row = mysqli_fetch_assoc($result1)) {
-                $disabled = "false";
-                if (isset($_POST['userDisabled'])) {
+                $disabled = null;
+                if (!empty($_POST['userDisabled'])) {
                     $disabled = $_POST['userDisabled'];
                 } else {
                     $disabled = $row['isDisabled'];
@@ -102,7 +110,7 @@ if (mysqli_num_rows($result) > 0) {
                     <td>" . $row['isAdmin'] . "</td>
                     <td>
                         <form method='post' action='admin_control.php'>
-                            <input type='checkbox' id='userDisabled' name='userDisabled' checked='$disabled'>
+                            <input type='text' id='userDisabled' name='userDisabled' placeholder='$disabled'>
                             <input type='submit' value='Save'>
                         </form>
                     </td>
@@ -147,7 +155,7 @@ if (mysqli_num_rows($result) > 0) {
                     <td>" . $row['views'] . "</td>
                     <td>
                         <form method='post' action='admin_control.php'>
-                            <input type='checkbox' id='artDisabled' name='artDisabled'  checked='$disabled'>
+                            <input type='text' id='artDisabled' name='artDisabled' placeholder='$disabled'>
                             <input type='submit' value='Save'>
                         </form>
                     </td>
@@ -168,7 +176,7 @@ if (mysqli_num_rows($result) > 0) {
             echo $adName;
 
             $disabled = null;
-            if (isset($_POST['adName'])) {
+            if (!empty($_POST['adName'])) {
                 $disabled = $_POST['adName'];
             } else {
                 $disabled = $row['isDisabled'];
@@ -179,7 +187,7 @@ if (mysqli_num_rows($result) > 0) {
             echo ("<img src='" . $row['adPath'] . "' alt='Ads'>");
             echo ("
             <form method='post' action='admin_control.php'>
-                <input type='checkbox' id='$adName' name='$adName' checked='$disabled'>
+                <input type='text' id='$adName' name='$adName' placeholder='$disabled'>
                 <input type='submit' value='Save'>
             </form>");
         }
