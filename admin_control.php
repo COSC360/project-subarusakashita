@@ -106,7 +106,12 @@ if (mysqli_num_rows($result) > 0) {
                 $name = $row['username'] . "_disabled";
 
                 if (!empty($_POST['$name'])) {
-                    $row['isDisabled'] = $_POST['$name'];
+                    $disabled = $_POST['$name'];
+                    $sql2 = "UPDATE users SET isDisabled=? WHERE username=?";
+                    $statement = $pdo->prepare($sql2);
+                    $statement->bindValue(1, $disabled);
+                    $statement->bindValue(2, $row['username']);
+                    $statement->execute();
                 } else {
                     $disabled = $row['isDisabled'];
                 }
