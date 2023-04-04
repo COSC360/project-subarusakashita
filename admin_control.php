@@ -115,10 +115,11 @@ if (mysqli_num_rows($result) > 0) {
                     $statement->execute();
                 } else {
                     $disabled = $row['isDisabled'];
+                    echo ("aaa");
                 }
 
-                echo ("<br>" . $disabled . " & " . $row['username'] . " . ");
-                if ($disabled === 1) {
+                echo (" . " . $disabled . " & " . $row['username'] . "<br>");
+                if ($disabled === '1') {
                     echo ("
                 <tr class='red'>
                     <td>" . $row['username'] . "</td>
