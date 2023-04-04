@@ -93,7 +93,7 @@ $user = $_SESSION['username'];
                     $disabled = $row['isDisabled'];
                 }
             }
-            if (isset($user) && $disabled === 1) {
+            if (isset($user) && $disabled !== '0') {
                 $articleId = $articleId = $_GET['articleId'];
                 // if logged in
                 echo '<form action ="processComment.php" method = "post">
