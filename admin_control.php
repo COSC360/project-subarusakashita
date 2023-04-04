@@ -103,7 +103,7 @@ if (mysqli_num_rows($result) > 0) {
         if (mysqli_num_rows($result1) > 0) {
             while ($row = mysqli_fetch_assoc($result1)) {
                 $disabled = null;
-                $name = $row['username'] . "_disabled";
+                $name = $row['username'];
 
                 if (!empty($_POST['$name'])) {
                     $disabled = $_POST['$name'];
@@ -118,7 +118,6 @@ if (mysqli_num_rows($result) > 0) {
                     echo ("aaa");
                 }
 
-                echo (" . " . $disabled . " & " . $name . $_POST['$name'] . "<br>");
                 if ($disabled === '1') {
                     echo ("
                 <tr class='red'>
