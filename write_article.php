@@ -1,8 +1,10 @@
 <?php
 session_start();
+$username = null;
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 }
+
 $servername = "cosc360.ok.ubc.ca";
 $server_username = "83395822";
 $server_password = "83395822";
@@ -13,8 +15,6 @@ $txtOne = "";
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
-$username = $_SESSION['username'];
 
 $sql1 = "SELECT * FROM users WHERE username='$username'";
 $result1 = mysqli_query($conn, $sql1);
