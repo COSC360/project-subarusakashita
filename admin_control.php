@@ -24,14 +24,14 @@ $sql = "SELECT * FROM users WHERE username = '$username'";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
-        if (!$row['isAdmin']) {
+        if ($row['isAdmin'] !== '1') {
             header("Location: main.php");
             exit;
         }
     }
 } else {
-    echo '<script>alert("user not found");</script>';
-
+    header("Location: main.php");
+    exit;
 }
 
 ?>
@@ -104,11 +104,9 @@ if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result1)) {
                 $disabled = null;
                 $name = $row['username'] . "_disabled";
-                $true = true;
-                $false = false;
 
                 if (!empty($_POST['$name'])) {
-                    $disabled = $_POST['$name'];
+                    $row['isDisabled'] = $_POST['$name'];
                 } else {
                     $disabled = $row['isDisabled'];
                 }
@@ -125,7 +123,7 @@ if (mysqli_num_rows($result) > 0) {
                     <td>
                         '$name'
                         <form method='post' action='admin_control.php'>
-                            <input type='hidden' id='$name' name='$name' value='$false'>
+                            <input type='hidden' id='$name' name='$name' value='0'>
                             <input type='submit' value='Enable'>");
                 } else {
                     echo ("
@@ -139,7 +137,7 @@ if (mysqli_num_rows($result) > 0) {
                     <td>
                         '$name'
                         <form method='post' action='admin_control.php'>
-                            <input type='hidden' id='$name' name='$name' value='$true'>
+                            <input type='hidden' id='$name' name='$name' value='1'>
                             <input type='submit' value='Disable'>");
                 }
                 echo (" 
