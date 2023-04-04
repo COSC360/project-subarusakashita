@@ -118,7 +118,7 @@ if (mysqli_num_rows($result) > 0) {
                     echo ("aaa");
                 }
 
-                echo (" . " . $disabled . " & " . $row['username'] . "<br>");
+                echo (" . " . $disabled . " & " . $name . "<br>");
                 if ($disabled === '1') {
                     echo ("
                 <tr class='red'>
