@@ -12,12 +12,20 @@ $conn = new mysqli($servername, $server_username, $server_password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } else {
-    if (!isset($_POST["newArticleBody"]) || !isset($_SESSION['username'])) {
+    if (isset($_POST["newArticleBody"])) {
+        $body = $_POST["newArticleBody"];
+    } else {
         header("Location: main.php");
         exit;
     }
-    $body = $_POST["newArticleBody"];
-    $username = $_SESSION['username'];
+    
+    $username = null;
+    if (isset($_SESSION['username'])) {
+        $username = $_SESSION['username'];
+    } else {
+        header("Location: login.php");
+        exit;
+    }
 
     $sql1 = "SELECT * FROM users WHERE username='$username'";
     $result1 = mysqli_query($conn, $sql1);

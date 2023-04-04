@@ -12,11 +12,15 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 session_start();
-$username = $_SESSION['username'];
+$username = null;
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+} else {
+    header("Location: login.php");
+    exit;
+}
 $articleId = $_POST['articleId'];
 $comment = $_POST['comment'];
-
-$username = $_SESSION['username'];
 
 $sql1 = "SELECT * FROM users WHERE username='$username'";
 $result1 = mysqli_query($conn, $sql1);

@@ -81,6 +81,8 @@ if (mysqli_num_rows($result1) > 0) {
                     <br>
 
                     <?php include "include/ad_long.php"; ?>
+                    <br>
+                    <br>
 
                     <label for="newArticleBody">Article body</label>
                     <textarea id="newArticleBody" name="newArticleBody" rows="5" cols="100"
