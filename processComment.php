@@ -20,9 +20,9 @@ $sql1 = "SELECT * FROM users WHERE username='$username'";
 $result1 = mysqli_query($conn, $sql1);
 if (mysqli_num_rows($result1) > 0) {
     while ($row = mysqli_fetch_assoc($result1)) {
-        if ($row['isDisabled'] === 0) {
+        if ($row['isDisabled'] === '1') {
             // user account is disabled
-            echo ("Disabled users cannot post comments");
+            echo '<script>alert("Disabled users cannot post comments");</script>';
 
         } else {
             // user account is not disabled

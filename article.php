@@ -91,7 +91,6 @@ $user = $_SESSION['username'];
             if (mysqli_num_rows($result5) > 0) {
                 while ($row = mysqli_fetch_assoc($result5)) {
                     $disabled = $row['isDisabled'];
-                    echo "Disaaaaaaaa" . $disabled;
                 }
             }
             if (isset($user) && $disabled !== '1') {
