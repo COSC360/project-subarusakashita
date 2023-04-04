@@ -94,7 +94,7 @@ $user = $_SESSION['username'];
                     echo "Disaaaaaaaa" . $disabled;
                 }
             }
-            if (isset($user) && $disabled !== 1) {
+            if (isset($user) && $disabled !== '1') {
                 $articleId = $articleId = $_GET['articleId'];
                 // if logged in
                 echo '<form action ="processComment.php" method = "post">
