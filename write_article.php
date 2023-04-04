@@ -13,6 +13,21 @@ $txtOne = "";
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
+$username = $_SESSION['username'];
+
+$sql1 = "SELECT * FROM users WHERE username='$username'";
+$result1 = mysqli_query($conn, $sql1);
+if (mysqli_num_rows($result1) > 0) {
+    while ($row = mysqli_fetch_assoc($result1)) {
+        if ($row['isDisabled === 1']) {
+            // if user account is disabled
+            echo '<script>alert("Account is disabled");</script>';
+            header("Location: main.php");
+            exit;
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
