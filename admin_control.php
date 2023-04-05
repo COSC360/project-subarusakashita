@@ -127,7 +127,6 @@ if (mysqli_num_rows($result) > 0) {
                     <td>" . $row['isAdmin'] . "</td>
                     <td>" . $row['isDisabled'] . "</td>
                     <td>
-                        '$name'
                         <form method='post' action='admin_control.php'>
                             <input type='hidden' id='$name' name='$name' value='00'>
                             <input type='submit' value='Enable'>");
@@ -142,7 +141,6 @@ if (mysqli_num_rows($result) > 0) {
                     <td>" . $row['isAdmin'] . "</td>
                     <td>" . $row['isDisabled'] . "</td>
                     <td>
-                        '$name'
                         <form method='post' action='admin_control.php'>
                             <input type='hidden' id='$name' name='$name' value='1'>
                             <input type='submit' value='Disable'>");
@@ -203,7 +201,6 @@ if (mysqli_num_rows($result) > 0) {
                     <td>" . $row['commentNum'] . "</td>
                     <td>" . $row['isDisabled'] . "</td>
                     <td>
-                        '$name'
                         <form method='post' action='admin_control.php'>
                             <input type='hidden' id='$name' name='$name' value='00'>
                             <input type='submit' value='Enable'>");
@@ -218,7 +215,6 @@ if (mysqli_num_rows($result) > 0) {
                     <td>" . $row['commentNum'] . "</td>
                     <td>" . $row['isDisabled'] . "</td>
                     <td>
-                        '$name'
                         <form method='post' action='admin_control.php'>
                             <input type='hidden' id='$name' name='$name' value='1'>
                             <input type='submit' value='Disable'>");
@@ -270,7 +266,6 @@ if (mysqli_num_rows($result) > 0) {
                             <td><img src='" . $row['adPath'] . "' alt='Ads'></td>
                             <td>" . $row['isDisabled'] . "</td>
                             <td>
-                                '$name'
                                 <form method='post' action='admin_control.php'>
                                     <input type='hidden' id='$name' name='$name' value='00'>
                                     <input type='submit' value='Enable'>");
@@ -281,7 +276,6 @@ if (mysqli_num_rows($result) > 0) {
                         <td><img src='" . $row['adPath'] . "' alt='Ads'></td>
                         <td>" . $row['isDisabled'] . "</td>
                             <td>
-                                '$name'
                                 <form method='post' action='admin_control.php'>
                                     <input type='hidden' id='$name' name='$name' value='1'>
                                     <input type='submit' value='Disable'>");
