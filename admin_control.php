@@ -101,22 +101,22 @@ if (mysqli_num_rows($result) > 0) {
 
         if (mysqli_num_rows($result1) > 0) {
             while ($row = mysqli_fetch_assoc($result1)) {
-                $disabled = null;
+                $disabled1 = null;
                 $name = "User" . $row['username'];
 
                 if (!empty($_POST[$name])) {
-                    $disabled = $_POST[$name];
+                    $disabled1 = $_POST[$name];
                     $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $server_username, $server_password);
                     $sql2 = "UPDATE users SET isDisabled=? WHERE username=?";
                     $statement = $pdo->prepare($sql2);
-                    $statement->bindValue(1, $disabled);
+                    $statement->bindValue(1, $disabled1);
                     $statement->bindValue(2, $row['username']);
                     $statement->execute();
                 } else {
-                    $disabled = $row['isDisabled'];
+                    $disabled1 = $row['isDisabled'];
                 }
 
-                if ($disabled === '1') {
+                if ($disabled1 === '1') {
                     echo ("
                 <tr class='red'>
                     <td>" . $row['username'] . "</td>
@@ -175,22 +175,22 @@ if (mysqli_num_rows($result) > 0) {
 
         if (mysqli_num_rows($result3) > 0) {
             while ($row = mysqli_fetch_assoc($result3)) {
-                $disabled = null;
+                $disabled2 = null;
                 $name = "Art" . $row['articleId'];
 
                 if (!empty($_POST[$name])) {
-                    $disabled = $_POST[$name];
+                    $disabled2 = $_POST[$name];
                     $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $server_username, $server_password);
                     $sql4 = "UPDATE Articles SET isDisabled=? WHERE articleId=?";
                     $statement = $pdo->prepare($sql4);
-                    $statement->bindValue(1, $disabled);
+                    $statement->bindValue(1, $disabled2);
                     $statement->bindValue(2, $row['articleId']);
                     $statement->execute();
                 } else {
-                    $disabled = $row['isDisabled'];
+                    $disabled2 = $row['isDisabled'];
                 }
 
-                if ($disabled === '1') {
+                if ($disabled2 === '1') {
                     echo ("
                 <tr class='red'>
                     <td>" . $row['articleId'] . "</td>
@@ -244,22 +244,22 @@ if (mysqli_num_rows($result) > 0) {
 
         if (mysqli_num_rows($result5) > 0) {
             while ($row = mysqli_fetch_assoc($result5)) {
-                $disabled = null;
+                $disabled3 = null;
                 $name = "Ad" . $row['adId'];
 
                 if (!empty($_POST[$name])) {
-                    $disabled = $_POST[$name];
+                    $disabled3 = $_POST[$name];
                     $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $server_username, $server_password);
                     $sql6 = "UPDATE Ads SET isDisabled=? WHERE adId=?";
                     $statement = $pdo->prepare($sql6);
-                    $statement->bindValue(1, $disabled);
+                    $statement->bindValue(1, $disabled3);
                     $statement->bindValue(2, $row['adId']);
                     $statement->execute();
                 } else {
-                    $disabled = $row['isDisabled'];
+                    $disabled3 = $row['isDisabled'];
                 }
 
-                if ($disabled === '1') {
+                if ($disabled3 === '1') {
                     echo ("
                         <tr class='red'>
                             <td>" . $row['adId'] . "</td>
