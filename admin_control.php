@@ -75,6 +75,7 @@ if (mysqli_num_rows($result) > 0) {
     <?php
     include "include/top_left.php";
     echo ('<a href="#"><img src="ads/short/' . rand(1, 3) . '.png" alt="Advertisement"></a>');
+    echo ('<a href="#"><img src="ads/short/' . rand(1, 3) . '.png" alt="Advertisement"></a>');
     echo ('</div>');
     ?>
 
@@ -229,71 +230,71 @@ if (mysqli_num_rows($result) > 0) {
         echo ("</table>");
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        echo ("<h2>Advertisements</h2>");
+        // echo ("<h2>Advertisements</h2>");
 
-        $sql5 = "SELECT * FROM Ads";
-        $result5 = mysqli_query($conn, $sql5);
-        echo ("
-            <table>
-                <tr>
-                    <th>Ad ID</th>    
-                    <th>Advertisement Image</th>
-                    <th>isDisabled (0/1)</th>
-                    <th>Change status</th>
-                </tr>");
+        // $sql5 = "SELECT * FROM Ads";
+        // $result5 = mysqli_query($conn, $sql5);
+        // echo ("
+        //     <table>
+        //         <tr>
+        //             <th>Ad ID</th>    
+        //             <th>Advertisement Image</th>
+        //             <th>isDisabled (0/1)</th>
+        //             <th>Change status</th>
+        //         </tr>");
 
-        if (mysqli_num_rows($result5) > 0) {
-            while ($row = mysqli_fetch_assoc($result5)) {
-                $disabled3 = null;
-                $name = "Ad" . $row['adId'];
+        // if (mysqli_num_rows($result5) > 0) {
+        //     while ($row = mysqli_fetch_assoc($result5)) {
+        //         $disabled3 = null;
+        //         $name = "Ad" . $row['adId'];
 
-                if (!empty($_POST[$name])) {
-                    $disabled3 = $_POST[$name];
-                    $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $server_username, $server_password);
-                    $sql6 = "UPDATE Ads SET isDisabled=? WHERE adId=?";
-                    $statement = $pdo->prepare($sql6);
-                    $statement->bindValue(1, $disabled3);
-                    $statement->bindValue(2, $row['adId']);
-                    $statement->execute();
-                } else {
-                    $disabled3 = $row['isDisabled'];
-                }
+        //         if (!empty($_POST[$name])) {
+        //             $disabled3 = $_POST[$name];
+        //             $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $server_username, $server_password);
+        //             $sql6 = "UPDATE Ads SET isDisabled=? WHERE adId=?";
+        //             $statement = $pdo->prepare($sql6);
+        //             $statement->bindValue(1, $disabled3);
+        //             $statement->bindValue(2, $row['adId']);
+        //             $statement->execute();
+        //         } else {
+        //             $disabled3 = $row['isDisabled'];
+        //         }
 
-                if ($disabled3 === '1') {
-                    echo ("
-                        <tr class='red'>
-                            <td>" . $row['adId'] . "</td>
-                            <td><img src='" . $row['adPath'] . "' alt='Ads'></td>
-                            <td>" . $row['isDisabled'] . "</td>
-                            <td>
-                                <form method='post' action='admin_control.php'>
-                                    <input type='hidden' id='$name' name='$name' value='00'>
-                                    <input type='submit' value='Enable'>");
-                } else {
-                    echo ("
-                        <tr class='green'>
-                        <td>" . $row['adId'] . "</td>
-                        <td><img src='" . $row['adPath'] . "' alt='Ads'></td>
-                        <td>" . $row['isDisabled'] . "</td>
-                        <td>");
-                    if ($row['adId'] === '3' || $row['adId'] === '6'){
-                        echo ("Cannot disable");
-                    }
-                    else{
-                        echo("
-                                <form method='post' action='admin_control.php'>
-                                    <input type='hidden' id='$name' name='$name' value='1'>
-                                    <input type='submit' value='Disable'>
-                                </form>");
-                    }
-                }
-                echo (" 
-                            </td>
-                        </tr>
-                    ");
-            }
-        }
-        echo ("</table>");
+        //         if ($disabled3 === '1') {
+        //             echo ("
+        //                 <tr class='red'>
+        //                     <td>" . $row['adId'] . "</td>
+        //                     <td><img src='" . $row['adPath'] . "' alt='Ads'></td>
+        //                     <td>" . $row['isDisabled'] . "</td>
+        //                     <td>
+        //                         <form method='post' action='admin_control.php'>
+        //                             <input type='hidden' id='$name' name='$name' value='00'>
+        //                             <input type='submit' value='Enable'>");
+        //         } else {
+        //             echo ("
+        //                 <tr class='green'>
+        //                 <td>" . $row['adId'] . "</td>
+        //                 <td><img src='" . $row['adPath'] . "' alt='Ads'></td>
+        //                 <td>" . $row['isDisabled'] . "</td>
+        //                 <td>");
+        //             if ($row['adId'] === '3' || $row['adId'] === '6'){
+        //                 echo ("Cannot disable");
+        //             }
+        //             else{
+        //                 echo("
+        //                         <form method='post' action='admin_control.php'>
+        //                             <input type='hidden' id='$name' name='$name' value='1'>
+        //                             <input type='submit' value='Disable'>
+        //                         </form>");
+        //             }
+        //         }
+        //         echo (" 
+        //                     </td>
+        //                 </tr>
+        //             ");
+        //     }
+        // }
+        // echo ("</table>");
 
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
