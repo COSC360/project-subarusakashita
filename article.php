@@ -52,9 +52,8 @@ $user = $_SESSION['username'];
             $result1 = mysqli_query($conn, $sql1);
             if (mysqli_num_rows($result1) > 0) {
                 while ($row = mysqli_fetch_assoc($result1)) {
-                    echo "<h2>" . $row["articleTitle"] . "</h2>";
-                    echo "
-                        <h3>Author: " . $row['username'] . "</h3><br>
+                    echo "<h2>" . $row["articleTitle"] . "</h2>
+                        <h3>Author: " . $row['username'] . "</h3>
                         Category ID: " . $row['categoryId'] . " <br>
                         Tag ID: " . $row['tagId'] . "<br>";
                     $categoryId = $row['categoryId'];
