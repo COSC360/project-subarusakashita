@@ -54,10 +54,10 @@ $user = $_SESSION['username'];
                 while ($row = mysqli_fetch_assoc($result1)) {
                     echo "<h2>" . $row["articleTitle"] . "</h2>";
                     echo "
-                        <h3>Author: " . $row['username'] . "<br>
+                        <h3>Author: " . $row['username'] . "</h3><br>
                         Category ID: " . $row['categoryId'] . " <br>
-                        Tag ID: " . $row['tagId'] . "<br></h3>";
-                    if ($row['isDisabled' === '1']) {
+                        Tag ID: " . $row['tagId'] . "<br>";
+                    if ($row['isDisabled'] === '1') {
                         $artDisabled === '1';
                         echo ("<h3>This article is disabled by administrator</h3>");
                     } else {
