@@ -195,7 +195,7 @@ if (mysqli_num_rows($result) > 0) {
                     echo ("
                 <tr class='red'>
                     <td>" . $row['articleId'] . "</td>
-                    <td>" . $row['articleTitle'] . "</td>
+                    <td><a href='article.php?articleId=" . $row['articleId'] . "'>" . $row['articleTitle'] . "</a></td>
                     <td>" . $row['username'] . "</td>
                     <td>" . $row['categoryId'] . "</td>
                     <td>" . $row['tagId'] . "</td>
@@ -209,7 +209,7 @@ if (mysqli_num_rows($result) > 0) {
                     echo ("
                 <tr class='green'>
                     <td>" . $row['articleId'] . "</td>
-                    <td>" . $row['articleTitle'] . "</td>
+                    <td><a href='article.php?articleId=" . $row['articleId'] . "'>" . $row['articleTitle'] . "</a></td>
                     <td>" . $row['username'] . "</td>
                     <td>" . $row['categoryId'] . "</td>
                     <td>" . $row['tagId'] . "</td>
