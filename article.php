@@ -32,7 +32,7 @@ $user = $_SESSION['username'];
         $('#comment-form').submit(function(event) {
             event.preventDefault();
             $('#showcomment').load("processComment.php", {
-                articleId: "<?php echo htmlspecialchars($articleId, ENT_QUOTES) ?>",
+                articleId: " echo htmlspecialchars($articleId, ENT_QUOTES) ",
                 messages: $('#comment').val()
             })
             .done(function(response) {
