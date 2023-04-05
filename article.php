@@ -45,7 +45,7 @@ $user = $_SESSION['username'];
         <?php
         if (isset($_GET['articleId'])) {
             $categoryId = "";
-            $authorId = "";
+            $artDisabled = "";
 
             // Article 
             $sql1 = "SELECT * FROM Articles WHERE articleId =  '$articleId'";
@@ -53,11 +53,18 @@ $user = $_SESSION['username'];
             if (mysqli_num_rows($result1) > 0) {
                 while ($row = mysqli_fetch_assoc($result1)) {
                     echo "<h2>" . $row["articleTitle"] . "</h2>";
-                    echo "<h3>Author: " . $row['username'] . "</h3>";
-                    include "include/ad_long.php";
-                    echo "<p>" . $row["articleBody"] . "</p>";
-                    $categoryId = $row['categoryId'];
-                    $authorId = $row['username'];
+                    echo "
+                        <h3>Author: " . $row['username'] . "<br>
+                        Category ID: " . $row['categoryId'] . " <br>
+                        Tag ID: " . $row['tagId'] . "<br></h3>";
+                    if ($row['isDisabled' === '1']) {
+                        $artDisabled === '1';
+                        echo ("<h3>This article is disabled by administrator</h3>");
+                    } else {
+                        include "include/ad_long.php";
+                        echo "<p>" . $row["articleBody"] . "</p>";
+                        $categoryId = $row['categoryId'];
+                    }
                 }
             }
 
@@ -70,33 +77,34 @@ $user = $_SESSION['username'];
             // $sql4 = "SELECT username, commentBody FROM Comments WHERE articleId = ?";
             // $result4 = mysqli_query($conn, $sql4, array());
         
-            // Show Comments
-            $sql4 = "SELECT * FROM Comments WHERE articleId = '$articleId'";
-            $result4 = mysqli_query($conn, $sql4);
-            echo ("<br><h2>Comments</h2>");
-            //echo ("<h3><a href='write_comment.php?articleId=" . $articleId . "'>[Post new comment]</a></h3>");
-            if (mysqli_num_rows($result4) > 0) {
-                while ($row = mysqli_fetch_assoc($result4)) {
-                    echo ('<h3>' . $row["username"] . ' - ' . $row["commentBody"] . '</h3>');
+            if ($artDisabled !== '1') {
+                // Show Comments
+                $sql4 = "SELECT * FROM Comments WHERE articleId = '$articleId'";
+                $result4 = mysqli_query($conn, $sql4);
+                echo ("<br><h2>Comments</h2>");
+                //echo ("<h3><a href='write_comment.php?articleId=" . $articleId . "'>[Post new comment]</a></h3>");
+                if (mysqli_num_rows($result4) > 0) {
+                    while ($row = mysqli_fetch_assoc($result4)) {
+                        echo ('<h3>' . $row["username"] . ' - ' . $row["commentBody"] . '</h3>');
+                    }
+                } else {
+                    echo "No comments yet";
                 }
-            } else {
-                echo "No comments yet";
-            }
 
 
-            // Write Comment
-            $disabled = null;
-            $sql5 = "SELECT * FROM users WHERE username='$user'";
-            $result5 = mysqli_query($conn, $sql5);
-            if (mysqli_num_rows($result5) > 0) {
-                while ($row = mysqli_fetch_assoc($result5)) {
-                    $disabled = $row['isDisabled'];
+                // Write Comment
+                $userDisabled = null;
+                $sql5 = "SELECT * FROM users WHERE username='$user'";
+                $result5 = mysqli_query($conn, $sql5);
+                if (mysqli_num_rows($result5) > 0) {
+                    while ($row = mysqli_fetch_assoc($result5)) {
+                        $userDisabled = $row['isDisabled'];
+                    }
                 }
-            }
-            if (isset($user) && $disabled !== '1') {
-                $articleId = $articleId = $_GET['articleId'];
-                // if logged in
-                echo '<form action ="processComment.php" method = "post">
+                if (isset($user) && $userDisabled !== '1') {
+                    $articleId = $_GET['articleId'];
+                    // if logged in
+                    echo '<form action ="processComment.php" method = "post">
                       <input type="text" id="comment" name="comment" placeholder="Write comment here" required>
                       <input type = "hidden" name = "username" value = echo $user >
                       <input type = "hidden" name = "articleId" value = "' . $articleId . '" >
@@ -104,8 +112,8 @@ $user = $_SESSION['username'];
                       <br>
                       <input type="submit" value="Comment">
                       </form>';
+                }
             }
-
             // Related articles
             $sql6 = "SELECT * FROM Articles WHERE categoryId = '$categoryId' ORDER BY commentNum LIMIT 3";
             $result6 = mysqli_query($conn, $sql6);
@@ -125,8 +133,6 @@ $user = $_SESSION['username'];
 
     <?php
     include "include/footer.php";
-    // include "showComment.php";
-    // include "write_comment.php";
     ?>
 
 </body>
