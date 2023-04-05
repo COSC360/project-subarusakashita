@@ -27,7 +27,7 @@ $user = $_SESSION['username'];
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/article.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
+    <!-- <script>
     $(document).ready(function() {
         $('#comment-form').submit(function(event) {
             event.preventDefault();
@@ -44,7 +44,7 @@ $user = $_SESSION['username'];
             });
         });
     });
-</script>
+</script> -->
 </head>
 
 <body>
