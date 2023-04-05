@@ -275,13 +275,19 @@ if (mysqli_num_rows($result) > 0) {
                         <td>" . $row['adId'] . "</td>
                         <td><img src='" . $row['adPath'] . "' alt='Ads'></td>
                         <td>" . $row['isDisabled'] . "</td>
-                            <td>
+                        <td>");
+                    if ($row['adId'] === '3' || $row['adId'] === '6'){
+                        echo ("Cannot disable");
+                    }
+                    else{
+                        echo("
                                 <form method='post' action='admin_control.php'>
                                     <input type='hidden' id='$name' name='$name' value='1'>
-                                    <input type='submit' value='Disable'>");
+                                    <input type='submit' value='Disable'>
+                                </form>");
+                    }
                 }
                 echo (" 
-                                </form>
                             </td>
                         </tr>
                     ");
