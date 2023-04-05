@@ -58,7 +58,7 @@ $user = $_SESSION['username'];
                         Category ID: " . $row['categoryId'] . " <br>
                         Tag ID: " . $row['tagId'] . "<br>";
                     if ($row['isDisabled'] === '1') {
-                        $artDisabled === '1';
+                        $artDisabled = '1';
                         echo ("<h3>This article is disabled by administrator</h3>");
                     } else {
                         include "include/ad_long.php";
