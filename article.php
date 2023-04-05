@@ -31,9 +31,12 @@ $user = $_SESSION['username'];
     $(document).ready(function() {
         $('#comment-form').submit(function(event) {
             event.preventDefault();
+            
             var comment = $('#comment').val(); // Get the value of the comment field
             var username = $('input[name="username"]').val(); // Get the value of the username field
             var articleId = $('input[name="articleId"]').val(); // Get the value of the articleId field
+            alert("Comment is" + comment);
+            alert("articleId is "+ articleId);
             $('#showcomments').load("processComment.php", {
                 articleId: articleId,
                 comment: comment,
