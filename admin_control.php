@@ -131,7 +131,7 @@ if (mysqli_num_rows($result) > 0) {
                     <td>
                         '$name'
                         <form method='post' action='admin_control.php'>
-                            <input type='hidden' id='$name' name='$name' value='0'>
+                            <input type='hidden' id='$name' name='$name' value='00'>
                             <input type='submit' value='Enable'>");
                 } else {
                     echo ("
