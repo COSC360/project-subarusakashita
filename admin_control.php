@@ -102,7 +102,7 @@ if (mysqli_num_rows($result) > 0) {
         if (mysqli_num_rows($result1) > 0) {
             while ($row = mysqli_fetch_assoc($result1)) {
                 $disabled = null;
-                $name = $row['username'];
+                $name = "User" . $row['username'];
 
                 if (!empty($_POST[$name])) {
                     $disabled = $_POST[$name];
@@ -176,7 +176,7 @@ if (mysqli_num_rows($result) > 0) {
         if (mysqli_num_rows($result3) > 0) {
             while ($row = mysqli_fetch_assoc($result3)) {
                 $disabled = null;
-                $name = $row['articleId'];
+                $name = "Art" . $row['articleId'];
 
                 if (!empty($_POST[$name])) {
                     $disabled = $_POST[$name];
@@ -195,7 +195,7 @@ if (mysqli_num_rows($result) > 0) {
                 <tr class='red'>
                     <td>" . $row['articleId'] . "</td>
                     <td>" . $row['articleTitle'] . "</td>
-                    <td>" . $row['author'] . "</td>
+                    <td>" . $row['username'] . "</td>
                     <td>" . $row['categoryId'] . "</td>
                     <td>" . $row['tagId'] . "</td>
                     <td>" . $row['commentNum'] . "</td>
@@ -209,7 +209,7 @@ if (mysqli_num_rows($result) > 0) {
                 <tr class='green'>
                     <td>" . $row['articleId'] . "</td>
                     <td>" . $row['articleTitle'] . "</td>
-                    <td>" . $row['author'] . "</td>
+                    <td>" . $row['username'] . "</td>
                     <td>" . $row['categoryId'] . "</td>
                     <td>" . $row['tagId'] . "</td>
                     <td>" . $row['commentNum'] . "</td>
@@ -245,7 +245,7 @@ if (mysqli_num_rows($result) > 0) {
         if (mysqli_num_rows($result5) > 0) {
             while ($row = mysqli_fetch_assoc($result5)) {
                 $disabled = null;
-                $name = $row['adId'];
+                $name = "Ad" . $row['adId'];
 
                 if (!empty($_POST[$name])) {
                     $disabled = $_POST[$name];
