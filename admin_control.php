@@ -13,8 +13,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-
-
 $username = null;
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
@@ -96,8 +94,9 @@ if (mysqli_num_rows($result) > 0) {
                     <th>Phone Number</th>
                     <th>Address</th>
                     <th>Postal Code</th>
-                    <th>Admin</th>
-                    <th>Enable/Disable</th>
+                    <th>isAdmin (0/1)</th>
+                    <th>isDisabled (0/1)</th>
+                    <th>Change status</th>
                 </tr>");
 
         if (mysqli_num_rows($result1) > 0) {
@@ -127,6 +126,7 @@ if (mysqli_num_rows($result) > 0) {
                     <td>" . $row['address'] . "</td>
                     <td>" . $row['postalCode'] . "</td>
                     <td>" . $row['isAdmin'] . "</td>
+                    <td>" . $row['isDisabled'] . "</td>
                     <td>
                         '$name'
                         <form method='post' action='admin_control.php'>
@@ -141,6 +141,7 @@ if (mysqli_num_rows($result) > 0) {
                     <td>" . $row['address'] . "</td>
                     <td>" . $row['postalCode'] . "</td>
                     <td>" . $row['isAdmin'] . "</td>
+                    <td>" . $row['isDisabled'] . "</td>
                     <td>
                         '$name'
                         <form method='post' action='admin_control.php'>
