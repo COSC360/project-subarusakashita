@@ -126,7 +126,7 @@ if (mysqli_num_rows($result) > 0) {
                     <td>" . $row['address'] . "</td>
                     <td>" . $row['postalCode'] . "</td>
                     <td>" . $row['isAdmin'] . "</td>
-                    <td>" . $row['isDisabled'] . "</td>
+                    <td>1</td>
                     <td>
                         <form method='post' action='admin_control.php'>
                             <input type='hidden' id='$name' name='$name' value='00'>
@@ -140,7 +140,7 @@ if (mysqli_num_rows($result) > 0) {
                     <td>" . $row['address'] . "</td>
                     <td>" . $row['postalCode'] . "</td>
                     <td>" . $row['isAdmin'] . "</td>
-                    <td>" . $row['isDisabled'] . "</td>
+                    <td>0</td>
                     <td>
                         <form method='post' action='admin_control.php'>
                             <input type='hidden' id='$name' name='$name' value='1'>
@@ -200,7 +200,7 @@ if (mysqli_num_rows($result) > 0) {
                     <td>" . $row['categoryId'] . "</td>
                     <td>" . $row['tagId'] . "</td>
                     <td>" . $row['commentNum'] . "</td>
-                    <td>" . $row['isDisabled'] . "</td>
+                    <td>1</td>
                     <td>
                         <form method='post' action='admin_control.php'>
                             <input type='hidden' id='$name' name='$name' value='00'>
@@ -214,7 +214,7 @@ if (mysqli_num_rows($result) > 0) {
                     <td>" . $row['categoryId'] . "</td>
                     <td>" . $row['tagId'] . "</td>
                     <td>" . $row['commentNum'] . "</td>
-                    <td>" . $row['isDisabled'] . "</td>
+                    <td>0</td>
                     <td>
                         <form method='post' action='admin_control.php'>
                             <input type='hidden' id='$name' name='$name' value='1'>
