@@ -31,7 +31,7 @@ $user = $_SESSION['username'];
     $(document).ready(function() {
         $('#comment-form').submit(function(event) {
             event.preventDefault();
-            $('#showcomment').load("processComment.php", {
+            $('#showcomments').load("processComment.php", {
                 articleId: " <?php echo htmlspecialchars($articleId, ENT_QUOTES) ?>",
                 messages: $('#comment').val()
             })
@@ -126,7 +126,7 @@ $user = $_SESSION['username'];
                 if (isset($user) && $userDisabled !== '1') {
                     $articleId = $_GET['articleId'];
                     // if logged in
-                    echo '<form id="comment-form" method = "post">
+                    echo '<form id="comment-form">
                       <input type="text" id="comment" name="comment" placeholder="Write comment here" required>
                       <input type = "hidden" name = "username" value = echo $user >
                       <input type = "hidden" name = "articleId" value = "' . $articleId . '" >
