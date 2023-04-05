@@ -57,13 +57,14 @@ $user = $_SESSION['username'];
                         <h3>Author: " . $row['username'] . "</h3><br>
                         Category ID: " . $row['categoryId'] . " <br>
                         Tag ID: " . $row['tagId'] . "<br>";
+                    $categoryId = $row['categoryId'];
+
                     if ($row['isDisabled'] === '1') {
                         $artDisabled = '1';
                         echo ("<h3>This article is disabled by administrator</h3>");
                     } else {
                         include "include/ad_long.php";
                         echo "<p>" . $row["articleBody"] . "</p>";
-                        $categoryId = $row['categoryId'];
                     }
                 }
             }
