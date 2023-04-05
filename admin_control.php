@@ -106,7 +106,6 @@ if (mysqli_num_rows($result) > 0) {
 
                 if (!empty($_POST[$name])) {
                     $disabled = $_POST[$name];
-                    echo "<br>" . $disabled;
                     $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $server_username, $server_password);
                     $sql2 = "UPDATE users SET isDisabled=? WHERE username=?";
                     $statement = $pdo->prepare($sql2);
@@ -115,7 +114,6 @@ if (mysqli_num_rows($result) > 0) {
                     $statement->execute();
                 } else {
                     $disabled = $row['isDisabled'];
-                    echo ($name);
                 }
 
                 if ($disabled === '1') {
@@ -160,15 +158,8 @@ if (mysqli_num_rows($result) > 0) {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         
-        $sql2 = "SELECT * FROM Articles";
-        $result2 = mysqli_query($conn, $sql2);
-
-        $disabled = "false";
-        if (isset($_POST['artDisabled'])) {
-            $disabled = $_POST['artDisabled'];
-        } else {
-            $disabled = $row['isDisabled'];
-        }
+        $sql3 = "SELECT * FROM Articles";
+        $result3 = mysqli_query($conn, $sql3);
 
         echo ("<h2>Articles</h2>");
         echo ("
@@ -177,24 +168,62 @@ if (mysqli_num_rows($result) > 0) {
                     <th>Article ID</th>
                     <th>Article Title</th>
                     <th>Author</th>
+                    <th>Tag ID</th>
                     <th>Category ID</th>
-                    <th>Views</th>
-                    <th>Disabled</th>
+                    <th>Comment Count</th>
+                    <th>isDisabled (0/1)</th>
+                    <th>Change status</th>
                 </tr>");
 
-        if (mysqli_num_rows($result2) > 0) {
-            while ($row = mysqli_fetch_assoc($result2)) {
-                echo ("
-                <tr>
+        if (mysqli_num_rows($result3) > 0) {
+            while ($row = mysqli_fetch_assoc($result3)) {
+                $disabled = null;
+                $name = $row['articleId'];
+
+                if (!empty($_POST[$name])) {
+                    $disabled = $_POST[$name];
+                    $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $server_username, $server_password);
+                    $sql4 = "UPDATE users SET isDisabled=? WHERE articleId=?";
+                    $statement = $pdo->prepare($sql4);
+                    $statement->bindValue(1, $disabled);
+                    $statement->bindValue(2, $row['articleId']);
+                    $statement->execute();
+                } else {
+                    $disabled = $row['isDisabled'];
+                }
+
+                if ($disabled === '1') {
+                    echo ("
+                <tr class='red'>
                     <td>" . $row['articleId'] . "</td>
                     <td>" . $row['articleTitle'] . "</td>
-                    <td>" . $row['username'] . "</td>
+                    <td>" . $row['author'] . "</td>
                     <td>" . $row['categoryId'] . "</td>
-                    <td>" . $row['views'] . "</td>
+                    <td>" . $row['tagId'] . "</td>
+                    <td>" . $row['commentNum'] . "</td>
+                    <td>" . $row['isDisabled'] . "</td>
                     <td>
+                        '$name'
                         <form method='post' action='admin_control.php'>
-                            <input type='text' id='artDisabled' name='artDisabled' placeholder='$disabled'>
-                            <input type='submit' value='Save'>
+                            <input type='hidden' id='$name' name='$name' value='00'>
+                            <input type='submit' value='Enable'>");
+                } else {
+                    echo ("
+                <tr class='green'>
+                    <td>" . $row['articleId'] . "</td>
+                    <td>" . $row['articleTitle'] . "</td>
+                    <td>" . $row['author'] . "</td>
+                    <td>" . $row['categoryId'] . "</td>
+                    <td>" . $row['tagId'] . "</td>
+                    <td>" . $row['commentNum'] . "</td>
+                    <td>" . $row['isDisabled'] . "</td>
+                    <td>
+                        '$name'
+                        <form method='post' action='admin_control.php'>
+                            <input type='hidden' id='$name' name='$name' value='1'>
+                            <input type='submit' value='Disable'>");
+                }
+                echo (" 
                         </form>
                     </td>
                 </tr>
@@ -206,40 +235,63 @@ if (mysqli_num_rows($result) > 0) {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         echo ("<h2>Advertisements</h2>");
 
-        $sql3 = "SELECT * FROM Ads";
-        $result3 = mysqli_query($conn, $sql3);
+        $sql5 = "SELECT * FROM Ads";
+        $result5 = mysqli_query($conn, $sql5);
         echo ("
             <table>
                 <tr>
+                    <th>Advertisement ID</th>    
                     <th>Advertisement Image</th>
-                    <th>isDisabled (0 false, 1 true)</th>
+                    <th>isDisabled (0/1)</th>
+                    <th>Change status</th>
                 </tr>");
 
-        while ($row = mysqli_fetch_assoc($result3)) {
-            $adName = 'adDisabled' . $row['adPath'];
+        if (mysqli_num_rows($result5) > 0) {
+            while ($row = mysqli_fetch_assoc($result5)) {
+                $disabled = null;
+                $name = $row['adId'];
 
-            echo $adName;
+                if (!empty($_POST[$name])) {
+                    $disabled = $_POST[$name];
+                    $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $server_username, $server_password);
+                    $sql6 = "UPDATE users SET isDisabled=? WHERE adId=?";
+                    $statement = $pdo->prepare($sql6);
+                    $statement->bindValue(1, $disabled);
+                    $statement->bindValue(2, $row['adId']);
+                    $statement->execute();
+                } else {
+                    $disabled = $row['isDisabled'];
+                }
 
-            $disabled = null;
-            if (!empty($_POST['adName'])) {
-                $disabled = $_POST['adName'];
-            } else {
-                $disabled = $row['isDisabled'];
+                if ($disabled === '1') {
+                    echo ("
+                        <tr class='red'>
+                            <td>" . $row['adId'] . "</td>
+                            <td><img src='" . $row['adPath'] . "' alt='Ads'></td>
+                            <td>" . $row['isDisabled'] . "</td>
+                            <td>
+                                '$name'
+                                <form method='post' action='admin_control.php'>
+                                    <input type='hidden' id='$name' name='$name' value='00'>
+                                    <input type='submit' value='Enable'>");
+                } else {
+                    echo ("
+                        <tr class='green'>
+                        <td>" . $row['adId'] . "</td>
+                        <td><img src='" . $row['adPath'] . "' alt='Ads'></td>
+                        <td>" . $row['isDisabled'] . "</td>
+                            <td>
+                                '$name'
+                                <form method='post' action='admin_control.php'>
+                                    <input type='hidden' id='$name' name='$name' value='1'>
+                                    <input type='submit' value='Disable'>");
+                }
+                echo (" 
+                                </form>
+                            </td>
+                        </tr>
+                    ");
             }
-
-            echo ("
-            <tr>
-                <td>
-                    <img src='" . $row['adPath'] . "' alt='Ads'>
-                </td>");
-            echo ("
-                <td>
-                    <form method='post' action='admin_control.php'>
-                        <input type='text' id='$adName' name='$adName' placeholder='$disabled'>
-                        <input type='submit' value='Save'>
-                    </form>
-                </td>
-            </tr>");
         }
         echo ("</table>");
 
