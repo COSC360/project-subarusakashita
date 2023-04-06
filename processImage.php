@@ -21,7 +21,7 @@ $username = $_SESSION['username'];
 
 $file = basename($_FILES['userImage']['name']);
 $imageFileType = strtolower(pathinfo($file, PATHINFO_EXTENSION));
-echo '<script>alert("$username");</script>';
+echo '<script>alert("' . $username . '");</script>';
 
 if (
     getimagesize($_FILES['userImage']['tmp_name']) !== false &&
