@@ -19,8 +19,8 @@ if (!isset($_SESSION['username'])) {
 }
 $username = $_SESSION['username'];
 
-$file = basename($_FILES['userImage']['name']);
-$imageFileType = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+$fileContent = basename($_FILES['userImage']['name']);
+$imageFileType = strtolower(pathinfo($fileContent, PATHINFO_EXTENSION));
 
 if (
     getimagesize($_FILES['userImage']['tmp_name']) !== false &&
@@ -34,14 +34,14 @@ if (
     if (mysqli_num_rows($result1) > 0) {
         // user already has image
 
-        $sql2 = "UPDATE Images SET fileType=?, file=? WHERE username = '$username'";
+        $sql2 = "UPDATE Images SET fileType=?, fileContent=? WHERE username = '$username'";
         $imagedata = file_get_contents($_FILES['userImage']['tmp_name']);
         $stmt = mysqli_stmt_init($conn);
         mysqli_stmt_prepare($stmt, $sql2);
         $null = null;
         mysqli_stmt_bind_param(
             $stmt,
-            "isb",
+            "ssb",
             $imageFileType,
             $null
         );
@@ -52,14 +52,14 @@ if (
         // user does not have image yet
 
         $imagedata = file_get_contents($_FILES['userImage']['tmp_name']);
-        $sql3 = "INSERT INTO Images (username, fileType, file) VALUES(?,?,?)";
+        $sql3 = "INSERT INTO Images (username, fileType, fileContent) VALUES(?,?,?)";
 
         $stmt = mysqli_stmt_init($conn);
         mysqli_stmt_prepare($stmt, $sql3);
         $null = null;
         mysqli_stmt_bind_param(
             $stmt,
-            "isb",
+            "ssb",
             $username,
             $imageFileType,
             $null
