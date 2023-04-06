@@ -28,13 +28,13 @@ if (!isset($_SESSION['username'])) {
     <link rel="stylesheet" href="css/main.css">
     <script>
         div#left {
-            height: 130em;;
+            height: 130em;
         }
         div#right {
-            height: 130em;;
+            height: 130em;
         }
         div#right img{
-            height: 5em;;
+            height: 5em;
         }
     </script>
 </head>
