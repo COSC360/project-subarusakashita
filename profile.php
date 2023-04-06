@@ -57,17 +57,18 @@ if (!isset($_SESSION['username'])) {
 
         <?php
         $session_username = $_SESSION['username'];
+        echo ("<h3>Username: " . $session_username . "</h3>");
 
         // profile image
-        // $sql5 = "SELECT * FROM Images WHERE username=?";
-        // $stmt = mysqli_stmt_init($connection);
-        // mysqli_stmt_prepare($stmt, $sql5);
-        // mysqli_stmt_bind_param($stmt, "s", $session_username);
-        // $result5 = mysqli_stmt_execute($stmt) or die(mysqli_stmt_error($stmt));
-        // mysqli_stmt_bind_result($stmt, $type, $image);
-        // mysqli_stmt_fetch($stmt);
-        // mysqli_stmt_close($stmt);
-        // echo '<img src="data:image/' . $type . ';base64,' . base64_encode($image) . '"/>';
+        $sql5 = "SELECT * FROM Images WHERE username=?";
+        $stmt = mysqli_stmt_init($conn);
+        mysqli_stmt_prepare($stmt, $sql5);
+        mysqli_stmt_bind_param($stmt, "s", $session_username);
+        $result5 = mysqli_stmt_execute($stmt) or die(mysqli_stmt_error($stmt));
+        mysqli_stmt_bind_result($stmt, $type, $image);
+        mysqli_stmt_fetch($stmt);
+        mysqli_stmt_close($stmt);
+        echo '<img src="data:image/' . $type . ';base64,' . base64_encode($image) . '"/>';
 
         echo ('
                 <form method="post" action="processImage.php" enctype="multipart/form-data">
@@ -145,9 +146,8 @@ if (!isset($_SESSION['username'])) {
         $result3 = mysqli_query($conn, $sql3);
         if (mysqli_num_rows($result3) > 0) {
             while ($row = mysqli_fetch_assoc($result3)) {
-                echo ("<h3>Username: " . $row['username'] . "</h3>");
-                //username is unchangeable
-        
+                echo ("Personal Information<br>");
+
                 echo ("<form action='profile.php?username=" . $_SESSION['username'] . "' method='post'>");
                 //form open, submitted change will change the variables above
         
