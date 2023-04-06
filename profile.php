@@ -28,10 +28,10 @@ if (!isset($_SESSION['username'])) {
     <link rel="stylesheet" href="css/main.css">
     <script>
         div#left {
-            height: 100em;;
+            height: 130em;;
         }
         div#right {
-            height: 100em;;
+            height: 130em;;
         }
     </script>
 </head>
@@ -59,15 +59,15 @@ if (!isset($_SESSION['username'])) {
         $session_username = $_SESSION['username'];
 
         // profile image
-        $sql5 = "SELECT * FROM Images WHERE username=?";
-        $stmt = mysqli_stmt_init($connection);
-        mysqli_stmt_prepare($stmt, $sql5);
-        mysqli_stmt_bind_param($stmt, "s", $session_username);
-        $result5 = mysqli_stmt_execute($stmt) or die(mysqli_stmt_error($stmt));
-        mysqli_stmt_bind_result($stmt, $type, $image);
-        mysqli_stmt_fetch($stmt);
-        mysqli_stmt_close($stmt);
-        echo '<img src="data:image/' . $type . ';base64,' . base64_encode($image) . '"/>';
+        // $sql5 = "SELECT * FROM Images WHERE username=?";
+        // $stmt = mysqli_stmt_init($connection);
+        // mysqli_stmt_prepare($stmt, $sql5);
+        // mysqli_stmt_bind_param($stmt, "s", $session_username);
+        // $result5 = mysqli_stmt_execute($stmt) or die(mysqli_stmt_error($stmt));
+        // mysqli_stmt_bind_result($stmt, $type, $image);
+        // mysqli_stmt_fetch($stmt);
+        // mysqli_stmt_close($stmt);
+        // echo '<img src="data:image/' . $type . ';base64,' . base64_encode($image) . '"/>';
 
         echo ('
                 <form method="post" action="processImage.php" enctype="multipart/form-data">
