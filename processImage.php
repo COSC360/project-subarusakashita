@@ -21,6 +21,7 @@ $username = $_SESSION['username'];
 
 $file = basename($_FILES['userImage']['name']);
 $imageFileType = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+echo '<script>alert(' . $username . ');</script>';
 
 if (
     getimagesize($_FILES['userImage']['tmp_name']) !== false &&
@@ -58,7 +59,6 @@ if (
         $imagedata = file_get_contents($_FILES['userImage']['tmp_name']);
         $sql3 = "INSERT INTO Images (username, fileType, file) VALUES('$username', '$imageFileType', null)";
         $conn->query($sql3);
-        echo '<script>alert(' . $username . ');</script>';
         // $stmt = mysqli_stmt_init($conn);
         // mysqli_stmt_prepare($stmt, $sql3);
         // $null = null;
