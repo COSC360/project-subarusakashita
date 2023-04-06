@@ -18,6 +18,7 @@ if (!isset($_SESSION['username'])) {
     exit;
 }
 $username = $_SESSION['username'];
+echo $username;
 
 $file = basename($_FILES['userImage']['name']);
 $imageFileType = strtolower(pathinfo($file, PATHINFO_EXTENSION));
