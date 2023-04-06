@@ -33,6 +33,9 @@ if (!isset($_SESSION['username'])) {
         div#right {
             height: 130em;;
         }
+        div#right img{
+            height: 5em;;
+        }
     </script>
 </head>
 
@@ -61,6 +64,8 @@ if (!isset($_SESSION['username'])) {
 
         // profile image
         $sql5 = "SELECT * FROM Images WHERE username=?";
+        $type = null;
+        $image = null;
         $stmt = mysqli_stmt_init($conn);
         mysqli_stmt_prepare($stmt, $sql5);
         mysqli_stmt_bind_param($stmt, "s", $session_username);
@@ -69,6 +74,9 @@ if (!isset($_SESSION['username'])) {
         mysqli_stmt_fetch($stmt);
         mysqli_stmt_close($stmt);
         echo '<img src="data:image/' . $type . ';base64,' . base64_encode($image) . '"/>';
+
+        echo '<script>alert("' . $type . $image . $session_username . '");</script>';
+
 
         echo ('
                 <form method="post" action="processImage.php" enctype="multipart/form-data">
