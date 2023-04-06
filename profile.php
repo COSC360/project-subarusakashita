@@ -60,15 +60,23 @@ if (!isset($_SESSION['username'])) {
         echo ("<h3>Username: " . $session_username . "</h3>");
 
         // profile image
-        $sql5 = "SELECT * FROM Images WHERE username=?";
-        $stmt = mysqli_stmt_init($conn);
-        mysqli_stmt_prepare($stmt, $sql5);
-        mysqli_stmt_bind_param($stmt, "s", $session_username);
-        $result5 = mysqli_stmt_execute($stmt) or die(mysqli_stmt_error($stmt));
-        mysqli_stmt_bind_result($stmt, $type, $image);
-        mysqli_stmt_fetch($stmt);
-        mysqli_stmt_close($stmt);
-        echo '<img src="data:image/' . $type . ';base64,' . base64_encode($image) . '"/>';
+        // $sql5 = "SELECT * FROM Images WHERE username=?";
+        // $stmt = mysqli_stmt_init($conn);
+        // mysqli_stmt_prepare($stmt, $sql5);
+        // mysqli_stmt_bind_param($stmt, "s", $session_username);
+        // $result5 = mysqli_stmt_execute($stmt) or die(mysqli_stmt_error($stmt));
+        // mysqli_stmt_bind_result($stmt, $type, $image);
+        // mysqli_stmt_fetch($stmt);
+        // mysqli_stmt_close($stmt);
+        // echo '<img src="data:image/' . $type . ';base64,' . base64_encode($image) . '"/>';
+        $sql5 = "SELECT * FROM Images WHERE username='$session_username'";
+        $result5 = mysqli_query($conn, $sql5);
+
+        if (mysqli_num_rows($result5) > 0) {
+            while ($row = mysqli_fetch_assoc($result5)) {
+                echo $row['fileContent'];
+            }
+        }
 
         echo ('
                 <form method="post" action="processImage.php" enctype="multipart/form-data">
