@@ -35,8 +35,8 @@ $user = $_SESSION['username'];
             var comment = $('#comment').val(); // Get the value of the comment field
             var username = $('input[name="username"]').val(); // Get the value of the username field
             var articleId = $('input[name="articleId"]').val(); // Get the value of the articleId field
-            alert("Comment is" + comment);
-            alert("articleId is "+ articleId);
+            // alert("Comment is" + comment);
+            // alert("articleId is "+ articleId);
             $('#showcomments').load("processComment.php", {
                 articleId: articleId,
                 comment: comment,
@@ -51,6 +51,24 @@ $user = $_SESSION['username'];
             });
         });
     });
+</script>
+
+<script>
+    
+    setInterval(function(){
+        var articleId = <?php echo $articleId; ?>;
+        alert("Aritlce ID isss: "+articleId);
+        $.ajax({
+        url: 'comments.php',
+        type: 'GET',
+        data: {
+         articleId: articleId
+        },
+        success: function(response) {
+         $('#showcomments').html(response);
+        }
+        });
+        }, 5000); // Update every 5 seconds
 </script>
 </head>
 
