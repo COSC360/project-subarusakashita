@@ -64,7 +64,7 @@ $user = $_SESSION['username'];
          articleId: articleId
         },
         success: function(response) {
-          alert("yay");
+          //alert("yay");
          $('#showcomments').html(response);
          
         }
