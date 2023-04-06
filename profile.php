@@ -89,16 +89,14 @@ if (!isset($_SESSION['username'])) {
         mysqli_stmt_close($stmt);
         echo '<img id="profile" width="7em" src="data:image/' . $type . ';base64,' . base64_encode($image) . '"/>';
 
-        echo '<script>alert("' . $type . $image . $session_username . '");</script>';
-
-
         echo ('
-                <form method="post" action="processImage.php" enctype="multipart/form-data">
-                <label for="userImage">Insert Profile Image: </label><br>
-                <input type="file" name="userImage" id="userImage" required>
-                <input type="submit" value="Submit Image">
-                </form><br><br>');
-
+        <br>
+        <form method="post" action="processImage.php" enctype="multipart/form-data">
+        <label for="userImage">Insert Profile Image: </label><br>
+        <input type="file" name="userImage" id="userImage" required>
+        <input type="submit" value="Submit Image">
+        </form><br><br>
+        ');
 
         // user info before edit
         $sql1 = "SELECT * FROM users WHERE username = '$session_username'";
