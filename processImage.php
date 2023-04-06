@@ -21,12 +21,13 @@ $username = $_SESSION['username'];
 
 $file = basename($_FILES['userImage']['name']);
 $imageFileType = strtolower(pathinfo($file, PATHINFO_EXTENSION));
-echo '<script>alert("' . $username . '");</script>';
 
 if (
     getimagesize($_FILES['userImage']['tmp_name']) !== false &&
     $_FILES['userImage']['size'] < 100000 && ($imageFileType === "jpg" || $imageFileType === "png")
 ) {
+    echo '<script>alert("' . $username . '");</script>';
+
     $sql1 = "SELECT * FROM Images WHERE username='$username'";
     $result1 = mysqli_query($conn, $sql1);
 
