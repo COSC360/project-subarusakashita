@@ -1,6 +1,8 @@
 <?php
-$articleId = $_GET["articleId"];
-$sql4 = "SELECT * FROM Comments WHERE articleId = '$articleId'";
+if (isset($_GET["articleId"])) {
+    $articleId = $_GET["articleId"];
+    // rest of the code
+    $sql4 = "SELECT * FROM Comments WHERE articleId = '$articleId'";
     $result4 = mysqli_query($conn, $sql4);
     echo ("<br><h2>Comments</h2>");
     echo("<div id = 'showcomments'>");
@@ -13,5 +15,8 @@ $sql4 = "SELECT * FROM Comments WHERE articleId = '$articleId'";
         echo "No comments yet";
     }
     echo("</div>");
+  } else {
+    echo "articleId is not set";
+  }
 
 ?>
