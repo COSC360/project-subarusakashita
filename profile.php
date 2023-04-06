@@ -63,7 +63,7 @@ if (!isset($_SESSION['username'])) {
         echo ("<h3>Username: " . $session_username . "</h3>");
 
         // profile image
-        $sql5 = "SELECT * FROM Images WHERE username=?";
+        $sql5 = "SELECT fileType, fileContent FROM Images WHERE username=?";
         $type = null;
         $image = null;
         $stmt = mysqli_stmt_init($conn);
