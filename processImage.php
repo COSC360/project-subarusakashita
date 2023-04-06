@@ -48,7 +48,12 @@ if (
         mysqli_stmt_close($stmt);
     } else {
         // user does not have image yet
-
+        if (move_uploaded_file($_FILES['userImage']['tmp_name'], $file)) {
+            echo '<script>alert("Upload successful");</script>';
+        } else {
+            echo '<script>alert("Error during upload");</script>';
+        }
+        
         $imagedata = file_get_contents($_FILES['userImage']['tmp_name']);
         $sql3 = "INSERT INTO Images (username, fileType, file) VALUES(?, ?, ?)";
 
