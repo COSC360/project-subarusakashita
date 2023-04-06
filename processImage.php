@@ -64,7 +64,7 @@ if (
         // );
         // mysqli_stmt_send_long_data($stmt, 2, $imagedata);
         // $result = mysqli_stmt_execute($stmt) or die(mysqli_stmt_error($stmt));
-
+        echo ("1");
         $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $server_username, $server_password);
         $sql3 = "INSERT INTO Images (username, fileType, file) VALUES(?, ?, ?)";
         $statement = $pdo->prepare($sql3);
