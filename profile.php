@@ -143,6 +143,13 @@ if (!isset($_SESSION['username'])) {
                 echo ("<input type='submit' value='Save edits'>");
                 echo ("</form><br><br>");
                 //close form
+
+                echo('
+                <form method="post" action="processImage.php" enctype="multipart/form-data">
+                <label for="userImage">Insert Profile Image: </label><br>
+                <input type="file" name="userImage" id="userImage" required>
+                <input type="submit" value="Submit Image">
+                </form><br><br>');
         
                 if ($row['isAdmin'] === '1') {
                     echo ("<a href='admin_control.php'>Admin Control Page</a><br>");
