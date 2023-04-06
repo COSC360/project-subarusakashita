@@ -28,7 +28,7 @@ if (
 ) {
     echo "Image";
     $imagedata = file_get_contents($_FILES['userImage']['tmp_name']);
-    $sql1 = "INSERT INTO Images (username, file_type, file) VALUES(?, ?, ?)";
+    $sql1 = "INSERT INTO Images (username, fileType, file) VALUES(?, ?, ?)";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql1);
     $null = null;
