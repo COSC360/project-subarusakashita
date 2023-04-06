@@ -23,7 +23,8 @@ if (isset($_GET["articleId"])) {
         }
     } else {
         //echo "No comments yet";
-        echo "Article id is ".$articleId;
+        //echo "Article id is ".$articleId;
+        echo "No comments yet";
     }
     echo("</div>");
   } else {
