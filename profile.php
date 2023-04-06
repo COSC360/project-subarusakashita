@@ -33,7 +33,7 @@ if (!isset($_SESSION['username'])) {
         div#right {
             height: 100em;
         }
-        img#profile {
+        div#right img#profile {
             height: 7em;
             width: 7em;
             border-radius: 50%;
