@@ -33,8 +33,8 @@ if (!isset($_SESSION['username'])) {
         div#right {
             height: 130em;
         }
-        div#right img{
-            height: 5em;
+        img#profile {
+            height: 7em;
         }
     </script>
 </head>
@@ -83,7 +83,7 @@ if (!isset($_SESSION['username'])) {
         mysqli_stmt_bind_result($stmt, $type, $image);
         mysqli_stmt_fetch($stmt);
         mysqli_stmt_close($stmt);
-        echo '<img src="data:image/' . $type . ';base64,' . base64_encode($image) . '"/>';
+        echo '<img id="profile" src="data:image/' . $type . ';base64,' . base64_encode($image) . '"/>';
 
         echo '<script>alert("' . $type . $image . $session_username . '");</script>';
 
