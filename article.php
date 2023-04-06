@@ -57,7 +57,6 @@ $user = $_SESSION['username'];
     
     setInterval(function(){
         var articleId = <?php echo $articleId; ?>;
-        alert("Aritlce ID isss: "+articleId);
         $.ajax({
         url: 'comments.php',
         type: 'GET',
@@ -65,7 +64,9 @@ $user = $_SESSION['username'];
          articleId: articleId
         },
         success: function(response) {
+          alert("yay");
          $('#showcomments').html(response);
+         
         }
         });
         }, 5000); // Update every 5 seconds
