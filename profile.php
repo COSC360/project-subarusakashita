@@ -64,6 +64,8 @@ if (!isset($_SESSION['username'])) {
 
         // profile image
         $sql5 = "SELECT * FROM Images WHERE username=?";
+        $type = null;
+        $image = null;
         $stmt = mysqli_stmt_init($conn);
         mysqli_stmt_prepare($stmt, $sql5);
         mysqli_stmt_bind_param($stmt, "s", $session_username);
