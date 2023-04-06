@@ -149,7 +149,7 @@ if (!isset($_SESSION['username'])) {
                 <label for="userImage">Insert Profile Image: </label><br>
                 <input type="file" name="userImage" id="userImage" required>
                 <input type="submit" value="Submit Image">
-                </form>');
+                </form><br><br>');
         
                 if ($row['isAdmin'] === '1') {
                     echo ("<a href='admin_control.php'>Admin Control Page</a><br>");

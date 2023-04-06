@@ -3,7 +3,7 @@ echo basename($_FILES['userImage']['name']);
 
 if (
     getimagesize($_FILES['userImage']['tmp_name']) !== false &&
-    $_FILES['userImage']['size'] < 100000 && ($imageFileType == "jpg" || $imageFileType == "png")
+    $_FILES['userImage']['size'] < 100000 && ($imageFileType === "jpg" || $imageFileType === "png")
 ) {
     echo "Image";
     $imageFileType = strtolower(pathinfo(basename($_FILES['userImage']["name"]), PATHINFO_EXTENSION));
@@ -24,6 +24,8 @@ if (
         die(mysqli_stmt_error($stmt));
     mysqli_stmt_close($stmt);
     echo '<script>alert("Image uploaded 👍");</script>';
+} else {
+    echo "Image does not fit requirements";
 }
 
 ?>
