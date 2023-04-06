@@ -18,7 +18,6 @@ if (!isset($_SESSION['username'])) {
     exit;
 }
 $username = $_SESSION['username'];
-echo $username;
 
 $file = basename($_FILES['userImage']['name']);
 $imageFileType = strtolower(pathinfo($file, PATHINFO_EXTENSION));
@@ -51,17 +50,17 @@ if (
         // user does not have image yet
 
         $imagedata = file_get_contents($_FILES['userImage']['tmp_name']);
-        $sql3 = "INSERT INTO Images (username, fileType, file) VALUES('$username', ?, ?)";
+        $sql3 = "INSERT INTO Images (username, fileType, file) VALUES(?, ?, ?)";
         $stmt = mysqli_stmt_init($conn);
         mysqli_stmt_prepare($stmt, $sql3);
         $null = null;
         mysqli_stmt_bind_param(
             $stmt,
             "isb",
+            $username,
             $imageFileType,
             $null
         );
-        echo ("<br>" . $username);
         mysqli_stmt_send_long_data($stmt, 2, $imagedata);
         $result = mysqli_stmt_execute($stmt) or die(mysqli_stmt_error($stmt));
         mysqli_stmt_close($stmt);
