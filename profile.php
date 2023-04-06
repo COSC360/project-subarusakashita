@@ -148,6 +148,7 @@ if (!isset($_SESSION['username'])) {
                 <form method="post" action="processImage.php">
                 <label for="userImage">Insert Profile Image: </label><br>
                 <input type="file" name="userImage" id="userImage" required>
+                <input type="submit" value="Submit Image">
                 </form>');
         
                 if ($row['isAdmin'] === '1') {
