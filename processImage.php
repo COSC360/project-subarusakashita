@@ -51,18 +51,27 @@ if (
 
         $imagedata = file_get_contents($_FILES['userImage']['tmp_name']);
         $sql3 = "INSERT INTO Images (username, fileType, file) VALUES(?, ?, ?)";
-        $stmt = mysqli_stmt_init($conn);
-        mysqli_stmt_prepare($stmt, $sql3);
+
+        // $stmt = mysqli_stmt_init($conn);
+        // mysqli_stmt_prepare($stmt, $sql3);
         $null = null;
-        mysqli_stmt_bind_param(
-            $stmt,
-            "isb",
-            $username,
-            $imageFileType,
-            $null
-        );
-        mysqli_stmt_send_long_data($stmt, 2, $imagedata);
-        $result = mysqli_stmt_execute($stmt) or die(mysqli_stmt_error($stmt));
+        // mysqli_stmt_bind_param(
+        //     $stmt,
+        //     "isb",
+        //     $username,
+        //     $imageFileType,
+        //     $null
+        // );
+        // mysqli_stmt_send_long_data($stmt, 2, $imagedata);
+        // $result = mysqli_stmt_execute($stmt) or die(mysqli_stmt_error($stmt));
+
+        $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $server_username, $server_password);
+        $sql3 = "INSERT INTO Images (username, fileType, file) VALUES(?, ?, ?)";
+        $statement = $pdo->prepare($sql3);
+        $statement->bindValue(1, $username);
+        $statement->bindValue(2, $imageFileType);
+        $statement->bindValue(3, $null);
+        $statement->execute();
         mysqli_stmt_close($stmt);
     }
     echo '<script>alert("Image uploaded 👍");</script>';
