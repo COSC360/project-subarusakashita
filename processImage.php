@@ -7,6 +7,13 @@ $imageFileType = strtolower(pathinfo($file, PATHINFO_EXTENSION));
 echo $file;
 echo $imageFileType;
 
+$check = getimagesize($_FILES['userImage']['tmp_name']);
+if ($check !== false) {
+    echo ("<br>File is image");
+} else {
+    echo ("<br>File is NOT an image");
+}
+
 if (getimagesize($_FILES['userImage']['tmp_name']) !== false) {
     echo ("1");
 }
