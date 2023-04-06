@@ -55,11 +55,10 @@ if (
         $stmt = mysqli_stmt_init($conn);
         mysqli_stmt_prepare($stmt, $sql3);
         $null = null;
-        $nameaaaaaaaaaaaaaa = "fffffffffffffffff";
         mysqli_stmt_bind_param(
             $stmt,
             "isb",
-            $nameaaaaaaaaaaaaaa,
+            $username,
             $imageFileType,
             $null
         );
@@ -69,7 +68,9 @@ if (
     }
     echo '<script>alert("Image uploaded 👍");</script>';
 } else {
-    echo "Image does not fit requirements";
+    echo '<script>alert("Image does not fit requirements");<scripty>';
 }
+echo ("Go back to <a href='profile.php?username=" . $username . "'>Profile Page</a>");
+
 
 ?>
