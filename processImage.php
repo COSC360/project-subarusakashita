@@ -68,9 +68,10 @@ if (
     }
     echo '<script>alert("Image uploaded 👍");</script>';
 } else {
-    echo '<script>alert("Image does not fit requirements");<scripty>';
+    echo '<script>alert("Image does not fit requirements");</script>';
 }
+
+mysqli_close($conn);
+
 echo ("Go back to <a href='profile.php?username=" . $username . "'>Profile Page</a>");
-
-
 ?>
