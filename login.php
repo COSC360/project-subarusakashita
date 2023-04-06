@@ -88,11 +88,6 @@ if (isset($_SESSION['username'])) {
                     <input type="password" id="password_conf" name="password_conf" placeholder="Re-enter password">
                     <br>
                     <br>
-                    <label for="userImage">Insert Image: </label>
-                    <br>
-                    <input type="file" name="userImage" id="userImage">
-                    <br>
-                    <br>
                     <input type="submit" value="Sign up" />
                     <input type="reset" value="Reset" />
                     <p id="error-message2"></p>
