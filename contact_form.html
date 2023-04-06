@@ -40,7 +40,7 @@
         const messageError = document.getElementById('message-error');
 
         form.addEventListener('submit', (event) => {
-            let isValid = true;
+            event.preventDefault();
             if (nameInput.value.trim() === '') {
                 nameError.innerText = 'Please enter your name.';
                 isValid = false;
@@ -69,27 +69,11 @@
                 event.preventDefault();
                 return;
             }
+            this.submit();
+            window.location.href = 'main.php';
+    
 
-            // If the form is valid, submit it using fetch()
-            event.preventDefault();
-
-            fetch(event.target.action, {
-                method: 'POST',
-                body: new FormData(event.target),
-            })
-            .then(response => {
-                if (response.ok) {
-                    // If the form submission was successful, redirect to main.php
-                    window.location.href = 'main.php';
-                } else {
-                    // If there was an error, display a message to the user
-                    alert('There was an error submitting the form.');
-                }
-            })
-            .catch(error => {
-                console.error(error);
-                alert('There was an error submitting the form.');
-            });
+            
         });
     </script>
 </body>
