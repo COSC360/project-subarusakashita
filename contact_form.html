@@ -40,7 +40,7 @@
         const messageError = document.getElementById('message-error');
 
         form.addEventListener('submit', (event) => {
-            event.preventDefault();
+            //event.preventDefault();
             let isValid = true;
             if (nameInput.value.trim() === '') {
                 nameError.innerText = 'Please enter your name.';
@@ -67,10 +67,10 @@
             }
 
             if (!isValid) {
-                //event.preventDefault();
+                event.preventDefault();
                 return;
             }
-            this.submit();
+            //this.submit();
             //window.location.href = 'main.php';
     
 
