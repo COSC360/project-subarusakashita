@@ -26,6 +26,14 @@ if (!isset($_SESSION['username'])) {
     <title>UniChannel | Profile Page</title>
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/main.css">
+    <script>
+        div#left {
+            height: 100em;;
+        }
+        div#right {
+            height: 100em;;
+        }
+    </script>
 </head>
 
 <body>
@@ -38,6 +46,8 @@ if (!isset($_SESSION['username'])) {
     <?php
     include "include/top_left.php";
     echo ('<a href="#"><img src="ads/short/' . rand(1, 3) . '.png" alt="Advertisement"></a>');
+    echo ('<a href="#"><img src="ads/short/' . rand(1, 3) . '.png" alt="Advertisement"></a>');
+    echo ('<a href="#"><img src="ads/short/' . rand(1, 3) . '.png" alt="Advertisement"></a>');
     echo ('</div>');
     ?>
 
@@ -48,11 +58,28 @@ if (!isset($_SESSION['username'])) {
         <?php
         $session_username = $_SESSION['username'];
 
+        // profile image
+        $sql5 = "SELECT * FROM Images WHERE username=?";
+        $stmt = mysqli_stmt_init($connection);
+        mysqli_stmt_prepare($stmt, $sql5);
+        mysqli_stmt_bind_param($stmt, "s", $session_username);
+        $result5 = mysqli_stmt_execute($stmt) or die(mysqli_stmt_error($stmt));
+        mysqli_stmt_bind_result($stmt, $type, $image);
+        mysqli_stmt_fetch($stmt);
+        mysqli_stmt_close($stmt);
+        echo '<img src="data:image/' . $type . ';base64,' . base64_encode($image) . '"/>';
+
+        echo ('
+                <form method="post" action="processImage.php" enctype="multipart/form-data">
+                <label for="userImage">Insert Profile Image: </label><br>
+                <input type="file" name="userImage" id="userImage" required>
+                <input type="submit" value="Submit Image">
+                </form><br><br>');
+
+
         // user info before edit
         $sql1 = "SELECT * FROM users WHERE username = '$session_username'";
         $result1 = mysqli_query($conn, $sql1);
-
-
 
         $email = "";
         $phoneNum = "";
@@ -143,13 +170,6 @@ if (!isset($_SESSION['username'])) {
                 echo ("<input type='submit' value='Save edits'>");
                 echo ("</form><br><br>");
                 //close form
-
-                echo('
-                <form method="post" action="processImage.php" enctype="multipart/form-data">
-                <label for="userImage">Insert Profile Image: </label><br>
-                <input type="file" name="userImage" id="userImage" required>
-                <input type="submit" value="Submit Image">
-                </form><br><br>');
         
                 if ($row['isAdmin'] === '1') {
                     echo ("<a href='admin_control.php'>Admin Control Page</a><br>");
@@ -168,7 +188,7 @@ if (!isset($_SESSION['username'])) {
 
         <?php
         if (!$isDisabled) {
-            echo "<a href='write_article.php'>[write new article]</a>";
+            echo "<a href='write_article.php'>Write New Article</a>";
         }
 
         $session_username = $_SESSION['username'];
