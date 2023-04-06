@@ -1,31 +1,97 @@
-
 <!DOCTYPE html>
-<html lang= "en">
-    <head>
-        <meta charset="utf-8">
-        <title>Contact Form</title>
-    </head>
-    <body>
-        <form action="https://api.staticforms.xyz/submit"  method="post">
-            <input type="hidden" name="accessKey" value="baacb429-5c74-4169-9d43-7df4fc087e0d">
-            <div class="item">
-                <label class="label">Name</label>
-                <input type="text" class="inputs" name="name">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Contact Form</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <form id="contact-form" action="https://api.staticforms.xyz/submit" method="post">
+        <input type="hidden" name="accessKey" value="baacb429-5c74-4169-9d43-7df4fc087e0d">
+        <div class="item">
+            <label class="label">Name</label>
+            <input type="text" class="inputs" name="name">
+            <span class="error" id="name-error"></span>
+        </div>
+        <div class="item">
+            <label class="email">Email</label>
+            <input type="email" name="email">
+            <span class="error" id="email-error"></span>
+        </div>
+        <div class="item">
+            <label class="text">Question</label>
+            <textarea name="message"></textarea>
+            <span class="error" id="message-error"></span>
+        </div>
+        <input type="submit" value="Send">
+    </form>
 
-            </div>
-            <div class="item">
-                <label class="email">Email</label>
-                <input type="text" name="email"> 
-            </div>
-            <div class="item">
-                <label class="text">Question</label>
-                <textarea name="message"></textarea>
-            </div>
-            <!-- <input type="hidden" name="redirectTo" value=""> -->
-            <input type ="submit" value="Send">
-        </form>
-        <script>
-            window.location.href="main.php";
-        </script>
-    </body>
+    <script>
+        const form = document.getElementById('contact-form');
+        const nameInput = document.querySelector('input[name="name"]');
+        const emailInput = document.querySelector('input[name="email"]');
+        const messageInput = document.querySelector('textarea[name="message"]');
+        const nameError = document.getElementById('name-error');
+        const emailError = document.getElementById('email-error');
+        const messageError = document.getElementById('message-error');
+
+        form.addEventListener('submit', (event) => {
+            let isValid = true;
+            if (nameInput.value.trim() === '') {
+                nameError.innerText = 'Please enter your name.';
+                isValid = false;
+            } else {
+                nameError.innerText = '';
+            }
+
+            if (emailInput.value.trim() === '') {
+                emailError.innerText = 'Please enter your email address.';
+                isValid = false;
+            } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(emailInput.value.trim())) {
+                emailError.innerText = 'Please enter a valid email address.';
+                isValid = false;
+            } else {
+                emailError.innerText = '';
+            }
+
+            if (messageInput.value.trim() === '') {
+                messageError.innerText = 'Please enter your message.';
+                isValid = false;
+            } else {
+                messageError.innerText = '';
+            }
+
+            if (!isValid) {
+                event.preventDefault();
+                return;
+            }
+
+            // If the form is valid, submit it using fetch()
+            event.preventDefault();
+
+            fetch(event.target.action, {
+                method: 'POST',
+                body: new FormData(event.target),
+            })
+            .then(response => {
+                if (response.ok) {
+                    // If the form submission was successful, redirect to main.php
+                    window.location.href = 'main.php';
+                } else {
+                    // If there was an error, display a message to the user
+                    alert('There was an error submitting the form.');
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                alert('There was an error submitting the form.');
+            });
+        });
+    </script>
+</body>
 </html>
+
