@@ -26,7 +26,7 @@ if (!isset($_SESSION['username'])) {
     <title>UniChannel | Profile Page</title>
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/main.css">
-    <script>
+    <style>
         div#left {
             height: 130em;
         }
@@ -36,7 +36,7 @@ if (!isset($_SESSION['username'])) {
         img#profile {
             height: 7em;
         }
-    </script>
+    </style>
 </head>
 
 <body>
