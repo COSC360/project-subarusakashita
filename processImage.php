@@ -55,10 +55,11 @@ if (
         $stmt = mysqli_stmt_init($conn);
         mysqli_stmt_prepare($stmt, $sql3);
         $null = null;
+        $nameaaaaaaaaaaaaaa = "fffffffffffffffff";
         mysqli_stmt_bind_param(
             $stmt,
             "isb",
-            $username,
+            $nameaaaaaaaaaaaaaa,
             $imageFileType,
             $null
         );
