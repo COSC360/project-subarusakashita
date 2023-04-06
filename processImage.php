@@ -62,6 +62,7 @@ if (
             $imageFileType,
             $null
         );
+        echo("<br>" . $username);
         mysqli_stmt_send_long_data($stmt, 2, $imagedata);
         $result = mysqli_stmt_execute($stmt) or die(mysqli_stmt_error($stmt));
         mysqli_stmt_close($stmt);
