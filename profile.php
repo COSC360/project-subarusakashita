@@ -35,7 +35,9 @@ if (!isset($_SESSION['username'])) {
         }
         img#profile {
             height: 7em;
-            width: auto;
+            width: 7em;
+            border-radius: 50%;
+            margin-left: 0em;
         }
     </style>
 </head>
