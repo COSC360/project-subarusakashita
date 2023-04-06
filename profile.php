@@ -37,7 +37,7 @@ if (!isset($_SESSION['username'])) {
             height: 7em;
             width: 7em;
             border-radius: 50%;
-            margin-left: 0em;
+            padding-left: 0em;
         }
     </style>
 </head>
