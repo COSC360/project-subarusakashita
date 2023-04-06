@@ -28,13 +28,14 @@ if (!isset($_SESSION['username'])) {
     <link rel="stylesheet" href="css/main.css">
     <style>
         div#left {
-            height: 130em;
+            height: 100em;
         }
         div#right {
-            height: 130em;
+            height: 100em;
         }
         img#profile {
             height: 7em;
+            width: auto;
         }
     </style>
 </head>
