@@ -12,7 +12,8 @@ if (isset($_GET["articleId"])) {
             echo ('<h3>' . $row["username"] . ' - ' . $row["commentBody"] . '</h3>');
         }
     } else {
-        echo "No comments yet";
+        //echo "No comments yet";
+        echo "Article id is ".$articleId;
     }
     echo("</div>");
   } else {
