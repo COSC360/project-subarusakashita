@@ -1,9 +1,11 @@
 <?php
 session_start();
 
-echo basename($_FILES['userImage']['name']);
 $file = basename($_FILES['userImage']["name"]);
 $imageFileType = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+
+echo $file;
+echo $imageFileType;
 
 if (getimagesize($_FILES['userImage']['tmp_name']) !== false) {
     echo ("1");
