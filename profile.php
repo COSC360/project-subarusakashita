@@ -145,7 +145,7 @@ if (!isset($_SESSION['username'])) {
                 //close form
 
                 echo('
-                <form method="post" action="processImage.php">
+                <form method="post" action="processImage.php" enctype="multipart/form-data">
                 <label for="userImage">Insert Profile Image: </label><br>
                 <input type="file" name="userImage" id="userImage" required>
                 <input type="submit" value="Submit Image">
