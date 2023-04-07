@@ -33,7 +33,7 @@ if (isset($_GET['searchKeyword'])) {
             margin-left: 0em;
         }
         h3#nameFloatRight {
-            float: right;
+            float: left;
             margin: 0em 0em 0em 4em;
         }
     </style>
