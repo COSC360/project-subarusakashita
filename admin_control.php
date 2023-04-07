@@ -139,6 +139,8 @@ if (mysqli_num_rows($result) > 0) {
                     mysqli_stmt_close($stmt);
                     if ($image !== null) {
                         echo '<td><img id="profile" src="data:image/' . $type . ';base64,' . base64_encode($image) . '"></td>';
+                    } else {
+                        echo '<td>No image set</td>';
                     }
 
                     echo ("
@@ -166,8 +168,10 @@ if (mysqli_num_rows($result) > 0) {
                     mysqli_stmt_close($stmt);
                     if ($image !== null) {
                         echo '<td><img id="profile" src="data:image/' . $type . ';base64,' . base64_encode($image) . '"></td>';
+                    } else {
+                        echo '<td>No image set</td>';
                     }
-                    
+
                     echo ("
                     <td>" . $row['username'] . "</td>
                     <td>" . $row['email'] . "</td>
