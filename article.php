@@ -125,16 +125,16 @@ $user = $_SESSION['username'];
 
             // author profile image
             $sql2 = "SELECT fileType, fileContent FROM Images WHERE username=?";
-            $result2 = mysqli_query($conn, $sql2, $authorUsername);
-            $type = null;
-            $image = null;
+            // $result2 = mysqli_query($conn, $sql2, $authorUsername);
+            // $type = null;
+            // $image = null;
 
-            if (mysqli_num_rows($result2) > 0) {
-                while ($row2 = mysqli_fetch_assoc($result2)) {
-                    $type = $row2['fileType'];
-                    $image = $row2['fileContent'];
-                }
-            }
+            // if (mysqli_num_rows($result2) > 0) {
+            //     while ($row2 = mysqli_fetch_assoc($result2)) {
+            //         $type = $row2['fileType'];
+            //         $image = $row2['fileContent'];
+            //     }
+            // }
             $stmt = mysqli_stmt_init($conn);
             mysqli_stmt_prepare($stmt, $sql2);
             mysqli_stmt_bind_param($stmt, "s", $authorUsername);
