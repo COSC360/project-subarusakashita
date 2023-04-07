@@ -72,6 +72,8 @@ if (isset($_GET['searchKeyword'])) {
         $result2 = mysqli_query($conn, $sql2);
         if (mysqli_num_rows($result2) > 0) {
             while ($row = mysqli_fetch_assoc($result2)) {
+                echo ("<br><h3>" . $row['username'] . "</h3>");
+
                 $image = null;
                 $type = null;
                 $sql6 = "SELECT fileType, fileContent FROM Images WHERE username=?";
@@ -85,7 +87,7 @@ if (isset($_GET['searchKeyword'])) {
                 if ($image !== null) {
                     echo '<img id="profile" src="data:image/' . $type . ';base64,' . base64_encode($image) . '">';
                 }
-                echo ($row['username']);
+                
             }
         } else {
             echo ("<h3>No results found for Users</h3>");
