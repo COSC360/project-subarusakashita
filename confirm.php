@@ -11,17 +11,9 @@
     $content = $content."\nFrom Name: ".$name."\nEmail: ".$email;
 }
 else{
-  $username = $_POST["username"];
-  $sql = "SELECT email FROM users WHERE username = '$username' ";
-  $result = mysqli_query($conn, $sql);
-  echo '<script>alert('.$username.');</script>';
-  if ($result) {
-    echo '<script>alert("Checking!!");</script>';
-      $row = mysqli_fetch_assoc($result);
-      $email = $row['email'];
-      $content = $content."\nFrom Name: ".$username."\nEmail: ".$email;
+      $content = $content."\nFrom username: ".$_SESSION['username'];
   }
-}
+
   
   if(mb_send_mail($to, $title, $content)){
     echo "Mail successfully sent";
