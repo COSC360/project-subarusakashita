@@ -83,9 +83,9 @@ if (isset($_GET['searchKeyword'])) {
                 mysqli_stmt_fetch($stmt);
                 mysqli_stmt_close($stmt);
                 if ($image !== null) {
-                    echo '<td><img id="profile" src="data:image/' . $type . ';base64,' . base64_encode($image) . '"></td>';
+                    echo '<img id="profile" src="data:image/' . $type . ';base64,' . base64_encode($image) . '">';
                 }
-                echo ("<h3>" . $row['username'] . "</h3>");
+                echo ($row['username']);
             }
         } else {
             echo ("<h3>No results found for Users</h3>");
