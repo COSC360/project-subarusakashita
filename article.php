@@ -125,16 +125,6 @@ $user = $_SESSION['username'];
 
             // author profile image
             $sql2 = "SELECT fileType, fileContent FROM Images WHERE username=?";
-            // $result2 = mysqli_query($conn, $sql2, $authorUsername);
-            // $type = null;
-            // $image = null;
-
-            // if (mysqli_num_rows($result2) > 0) {
-            //     while ($row2 = mysqli_fetch_assoc($result2)) {
-            //         $type = $row2['fileType'];
-            //         $image = $row2['fileContent'];
-            //     }
-            // }
             $stmt = mysqli_stmt_init($conn);
             mysqli_stmt_prepare($stmt, $sql2);
             mysqli_stmt_bind_param($stmt, "s", $authorUsername);
@@ -167,6 +157,15 @@ $user = $_SESSION['username'];
                 //echo ("<h3><a href='write_comment.php?articleId=" . $articleId . "'>[Post new comment]</a></h3>");
                 if (mysqli_num_rows($result4) > 0) {
                     while ($row = mysqli_fetch_assoc($result4)) {
+                        $sql6 = "SELECT fileType, fileContent FROM Images WHERE username=?";
+                        $stmt = mysqli_stmt_init($conn);
+                        mysqli_stmt_prepare($stmt, $sql6);
+                        mysqli_stmt_bind_param($stmt, "s", $row['username']);
+                        $result2 = mysqli_stmt_execute($stmt) or die(mysqli_stmt_error($stmt));
+                        mysqli_stmt_bind_result($stmt, $type, $image);
+                        mysqli_stmt_fetch($stmt);
+                        mysqli_stmt_close($stmt);
+                        echo '<img id="profile" src="data:image/' . $type . ';base64,' . base64_encode($image) . '"/>';
                         echo ('<h3>' . $row["username"] . ' - ' . $row["commentBody"] . '</h3>');
                     }
                 } else {
