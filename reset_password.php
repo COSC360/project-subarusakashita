@@ -97,7 +97,7 @@ if ($conn->connect_error) {
 
             $sql1 = "UPDATE users SET passwords = '$newPassword' WHERE username = '$recoverUser'";
             if (mysqli_query($conn, $sql1)) {
-                echo '<script>alert("New password is ' . $newPassword . ' (working on sending new password to email)");</script>';
+                //echo '<script>alert("New password is ' . $newPassword . ' (working on sending new password to email)");</script>';
                 $sql = "SELECT email FROM users WHERE username= '$recoverUser'";
                 $result = mysqli_query($conn, $sql);
                 if ($result) {
@@ -110,7 +110,7 @@ if ($conn->connect_error) {
                     if(mb_send_mail($to, $title, $content)){
                         //echo "Mail successfully sent";
                         echo '<script>alert("We have sent you an email about new password. Please check!");</script>';
-                        header ("Location: main.php");
+                        echo 'window.location.href = "login.php";';
                     } else {
                     echo "Sending failed";
                     };
