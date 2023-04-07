@@ -28,48 +28,48 @@ $user = $_SESSION['username'];
     <link rel="stylesheet" href="css/article.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-    $(document).ready(function() {
-        $('#comment-form').submit(function(event) {
-            event.preventDefault();
-            
-            var comment = $('#comment').val(); // Get the value of the comment field
-            var username = $('input[name="username"]').val(); // Get the value of the username field
-            var articleId = $('input[name="articleId"]').val(); // Get the value of the articleId field
-            // alert("Comment is" + comment);
-            // alert("articleId is "+ articleId);
-            $('#showcomments').load("processComment.php", {
-                articleId: articleId,
-                comment: comment,
-                username: username
-            })
-            .done(function(response) {
-                console.log(response);
-                // Handle the response from the server here
-            })
-            .fail(function(xhr, status, error) {
-                console.error(error);
+        $(document).ready(function () {
+            $('#comment-form').submit(function (event) {
+                event.preventDefault();
+
+                var comment = $('#comment').val(); // Get the value of the comment field
+                var username = $('input[name="username"]').val(); // Get the value of the username field
+                var articleId = $('input[name="articleId"]').val(); // Get the value of the articleId field
+                // alert("Comment is" + comment);
+                // alert("articleId is "+ articleId);
+                $('#showcomments').load("processComment.php", {
+                    articleId: articleId,
+                    comment: comment,
+                    username: username
+                })
+                    .done(function (response) {
+                        console.log(response);
+                        // Handle the response from the server here
+                    })
+                    .fail(function (xhr, status, error) {
+                        console.error(error);
+                    });
             });
         });
-    });
-</script>
+    </script>
 
-<script>
-    
-    setInterval(function(){
-        var articleId = <?php echo $articleId; ?>;
-        $.ajax({
-        url: 'comments.php',
-        type: 'GET',
-        data: {
-         articleId: articleId
-        },
-        success: function(response) {
-         $('#showcomments').html(response);
-         
-        }
-        });
+    <script>
+
+        setInterval(function () {
+            var articleId = <?php echo $articleId; ?>;
+            $.ajax({
+                url: 'comments.php',
+                type: 'GET',
+                data: {
+                    articleId: articleId
+                },
+                success: function (response) {
+                    $('#showcomments').html(response);
+
+                }
+            });
         }, 5000); // Update every 5 seconds
-</script>
+    </script>
 </head>
 
 <body>
@@ -90,6 +90,7 @@ $user = $_SESSION['username'];
         if (isset($_GET['articleId'])) {
             $categoryId = "";
             $artDisabled = "";
+            $authorUsername = "";
 
             // Article 
             $sql1 = "SELECT * FROM Articles WHERE articleId =  '$articleId'";
@@ -100,7 +101,9 @@ $user = $_SESSION['username'];
                         <h3>Author: " . $row['username'] . "</h3>
                         Category ID: " . $row['categoryId'] . " <br>
                         Tag ID: " . $row['tagId'] . "<br>";
+
                     $categoryId = $row['categoryId'];
+                    $authorUsername = $row['username'];
 
                     if ($row['isDisabled'] === '1') {
                         $artDisabled = '1';
@@ -111,6 +114,29 @@ $user = $_SESSION['username'];
                     }
                 }
             }
+
+            // profile image
+            $sql2 = "SELECT fileType, fileContent FROM Images WHERE username='$authorUsername'";
+            $result2 = mysqli_query($conn, $sql2);
+            $type = null;
+            $image = null;
+
+            if (mysqli_num_rows($result2) > 0) {
+                while ($row = mysqli_fetch_assoc($result2)) {
+                    $type = $row['fileType'];
+                    $image = $row['fileContent'];
+                }
+            }
+
+            $sql2 = "SELECT fileType, fileContent FROM Images WHERE username=?";
+            $stmt = mysqli_stmt_init($conn);
+            mysqli_stmt_prepare($stmt, $sql2);
+            mysqli_stmt_bind_param($stmt, "s", $session_username);
+            $result2 = mysqli_stmt_execute($stmt) or die(mysqli_stmt_error($stmt));
+            mysqli_stmt_bind_result($stmt, $type, $image);
+            mysqli_stmt_fetch($stmt);
+            mysqli_stmt_close($stmt);
+            echo '<img id="profile" src="data:image/' . $type . ';base64,' . base64_encode($image) . '"/>';
 
             // //follow button
             // $sql2 = "SELECT following FROM Users WHERE username = ?";
@@ -127,7 +153,7 @@ $user = $_SESSION['username'];
                 $sql4 = "SELECT * FROM Comments WHERE articleId = '$articleId'";
                 $result4 = mysqli_query($conn, $sql4);
                 echo ("<br><h2>Comments</h2>");
-                echo("<div id = 'showcomments'>");
+                echo ("<div id = 'showcomments'>");
                 //echo ("<h3><a href='write_comment.php?articleId=" . $articleId . "'>[Post new comment]</a></h3>");
                 if (mysqli_num_rows($result4) > 0) {
                     while ($row = mysqli_fetch_assoc($result4)) {
@@ -136,7 +162,7 @@ $user = $_SESSION['username'];
                 } else {
                     echo "No comments yet";
                 }
-                echo("</div>");
+                echo ("</div>");
 
 
                 // Write Comment
