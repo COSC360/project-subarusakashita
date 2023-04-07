@@ -5,7 +5,6 @@
   $title = $_POST['title'];
   $content = "Content: ".$_POST['content'];
   if (!empty($_POST["name"])) {
-    echo '<script>alert("Here?!!");</script>';
     $name = strip_tags($_POST["name"]);
     $email = strip_tags($_POST["email"]);
     $content = $content."\nFrom Name: ".$name."\nEmail: ".$email;
@@ -17,7 +16,7 @@ else{
 
   
   if(mb_send_mail($to, $title, $content)){
-    echo "Mail successfully sent";
+    echo '<script>alert("Form successfully sent");</script>';
     echo '<script>window.location.href = "main.php"; </script>';
   } else {
     echo "Sending failed";
