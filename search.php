@@ -34,6 +34,7 @@ if (isset($_GET['searchKeyword'])) {
         }
         div#userTable {
             border: none;
+            padding: 0em;
         }
     </style>
 </head>
