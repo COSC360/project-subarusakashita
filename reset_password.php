@@ -98,15 +98,9 @@ if ($conn->connect_error) {
             $sql1 = "UPDATE users SET passwords = '$newPassword' WHERE username = '$recoverUser'";
             if (mysqli_query($conn, $sql1)) {
                 echo '<script>alert("New password is ' . $newPassword . ' (working on sending new password to email)");</script>';
-            }
-            
-            $sql = "SELECT * FROM users WHERE username = '$recoverUser'";
-            $result = mysqli_query($conn, $sql);
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $email = $row["email"];
+                //$email = $row["email"];
                     mb_internal_encoding("UTF-8");
-                    $to = $email;
+                    $to = "baruchan@student.ubc.ca";
                     $title = "New Password Notice";
                     $content = "The new password is ".$newPassword;
                     if(mb_send_mail($to, $title, $content)){
@@ -115,14 +109,13 @@ if ($conn->connect_error) {
                     } else {
                     echo "Sending failed";
                     };
-                 exit;
-                } 
-                
-            }
-            else{
-                echo "No user found";
-            }    
                 mysqli_close($conn);
+            }
+
+
+                    
+                 exit;
+
             // send email of new password
                 
             
@@ -130,7 +123,7 @@ if ($conn->connect_error) {
             // $sql2 = "SELECT email FROM users WHERE username = '$recoverUser'";
         
 
-            mysqli_close($conn);
+            
         }
         ?>
     </div>
