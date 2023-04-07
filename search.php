@@ -24,6 +24,15 @@ if (isset($_GET['searchKeyword'])) {
     <title>UniChannel | Search Page</title>
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/main.css">
+    <style>
+        div#right img#profile {
+            height: 3em;
+            width: 3em;
+            border-radius: 50%;
+            padding-left: 0em;
+            margin-left: 0em;
+        }
+    </style>
 </head>
 
 <body>
