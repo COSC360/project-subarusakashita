@@ -12,7 +12,7 @@
       if (!empty($_POST["name"])) {
         $name = strip_tags($_POST["name"]);
         $email = strip_tags($_POST["email"]);
-        $content = $content."<br> From Name: ".$name."<br> Email: ".$email;
+        $content = $content."\nFrom Name: ".$name."\nEmail: ".$email;
     }
      
       if(mb_send_mail($to, $title, $content)){
