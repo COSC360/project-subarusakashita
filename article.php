@@ -123,9 +123,9 @@ $user = $_SESSION['username'];
                 }
             }
 
-            // profile image
-            $sql2 = "SELECT fileType, fileContent FROM Images WHERE username='$authorUsername'";
-            $result2 = mysqli_query($conn, $sql2);
+            // author profile image
+            $sql2 = "SELECT fileType, fileContent FROM Images WHERE username=?";
+            $result2 = mysqli_query($conn, $sql2, $authorUsername);
             $type = null;
             $image = null;
 
@@ -135,11 +135,9 @@ $user = $_SESSION['username'];
                     $image = $row2['fileContent'];
                 }
             }
-
-            $sql2 = "SELECT fileType, fileContent FROM Images WHERE username=?";
             $stmt = mysqli_stmt_init($conn);
             mysqli_stmt_prepare($stmt, $sql2);
-            mysqli_stmt_bind_param($stmt, "s", $session_username);
+            mysqli_stmt_bind_param($stmt, "s", $authorUsername);
             $result2 = mysqli_stmt_execute($stmt) or die(mysqli_stmt_error($stmt));
             mysqli_stmt_bind_result($stmt, $type, $image);
             mysqli_stmt_fetch($stmt);
