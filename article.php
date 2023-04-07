@@ -26,6 +26,15 @@ $user = $_SESSION['username'];
     <title>UniChannel | Article Page</title>
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/article.css">
+    <style>
+        div#right img#profile {
+            height: 7em;
+            width: 7em;
+            border-radius: 50%;
+            padding-left: 0em;
+            margin-left: 0em;
+        }
+    </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
@@ -91,6 +100,7 @@ $user = $_SESSION['username'];
             $categoryId = "";
             $artDisabled = "";
             $authorUsername = "";
+            $artBody = "<h3>This article is disabled by administrator</h3>";
 
             // Article 
             $sql1 = "SELECT * FROM Articles WHERE articleId =  '$articleId'";
@@ -107,10 +117,8 @@ $user = $_SESSION['username'];
 
                     if ($row['isDisabled'] === '1') {
                         $artDisabled = '1';
-                        echo ("<h3>This article is disabled by administrator</h3>");
                     } else {
-                        include "include/ad_long.php";
-                        echo "<p>" . $row["articleBody"] . "</p>";
+                        $artBody = "<p>" . $row["articleBody"] . "</p>";
                     }
                 }
             }
@@ -122,9 +130,9 @@ $user = $_SESSION['username'];
             $image = null;
 
             if (mysqli_num_rows($result2) > 0) {
-                while ($row = mysqli_fetch_assoc($result2)) {
-                    $type = $row['fileType'];
-                    $image = $row['fileContent'];
+                while ($row2 = mysqli_fetch_assoc($result2)) {
+                    $type = $row2['fileType'];
+                    $image = $row2['fileContent'];
                 }
             }
 
@@ -137,6 +145,10 @@ $user = $_SESSION['username'];
             mysqli_stmt_fetch($stmt);
             mysqli_stmt_close($stmt);
             echo '<img id="profile" src="data:image/' . $type . ';base64,' . base64_encode($image) . '"/>';
+
+            include "include/ad_long.php";
+            echo $artBody;
+
 
             // //follow button
             // $sql2 = "SELECT following FROM Users WHERE username = ?";
