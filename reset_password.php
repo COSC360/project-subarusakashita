@@ -100,8 +100,33 @@ if ($conn->connect_error) {
                 echo '<script>alert("New password is ' . $newPassword . ' (working on sending new password to email)");</script>';
             }
             
-
+            $sql = "SELECT * FROM users WHERE username = '$recoverUser'";
+            $result = mysqli_query($conn, $sql);
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $email = $row["email"];
+                    mb_internal_encoding("UTF-8");
+                    $to = $email;
+                    $title = "New Password Notice";
+                    $content = "The new password is ".$newPassword;
+                    if(mb_send_mail($to, $title, $content)){
+                        echo "Mail successfully sent";
+                        header ("Location: main.php");
+                    } else {
+                    echo "Sending failed";
+                    };
+                 exit;
+                } 
+                
+            }
+            else{
+                echo "No user found";
+            }    
+                mysqli_close($conn);
             // send email of new password
+                
+            
+            
             // $sql2 = "SELECT email FROM users WHERE username = '$recoverUser'";
         
 
