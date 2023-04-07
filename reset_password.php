@@ -111,7 +111,7 @@ if ($conn->connect_error) {
                     $content = "The new password is ".$newPassword;
                     if(mb_send_mail($to, $title, $content)){
                         echo "Mail successfully sent";
-                        header ("Location: main.php");
+                        //header ("Location: main.php");
                     } else {
                     echo "Sending failed";
                     };
