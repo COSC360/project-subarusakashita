@@ -95,9 +95,10 @@ if ($conn->connect_error) {
                 . $passwordParts[rand(0, 25)] . rand(0, 9) . rand(0, 9) . $passwordParts[rand(26, 35)];
             //auto decide new password using $passwordParts, format: AAaaaa11!
 
-            $sql1 = "UPDATE users SET passwords = '$newPassword' WHERE username = '$recoverUser'";
+            $encryptNewPass = md5($newPassword);
+
+            $sql1 = "UPDATE users SET passwords = '$encryptNewPass' WHERE username = '$recoverUser'";
             if (mysqli_query($conn, $sql1)) {
-                //echo '<script>alert("New password is ' . $newPassword . ' (working on sending new password to email)");</script>';
                 $sql = "SELECT email FROM users WHERE username= '$recoverUser'";
                 $result = mysqli_query($conn, $sql);
                 if ($result) {
