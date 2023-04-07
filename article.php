@@ -128,7 +128,7 @@ $user = $_SESSION['username'];
             $stmt = mysqli_stmt_init($conn);
             mysqli_stmt_prepare($stmt, $sql2);
             mysqli_stmt_bind_param($stmt, "s", $authorUsername);
-            $result2 = mysqli_stmt_execute($stmt) or die(mysqli_stmt_error($stmt));
+            $result6 = mysqli_stmt_execute($stmt) or die(mysqli_stmt_error($stmt));
             mysqli_stmt_bind_result($stmt, $type, $image);
             mysqli_stmt_fetch($stmt);
             mysqli_stmt_close($stmt);
