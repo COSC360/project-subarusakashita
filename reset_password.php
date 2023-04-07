@@ -110,7 +110,7 @@ if ($conn->connect_error) {
                     if(mb_send_mail($to, $title, $content)){
                         //echo "Mail successfully sent";
                         echo '<script>alert("We have sent you an email about new password. Please check!");</script>';
-                        echo 'window.location.href = "login.php";';
+                        echo '<script>window.location.href = "login.php"; </script>';
                     } else {
                     echo "Sending failed";
                     };
