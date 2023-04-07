@@ -1,6 +1,5 @@
 
 <?php
-  session_start();
   mb_internal_encoding("UTF-8");
   $to = $_POST['to'];
   $title = $_POST['title'];
@@ -11,7 +10,8 @@
     $content = $content."\nFrom Name: ".$name."\nEmail: ".$email;
 }
 else{
-  $username = $_SESSION["username"];
+  echo '<script>alert("Checking!!");</script>';
+  $username = $_POST["username"];
   $sql = "SELECT email FROM users WHERE username = '$username' ";
   $result = mysqli_query($conn, $sql);
   if ($result) {

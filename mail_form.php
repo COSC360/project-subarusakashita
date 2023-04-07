@@ -22,7 +22,7 @@ session_start();
             echo "<p> Email </p> <input type='text' name = 'email' required>";
         }
         else{
-          echo "<p> Username is ".$_SESSION['username']."</p>";
+          echo "<p> Username is ".$_SESSION['username']."</p> <input type='hidden' name='username' value=".$_SESSION['username'];
         }
         ?>
       </p>
