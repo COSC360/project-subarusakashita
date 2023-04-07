@@ -1,3 +1,8 @@
+<?php
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,12 +15,13 @@
     </p>
     <form action="./confirm.php" method="post">
       <p>
-        Recipient
+        
       </p>
-      <input type="text" name="to">
+      <input type="hidden" name= "to" value="baruchan@student.ubc.ca">
       <p>
         Title 
       </p>
+      <input type="hidden" name="">
       <input type="text" name="title">
       <p>
         Content
