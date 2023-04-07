@@ -24,6 +24,8 @@ if (mysqli_num_rows($result) > 0) {
     exit;
 } else {
     // Login failed
+    echo '<script>alert("Invalid username or password. Please try again.");</script>';
+    echo '<script>window.location.href = "login.php"; </script>';
     $error = "Invalid username or password";
 }
 mysqli_close($conn);
