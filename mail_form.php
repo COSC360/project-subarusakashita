@@ -15,13 +15,20 @@ session_start();
     </p>
     <form action="./confirm.php" method="post">
       <p>
-        
+        <?php 
+          if (!isset($_SESSION['username'])) {
+
+            echo "<p> Your Name </p> <input type='text' name = 'name'";
+        }
+        else{
+          echo "<p> Username is ".$_SESSION['username']."</p>";
+        }
+        ?>
       </p>
       <input type="hidden" name= "to" value="baruchan@student.ubc.ca">
       <p>
         Title 
       </p>
-      <input type="hidden" name="">
       <input type="text" name="title">
       <p>
         Content
