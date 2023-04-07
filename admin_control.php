@@ -129,6 +129,8 @@ if (mysqli_num_rows($result) > 0) {
                 if ($disabled1 === '1') {
                     echo ("<tr class='red'>");
 
+                    $image = null;
+                    $type = null;
                     $sql6 = "SELECT fileType, fileContent FROM Images WHERE username=?";
                     $stmt = mysqli_stmt_init($conn);
                     mysqli_stmt_prepare($stmt, $sql6);
@@ -158,7 +160,9 @@ if (mysqli_num_rows($result) > 0) {
                             <input type='submit' value='Enable'>");
                 } else {
                     echo ("<tr class='green'>");
-
+                    
+                    $image = null;
+                    $type = null;
                     $sql6 = "SELECT fileType, fileContent FROM Images WHERE username=?";
                     $stmt = mysqli_stmt_init($conn);
                     mysqli_stmt_prepare($stmt, $sql6);
