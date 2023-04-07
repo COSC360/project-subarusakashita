@@ -11,6 +11,7 @@
     $content = $content."\nFrom Name: ".$name."\nEmail: ".$email;
 }
 else{
+      session_start();
       $content = $content."\nFrom username: ".$_SESSION['username'];
   }
 
