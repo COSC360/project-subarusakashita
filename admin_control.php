@@ -160,14 +160,14 @@ if (mysqli_num_rows($result) > 0) {
                             <input type='submit' value='Enable'>");
                 } else {
                     echo ("<tr class='green'>");
-                    
+
                     $image = null;
                     $type = null;
-                    $sql6 = "SELECT fileType, fileContent FROM Images WHERE username=?";
+                    $sql7 = "SELECT fileType, fileContent FROM Images WHERE username=?";
                     $stmt = mysqli_stmt_init($conn);
-                    mysqli_stmt_prepare($stmt, $sql6);
+                    mysqli_stmt_prepare($stmt, $sql7);
                     mysqli_stmt_bind_param($stmt, "s", $row['username']);
-                    $result6 = mysqli_stmt_execute($stmt) or die(mysqli_stmt_error($stmt));
+                    $result7 = mysqli_stmt_execute($stmt) or die(mysqli_stmt_error($stmt));
                     mysqli_stmt_bind_result($stmt, $type, $image);
                     mysqli_stmt_fetch($stmt);
                     mysqli_stmt_close($stmt);
