@@ -11,9 +11,10 @@
       $title = $_POST['title'];
       $content = $_POST['content'];
       if(mb_send_mail($to, $title, $content)){
-        echo "メールを送信しました";
+        echo "Mail successfully sent";
+        header ("Location: main.php");
       } else {
-        echo "メールの送信に失敗しました";
+        echo "Sending failed";
       };
     ?>
   </body>
