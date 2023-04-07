@@ -11,11 +11,12 @@
     $content = $content."\nFrom Name: ".$name."\nEmail: ".$email;
 }
 else{
-  echo '<script>alert("Checking!!");</script>';
   $username = $_POST["username"];
   $sql = "SELECT email FROM users WHERE username = '$username' ";
   $result = mysqli_query($conn, $sql);
+  echo '<script>alert('.$username.');</script>';
   if ($result) {
+    echo '<script>alert("Checking!!");</script>';
       $row = mysqli_fetch_assoc($result);
       $email = $row['email'];
       $content = $content."\nFrom Name: ".$username."\nEmail: ".$email;
