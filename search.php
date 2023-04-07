@@ -33,11 +33,11 @@ if (isset($_GET['searchKeyword'])) {
             margin-left: 0em;
         }
 
-        div#userTable {
+        table#userTable {
             border: none;
         }
 
-        div#userTable td {
+        table#userTable td {
             padding: 0em;
         }
     </style>
