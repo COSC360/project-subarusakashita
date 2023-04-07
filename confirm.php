@@ -24,7 +24,7 @@ else{
   
   if(mb_send_mail($to, $title, $content)){
     echo "Mail successfully sent";
-    header ("Location: main.php");
+    echo '<script>window.location.href = "main.php"; </script>';
   } else {
     echo "Sending failed";
   };
