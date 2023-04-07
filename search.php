@@ -32,9 +32,8 @@ if (isset($_GET['searchKeyword'])) {
             padding-left: 0em;
             margin-left: 0em;
         }
-        h3#nameFloatRight {
-            float: left;
-            margin: 0em 0em 0em 4em;
+        div#userTable {
+            border: none;
         }
     </style>
 </head>
@@ -74,8 +73,10 @@ if (isset($_GET['searchKeyword'])) {
 
         $sql2 = "SELECT * FROM users WHERE username LIKE '$searchKeyword'";
         $result2 = mysqli_query($conn, $sql2);
+        echo "<table id='userTable'>";
         if (mysqli_num_rows($result2) > 0) {
             while ($row = mysqli_fetch_assoc($result2)) {
+                echo "<tr>";
                 $image = null;
                 $type = null;
                 $sql6 = "SELECT fileType, fileContent FROM Images WHERE username=?";
@@ -87,12 +88,19 @@ if (isset($_GET['searchKeyword'])) {
                 mysqli_stmt_fetch($stmt);
                 mysqli_stmt_close($stmt);
                 if ($image !== null) {
-                    echo '<img id="profile" src="data:image/' . $type . ';base64,' . base64_encode($image) . '">';
+                    echo '<td><img id="profile" src="data:image/' . $type . ';base64,' . base64_encode($image) . '"></td>';
+                }else{
+                    echo "<td></td>";
                 }
-                echo ("<h3 id='nameFloatRight'>" . $row['username'] . "</h3>");
+                echo ("
+                    <td>
+                        <h3 id='nameFloatRight'>" . $row['username'] . "</h3>
+                    </td>
+                </tr>");
             }
+            echo "</table>";
         } else {
-            echo ("<h3>No results found for Users</h3>");
+            echo ("</table><h3>No results found for Users</h3>");
         }
 
         include "include/ad_long.php";
