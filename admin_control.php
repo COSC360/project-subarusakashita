@@ -90,6 +90,7 @@ if (mysqli_num_rows($result) > 0) {
         echo ("
             <table>
                 <tr>
+                    <th>Profile Image</th>    
                     <th>Username</th>
                     <th>Email</th>
                     <th>Phone Number</th>
@@ -118,8 +119,19 @@ if (mysqli_num_rows($result) > 0) {
                 }
 
                 if ($disabled1 === '1') {
+                    echo ("<tr class='red'>");
+
+                    $sql6 = "SELECT fileType, fileContent FROM Images WHERE username=?";
+                    $stmt = mysqli_stmt_init($conn);
+                    mysqli_stmt_prepare($stmt, $sql6);
+                    mysqli_stmt_bind_param($stmt, "s", $row['username']);
+                    $result2 = mysqli_stmt_execute($stmt) or die(mysqli_stmt_error($stmt));
+                    mysqli_stmt_bind_result($stmt, $type, $image);
+                    mysqli_stmt_fetch($stmt);
+                    mysqli_stmt_close($stmt);
+                    echo '<td><img id="profile" src="data:image/' . $type . ';base64,' . base64_encode($image) . '"></td>';
+
                     echo ("
-                <tr class='red'>
                     <td>" . $row['username'] . "</td>
                     <td>" . $row['email'] . "</td>
                     <td>" . $row['phoneNum'] . "</td>
@@ -132,8 +144,19 @@ if (mysqli_num_rows($result) > 0) {
                             <input type='hidden' id='$name' name='$name' value='00'>
                             <input type='submit' value='Enable'>");
                 } else {
+                    echo ("<tr class='green'>");
+
+                    $sql6 = "SELECT fileType, fileContent FROM Images WHERE username=?";
+                    $stmt = mysqli_stmt_init($conn);
+                    mysqli_stmt_prepare($stmt, $sql6);
+                    mysqli_stmt_bind_param($stmt, "s", $row['username']);
+                    $result2 = mysqli_stmt_execute($stmt) or die(mysqli_stmt_error($stmt));
+                    mysqli_stmt_bind_result($stmt, $type, $image);
+                    mysqli_stmt_fetch($stmt);
+                    mysqli_stmt_close($stmt);
+                    echo '<td><img id="profile" src="data:image/' . $type . ';base64,' . base64_encode($image) . '"></td>';
+
                     echo ("
-                <tr class='green'>
                     <td>" . $row['username'] . "</td>
                     <td>" . $row['email'] . "</td>
                     <td>" . $row['phoneNum'] . "</td>
@@ -231,7 +254,7 @@ if (mysqli_num_rows($result) > 0) {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         // echo ("<h2>Advertisements</h2>");
-
+        
         // $sql5 = "SELECT * FROM Ads";
         // $result5 = mysqli_query($conn, $sql5);
         // echo ("
@@ -242,12 +265,12 @@ if (mysqli_num_rows($result) > 0) {
         //             <th>isDisabled (0/1)</th>
         //             <th>Change status</th>
         //         </tr>");
-
+        
         // if (mysqli_num_rows($result5) > 0) {
         //     while ($row = mysqli_fetch_assoc($result5)) {
         //         $disabled3 = null;
         //         $name = "Ad" . $row['adId'];
-
+        
         //         if (!empty($_POST[$name])) {
         //             $disabled3 = $_POST[$name];
         //             $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $server_username, $server_password);
@@ -259,7 +282,7 @@ if (mysqli_num_rows($result) > 0) {
         //         } else {
         //             $disabled3 = $row['isDisabled'];
         //         }
-
+        
         //         if ($disabled3 === '1') {
         //             echo ("
         //                 <tr class='red'>
@@ -295,7 +318,7 @@ if (mysqli_num_rows($result) > 0) {
         //     }
         // }
         // echo ("</table>");
-
+        
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         
