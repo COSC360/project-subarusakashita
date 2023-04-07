@@ -5,6 +5,7 @@
   $title = $_POST['title'];
   $content = "Content: ".$_POST['content'];
   if (!empty($_POST["name"])) {
+    echo '<script>alert("Here?!!");</script>';
     $name = strip_tags($_POST["name"]);
     $email = strip_tags($_POST["email"]);
     $content = $content."\nFrom Name: ".$name."\nEmail: ".$email;
