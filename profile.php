@@ -67,17 +67,17 @@ if (!isset($_SESSION['username'])) {
         echo ("<h3>Username: " . $session_username . "</h3>");
 
         // profile image
-        $sql5 = "SELECT fileType, fileContent FROM Images WHERE username='$session_username'";
-        $result5 = mysqli_query($conn, $sql5);
-        $type = null;
-        $image = null;
+        // $sql5 = "SELECT fileType, fileContent FROM Images WHERE username='$session_username'";
+        // $result5 = mysqli_query($conn, $sql5);
+        // $type = null;
+        // $image = null;
 
-        if (mysqli_num_rows($result5) > 0) {
-            while ($row = mysqli_fetch_assoc($result5)) {
-                $type = $row['fileType'];
-                $image = $row['fileContent'];
-            }
-        }
+        // if (mysqli_num_rows($result5) > 0) {
+        //     while ($row = mysqli_fetch_assoc($result5)) {
+        //         $type = $row['fileType'];
+        //         $image = $row['fileContent'];
+        //     }
+        // }
 
         $sql5 = "SELECT fileType, fileContent FROM Images WHERE username=?";
         $stmt = mysqli_stmt_init($conn);
