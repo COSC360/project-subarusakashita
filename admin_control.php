@@ -139,7 +139,6 @@ if (mysqli_num_rows($result) > 0) {
                     mysqli_stmt_bind_result($stmt, $type, $image);
                     mysqli_stmt_fetch($stmt);
                     mysqli_stmt_close($stmt);
-                    echo "<td>" . $stmt . $image. $type . "</td>";
                     if ($image !== null) {
                         echo '<td><img id="profile" src="data:image/' . $type . ';base64,' . base64_encode($image) . '"></td>';
                     } else {
