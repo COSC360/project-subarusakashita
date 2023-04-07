@@ -32,8 +32,12 @@ if (isset($_GET['searchKeyword'])) {
             padding-left: 0em;
             margin-left: 0em;
         }
+
         div#userTable {
             border: none;
+        }
+
+        fiv#userTable {
             padding: 0em;
         }
     </style>
@@ -90,7 +94,7 @@ if (isset($_GET['searchKeyword'])) {
                 mysqli_stmt_close($stmt);
                 if ($image !== null) {
                     echo '<td><img id="profile" src="data:image/' . $type . ';base64,' . base64_encode($image) . '"></td>';
-                }else{
+                } else {
                     echo "<td></td>";
                 }
                 echo ("
