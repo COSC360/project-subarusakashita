@@ -8,6 +8,49 @@ session_start();
   <head>
     <meta charset="utf-8" />
     <script type="text/javascript" charset="UTF-8"></script>
+    <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+    
+    h2 {
+      color: #333333;
+    }
+    
+    form {
+      background-color: #ffffff;
+      border-radius: 5px;
+      padding: 20px;
+      width: 50%;
+      margin: 0 auto;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+    
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      resize: vertical;
+    }
+    
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
   </head>
   <body>
     <p>
