@@ -108,8 +108,9 @@ if ($conn->connect_error) {
                     $title = "New Password Notice";
                     $content = "The new password is ".$newPassword;
                     if(mb_send_mail($to, $title, $content)){
-                        echo "Mail successfully sent";
-                        //header ("Location: main.php");
+                        //echo "Mail successfully sent";
+                        echo '<script>alert("We have sent you an email about new password. Please check!");</script>';
+                        header ("Location: main.php");
                     } else {
                     echo "Sending failed";
                     };
