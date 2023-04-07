@@ -37,7 +37,7 @@ if (isset($_GET['searchKeyword'])) {
             border: none;
         }
 
-        fiv#userTable {
+        div#userTable td {
             padding: 0em;
         }
     </style>
