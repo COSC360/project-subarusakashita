@@ -10,8 +10,9 @@
       $title = $_POST['title'];
       $content = $_POST['content'];
       if (!empty($_POST["name"])) {
+        $name = strip_tags($_POST["name"]);
         $content = $content."<br> From username: ".$name;
-    } 
+    }
      
       if(mb_send_mail($to, $title, $content)){
         echo "Mail successfully sent";
