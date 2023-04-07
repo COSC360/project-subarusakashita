@@ -1,5 +1,10 @@
 <?php
 session_start();
+if (!isset($_SESSION['username'])) {
+  // if not logged in
+  // pop-up to encourage log in
+  echo '<script>alert("If you have account, please login first");</script>';
+}
 ?>
 
 
@@ -61,8 +66,6 @@ session_start();
       <p>
         <?php 
           if (!isset($_SESSION['username'])) {
-            echo '<script>alert("Currently, you are not logged in. Do you want to login first? Please ignore this message
-            if you do not have an account");</script>';
             echo "<p> Your Name </p> <input type='text' name = 'name' required>";
             echo "<p> Email </p> <input type='text' name = 'email' required>";
         }
