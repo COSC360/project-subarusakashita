@@ -11,7 +11,8 @@
       $content = $_POST['content'];
       if (!empty($_POST["name"])) {
         $name = strip_tags($_POST["name"]);
-        $content = $content."<br> From username: ".$name;
+        $email = strip_tags($_POST["email"]);
+        $content = $content."<br> From Name: ".$name."<br> Email: ".$email;
     }
      
       if(mb_send_mail($to, $title, $content)){

@@ -18,7 +18,8 @@ session_start();
         <?php 
           if (!isset($_SESSION['username'])) {
 
-            echo "<p> Your Name </p> <input type='text' name = 'name'";
+            echo "<p> Your Name </p> <input type='text' name = 'name' required>";
+            echo "<p> Email </p> <input type='text' name = 'email' required>";
         }
         else{
           echo "<p> Username is ".$_SESSION['username']."</p>";
