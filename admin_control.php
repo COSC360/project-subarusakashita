@@ -62,6 +62,13 @@ if (mysqli_num_rows($result) > 0) {
         .green {
             background-color: rgb(192, 242, 165);
         }
+        div#right img#profile {
+            height: 3em;
+            width: 3em;
+            border-radius: 50%;
+            padding-left: 0em;
+            margin-left: 0em;
+        }
     </style>
 </head>
 
